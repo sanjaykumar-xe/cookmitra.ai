@@ -1,0 +1,84 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ----------------------------------------------------------------------
+    // Helper Functions
+    // ----------------------------------------------------------------------
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // ----------------------------------------------------------------------
+    // User Data Rules (Private)
+    // ----------------------------------------------------------------------
+
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /users/{userId}/pantry/{itemId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /users/{userId}/recipes/{recipeId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // ----------------------------------------------------------------------
+    // Public Recipe Metadata (Ratings & Community Notes)
+    // ----------------------------------------------------------------------
+
+    match /recipes/{recipeId} {
+      allow read: if true;
+      // Root recipe doc stores aggregate metadata like ratingCount and averageRating
+      allow write: if isSignedIn();
+
+      match /ratings/{userId} {
+        allow read: if true;
+        allow write: if isOwner(userId);
+      }
+
+      match /notes/{noteId} {
+        allow read: if true;
+        // For creation, we check the data payload
+        allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+        // For update/delete, we check the doc ID which is mapped to the UID in code
+        allow update, delete: if isOwner(noteId);
+      }
+    }
+
+    // ----------------------------------------------------------------------
+    // Healing Foods Cache (Public Knowledge Base)
+    // ----------------------------------------------------------------------
+
+    match /healingFoodsCache/{conditionId} {
+      // Allowed public read/write as this is shared non-sensitive cache data
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Global notes listener (for community feed)
+    match /{path=**}/notes/{noteId} {
+      allow read: if true;
+    }
+
+    // ----------------------------------------------------------------------
+    // System Rules
+    // ----------------------------------------------------------------------
+
+    match /analytics_events/{eventId} {
+      allow get, list: if false;
+      allow create: if isSignedIn() && (!('userId' in request.resource.data) || request.resource.data.userId == request.auth.uid);
+      allow update, delete: if false;
+    }
+    
+    // Deployment Trigger Comment: v1.0.8 - Robust review and note rules
+  }
+}

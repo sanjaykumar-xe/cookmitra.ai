@@ -1,0 +1,261 @@
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Stores profile information for authenticated users, primarily for app personalization and data access control.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity, corresponding to the Firebase Authentication UID."
+        },
+        "name": {
+          "type": "string",
+          "description": "The user's display name."
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's email address.",
+          "format": "email"
+        },
+        "languagePreference": {
+          "type": "string",
+          "description": "The user's preferred language for app interaction (e.g., 'en', 'hi', 'ta')."
+        },
+        "regionPreference": {
+          "type": "string",
+          "description": "The user's preferred culinary region (e.g., 'North', 'South') for recipe suggestions."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the user profile was created.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "languagePreference",
+        "regionPreference",
+        "createdAt"
+      ]
+    },
+    "Recipe": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Recipe",
+      "type": "object",
+      "description": "Represents an Indian recipe with multi-language support.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Recipe entity."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the UserProfile who generated or saved this recipe. (Optional for library recipes)"
+        },
+        "title": {
+          "type": "object",
+          "description": "The name of the dish in multiple languages.",
+          "properties": {
+            "en": { "type": "string" },
+            "ta": { "type": "string" },
+            "hi": { "type": "string" }
+          }
+        },
+        "description": {
+          "type": "object",
+          "description": "Recipe description in multiple languages.",
+          "properties": {
+            "en": { "type": "string" },
+            "ta": { "type": "string" },
+            "hi": { "type": "string" }
+          }
+        },
+        "ingredients": {
+          "type": "object",
+          "description": "Ingredient names in multiple languages.",
+          "properties": {
+            "en": { "type": "array", "items": { "type": "string" } },
+            "ta": { "type": "array", "items": { "type": "string" } },
+            "hi": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "instructions": {
+          "type": "object",
+          "description": "Step-by-step instructions in multiple languages.",
+          "properties": {
+            "en": { "type": "array", "items": { "type": "string" } },
+            "ta": { "type": "array", "items": { "type": "string" } },
+            "hi": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "tags": {
+          "type": "object",
+          "description": "Recipe tags in multiple languages.",
+          "properties": {
+            "en": { "type": "array", "items": { "type": "string" } },
+            "ta": { "type": "array", "items": { "type": "string" } },
+            "hi": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "ingredientDetails": {
+          "type": "array",
+          "description": "Non-translatable metadata for ingredients like quantity and price.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "qty": { "type": "string" },
+              "price": { "type": "number" }
+            }
+          }
+        },
+        "estimatedCost": {
+          "type": "number",
+          "description": "The estimated cost of the recipe in Indian Rupees (INR)."
+        },
+        "cookingTime": {
+          "type": "number",
+          "description": "The estimated cooking time for the recipe in minutes."
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "The difficulty level (e.g., 'Easy', 'Medium', 'Hard')."
+        },
+        "dietaryPreference": {
+          "type": "string",
+          "description": "The dietary preference (e.g., 'Veg', 'Non-Veg')."
+        },
+        "servings": {
+          "type": "number",
+          "description": "Number of people the recipe serves."
+        },
+        "popularity": {
+          "type": "number"
+        },
+        "savedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "healthTags": {
+          "type": "array",
+          "description": "Tags for matching recipes to health conditions (e.g., 'diabetes-friendly').",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "PantryItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PantryItem",
+      "type": "object",
+      "description": "Represents an ingredient in a user's persistent pantry inventory.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the PantryItem."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the ingredient."
+        },
+        "quantity": {
+          "type": "string",
+          "description": "Quantity or amount of the ingredient (e.g., '500g', '2 kg')."
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the ingredient (e.g., 'Vegetables', 'Spices')."
+        },
+        "addedAt": {
+          "type": "string",
+          "description": "Timestamp when the item was added to the pantry.",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "name", "category", "addedAt"]
+    },
+    "HealingFoodsCache": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "HealingFoodsCache",
+      "type": "object",
+      "description": "Caches AI-generated dietary guidance for various health conditions.",
+      "properties": {
+        "name": { "type": "string" },
+        "summary": { "type": "string" },
+        "foodsToHelp": { "type": "array", "items": { "type": "object" } },
+        "foodsToAvoid": { "type": "array", "items": { "type": "object" } },
+        "healthTags": { 
+          "type": "array", 
+          "description": "Mapped health tags from the fixed vocabulary.",
+          "items": { "type": "string" } 
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "summary", "foodsToHelp", "foodsToAvoid", "healthTags", "createdAt"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous",
+      "google"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores individual user profiles."
+        }
+      },
+      {
+        "path": "/users/{userId}/recipes/{recipeId}",
+        "definition": {
+          "entityName": "Recipe",
+          "schema": {
+            "$ref": "#/backend/entities/Recipe"
+          },
+          "description": "Stores recipes generated or saved by a specific user."
+        }
+      },
+      {
+        "path": "/users/{userId}/pantry/{itemId}",
+        "definition": {
+          "entityName": "PantryItem",
+          "schema": {
+            "$ref": "#/backend/entities/PantryItem"
+          },
+          "description": "Stores the personal pantry inventory for a user."
+        }
+      },
+      {
+        "path": "/recipes/{recipeId}",
+        "definition": {
+          "entityName": "Recipe",
+          "schema": {
+             "$ref": "#/backend/entities/Recipe"
+          },
+          "description": "Root collection for library recipes and public engagement data."
+        }
+      },
+      {
+        "path": "/healingFoodsCache/{conditionId}",
+        "definition": {
+          "entityName": "HealingFoodsCache",
+          "schema": {
+            "$ref": "#/backend/entities/HealingFoodsCache"
+          },
+          "description": "Caches AI results for health conditions."
+        }
+      }
+    ]
+  }
+}

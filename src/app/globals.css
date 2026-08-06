@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 20% 99%;
+    --foreground: 30 20% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 20% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 20% 10%;
+    --primary: 37 100% 50%;
+    --primary-foreground: 30 20% 10%;
+    --secondary: 30 10% 94%;
+    --secondary-foreground: 30 20% 10%;
+    --muted: 30 10% 94%;
+    --muted-foreground: 30 12% 28%; /* Darker charcoal for better contrast in light mode */
+    --accent: 37 100% 50%;
+    --accent-foreground: 30 20% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 30 10% 90%;
+    --input: 30 10% 90%;
+    --ring: 37 100% 50%;
+    --radius: 1rem;
+    --chart-1: 37 100% 50%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Fluid Sizing Variables - Slightly increased for improved readability */
+    --font-h1: clamp(2rem, 1.5rem + 2.5vw, 3.75rem);
+    --font-h2: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+    --font-body: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem); /* 17px base */
+    --font-subtitle: clamp(0.9375rem, 0.9rem + 0.15vw, 1.125rem); /* 15px base */
+    
+    --space-section: clamp(2rem, 1.5rem + 2vw, 4rem);
+    --space-card-padding: clamp(1rem, 0.9rem + 0.5vw, 1.75rem);
+    --space-grid-gap: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  }
+
+  .dark {
+    --background: 30 20% 10%;
+    --foreground: 30 20% 95%;
+    --card: 30 18% 13%;
+    --card-foreground: 30 20% 95%;
+    --popover: 30 20% 10%;
+    --popover-foreground: 30 20% 95%;
+    --primary: 37 100% 50%;
+    --primary-foreground: 30 20% 10%;
+    --secondary: 30 15% 18%;
+    --secondary-foreground: 30 20% 95%;
+    --muted: 30 15% 18%;
+    --muted-foreground: 30 10% 75%; /* Lighter for better contrast in dark mode */
+    --accent: 37 100% 50%;
+    --accent-foreground: 30 20% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --input: 37 20% 13%;
+    --border: 30 15% 20%;
+    --ring: 37 100% 50%;
+  }
+
+  /* Specific font overrides for Indic scripts */
+  .lang-ta {
+    font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
+  }
+  .lang-hi {
+    font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+  }
+  
+  .lang-ta h1, .lang-ta h2, .lang-ta h3, .lang-ta .font-headline {
+    font-family: 'Playfair Display', 'Noto Sans Tamil', serif;
+  }
+  .lang-hi h1, .lang-hi h2, .lang-hi h3, .lang-hi .font-headline {
+    font-family: 'Playfair Display', 'Noto Sans Devanagari', serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground leading-relaxed;
+  }
+  
+  /* Per user request: Global utility to hide footer during focused tasks */
+  body.hide-footer footer {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .btn-primary-gradient {
+    background: linear-gradient(135deg, #F4A21A, #FFB02E);
+    @apply text-primary-foreground border-0 transition-all duration-300 font-bold;
+  }
+
+  .btn-primary-gradient:hover {
+    box-shadow: 0 0 16px rgba(244, 162, 26, 0.4);
+    @apply scale-[1.02] opacity-95;
+  }
+
+  .input-premium {
+    @apply bg-muted/50 dark:bg-[#2A2318] border-border transition-all duration-300;
+  }
+
+  .input-premium:focus {
+    @apply border-primary outline-none;
+    box-shadow: 0 0 0 3px rgba(244, 162, 26, 0.2);
+  }
+
+  /* 3D Flip Card Components */
+  .flip-card-container {
+    perspective: 1500px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
+
+@layer utilities {
+  .text-fluid-h1 { font-size: var(--font-h1); }
+  .text-fluid-h2 { font-size: var(--font-h2); }
+  .text-fluid-body { font-size: var(--font-body); }
+  .text-fluid-subtitle { font-size: var(--font-subtitle); }
+  
+  .p-fluid-card { padding: var(--space-card-padding); }
+  .gap-fluid-grid { gap: var(--space-grid-gap); }
+  .my-fluid-section { margin-top: var(--space-section); margin-bottom: var(--space-section); }
+
+  .content-container {
+    width: 100%;
+    max-width: min(1600px, 92vw);
+    margin-inline: auto;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md border border-primary/10 rounded-2xl;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .dark .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    @apply border-primary/15;
+  }
+
+  @keyframes steam {
+    0% { transform: translateY(10px); opacity: 0; }
+    15% { opacity: 1; }
+    80% { transform: translateY(-20px); opacity: 1; }
+    100% { transform: translateY(-30px); opacity: 0; }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .steam-1 { animation: steam 2.5s ease-out infinite; }
+  .steam-2 { animation: steam 2.5s ease-out infinite; animation-delay: 0.5s; }
+  .steam-3 { animation: steam 2.5s ease-out infinite; animation-delay: 1s; }
+
+  .shimmer-overlay {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: shimmer 3s infinite linear;
+  }
+
+  .page-transition {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-forwards;
+  }
+
+  .stagger-item {
+    @apply animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-both;
+  }
+
+  .active-icon-glow {
+    filter: drop-shadow(0 0 8px rgba(244, 162, 26, 0.5));
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(244, 162, 26, 0.3) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(244, 162, 26, 0.3);
+    border-radius: 4px;
+  }
+
+  /* India Map Custom Styles */
+  .india-svg-map {
+    width: 100%;
+    height: auto;
+    stroke: hsl(var(--border));
+    stroke-width: 0.5;
+  }
+
+  .svg-map-location {
+    fill: hsl(var(--muted));
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .svg-map-location:hover {
+    fill: hsl(var(--primary) / 0.2);
+    stroke: hsl(var(--primary));
+    stroke-width: 1;
+  }
+
+  .svg-map-location-selected {
+    fill: #F4A21A !important;
+    stroke: #412402;
+    stroke-width: 1.5;
+  }
+
+  .india-map-wrapper {
+    padding: 2rem;
+    background: hsl(var(--card) / 0.5);
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+}

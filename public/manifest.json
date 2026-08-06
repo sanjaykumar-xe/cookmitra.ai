@@ -1,0 +1,10 @@
+{
+  "name": "CookMitra",
+  "short_name": "CookMitra",
+  "description": "Your personal AI chef for Indian cuisine!",
+  "theme_color": "#F5F5DC",
+  "background_color": "#F5F5DC",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

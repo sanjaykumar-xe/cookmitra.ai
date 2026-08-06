@@ -1,0 +1,528 @@
+{
+  "header": {
+    "home": "Home",
+    "recipes": "Recipes",
+    "ingredients": "Ingredients",
+    "aiRecipes": "AI Recipes",
+    "mealPlanner": "Healthy Meal Planner",
+    "pricing": "Pricing",
+    "services": "Services",
+    "settings": "Settings",
+    "faqs": "FAQs",
+    "profile": "Profile",
+    "myRecipes": "My Recipes",
+    "logout": "Logout",
+    "startCooking": "Start Cooking",
+    "community": "Community",
+    "aiAssistant": "AI Assistant"
+  },
+  "aiChat": {
+    "title": "AI Cooking Assistant",
+    "placeholder": "Ask anything about cooking...",
+    "thinking": "Chef Momo is thinking...",
+    "suggestions": {
+      "title": "Try a suggestion",
+      "recipeWith": "Suggest a recipe with chicken and rice",
+      "healthy": "What are some healthy breakfast ideas?",
+      "quick": "Give me a recipe that takes less than 20 minutes",
+      "fix": "How do I make my curry less spicy?"
+    },
+    "voice": {
+        "listening": "Listening...",
+        "speak": "Speak AI response",
+        "stop": "Stop speaking"
+    },
+    "errors": {
+        "apiError": "The AI assistant is busy right now, please try again later.",
+        "voiceNotSupported": "Voice recognition is not supported in your browser.",
+        "ttsNotSupported": "Text-to-speech is not supported in your browser."
+    }
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "signInToContinue": "Sign in to your account to continue",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "createAccount": "Create an Account",
+    "joinToSave": "Join to save recipes and unlock features",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email",
+    "password": "Password",
+    "authFailed": "Authentication failed",
+    "signUpFailed": "Signup failed",
+    "firebaseNotAvailable": "Firebase services are not available.",
+    "firebaseNotInitialized": "Firebase is not initialized correctly.",
+    "unexpectedError": "An unexpected error occurred. Please try again.",
+    "invalidCredentials": "Invalid email or password.",
+    "tooManyRequests": "Too many requests. Please try again later.",
+    "emailInUse": "This email address is already in use.",
+    "forgotPassword": "Forgot Password?",
+    "forgotPasswordTitle": "Reset Your Password",
+    "forgotPasswordDesc": "Enter your email and we'll send you a link to get back into your account.",
+    "sendResetLink": "Send Reset Link",
+    "resetLinkSentTitle": "Check Your Email",
+    "resetLinkSentDesc": "If an account with that email exists, we've sent a password reset link to it.",
+    "backToLogin": "Back to Sign In",
+    "verifyEmailTitle": "Verify Your Email Address",
+    "verifyEmailDesc": "A verification link has been sent to <strong>{{email}}</strong>. Please check your inbox (and spam folder) to continue.",
+    "resendVerification": "Resend Verification Email",
+    "verificationSent": "A new verification email has been sent."
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account and app preferences.",
+    "appearance": {
+      "title": "Appearance",
+      "description": "Choose how CookMitra looks on your device.",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "language": {
+      "title": "Language",
+      "description": "Choose your preferred language for the user interface.",
+      "selectPlaceholder": "Select a language...",
+      "saveChanges": "Save Changes",
+      "saving": "Saving...",
+      "saveSuccessTitle": "Language preference saved!",
+      "saveSuccessDescription": "Your language preference has been updated.",
+      "saveErrorTitle": "Failed to save language",
+      "saveErrorDescription": "Could not save your language preference."
+    }
+  },
+  "home": {
+    "title": "Turn Your Ingredients Into Delicious Recipes",
+    "subtitle": "Stop wondering what to cook! Enter the ingredients you have, and let our AI suggest perfect Indian recipes with instant grocery links for anything you're missing.",
+    "startCooking": "Start Cooking",
+    "viewPricing": "View Pricing",
+    "stats": {
+      "recipes": "Recipes",
+      "cuisines": "Cuisines",
+      "happyUsers": "Happy Users"
+    },
+    "whyChoose": {
+      "title": "Why Choose CookMitra?",
+      "subtitle": "The smartest way to discover and cook amazing recipes",
+      "features": {
+        "aiPowered": {
+          "title": "AI-Powered Recipes",
+          "description": "Smart recipe suggestions based on your available ingredients."
+        },
+        "instantLinks": {
+          "title": "Instant Grocery Links",
+          "description": "One-click links to Zepto, Pluckk, Foodstories & JioMart for missing items."
+        },
+        "mealPlanner": {
+          "title": "Healthy Meal Planner",
+          "description": "Get personalized 7-day Indian meal plans with full nutritional breakdowns."
+        },
+        "aiAssistant": {
+          "title": "AI Assistant",
+          "description": "Chat with Chef Momo for real-time cooking advice and ingredient substitutions."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Cooking?",
+      "subtitle": "Join thousands of home cooks who've discovered the joy of effortless meal planning.",
+      "button": "Get Started Free →"
+    }
+  },
+  "dashboard": {
+    "greeting": "Welcome back, {{name}}",
+    "subtext": "What would you like to cook today?",
+    "actions": {
+      "generate": {
+        "title": "Generate a Recipe",
+        "desc": "Turn your pantry into a feast"
+      },
+      "plan": {
+        "title": "Plan My Week",
+        "desc": "Personalized 7-day meal plans"
+      },
+      "chat": {
+        "title": "Ask Chef Momo",
+        "desc": "Real-time cooking guidance"
+      },
+      "saved": {
+        "title": "My Saved Recipes",
+        "desc": "Access your favorites"
+      }
+    },
+    "savedRecipes": "My Saved Recipes",
+    "viewAll": "View All",
+    "empty": {
+      "title": "You haven't saved any recipes yet",
+      "desc": "Generate your first AI-crafted recipe to get started.",
+      "button": "Generate a Recipe"
+    },
+    "browse": {
+      "title": "Browse the Recipe Library",
+      "desc": "Explore our hand-curated collection of authentic Indian recipes from every region.",
+      "button": "Explore Library"
+    }
+  },
+  "profile": {
+    "title": "User Profile",
+    "description": "Your personal account details",
+    "displayName": "Display Name",
+    "email": "Email Address",
+    "signOut": "Sign Out"
+  },
+  "myRecipes": {
+    "title": "My Saved Recipes",
+    "empty": {
+      "title": "No Recipes Saved Yet",
+      "description": "Start by generating a new recipe!",
+      "button": "Generate a Recipe"
+    },
+    "recipeCard": {
+      "description": "A delicious {{diet}} {{dishName}} recipe with an estimated cost of"
+    },
+    "detail": {
+      "notFound": "This recipe could not be found in your collection.",
+      "fetchError": "There was an error fetching your recipe. Please try again.",
+      "errorTitle": "Could Not Load Recipe"
+    }
+  },
+  "pricing": {
+    "title": "Choose Your Plan",
+    "chooseYourPlan": "Choose Your Plan",
+    "subtitle": "Start free and upgrade when you're ready for the full experience",
+    "free": {
+      "title": "Free",
+      "price": "0",
+      "period": "/forever",
+      "description": "Perfect for getting started",
+      "features": [
+        "Up to 5 recipe generations per day",
+        "Basic recipe suggestions",
+        "Single recipe per dish",
+        "Grocery links for missing ingredients"
+      ],
+      "excludedFeatures": [
+        "Limited recipe variations",
+        "Contains ads"
+      ],
+      "button": "Current Plan"
+    },
+    "premium": {
+      "tag": "MOST POPULAR",
+      "title": "Premium",
+      "price": "49",
+      "period": "/per month",
+      "description": "Unlock the full cooking experience",
+      "features": [
+        "Unlimited recipe generations",
+        "Up to 5 variations per dish",
+        "Hyderabadi, Kolkata, Mughlai & more styles",
+        "Priority recipe ranking",
+        "Ad-free experience",
+        "Free Blinkit subscription benefit*",
+        "Free Zepto subscription benefit*",
+        "Free Swiggy Instamart benefit*",
+        "Early access to new features"
+      ],
+      "button": "Get Premium",
+      "disclaimer": "*Grocery subscription benefits are promotional vouchers/discounts"
+    },
+    "included": {
+      "title": "What's Included with Premium",
+      "variations": {
+        "title": "5 Recipe Variations",
+        "description": "Get Hyderabadi, Kolkata, Mughlai, Quick & Low-oil versions of every dish"
+      },
+      "benefits": {
+        "title": "Grocery Benefits",
+        "description": "Exclusive discounts and free delivery on Blinkit, Zepto & Instamart"
+      },
+      "access": {
+        "title": "Priority Access",
+        "description": "Be the first to try new features and get priority support"
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about cooking with CookMitra AI",
+    "helpCenter": "Help Center",
+    "items": [
+      {
+        "question": "What is CookMitra AI?",
+        "answer": "CookMitra AI is an AI-powered cooking companion built for Indian home cooking. It helps you generate recipes from ingredients you already have, plan healthy weekly meals, chat with an AI cooking assistant, and manage your kitchen pantry — all in one place."
+      },
+      {
+        "question": "Is CookMitra AI free to use?",
+        "answer": "Yes! CookMitra AI is completely free during our hackathon demo period. Check out our Pricing page for a look at how the product could evolve in the future."
+      },
+      {
+        "question": "How does the AI Recipe Generator work?",
+        "answer": "Just type in the ingredients you have (or scan a photo of your pantry, or use voice input), set your budget and cook time preferences, and our AI crafts a complete recipe with instructions, nutrition info, and a cost breakdown — tailored to what's actually in your kitchen."
+      },
+      {
+        "question": "What is Batch Cooking mode?",
+        "answer": "Toggle on Batch Cooking mode when generating a recipe, choose how many days you're cooking for, and the AI will scale the recipe up accordingly plus add storage and reheating instructions — perfect for students and hostel life."
+      },
+      {
+        "question": "Who is Chef Momo?",
+        "answer": "Chef Momo is your AI cooking assistant, available anytime to answer cooking questions, suggest substitutions, and help troubleshoot recipes in real time — just like texting a knowledgeable friend."
+      },
+      {
+        "question": "Can I save my favorite recipes?",
+        "answer": "Yes — tap 'Save Recipe' on any generated or library recipe, and it'll appear in 'My Saved Recipes' for quick access anytime."
+      },
+      {
+        "question": "What is the Pantry feature?",
+        "answer": "My Pantry lets you keep a running list of ingredients you have at home, so you don't have to retype them every time you want a recipe. You can manually pull items from your Pantry into the Recipe Generator whenever you'd like."
+      },
+      {
+        "question": "How accurate are the cost and nutrition estimates?",
+        "answer": "Estimates are AI-generated based on typical Indian grocery prices and standard nutritional data. They're meant as helpful guidance, not exact figures — actual costs and nutrition may vary by brand, region, and season."
+      },
+      {
+        "question": "Can I share recipes with friends?",
+        "answer": "Yes — use the 'Share to WhatsApp' button on any generated recipe to send a nicely formatted version straight to a chat."
+      },
+      {
+        "question": "How do I contact support?",
+        "answer": "If you have any questions or need assistance, you can reach out to our support team by emailing cookmitra.ai@gmail.com. We're always happy to help!"
+      },
+      {
+        "question": "Is my data private?",
+        "answer": "Your saved recipes, pantry, and preferences are stored securely and tied to your account — only you can access them."
+      }
+    ],
+    "contact": {
+      "title": "Still have questions?",
+      "subtitle": "Can't find what you're looking for? Reach out to our support team.",
+      "email": "cookmitra.ai@gmail.com"
+    }
+  },
+  "footer": {
+    "pricing": "Pricing",
+    "services": "Services",
+    "faqs": "FAQs",
+    "madeWith": "Made with",
+    "inIndia": "in India"
+  },
+  "aiRecipes": {
+    "form": {
+      "title": "Create Your Recipe",
+      "ingredients": {
+        "label": "Available Ingredients",
+        "placeholder": "e.g., onion, tomato, paneer, rice...",
+        "description": "Enter ingredients you have, separated by commas."
+      },
+      "budget": "Budget (INR)",
+      "time": "Max Cook Time",
+      "diet": "Diet",
+      "veg": "Veg",
+      "nonVeg": "Non-Veg",
+      "button": "Generate Recipe",
+      "buttonLoading": "Generating...",
+      "region": "Region",
+      "servings": "Servings"
+    },
+    "display": {
+      "loading": {
+        "title": "Crafting your recipe...",
+        "subtitle": "Our AI chef is working its magic. Please wait a moment."
+      },
+      "placeholder": {
+        "title": "Your recipe will appear here",
+        "subtitle": "Fill out the form to get started!"
+      },
+      "saveRecipe": "Save Recipe",
+      "saveSuccess": "Recipe Saved!",
+      "saveDescription": "The recipe has been added to your collection.",
+      "saveError": "Error",
+      "loginRequired": "Login Required",
+      "loginToSave": "Please log in to save recipes.",
+      "cookingTime": "Cooking Time",
+      "difficulty": "Difficulty",
+      "cost": "Est. Cost",
+      "serves": "Serves",
+      "ingredients": "Ingredients",
+      "instructions": "Instructions",
+      "missingIngredients": "Missing Ingredients"
+    }
+  },
+  "missingIngredients": {
+    "title": "Missing Ingredients",
+    "button": "Shop on BigBasket",
+    "loading": "Fetching links...",
+    "dialogTitle": "Purchase Links",
+    "dialogDescription": "Find the missing ingredients from your favorite online stores.",
+    "error": "Error fetching links",
+    "buyOn": "Buy on {{retailer}}"
+  },
+  "healthyMealPlanner": {
+    "title": "Healthy Meal Planner",
+    "subtitle": "An AI-powered healthy meal planner that suggests weekly Indian meals with estimated calories, macronutrients, and health benefits to support balanced eating.",
+    "form": {
+      "title": "Your Preferences",
+      "description": "Tell us a bit about yourself for a personalized plan.",
+      "ageRange": "Age Range",
+      "activityLevel": "Activity Level",
+      "dietPreference": "Diet Preference",
+      "veg": "Vegetarian",
+      "nonVeg": "Non-Vegetarian",
+      "egg": "Eggetarian",
+      "cuisinePreference": "Cuisine Preference",
+      "goal": "Primary Goal",
+      "goals": {
+        "balanced": "Balanced eating",
+        "weight": "Weight management",
+        "energy": "Energy boost",
+        "muscle": "Muscle support"
+      },
+      "weeklyBudget": "Weekly Budget",
+      "button": "Generate Healthy Meal Plan",
+      "buttonLoading": "Generating..."
+    },
+    "loading": {
+      "title": "Building your personalized plan...",
+      "subtitle": "Our AI nutritionist is curating the best meals for you. This might take a moment."
+    },
+    "placeholder": {
+      "title": "Your meal plan will appear here",
+      "subtitle": "Fill out your preferences to generate a plan."
+    },
+    "display": {
+      "title": "Your Weekly Meal Plan",
+      "subtitle": "Here is a balanced Indian meal plan generated by AI based on your preferences.",
+      "nutrition": "Nutrition (approx.)",
+      "benefits": "Benefits",
+      "summaryTitle": "Weekly Summary",
+      "avgCalories": "Avg. Calories/Day",
+      "avgProtein": "Avg. Protein/Day",
+      "estCost": "Est. Cost",
+      "healthyDays": "Healthy Days"
+    },
+    "pdf": {
+      "download": "Download PDF",
+      "meal": "Meal",
+      "food": "Food",
+      "calories": "Calories (kcal)",
+      "protein": "Protein (g)",
+      "carbs": "Carbs (g)",
+      "fats": "Fats (g)"
+    }
+  },
+  "ingredientsPage": {
+    "title": "Ingredient Catalog",
+    "subtitle": "Browse our complete collection of ingredients with prices. Use recipe details to buy anything you need!",
+    "searchPlaceholder": "Search ingredients by name...",
+    "noResults": "No ingredients found matching your criteria.",
+    "summary": {
+      "total": "Total Ingredients",
+      "categories": "Categories",
+      "avgPrice": "Avg. Price"
+    },
+    "categories": {
+      "proteins": "Proteins",
+      "grains": "Grains",
+      "vegetables": "Vegetables",
+      "dairy": "Dairy",
+      "spices": "Spices",
+      "oils": "Oils",
+      "condiments": "Condiments",
+      "nuts": "Nuts",
+      "fruits": "Fruits"
+    },
+    "priceUnit": "Price per {unit}",
+    "buyHint": "To buy this ingredient, view a recipe and check ingredient details."
+  },
+  "recipesExplorer": {
+    "title": "Indian Recipes Explorer",
+    "subtitle": "Discover delicious Indian recipes with detailed ingredients, pricing, and step-by-step instructions. Find recipes based on what you have!",
+    "findByIngredients": "Find Recipes by Ingredients",
+    "ingredientsPlaceholder": "Type an ingredient and press Enter...",
+    "quickAdd": "Quick add:",
+    "search": "Search Recipes",
+    "filters": {
+      "all": "All",
+      "veg": "Vegetarian",
+      "nonVeg": "Non-Vegetarian",
+      "bakery": "Bakery",
+      "north": "North Indian",
+      "south": "South Indian",
+      "street": "Street Food",
+      "snacks": "Snacks",
+      "dessert": "Desserts",
+      "drink": "Drinks",
+      "healthy": "Healthy Foods",
+      "easy": "Easy",
+      "quick": "Quick (<30 min)",
+      "punjabi": "Punjabi",
+      "bengali": "Bengali",
+      "gujarati": "Gujarati",
+      "maharashtrian": "Maharashtrian",
+      "WeeknightDinner": "Weeknight Dinner",
+      "Breakfast": "Breakfast",
+      "MonsoonSnack": "Monsoon Snack",
+      "DiwaliSweet": "Diwali Sweet"
+    },
+    "found": "Found {{count}} recipes",
+    "noResults": "No recipes found matching your criteria.",
+    "card": {
+      "time": "Time",
+      "serves": "Serves",
+      "level": "Level",
+      "cost": "Cost",
+      "ingredients": "{{count}} Ingredients",
+      "more": "+{{count}} more",
+      "view": "View Details & Cook"
+    },
+    "difficulties": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "filter": "Filter",
+    "applyFilters": "Apply Filters",
+    "clearFilters": "Clear Filters",
+    "sortBy": "Sort by",
+    "sort": {
+      "popular": "Popular",
+      "quickest": "Quickest",
+      "cheapest": "Cheapest",
+      "trending": "Trending",
+      "healthiest": "Healthiest"
+    },
+    "filterGroups": {
+      "diet": "Diet",
+      "cuisine": "Cuisine",
+      "dishType": "Dish Type",
+      "other": "Other",
+      "collections": "Collections"
+    }
+  },
+  "recipeDetails": {
+    "searching": "Searching for your delicious recipe...",
+    "detailsButton": "Recipe Details",
+    "cookButton": "Start Cooking",
+    "time": "Cooking Time",
+    "servings": "Servings",
+    "difficulty": "Difficulty",
+    "cost": "Approx Cost",
+    "availabilityTitle": "Ingredient Availability",
+    "availabilityFor": "For: {{name}}",
+    "available": "Available",
+    "missing": "Missing",
+    "totalCost": "Total Ingredients Cost:",
+    "people": "{{count}} people"
+  },
+  "cookMode": {
+    "step": "Step {{current}} of {{total}}",
+    "progress": "{{percent}}%",
+    "completed": "Completed!",
+    "markComplete": "Mark as Complete & Next",
+    "previous": "Previous",
+    "next": "Next",
+    "stepsTitle": "Recipe Steps"
+  }
+}

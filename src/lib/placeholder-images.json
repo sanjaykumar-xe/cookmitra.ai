@@ -1,0 +1,40 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Luxury dark kitchen environment, beautifully plated Indian biryani, butter chicken, naan and healthy bowls, cinematic lighting, dark premium background, orange accent lights, modern technology elements, AI-powered cooking assistant theme, professional commercial photography, high contrast, suitable for dark mode website hero section, ultra realistic 4K",
+      "imageUrl": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+      "imageHint": "indian feast"
+    },
+    {
+      "id": "recipe-placeholder",
+      "description": "A neutral, professional setup of Indian spices and fresh ingredients in bowls, representing a variety of potential dishes.",
+      "imageUrl": "https://images.unsplash.com/photo-1596797038530-2c391b058a9d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "imageHint": "indian kitchen"
+    },
+    {
+      "id": "idli-preview",
+      "description": "Soft fluffy steamed idlis served on a banana leaf with chutney",
+      "imageUrl": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "imageHint": "idli sambar"
+    },
+    {
+      "id": "tandoori-preview",
+      "description": "Spicy charred tandoori chicken drumsticks",
+      "imageUrl": "https://images.unsplash.com/photo-1626074353765-517a681e40be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "imageHint": "tandoori chicken"
+    },
+    {
+      "id": "cake-preview",
+      "description": "Rich dark chocolate truffle cake with ganache frosting",
+      "imageUrl": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "imageHint": "chocolate cake"
+    },
+    {
+      "id": "shake-preview",
+      "description": "Fresh creamy mango milkshake topped with mint and mango chunks",
+      "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      "imageHint": "mango milkshake"
+    }
+  ]
+}
