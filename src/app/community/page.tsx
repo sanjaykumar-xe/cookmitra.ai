@@ -50,10 +50,10 @@ function ReviewCard({ review }: { review: CommunityNote }) {
       </CardHeader>
       <CardContent className="space-y-4 p-fluid-card flex-grow flex flex-col justify-between">
         <div className="p-4 rounded-xl bg-muted/30 border border-border/40">
-          <p className="font-bold text-primary mb-2 line-clamp-1">{review.recipeName}</p>
+          <h3 className="font-headline font-bold text-lg text-primary mb-2 line-clamp-1">{review.recipeName}</h3>
           <blockquote className="text-fluid-body italic leading-relaxed opacity-80 line-clamp-3">"{review.note}"</blockquote>
         </div>
-        <Button asChild variant="outline" className="w-full h-11 rounded-xl font-bold border-primary/20 hover:bg-primary/5 text-primary">
+        <Button asChild variant="outline" className="w-full h-11 rounded-full font-medium border-primary/20 hover:bg-primary/5 text-primary">
           <Link href={`/recipes/${review.recipeId}`}>View Recipe</Link>
         </Button>
       </CardContent>

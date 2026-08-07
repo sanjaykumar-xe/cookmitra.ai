@@ -9,18 +9,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { RupeeIcon } from '@/components/icons/rupee-icon';
+import { getRecipeImageCandidates } from '@/lib/recipe-image-helper';
 import type { Recipe } from '@/lib/recipes/types';
 
 export function RecipeCard({ recipe }: { recipe: Recipe }) {
     const [isFlipped, setIsFlipped] = useState(false);
     const [isTouchDevice, setIsTouchDevice] = useState(false);
     const [imageError, setImageError] = useState(false);
+    const [candidateIndex, setCandidateIndex] = useState(0);
 
-    // Definitively fix the "stuck" state by resetting when the component identity changes
-    // or when the recipe data updates in the same slot.
+    const candidates = recipe.imageUrl ? [recipe.imageUrl] : getRecipeImageCandidates(recipe.id);
+
     useEffect(() => {
         setIsFlipped(false);
-    }, [recipe.id]);
+        setImageError(false);
+        setCandidateIndex(0);
+    }, [recipe.id, recipe.imageUrl]);
 
     useEffect(() => {
         setIsTouchDevice(window.matchMedia('(hover: none)').matches);
@@ -32,7 +36,6 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
         }
     };
 
-    // Using Pointer events for more reliable hover tracking across hybrid devices
     const handlePointerEnter = () => {
         if (!isTouchDevice) setIsFlipped(true);
     };
@@ -41,8 +44,16 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
         if (!isTouchDevice) setIsFlipped(false);
     };
 
-    // Determine if we have a valid image to show
-    const showImage = !!recipe.imageUrl && !imageError;
+    const currentImageUrl = candidates[candidateIndex];
+    const showImage = !!currentImageUrl && !imageError;
+
+    const handleImageError = () => {
+        if (candidateIndex < candidates.length - 1) {
+            setCandidateIndex(prev => prev + 1);
+        } else {
+            setImageError(true);
+        }
+    };
 
     return (
         <div 
@@ -62,13 +73,13 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
                         <div className="relative h-48 w-full bg-muted overflow-hidden">
                             {showImage ? (
                                 <Image 
-                                    src={recipe.imageUrl!}
+                                    src={currentImageUrl}
                                     alt={recipe.name}
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     data-ai-hint="indian kitchen"
-                                    onError={() => setImageError(true)}
+                                    onError={handleImageError}
                                 />
                             ) : (
                                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-100 dark:bg-zinc-900/40">

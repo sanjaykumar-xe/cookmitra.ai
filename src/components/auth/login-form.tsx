@@ -163,7 +163,7 @@ export function LoginForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full" disabled={isLoading || isGoogleLoading}>
+          <Button type="submit" className="w-full rounded-full bg-[#F4A21A] hover:bg-[#E09015] text-white font-medium shadow-sm h-11 transition-all border-0" disabled={isLoading || isGoogleLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Sign In
           </Button>
@@ -179,7 +179,7 @@ export function LoginForm() {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading || isGoogleLoading} onClick={handleGoogleSignIn}>
+      <Button variant="outline" type="button" className="w-full rounded-full border-stone-300 dark:border-stone-700 font-medium hover:bg-stone-100 dark:hover:bg-stone-800 h-11 transition-all" disabled={isLoading || isGoogleLoading} onClick={handleGoogleSignIn}>
         {isGoogleLoading ? (
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         ) : (

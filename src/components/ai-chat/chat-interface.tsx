@@ -184,10 +184,10 @@ export default function ChatInterface() {
                     <p className="text-muted-foreground mt-2 mb-8 max-w-xs">{t('chat.subtitle')}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md">
                         {QUICK_SUGGESTIONS.map((suggestion, i) => (
-                        <Button key={i} variant="outline" className="h-auto text-left justify-start p-3 hover:scale-105 transition-transform" onClick={() => handleSendMessage(suggestion.text)}>
-                            <div className="flex items-start gap-3">
-                                <div className="text-primary mt-0.5 shrink-0">{suggestion.icon}</div>
-                                <span className="text-sm">{suggestion.text}</span>
+                        <Button key={i} variant="outline" className="h-auto text-left justify-start p-3 rounded-2xl hover:scale-105 transition-transform border-border/60" onClick={() => handleSendMessage(suggestion.text)}>
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 shrink-0">{suggestion.icon}</div>
+                                <span className="text-sm font-medium leading-tight">{suggestion.text}</span>
                             </div>
                         </Button>
                         ))}

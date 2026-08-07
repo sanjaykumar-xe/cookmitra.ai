@@ -51,19 +51,19 @@ function HealingFoodCard({ item, type }: { item: any, type: 'help' | 'avoid' }) 
             className={cn(
                 "group p-6 rounded-[2rem] border-2 transition-all duration-300",
                 type === 'help' 
-                    ? "bg-primary/5 border-primary/10 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5" 
+                    ? "bg-pink-500/5 border-pink-500/10 hover:border-pink-500/40 hover:shadow-xl hover:shadow-pink-500/5" 
                     : "bg-muted/30 border-border/60 hover:border-red-500/30"
             )}
         >
             <div className="flex items-start gap-4">
                 <div className={cn(
                     "p-3 rounded-2xl shrink-0 transition-transform group-hover:scale-110",
-                    type === 'help' ? "bg-primary/10 text-primary" : "bg-red-500/10 text-red-500"
+                    type === 'help' ? "bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400" : "bg-red-500/10 text-red-500"
                 )}>
                     <Icon className="h-6 w-6" />
                 </div>
                 <div>
-                    <h4 className="font-bold text-lg leading-tight mb-1">{item.name}</h4>
+                    <h4 className="font-headline font-bold text-lg leading-tight mb-1">{item.name}</h4>
                     <p className="text-fluid-subtitle text-muted-foreground leading-relaxed">{item.reason}</p>
                 </div>
             </div>
@@ -177,9 +177,9 @@ export default function HealingFoodsPage() {
                     Discover ingredients and meals tailored to support specific health conditions through traditional and modern nutritional wisdom.
                 </p>
                 
-                <div className="mx-auto max-w-2xl bg-amber-500/5 border border-amber-500/10 p-4 rounded-2xl flex items-start gap-3 text-left">
-                    <span className="shrink-0 mt-0.5"><Info className="h-5 w-5 text-amber-600" /></span>
-                    <p className="text-xs text-amber-800/80 dark:text-amber-200/60 leading-relaxed font-medium italic">
+                <div className="mx-auto max-w-2xl bg-pink-500/10 border border-pink-500/20 p-4 rounded-2xl flex items-start gap-3 text-left">
+                    <span className="shrink-0 mt-0.5"><Info className="h-5 w-5 text-pink-600 dark:text-pink-400" /></span>
+                    <p className="text-xs text-pink-900/80 dark:text-pink-200/80 leading-relaxed font-medium italic">
                         This is general nutritional information, not medical advice. Always consult a doctor or registered dietitian for personal health decisions.
                     </p>
                 </div>

@@ -46,7 +46,7 @@ export default function SettingsPage() {
 
             <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
-                <CardTitle>Appearance</CardTitle>
+                <CardTitle className="font-headline font-bold text-xl">Appearance</CardTitle>
                 <CardDescription>Choose how CookMitra looks on your device.</CardDescription>
               </CardHeader>
               <CardContent>
@@ -56,7 +56,7 @@ export default function SettingsPage() {
 
             <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
-                <CardTitle>Account Information</CardTitle>
+                <CardTitle className="font-headline font-bold text-xl">Account Information</CardTitle>
                 <CardDescription>Your verified login details.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

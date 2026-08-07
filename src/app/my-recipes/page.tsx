@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation';
 import { collection, query, orderBy } from 'firebase/firestore';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, ChefHat, AlertTriangle, Trash2, Clock, BarChart2 } from 'lucide-react';
+import { Loader2, ChefHat, Trash2 } from 'lucide-react';
 import Link from 'next/link';
-import { RupeeIcon } from '@/components/icons/rupee-icon';
+import { RecipeCard } from '@/components/recipe/recipe-card';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,75 +28,53 @@ export default function MyRecipesPage() {
   const firestore = useFirestore();
   const router = useRouter();
   const { toast } = useToast();
+
   const [recipeToDelete, setRecipeToDelete] = useState<any | null>(null);
-  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (mounted && !isUserLoading) {
-      if (!user) {
-        router.push('/login');
-      }
+    if (mounted && !isUserLoading && !user) {
+      router.push('/login');
     }
   }, [user, isUserLoading, router, mounted]);
 
-  const recipesQuery = useMemoFirebase(() => {
+  const savedRecipesQuery = useMemoFirebase(() => {
     if (!user || !firestore) return null;
-    const recipesRef = collection(firestore, `users/${user.uid}/recipes`);
-    return query(recipesRef, orderBy('savedAt', 'desc'));
+    return query(
+      collection(firestore, `users/${user.uid}/recipes`),
+      orderBy('savedAt', 'desc')
+    );
   }, [user, firestore]);
 
-  const { data: recipes, isLoading: recipesLoading, error } = useCollection(recipesQuery);
+  const { data: recipes, isLoading: recipesLoading } = useCollection(savedRecipesQuery);
 
   const handleDeleteRecipe = async () => {
     if (!recipeToDelete || !user || !firestore) return;
-
-    setIsDeleting(true);
     try {
       await deleteRecipe(firestore, user.uid, recipeToDelete.id);
-      const name = recipeToDelete.name || "Recipe";
       toast({
         title: "Recipe Removed",
-        description: `"${name}" has been removed from your collection.`,
+        description: `"${recipeToDelete.name || 'Recipe'}" has been deleted from your saved list.`
       });
-    } catch (err) {
+    } catch (error) {
       toast({
         variant: 'destructive',
         title: "Error",
-        description: "Could not remove recipe. Please try again.",
+        description: "Failed to delete recipe. Please try again."
       });
-      console.error(err);
     } finally {
-      setIsDeleting(false);
       setRecipeToDelete(null);
     }
   };
 
-  if (!mounted || isUserLoading || recipesLoading) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (error) {
+  if (!mounted || isUserLoading || !user) {
      return (
-        <div className="content-container py-8 md:py-12 px-4">
-            <h1 className="font-headline text-fluid-h1 mb-8 text-primary font-medium tracking-tight">My Saved Recipes</h1>
-            <Card className="text-center py-24 border-dashed border-2 bg-card/30 rounded-[3rem]">
-                <CardHeader>
-                    <div className="mx-auto bg-destructive/10 rounded-[2rem] h-20 w-20 flex items-center justify-center mb-6">
-                        <AlertTriangle className="h-10 w-10 text-destructive opacity-40" />
-                    </div>
-                    <CardTitle className="font-headline text-fluid-h2 text-destructive font-medium">Error Loading Recipes</CardTitle>
-                    <CardDescription className="text-fluid-body mt-2">{error.message}</CardDescription>
-                </CardHeader>
-            </Card>
-        </div>
+       <div className="flex h-screen items-center justify-center">
+         <Loader2 className="h-12 w-12 animate-spin text-primary" />
+       </div>
      )
   }
 
@@ -107,49 +85,23 @@ export default function MyRecipesPage() {
       {recipes && recipes.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-fluid-grid">
           {recipes.map((recipe: any) => {
-            const displayName = recipe.name || "Untitled Recipe";
-            const rawTime = recipe.time || 0;
-            const displayTime = typeof rawTime === 'string' ? parseInt(rawTime) : rawTime;
-            const displayCost = recipe.cost || 0;
-            const displayLevel = recipe.difficulty || 'Medium';
-
             return (
-                <Link href={`/my-recipes/${recipe.id}`} key={recipe.id} className="block h-full">
-                <Card className="flex flex-col h-full glass-card hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:scale-[1.03] p-fluid-card overflow-hidden rounded-[2rem]">
-                    <CardHeader className="p-0 mb-6">
-                    <div className="flex justify-between items-start gap-4">
-                        <div className="flex-1 min-w-0">
-                            <CardTitle className="font-headline text-xl font-bold line-clamp-1 group-hover:text-primary transition-colors tracking-tight">{displayName}</CardTitle>
-                            <CardDescription className="text-[10px] font-black uppercase tracking-widest opacity-60 mt-2 flex items-center gap-3">
-                               <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {displayTime}m</span>
-                               <span className="flex items-center gap-1"><BarChart2 className="h-3 w-3" /> {displayLevel}</span>
-                            </CardDescription>
-                        </div>
-                        <Button 
-                            variant="ghost" 
-                            size="icon"
-                            className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 shrink-0"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                setRecipeToDelete(recipe);
-                            }}
-                        >
-                            <Trash2 className="h-4 w-4" />
-                        </Button>
-                    </div>
-                    </CardHeader>
-                    <CardContent className="p-0 flex-1">
-                    <p className="text-sm text-muted-foreground font-medium leading-relaxed line-clamp-3 opacity-80 mb-6">
-                        {recipe.description}
-                    </p>
-                    <div className="flex items-center gap-1 text-primary font-black text-sm pt-4 border-t border-primary/5">
-                        <RupeeIcon className="h-4 w-4" />
-                        {displayCost}
-                    </div>
-                    </CardContent>
-                </Card>
-                </Link>
+              <div key={recipe.id} className="relative group/card">
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  className="absolute top-4 right-4 z-30 h-9 w-9 rounded-full bg-background/80 backdrop-blur-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-border/40 shadow-sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setRecipeToDelete(recipe);
+                  }}
+                  aria-label="Delete recipe"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+                <RecipeCard recipe={recipe} />
+              </div>
             );
           })}
         </div>
@@ -163,7 +115,7 @@ export default function MyRecipesPage() {
             <CardDescription className="text-fluid-body mt-2 max-w-xs mx-auto">Start by generating an AI recipe or browsing our library!</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
-            <Button asChild className="rounded-full px-10 h-14 text-base font-black uppercase tracking-widest shadow-xl shadow-primary/20">
+            <Button asChild className="rounded-full px-8 py-3 text-base font-medium shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0">
               <Link href="/recipes">Browse Library</Link>
             </Button>
           </CardContent>

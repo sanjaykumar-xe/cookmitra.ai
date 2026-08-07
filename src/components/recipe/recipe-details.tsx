@@ -15,6 +15,8 @@ import { motion } from 'framer-motion';
 import { generateRecipePDF } from '@/lib/pdf-export';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/context/language-context';
+import Image from 'next/image';
+import { getRecipeImageCandidates } from '@/lib/recipe-image-helper';
 
 interface RecipeDetailsProps {
     recipe: Recipe;
@@ -65,6 +67,26 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
     const [servings, setServings] = useState(baseServings);
     const [ingStates, setIngStates] = useState<boolean[]>([]);
     const [isSaving, setIsSaving] = useState(false);
+    const [imageError, setImageError] = useState(false);
+    const [candidateIndex, setCandidateIndex] = useState(0);
+
+    const candidates = recipe?.imageUrl ? [recipe.imageUrl] : getRecipeImageCandidates(recipe?.id || '');
+
+    useEffect(() => {
+        setImageError(false);
+        setCandidateIndex(0);
+    }, [recipe?.id, recipe?.imageUrl]);
+
+    const currentImageUrl = candidates[candidateIndex];
+    const showImage = !!currentImageUrl && !imageError;
+
+    const handleImageError = () => {
+        if (candidateIndex < candidates.length - 1) {
+            setCandidateIndex(prev => prev + 1);
+        } else {
+            setImageError(true);
+        }
+    };
 
     useEffect(() => {
         if (ingredients && ingredients.length > 0) {

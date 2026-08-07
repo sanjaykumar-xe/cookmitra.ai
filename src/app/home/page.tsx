@@ -81,42 +81,42 @@ export default function DashboardPage() {
             desc: t('home.generate.desc'),
             icon: <Sparkles className="h-6 w-6 text-current" />,
             href: '/ai-recipes',
-            color: 'bg-primary/10 text-primary'
+            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400'
         },
         {
             title: t('home.plan.title'),
             desc: t('home.plan.desc'),
             icon: <CalendarDays className="h-6 w-6 text-current" />,
             href: '/healthy-meal-planner',
-            color: 'bg-blue-500/10 text-blue-500'
+            color: 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400'
         },
         {
             title: t('home.healing.title'),
             desc: t('home.healing.desc'),
             icon: <HeartPulse className="h-6 w-6 text-current" />,
             href: '/healing-foods',
-            color: 'bg-rose-500/10 text-rose-500'
+            color: 'bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400'
         },
         {
             title: t('home.encyclopedia.title'),
             desc: t('home.encyclopedia.desc'),
             icon: <BookOpen className="h-6 w-6 text-current" />,
             href: '/encyclopedia',
-            color: 'bg-teal-500/10 text-teal-500'
+            color: 'bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400'
         },
         {
             title: t('home.chat.title'),
             desc: t('home.chat.desc'),
             icon: <MessageSquare className="h-6 w-6 text-current" />,
             href: '/ai-chat',
-            color: 'bg-green-500/10 text-green-500'
+            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400'
         },
         {
             title: t('home.saved.title'),
             desc: t('home.saved.desc'),
             icon: <Library className="h-6 w-6 text-current" />,
             href: '/my-recipes',
-            color: 'bg-purple-500/10 text-purple-500'
+            color: 'bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400'
         }
     ];
 

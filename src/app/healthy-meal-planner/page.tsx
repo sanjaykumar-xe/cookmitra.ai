@@ -47,19 +47,19 @@ type MealPlanState = {
 
 function MealCard({ meal }: { meal: any }) {
     return (
-        <Card className="p-fluid-card bg-card/50 backdrop-blur-sm border-primary/5 hover:border-primary/20 transition-all">
+        <Card className="p-fluid-card bg-card/50 backdrop-blur-sm border-blue-500/10 hover:border-blue-500/30 transition-all">
             <CardHeader className="p-0 mb-4">
                 <CardTitle className="font-headline text-xl">{meal.food}</CardTitle>
-                <Badge variant="outline" className="mt-2 bg-primary/5 text-primary border-primary/20">{meal.type}</Badge>
+                <Badge variant="outline" className="mt-2 bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">{meal.type}</Badge>
             </CardHeader>
             <CardContent className="p-0 space-y-4">
                 <div>
                     <h4 className="font-semibold text-[10px] uppercase tracking-widest mb-2 text-muted-foreground">Nutrition</h4>
                     <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="flex items-center gap-2"><Flame className="h-4 w-4 text-primary" /><span>{meal.calories} kcal</span></div>
-                        <div className="flex items-center gap-2"><Beef className="h-4 w-4 text-primary" /><span>{meal.protein} g</span></div>
-                        <div className="flex items-center gap-2"><Wheat className="h-4 w-4 text-primary" /><span>{meal.carbs} g</span></div>
-                        <div className="flex items-center gap-2"><Droplets className="h-4 w-4 text-primary" /><span>{meal.fats} g</span></div>
+                        <div className="flex items-center gap-2"><Flame className="h-4 w-4 text-blue-500" /><span>{meal.calories} kcal</span></div>
+                        <div className="flex items-center gap-2"><Beef className="h-4 w-4 text-blue-500" /><span>{meal.protein} g</span></div>
+                        <div className="flex items-center gap-2"><Wheat className="h-4 w-4 text-blue-500" /><span>{meal.carbs} g</span></div>
+                        <div className="flex items-center gap-2"><Droplets className="h-4 w-4 text-blue-500" /><span>{meal.fats} g</span></div>
                     </div>
                 </div>
                 <div>

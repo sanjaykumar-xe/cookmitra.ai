@@ -42,9 +42,10 @@ interface ServiceCardProps {
   description: string;
   benefit: string;
   index: number;
+  iconTint?: string;
 }
 
-function ServiceCard({ icon, title, description, benefit, index }: ServiceCardProps) {
+function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-primary/10 text-primary" }: ServiceCardProps) {
   const shouldReduceMotion = useReducedMotion();
   const [isFlipped, setIsFlipped] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -79,8 +80,8 @@ function ServiceCard({ icon, title, description, benefit, index }: ServiceCardPr
   if (shouldReduceMotion) {
     return (
       <Card className="h-full p-6 text-center border-border hover:border-primary/45 transition-colors">
-        <div className="bg-primary/10 text-primary p-2.5 rounded-xl w-fit mb-4 mx-auto">
-          {React.cloneElement(icon as React.ReactElement, { className: "h-7 w-7" })}
+        <div className={cn("p-2.5 rounded-xl w-fit mb-4 mx-auto", iconTint)}>
+          {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
         </div>
         <CardTitle className="font-headline text-xl font-bold tracking-tight mb-3">{title}</CardTitle>
         <p className="text-muted-foreground text-fluid-subtitle leading-relaxed">{benefit}</p>
@@ -99,8 +100,8 @@ function ServiceCard({ icon, title, description, benefit, index }: ServiceCardPr
       <div className={cn("flip-card-inner h-full w-full", isFlipped && "is-flipped")}>
         <div className="flip-card-front h-full w-full">
           <Card className="h-full flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-card border-[#F0E8D8] dark:border-primary/15 shadow-sm">
-            <div className="bg-primary/10 text-primary p-2.5 rounded-xl w-fit mb-4 shadow-inner">
-              {React.cloneElement(icon as React.ReactElement, { className: "h-7 w-7" })}
+            <div className={cn("p-2.5 rounded-xl w-fit mb-4 shadow-inner", iconTint)}>
+              {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
             </div>
             <CardTitle className="font-headline text-xl font-bold tracking-tight">{title}</CardTitle>
           </Card>
@@ -108,7 +109,7 @@ function ServiceCard({ icon, title, description, benefit, index }: ServiceCardPr
         <div className="flip-card-back h-full w-full">
           <Card className="h-full flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-[#FEF3DC] dark:bg-[#2D1F08] border-primary/20 shadow-xl">
             <div className="text-[#854F0B] dark:text-[#FAC775] mb-4">
-              {React.cloneElement(icon as React.ReactElement, { className: "h-8 w-8" })}
+              {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-8 w-8" })}
             </div>
             <p className="text-[#854F0B] dark:text-[#FAC775] text-fluid-subtitle font-medium leading-relaxed px-4">{benefit}</p>
           </Card>
@@ -123,7 +124,7 @@ function PersonaCard({ title, description, icon }: { title: string, description:
         <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25, 0.1, 0.25, 1.0] } } }} className="h-full">
             <Card className="h-full flex flex-col p-8 rounded-3xl bg-card border-primary/5 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
                 <div className="bg-primary/10 text-primary p-3 rounded-2xl w-fit mb-6 shadow-inner">
-                    {React.cloneElement(icon as React.ReactElement, { className: "h-7 w-7" })}
+                    {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
                 </div>
                 <CardTitle className="font-headline text-2xl font-bold tracking-tight mb-4">{title}</CardTitle>
                 <p className="text-muted-foreground text-fluid-subtitle font-medium leading-relaxed">{description}</p>
@@ -135,7 +136,7 @@ function PersonaCard({ title, description, icon }: { title: string, description:
 function ComparisonSection() {
     const comparisonRows = [
         { label: "Personalized to YOUR pantry", generic: false, blogs: false, cookmitra: true },
-        { label: "Authentic Indian regional depth", generic: "Limited", blogs: "Varies", cookmitra: "Yes (1000+ recipes)" },
+        { label: "Authentic Indian regional depth", generic: "Limited", blogs: "Varies", cookmitra: "Yes (934 recipes)" },
         { label: "Hands-free voice cooking guidance", generic: false, blogs: false, cookmitra: true },
         { label: "AI recipe generation from ingredients", generic: "Rare", blogs: false, cookmitra: true },
         { label: "Health-condition based food guidance", generic: false, blogs: false, cookmitra: true },
@@ -197,12 +198,12 @@ export default function Home() {
   const words = headline.split(" ");
 
   const services = [
-    { icon: <Sparkles />, title: "AI Recommendation", description: "Advanced AI analyzes your ingredients instantly.", benefit: "Get recipe suggestions tailored to exactly what's in your pantry right now" },
-    { icon: <UtensilsCrossed />, title: "Ingredient Mapping", description: "Smart mapping system for authentic taste.", benefit: "Understands ingredient relationships so your dish tastes authentically Indian" },
-    { icon: <ShoppingCart />, title: "Grocery Integration", description: "One-click links to major retailers.", benefit: "Buy missing ingredients from Zepto, Swiggy, Blinkit etc... directly through the app" },
-    { id: 'healing', icon: <HeartPulse />, title: "Healing Foods", description: "Food as medicine approach for specific conditions.", benefit: "Discover ingredients and meals tailored to support specific health conditions based on traditional wisdom" },
-    { icon: <MessageSquare />, title: "Chef Momo AI", description: "Interactive real-time cooking guidance.", benefit: "Ask Chef Momo anything — substitutions, timers, tips — hands-free while you cook" },
-    { icon: <Library />, title: "Curated Library", description: "Hundreds of authentic regional recipes.", benefit: "Hundreds of authentic regional Indian recipes, hand-curated and ready to cook" },
+    { icon: <Sparkles />, title: "AI Recommendation", description: "Advanced AI analyzes your ingredients instantly.", benefit: "Get recipe suggestions tailored to exactly what's in your pantry right now", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
+    { icon: <UtensilsCrossed />, title: "Ingredient Mapping", description: "Smart mapping system for authentic taste.", benefit: "Understands ingredient relationships so your dish tastes authentically Indian", iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
+    { icon: <ShoppingCart />, title: "Grocery Integration", description: "One-click links to major retailers.", benefit: "Buy missing ingredients from Zepto, Swiggy, Blinkit etc... directly through the app", iconTint: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400" },
+    { id: 'healing', icon: <HeartPulse />, title: "Healing Foods", description: "Food as medicine approach for specific conditions.", benefit: "Discover ingredients and meals tailored to support specific health conditions based on traditional wisdom", iconTint: "bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400" },
+    { icon: <MessageSquare />, title: "Chef Momo AI", description: "Interactive real-time cooking guidance.", benefit: "Ask Chef Momo anything — substitutions, timers, tips — hands-free while you cook", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
+    { icon: <Library />, title: "Curated Library", description: "Hundreds of authentic regional recipes.", benefit: "Hundreds of authentic regional Indian recipes, hand-curated and ready to cook", iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
   ];
 
   const personas = [
@@ -210,7 +211,7 @@ export default function Home() {
     { title: "Families", icon: <Users />, description: "Feeding picky eaters? Plan a full week of meals everyone will actually eat." },
     { title: "Professionals", icon: <Briefcase />, description: "Short on time? Get quick recipes and hands-free voice guidance while you cook." },
     { title: "Beginners", icon: <ChefHat />, description: "New to the kitchen? Step-by-step Cook Mode walks you through every recipe." },
-    { title: "Home Cooks", icon: <Heart />, description: "Want to explore? Discover 1000+ authentic recipes from every corner of India." }
+    { title: "Home Cooks", icon: <Heart />, description: "Want to explore? Discover 934 authentic recipes from every corner of India." }
   ];
 
   return (

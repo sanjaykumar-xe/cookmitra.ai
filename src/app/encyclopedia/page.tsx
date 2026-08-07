@@ -54,7 +54,7 @@ export default function EncyclopediaPage() {
     <div className="content-container py-12 px-4 md:px-8">
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
-        <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-1.5 rounded-full text-primary text-xs font-bold uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
             <BookOpen className="h-4 w-4" />
             Culinary Knowledge Base
         </div>
