@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useUser, useAuth } from '@/firebase';
+import { useUser, useAuth } from '@/lib/firebase';
 import { sendEmailVerification } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';

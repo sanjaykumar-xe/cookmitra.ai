@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useUser } from '@/firebase';
+import { useUser } from '@/lib/firebase';
 import { IconSidebar } from './icon-sidebar';
 import { Header } from './header';
 import { Footer } from './footer';

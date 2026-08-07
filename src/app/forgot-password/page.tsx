@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { useAuth } from '@/firebase';
+import { useAuth } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import {
   Form,

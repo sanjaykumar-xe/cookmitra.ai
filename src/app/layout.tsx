@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/theme-provider';
-import { FirebaseClientProvider } from '@/firebase/client-provider';
+import { FirebaseClientProvider } from '@/lib/firebase/client-provider';
 import { ClientLayout } from '@/components/layout/client-layout';
 import { LanguageProvider } from '@/context/language-context';
 import { TooltipProvider } from '@/components/ui/tooltip';

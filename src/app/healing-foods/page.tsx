@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { useFirestore } from '@/firebase';
+import { useFirestore } from '@/lib/firebase';
 import { recipes as allRecipes } from '@/lib/recipes';
 import { CURATED_CONDITIONS, type HealthCondition } from '@/lib/healing-foods/conditions';
 import { generateHealingFoodsAction } from '@/app/actions';

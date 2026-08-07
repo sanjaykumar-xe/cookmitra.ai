@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from "react";
-import { useUser } from '@/firebase';
+import { useUser } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { recipes as allRecipes } from "@/lib/recipes";
 import { Button } from "@/components/ui/button";

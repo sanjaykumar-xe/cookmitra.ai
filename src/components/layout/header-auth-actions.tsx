@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Bookmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AuthButton } from "@/components/auth/auth-button";
-import { useUser } from "@/firebase";
+import { useUser } from "@/lib/firebase";
 
 export function HeaderAuthActions({ isLandingPage }: { isLandingPage: boolean }) {
   const { user } = useUser();

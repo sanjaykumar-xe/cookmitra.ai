@@ -1,6 +1,6 @@
 'use client';
 
-import { useUser, useAuth } from '@/firebase';
+import { useUser, useAuth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

@@ -30,9 +30,9 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { useLanguage } from '@/context/language-context';
 import { StarRating } from '@/components/ui/star-rating';
-import { useUser, useFirestore, useDoc, useMemoFirebase } from '@/firebase';
+import { useUser, useFirestore, useDoc, useMemoFirebase } from '@/lib/firebase';
 import { doc } from 'firebase/firestore';
-import { saveRecipe, submitReview } from '@/firebase/firestore/recipes';
+import { saveRecipe, submitReview } from '@/lib/firebase/firestore/recipes';
 import { useToast } from '@/hooks/use-toast';
 
 // --- Utilities for Timers ---

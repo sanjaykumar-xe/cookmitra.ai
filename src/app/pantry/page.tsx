@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/lib/firebase';
 import { collection, query, orderBy } from 'firebase/firestore';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -26,7 +26,7 @@ import {
   Check, 
   Trash2 
 } from 'lucide-react';
-import { addPantryItem, deletePantryItem, updatePantryItem, type PantryItem } from '@/firebase/firestore/pantry';
+import { addPantryItem, deletePantryItem, updatePantryItem, type PantryItem } from '@/lib/firebase/firestore/pantry';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';

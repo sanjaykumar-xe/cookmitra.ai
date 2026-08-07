@@ -59,9 +59,9 @@ service cloud.firestore {
     // ----------------------------------------------------------------------
 
     match /healingFoodsCache/{conditionId} {
-      // Allowed public read/write as this is shared non-sensitive cache data
+      // Allowed public read access for shared knowledge base; writes restricted to authenticated users
       allow read: if true;
-      allow write: if true;
+      allow write: if isSignedIn();
     }
 
     // Global notes listener (for community feed)

@@ -22,7 +22,7 @@ import { CURATED_CONDITIONS } from '@/lib/healing-foods/conditions';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { HeaderAuthActions } from './header-auth-actions';
-import { useUser } from '@/firebase';
+import { useUser } from '@/lib/firebase';
 
 /**
  * Header component.

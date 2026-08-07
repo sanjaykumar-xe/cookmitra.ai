@@ -10,8 +10,8 @@ import {
   deleteDoc,
   runTransaction,
 } from 'firebase/firestore';
-import { errorEmitter } from '@/firebase/error-emitter';
-import { FirestorePermissionError } from '@/firebase/errors';
+import { errorEmitter } from '@/lib/firebase/error-emitter';
+import { FirestorePermissionError } from '@/lib/firebase/errors';
 import type { User } from 'firebase/auth';
 
 /**

@@ -57,9 +57,9 @@ import {
   DialogClose
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useUser, useFirestore, useCollection, useMemoFirebase } from "@/firebase";
+import { useUser, useFirestore, useCollection, useMemoFirebase } from "@/lib/firebase";
 import { collection, query, orderBy } from 'firebase/firestore';
-import type { PantryItem } from "@/firebase/firestore/pantry";
+import type { PantryItem } from "@/lib/firebase/firestore/pantry";
 import { Badge } from "@/components/ui/badge";
 
 const formSchema = z.object({

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useUser } from '@/firebase';
+import { useUser } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import RecipeGenerator from "@/components/recipe/recipe-generator";
 import { Loader2 } from 'lucide-react';

@@ -6,13 +6,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useAuth, useFirestore } from '@/firebase';
+import { useAuth, useFirestore } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
-import { addUserToFirestore } from '@/firebase/firestore/users';
+import { addUserToFirestore } from '@/lib/firebase/firestore/users';
 import Link from 'next/link';
 
 const formSchema = z.object({

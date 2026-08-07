@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Clock, Users, BarChart2, CheckCircle2, Plus, Minus, ChefHat, Bookmark, Download, BadgeCheck } from 'lucide-react';
 import { MissingIngredients } from './missing-ingredients';
 import { RupeeIcon } from '../icons/rupee-icon';
-import { useUser, useFirestore, useDoc, useMemoFirebase } from '@/firebase';
+import { useUser, useFirestore, useDoc, useMemoFirebase } from '@/lib/firebase';
 import { doc, setDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';

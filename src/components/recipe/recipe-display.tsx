@@ -6,9 +6,9 @@ import { Clock, Star, Users, Bookmark, ClipboardList, BadgeCheck, Download } fro
 import { MissingIngredients } from './missing-ingredients';
 import { Button } from '../ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { useUser, useFirestore } from '@/firebase';
+import { useUser, useFirestore } from '@/lib/firebase';
 import { RupeeIcon } from '../icons/rupee-icon';
-import { saveRecipe } from '@/firebase/firestore/recipes';
+import { saveRecipe } from '@/lib/firebase/firestore/recipes';
 import { generateRecipePDF } from '@/lib/pdf-export';
 import { cn } from '@/lib/utils';
 
