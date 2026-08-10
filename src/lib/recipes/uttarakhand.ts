@@ -4,6 +4,7 @@ export const uttarakhandRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "uttarakhandi-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Uttarakhandi Chicken Curry",
     description: "A rustic mountain-style chicken curry made with a base of roasted onions and traditional Pahari spices.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-kumaoni",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Kumaoni",
     description: "A slow-cooked, spicy mutton curry from the Kumaon region, featuring hand-pounded spices and a rich, dark gravy.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-garhwali",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry Garhwali",
     description: "A mild and soothing chicken curry prepared with a whisked curd base, a specialty of the Garhwal mountains.",
     type: "Non-Vegetarian",
@@ -84,6 +87,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-rara-uttarakhandi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Rara Uttarakhandi",
     description: "A hearty combination of mutton chunks and minced mutton cooked together in a rich mountain-spice gravy.",
     type: "Non-Vegetarian",
@@ -110,6 +114,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "fish-curry-kumaoni",
+    menuCategory: "Curries & Gravies",
     name: "Fish Curry Kumaoni",
     description: "Fresh river fish cooked in a light mustard and garlic spiced gravy, reflecting the riverine culture of the Kumaon hills.",
     type: "Non-Vegetarian",
@@ -136,6 +141,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "chicken-bhuna-uttarakhandi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Bhuna Uttarakhandi",
     description: "Dry roasted chicken with a coarse masala base, heavily seasoned with mountain herbs and black pepper.",
     type: "Non-Vegetarian",
@@ -162,6 +168,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-uttarakhandi",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Uttarakhandi Style",
     description: "Boiled eggs simmered in a simple mountain-style onion-tomato gravy with a distinct mustard oil flavor.",
     type: "Non-Vegetarian",
@@ -188,6 +195,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-kaleji-uttarakhandi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kaleji Uttarakhandi",
     description: "Spiced mutton liver fry, heavily seasoned with garlic and local mountain spices, a high-protein Pahari delicacy.",
     type: "Non-Vegetarian",
@@ -214,6 +222,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "chicken-korma-garhwali",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Korma Garhwali Style",
     description: "A mild and creamy chicken korma with mountain-fresh ingredients and a smooth yogurt base.",
     type: "Non-Vegetarian",
@@ -240,6 +249,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-mandua-combo",
+    menuCategory: "Breads",
     name: "Mutton Curry with Mandua Roti",
     description: "Rustic mutton curry paired with traditional finger millet flatbread (Mandua), the quintessential Pahari farmer's meal.",
     type: "Non-Vegetarian",
@@ -268,6 +278,7 @@ export const uttarakhandRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "bhatt-ki-churkani",
+    menuCategory: "Curries & Gravies",
     name: "Bhatt Ki Churkani",
     description: "A signature Kumaoni dish made with black soybeans cooked in a thin, tangy gravy thickened with wheat flour.",
     type: "Vegetarian",
@@ -295,6 +306,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "gahat-ki-dal",
+    menuCategory: "Curries & Gravies",
     name: "Gahat Ki Dal",
     description: "A nutritious horse gram lentil curry, known for its warming properties and health benefits in the hills.",
     type: "Vegetarian",
@@ -321,6 +333,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "aloo-ke-gutke",
+    menuCategory: "Dry & Stir-Fried",
     name: "Aloo Ke Gutke",
     description: "Classic Pahari dry potato stir-fry with cumin and red chilies, a popular travel snack across Uttarakhand.",
     type: "Vegetarian",
@@ -347,6 +360,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "kaphuli-spinach",
+    menuCategory: "Curries & Gravies",
     name: "Kaphuli",
     description: "A vibrant green spinach and yogurt-based curry thickened with rice flour, a Garhwali hallmark.",
     type: "Vegetarian",
@@ -373,6 +387,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "chainsoo-dal",
+    menuCategory: "Beverages",
     name: "Chainsoo",
     description: "Roasted black gram lentil curry, known for its smoky aroma and high iron content.",
     type: "Vegetarian",
@@ -398,6 +413,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "jhangore-kheer-combo",
+    menuCategory: "Desserts & Sweets",
     name: "Jhangore Ki Kheer Sabzi Combo",
     description: "Barnyard millet pudding paired with a light vegetable stir-fry, a traditional high-altitude meal.",
     type: "Vegetarian",
@@ -423,6 +439,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "rus-kumaoni",
+    menuCategory: "Curries & Gravies",
     name: "Rus (Kumaoni Toor Dal)",
     description: "A thin and spicy pigeon pea dal from the Kumaon region, flavored with local mountain herbs.",
     type: "Vegetarian",
@@ -447,6 +464,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "thhatwani",
+    menuCategory: "Curries & Gravies",
     name: "Thhatwani",
     description: "A unique black gram paste cooked with buttermilk, providing a tangy and protein-rich mountain meal.",
     type: "Vegetarian",
@@ -471,6 +489,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "mandua-roti-sabzi",
+    menuCategory: "Breads",
     name: "Mandua Ki Roti with Sabzi",
     description: "Finger millet flatbread (Mandua) served with a mixed vegetable curry, a highly nutritious high-altitude staple.",
     type: "Vegetarian",
@@ -495,6 +514,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "palak-ka-kapa",
+    menuCategory: "Curries & Gravies",
     name: "Palak Ka Kapa",
     description: "Spinach cooked in a curd and gram flour based gravy, a soothing and simple Kumaoni dish.",
     type: "Vegetarian",
@@ -521,6 +541,7 @@ export const uttarakhandRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "bal-mithai-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Bal Mithai",
     description: "The most famous sweet snack from Almora—roasted khoya fudge coated with small sugar balls.",
     type: "Vegetarian",
@@ -546,6 +567,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "singal-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Singal",
     description: "Traditional deep-fried sweet rice flour rings, a festive specialty of the Kumaon region.",
     type: "Vegetarian",
@@ -570,6 +592,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "arsa-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Arsa",
     description: "Sweet fried cookies made from rice flour and jaggery, a must-have for Uttarakhand weddings and festivals.",
     type: "Vegetarian",
@@ -594,6 +617,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "gulgula-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Gulgula",
     description: "Sweet and spongy deep-fried wheat flour dumplings, a quick traditional snack for rainy days.",
     type: "Vegetarian",
@@ -618,6 +642,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "chicken-pakora-uttarakhandi",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Pakora Uttarakhandi",
     description: "Mountain-style crispy fried chicken bites coated in a spiced gram flour batter with local herbs.",
     type: "Non-Vegetarian",

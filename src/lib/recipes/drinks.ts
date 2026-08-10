@@ -4,6 +4,7 @@ export const drinksRecipes: Recipe[] = [
   // --- TRADITIONAL (10) ---
   {
     id: "drink-masala-chai",
+    menuCategory: "Beverages",
     name: "Masala Chai",
     description: "Classic Indian spiced tea brewed with a blend of aromatic spices and milk.",
     type: "Vegetarian",
@@ -29,6 +30,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-filter-coffee",
+    menuCategory: "Beverages",
     name: "Filter Coffee",
     description: "Traditional South Indian decoction coffee served with frothy hot milk.",
     type: "Vegetarian",
@@ -53,6 +55,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-sweet-lassi",
+    menuCategory: "Beverages",
     name: "Sweet Lassi",
     description: "A creamy and refreshing chilled yogurt drink, perfectly sweetened and flavored with cardamom.",
     type: "Vegetarian",
@@ -77,6 +80,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-salted-buttermilk",
+    menuCategory: "Beverages",
     name: "Salted Buttermilk (Chaas)",
     description: "A cooling and digestive spiced yogurt drink, ideal for hot summer days.",
     type: "Vegetarian",
@@ -101,6 +105,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-jal-jeera",
+    menuCategory: "Beverages",
     name: "Jal Jeera",
     description: "A tangy and spicy traditional Indian appetizer drink featuring cumin, mint, and lemon.",
     type: "Vegetarian",
@@ -125,6 +130,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-sattu-sharbat",
+    menuCategory: "Beverages",
     name: "Sattu Sharbat",
     description: "A nutritious and cooling drink from Bihar made with roasted gram flour (sattu).",
     type: "Vegetarian",
@@ -149,6 +155,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-aam-panna",
+    menuCategory: "Beverages",
     name: "Aam Panna",
     description: "A traditional summer cooler made with boiled raw mangoes, mint, and roasted spices.",
     type: "Vegetarian",
@@ -173,6 +180,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-golden-milk",
+    menuCategory: "Beverages",
     name: "Turmeric Golden Milk (Haldi Doodh)",
     description: "Warm, soothing spiced milk featuring fresh turmeric and black pepper for maximum health benefits.",
     type: "Vegetarian",
@@ -197,6 +205,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-kadha",
+    menuCategory: "Beverages",
     name: "Kadha",
     description: "Traditional immunity-boosting herbal decoction with potent spices.",
     type: "Vegetarian",
@@ -221,6 +230,7 @@ export const drinksRecipes: Recipe[] = [
   },
   {
     id: "drink-carrot-beetroot-juice",
+    menuCategory: "Beverages",
     name: "Carrot Beetroot Juice",
     description: "A nutrient-packed vegetable juice blend that's great for glowing skin.",
     type: "Vegetarian",

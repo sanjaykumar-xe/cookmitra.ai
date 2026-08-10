@@ -4,6 +4,7 @@ export const punjabRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "amritsari-fish-fry",
+    menuCategory: "Snacks & Street Food",
     name: "Amritsari Fish Fry",
     description: "Crispy and spicy deep-fried fish fillets coated with a carom-flavored gram flour batter.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "chicken-tikka-punjabi",
+    menuCategory: "Starters & Appetizers",
     name: "Chicken Tikka Punjabi",
     description: "Succulent boneless chicken pieces marinated in spiced yogurt and grilled to a smoky perfection.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "mutton-rara-punjabi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Rara Punjabi",
     description: "A decadent combination of tender mutton chunks and minced mutton (keema) cooked in a rich, spiced gravy.",
     type: "Non-Vegetarian",
@@ -83,6 +86,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "amritsari-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Amritsari Chicken Curry",
     description: "A tandoor-influenced chicken curry with a deep, smoky flavor and a thick, buttery gravy.",
     type: "Non-Vegetarian",
@@ -109,6 +113,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-punjabi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Punjabi Style",
     description: "Hearty and slow-cooked mutton curry with a rich base of roasted onions and traditional Punjabi whole spices.",
     type: "Non-Vegetarian",
@@ -135,6 +140,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "chicken-sagwala",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Sagwala",
     description: "A nutritious and flavorful combination of tender chicken cooked in a pureed spinach gravy.",
     type: "Non-Vegetarian",
@@ -162,6 +168,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "tandoori-chicken",
+    menuCategory: "Protein Specialties",
     name: "Tandoori Chicken",
     description: "Whole chicken pieces marinated in a fiery red spice blend and roasted in a traditional clay oven (tandoor).",
     type: "Non-Vegetarian",
@@ -189,6 +196,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-punjabi",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Punjabi Style",
     description: "Hard-boiled eggs simmered in a rich, buttery onion-tomato gravy with a punch of spices.",
     type: "Non-Vegetarian",
@@ -215,6 +223,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "mutton-keema-matar-punjabi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Keema Matar Punjabi",
     description: "Spiced minced mutton cooked with fresh green peas, a quintessential Punjabi lunch dish.",
     type: "Non-Vegetarian",
@@ -241,6 +250,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-dhaba",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry Punjabi Dhaba Style",
     description: "A rustic and spicy roadside-style chicken curry with a thin but intensely flavored gravy.",
     type: "Non-Vegetarian",
@@ -270,6 +280,7 @@ export const punjabRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "sarson-ka-saag-makki-roti",
+    menuCategory: "Breads",
     name: "Sarson Ka Saag with Makki Roti",
     description: "Traditional winter specialty of mustard greens slow-cooked and mashed, served with cornflour flatbread.",
     type: "Vegetarian",
@@ -296,6 +307,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "kadhi-pakora-punjabi",
+    menuCategory: "Snacks & Street Food",
     name: "Kadhi Pakora Punjabi Style",
     description: "Sour yogurt curry with spiced gram flour fritters, a comfort food staple in Punjabi homes.",
     type: "Vegetarian",
@@ -322,6 +334,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "amritsari-chole",
+    menuCategory: "Curries & Gravies",
     name: "Amritsari Chole",
     description: "Dark, tangy, and spicy chickpea curry from Amritsar, uniquely flavored with tea-bag tinting.",
     type: "Vegetarian",
@@ -348,6 +361,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "punjabi-kadhi-chawal",
+    menuCategory: "Curries & Gravies",
     name: "Punjabi Kadhi Chawal",
     description: "The classic Punjabi meal of tangy yogurt curry with fritters served over fluffy basmati rice.",
     type: "Vegetarian",
@@ -371,6 +385,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "baingan-bharta-punjabi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Baingan Bharta Punjabi Style",
     description: "Smoky fire-roasted eggplant mash cooked with plenty of onions, tomatoes, and peas.",
     type: "Vegetarian",
@@ -397,6 +412,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "gobi-aloo-punjabi",
+    menuCategory: "Curries & Gravies",
     name: "Gobi Aloo",
     description: "Classic Punjabi dry curry with cauliflower florets and potatoes, flavored with ginger and turmeric.",
     type: "Vegetarian",
@@ -423,6 +439,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "kali-dal-punjabi",
+    menuCategory: "Curries & Gravies",
     name: "Kali Dal",
     description: "Whole black lentils slow-cooked until creamy, a lighter yet flavorful version of Dal Makhani.",
     type: "Vegetarian",
@@ -449,6 +466,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "paneer-bhurji-punjabi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Paneer Bhurji",
     description: "Crumbled cottage cheese scrambled with onions, tomatoes, and a heavy dose of fresh herbs.",
     type: "Vegetarian",
@@ -475,6 +493,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "punjabi-rajma-masala",
+    menuCategory: "Curries & Gravies",
     name: "Punjabi Rajma Masala",
     description: "Hearty red kidney beans simmered in a thick, spicy tomato-based gravy, the quintessential Punjabi Sunday meal.",
     type: "Vegetarian",
@@ -501,6 +520,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "kadhai-paneer-punjabi",
+    menuCategory: "Curries & Gravies",
     name: "Kadhai Paneer",
     description: "Paneer cubes and crunchy bell peppers cooked in a spicy, freshly pounded coriander and chili masala.",
     type: "Vegetarian",
@@ -529,6 +549,7 @@ export const punjabRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "amritsari-kulcha",
+    menuCategory: "Breads",
     name: "Amritsari Kulcha",
     description: "Crispy, flaky tandoor-baked flatbread stuffed with spiced potatoes and onions, served with lots of white butter.",
     type: "Vegetarian",
@@ -555,6 +576,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "punjabi-samosa",
+    menuCategory: "Snacks & Street Food",
     name: "Punjabi Samosa",
     description: "The classic triangular fried pastry stuffed with a heavy potato-pea masala flavored with coriander seeds.",
     type: "Vegetarian",
@@ -581,6 +603,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "pinni-punjabi",
+    menuCategory: "Snacks & Street Food",
     name: "Pinni",
     description: "Wholesome whole wheat and ghee energy balls enriched with nuts and edible gum, a winter staple.",
     type: "Vegetarian",
@@ -606,6 +629,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "gur-wale-chawal",
+    menuCategory: "Snacks & Street Food",
     name: "Gur Wale Chawal",
     description: "Sweet jaggery-flavored rice cooked with whole spices and garnished with dry fruits.",
     type: "Vegetarian",
@@ -631,6 +655,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "chicken-pakora-punjabi",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Pakora Punjabi",
     description: "Spiced boneless chicken pieces dipped in a gram flour batter and fried until extremely crunchy.",
     type: "Non-Vegetarian",

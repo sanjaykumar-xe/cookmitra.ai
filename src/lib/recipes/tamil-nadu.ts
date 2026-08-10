@@ -4,6 +4,7 @@ export const tamilNaduRecipes: Recipe[] = [
   // --- VEGETARIAN (20) ---
   {
     id: "vatha-kuzhambu",
+    menuCategory: "Curries & Gravies",
     name: "Vatha Kuzhambu",
     description: "A tangy and intensely flavored tamarind-based curry featuring sun-dried berries (manathakkali or sundakkai).",
     type: "Vegetarian",
@@ -32,6 +33,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "veg-poriyal",
+    menuCategory: "Dry & Stir-Fried",
     name: "Mixed Vegetable Poriyal",
     description: "A simple, healthy Tamil-style stir-fry of mixed vegetables finished with fresh grated coconut.",
     type: "Vegetarian",
@@ -60,6 +62,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "adai-dosai",
+    menuCategory: "Breads",
     name: "Adai",
     description: "A dense and nutritious savory pancake made from a variety of lentils and rice.",
     type: "Vegetarian",
@@ -88,6 +91,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "paruppu-sadam",
+    menuCategory: "Rice & Biryani",
     name: "Paruppu Sadam",
     description: "The ultimate comfort food—simple mashed lentils and rice seasoned with cumin and ghee.",
     type: "Vegetarian",
@@ -116,6 +120,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "semiya-payasam",
+    menuCategory: "Desserts & Sweets",
     name: "Semiya Payasam",
     description: "A popular festive milk pudding made with roasted vermicelli, cardamom, and dry fruits.",
     type: "Vegetarian",
@@ -144,6 +149,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "idiyappam",
+    menuCategory: "Breads",
     name: "Idiyappam",
     description: "Traditional steamed rice noodles, a light and healthy breakfast staple often served with coconut milk.",
     type: "Vegetarian",
@@ -171,6 +177,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kothamalli-thogayal",
+    menuCategory: "Curries & Gravies",
     name: "Kothamalli Thogayal",
     description: "A thick, spicy coriander and lentil chutney that is perfect when mixed with hot rice and ghee.",
     type: "Vegetarian",
@@ -199,6 +206,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "ellu-sadam",
+    menuCategory: "Curries & Gravies",
     name: "Ellu Sadam (Sesame Rice)",
     description: "A fragrant and nutty rice dish made with freshly roasted black sesame seeds and spices.",
     type: "Vegetarian",
@@ -227,6 +235,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "thengai-sadam",
+    menuCategory: "Rice & Biryani",
     name: "Thengai Sadam (Coconut Rice)",
     description: "A quick and aromatic variety rice flavored with fresh coconut and crunchy lentils.",
     type: "Vegetarian",
@@ -255,6 +264,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "puliyodarai",
+    menuCategory: "Rice & Biryani",
     name: "Puliyodarai (Tamarind Rice)",
     description: "Classic Tamil temple-style tamarind rice, perfectly balanced with tang, spice, and crunch.",
     type: "Vegetarian",
@@ -283,6 +293,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "vazhakkai-poriyal",
+    menuCategory: "Dry & Stir-Fried",
     name: "Vazhakkai Poriyal",
     description: "Crispy and savory raw banana stir-fry with a hint of garlic and coconut.",
     type: "Vegetarian",
@@ -311,6 +322,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "keerai-masiyal",
+    menuCategory: "Curries & Gravies",
     name: "Keerai Masiyal",
     description: "Creamy mashed spinach cooked with simple spices, highly nutritious and comforting.",
     type: "Vegetarian",
@@ -339,6 +351,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "mor-kuzhambu",
+    menuCategory: "Curries & Gravies",
     name: "Mor Kuzhambu",
     description: "A traditional South Indian curd-based curry with a ground coconut-spice paste and winter melon.",
     type: "Vegetarian",
@@ -367,6 +380,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "sevai-breakfast",
+    menuCategory: "Snacks & Street Food",
     name: "Sevai",
     description: "Light rice noodles tempered with lemon, coconut, or tomato for a traditional breakfast.",
     type: "Vegetarian",
@@ -395,6 +409,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "milagu-kuzhambu-veg",
+    menuCategory: "Curries & Gravies",
     name: "Milagu Kuzhambu",
     description: "A medicinal and warming pepper-based tamarind curry, excellent for digestion and rainy days.",
     type: "Vegetarian",
@@ -423,6 +438,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "vengaya-sambar",
+    menuCategory: "Curries & Gravies",
     name: "Vengaya Sambar",
     description: "A classic South Indian lentil stew made with small pearl onions that provide a sweet depth of flavor.",
     type: "Vegetarian",
@@ -451,6 +467,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kootu-stew",
+    menuCategory: "Curries & Gravies",
     name: "Kootu",
     description: "A mild and healthy stew of vegetables and lentils cooked in a fresh coconut-cumin-chili paste.",
     type: "Vegetarian",
@@ -479,6 +496,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "rava-kesari",
+    menuCategory: "Desserts & Sweets",
     name: "Rava Kesari",
     description: "A bright orange, melt-in-the-mouth semolina sweet enriched with ghee, saffron, and nuts.",
     type: "Vegetarian",
@@ -507,6 +525,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "sakkarai-pongal",
+    menuCategory: "Curries & Gravies",
     name: "Sakkarai Pongal",
     description: "The traditional sweet rice dish made during harvest festivals with jaggery, lentils, and rich ghee.",
     type: "Vegetarian",
@@ -535,6 +554,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kadamba-sadam",
+    menuCategory: "Curries & Gravies",
     name: "Kadamba Sadam",
     description: "A grand 'one-pot' festive rice featuring mixed vegetables, lentils, and a special spice blend.",
     type: "Vegetarian",
@@ -565,6 +585,7 @@ export const tamilNaduRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (20) ---
   {
     id: "meen-kuzhambu",
+    menuCategory: "Curries & Gravies",
     name: "Tamil Style Fish Curry",
     description: "A spicy and tangy coastal curry made with fresh fish simmered in a tamarind and chili gravy.",
     type: "Non-Vegetarian",
@@ -593,6 +614,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "chettinad-mutton-curry",
+    menuCategory: "Curries & Gravies",
     name: "Chettinad Mutton Curry",
     description: "A fiery and robust mutton curry made with a unique blend of 18 freshly roasted spices.",
     type: "Non-Vegetarian",
@@ -621,6 +643,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "nei-meen-varuval",
+    menuCategory: "Protein Specialties",
     name: "Nei Meen Varuval",
     description: "Kingfish steaks marinated in a spicy masala and shallow fried to crispy perfection.",
     type: "Non-Vegetarian",
@@ -649,6 +672,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "naatu-kozhi-kuzhambu",
+    menuCategory: "Curries & Gravies",
     name: "Naatu Kozhi Kuzhambu",
     description: "Traditional country chicken curry cooked with rustic spices, known for its deep, rich flavor.",
     type: "Non-Vegetarian",
@@ -677,6 +701,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "nandu-kuzhambu",
+    menuCategory: "Curries & Gravies",
     name: "Nandu Kuzhambu (Tamil Crab Curry)",
     description: "A spicy and aromatic crab curry prepared with a peppery coconut-based masala.",
     type: "Non-Vegetarian",
@@ -705,6 +730,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kozhi-milagu-varuval",
+    menuCategory: "Protein Specialties",
     name: "Kozhi Milagu Varuval",
     description: "A dry chicken preparation featuring the sharp heat of freshly crushed peppercorns.",
     type: "Non-Vegetarian",
@@ -733,6 +759,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "mutton-sukka-tn",
+    menuCategory: "Protein Specialties",
     name: "Mutton Sukka",
     description: "Tender pieces of mutton slow-cooked with roasted spices until dry and flavorful.",
     type: "Non-Vegetarian",
@@ -761,6 +788,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "prawn-masala-tn",
+    menuCategory: "Curries & Gravies",
     name: "Prawn Masala (Tamil Style)",
     description: "Succulent prawns cooked in a tangy tamarind-coconut masala with fresh spices.",
     type: "Non-Vegetarian",
@@ -789,6 +817,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "chicken-65-tn",
+    menuCategory: "Starters & Appetizers",
     name: "Chicken 65 (Tamil Style)",
     description: "The original Chennai street-food fried chicken—crispy, spicy, and tangy with deep red color.",
     type: "Non-Vegetarian",
@@ -817,6 +846,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "mutton-kola-urundai-kuzhambu",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kola Urundai Kuzhambu",
     description: "Crispy fried mutton meatballs simmered in a spicy, thin Chettinad gravy.",
     type: "Non-Vegetarian",
@@ -845,6 +875,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "chicken-chukka-tn",
+    menuCategory: "Protein Specialties",
     name: "Chicken Chukka",
     description: "A semi-dry chicken preparation with a heavy dose of small onions and black pepper.",
     type: "Non-Vegetarian",
@@ -873,6 +904,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "meen-varuval-tn",
+    menuCategory: "Protein Specialties",
     name: "Meen Varuval",
     description: "Traditional Tamil fish fry coated with a spicy, red homemade masala paste.",
     type: "Non-Vegetarian",
@@ -900,6 +932,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kozhi-varuval-tn",
+    menuCategory: "Snacks & Street Food",
     name: "Kozhi Varuval",
     description: "Succulent chicken bites marinated in South Indian spices and deep-fried until crunchy.",
     type: "Non-Vegetarian",
@@ -927,6 +960,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "nattu-kozhi-varuval-tn",
+    menuCategory: "Protein Specialties",
     name: "Nattu Kozhi Varuval",
     description: "Dry fry of country chicken with a coarse, rustic Tamil spice blend and lots of garlic.",
     type: "Non-Vegetarian",
@@ -955,6 +989,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "yera-thokku-tn",
+    menuCategory: "Sides & Accompaniments",
     name: "Yera Thokku",
     description: "A thick, spicy, and tangy prawn preparation where the prawns are cooked down into a rich onion-tomato concentrate.",
     type: "Non-Vegetarian",
@@ -983,6 +1018,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kari-dosai-tn",
+    menuCategory: "Breads",
     name: "Kari Dosai",
     description: "A Madurai specialty—a fluffy dosa topped with a spicy, flavorful layer of minced mutton and egg.",
     type: "Non-Vegetarian",
@@ -1011,6 +1047,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "attu-kal-kari-tn",
+    menuCategory: "Curries & Gravies",
     name: "Attu Kal Kari (Goat Trotters Curry)",
     description: "A slow-cooked, nutritious, and rich curry made from goat trotters, often served with appam or idiyappam.",
     type: "Non-Vegetarian",
@@ -1039,6 +1076,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "chicken-chettinad-biryani",
+    menuCategory: "Rice & Biryani",
     name: "Chicken Chettinad Biryani",
     description: "Fragrant biryani using seeraga samba rice and the bold, peppery spices of Chettinad.",
     type: "Non-Vegetarian",
@@ -1067,6 +1105,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "ambur-chicken-biryani",
+    menuCategory: "Rice & Biryani",
     name: "Ambur Chicken Biryani",
     description: "Famous short-grain rice biryani from the town of Ambur, known for its mild spice and light texture.",
     type: "Non-Vegetarian",
@@ -1095,6 +1134,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "dindigul-chicken-biryani",
+    menuCategory: "Rice & Biryani",
     name: "Dindigul Chicken Biryani",
     description: "A distinctive Tamil biryani with a unique tanginess from curd and the intense flavor of jeeraga samba rice.",
     type: "Non-Vegetarian",
@@ -1125,6 +1165,7 @@ export const tamilNaduRecipes: Recipe[] = [
   // --- SNACKS (10) ---
   {
     id: "sundal-snack",
+    menuCategory: "Sides & Accompaniments",
     name: "Sundal",
     description: "A healthy and popular temple snack made from boiled chickpeas tempered with coconut and mustard.",
     type: "Vegetarian",
@@ -1153,6 +1194,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "thattai-crackers",
+    menuCategory: "Snacks & Street Food",
     name: "Thattai",
     description: "Crispy, deep-fried savory rice crackers seasoned with chili and lentils, a classic Tamil snack.",
     type: "Vegetarian",
@@ -1181,6 +1223,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "ulundu-vadai-snack",
+    menuCategory: "Breads",
     name: "Ulundu Vadai",
     description: "Crispy fried lentil doughnuts made from fluffy black gram batter, a favorite tea-time snack.",
     type: "Vegetarian",
@@ -1209,6 +1252,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "vazhaipoo-vadai-snack",
+    menuCategory: "Breads",
     name: "Vazhaipoo Vadai",
     description: "Unique and crispy fritters made from finely chopped banana flower and spiced lentils.",
     type: "Vegetarian",
@@ -1237,6 +1281,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "ellu-urundai-snack",
+    menuCategory: "Curries & Gravies",
     name: "Ellu Urundai",
     description: "Simple, nutrient-dense balls made from roasted sesame seeds and molten jaggery.",
     type: "Vegetarian",
@@ -1264,6 +1309,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "bajji-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Bajji",
     description: "Classic South Indian fritters—slices of potato, onion, or plantain dipped in spiced gram flour batter.",
     type: "Vegetarian",
@@ -1292,6 +1338,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "murukku-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Murukku",
     description: "The quintessential crunchy spiral snack of South India, made from rice and lentil flour.",
     type: "Vegetarian",
@@ -1320,6 +1367,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kola-urundai-chettinad",
+    menuCategory: "Snacks & Street Food",
     name: "Kola Urundai (Chettinad Meatballs)",
     description: "Crispy, deep-fried spiced meatballs made from minced mutton and a complex blend of Chettinad spices.",
     type: "Non-Vegetarian",
@@ -1348,6 +1396,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "parotta-salna-street",
+    menuCategory: "Breads",
     name: "Parotta Salna",
     description: "Flaky, layered parottas served with a thin, spicy, watery gravy—the ultimate Tamil Nadu street food experience.",
     type: "Non-Vegetarian",
@@ -1376,6 +1425,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "chicken-chettinad-varuval-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Chettinad Varuval",
     description: "A dry-roasted, intensely spiced Chettinad chicken preparation with a bold black pepper finish.",
     type: "Non-Vegetarian",

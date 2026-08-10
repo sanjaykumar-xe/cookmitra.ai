@@ -3,6 +3,7 @@ import { Recipe } from './types';
 export const rajasthanRecipes: Recipe[] = [
   {
     id: "laal-maas",
+    menuCategory: "Curries & Gravies",
     name: "Laal Maas",
     description: "A fiery Rajasthani mutton curry cooked with a variety of spices and a burst of red chillies.",
     type: "Non-Vegetarian",
@@ -28,6 +29,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "moong-dal-halwa",
+    menuCategory: "Desserts & Sweets",
     name: "Moong Dal Halwa",
     description: "A rich and delicious golden-colored halwa made with split yellow moong dal and ghee.",
     type: "Vegetarian",
@@ -52,6 +54,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "kachori",
+    menuCategory: "Snacks & Street Food",
     name: "Moong Dal Kachori",
     description: "Crispy, flaky deep-fried pastries filled with a savory moong dal mixture.",
     type: "Vegetarian",
@@ -75,6 +78,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "dal-baati-churma",
+    menuCategory: "Curries & Gravies",
     name: "Dal Baati Churma",
     description: "Baked wheat balls served with spiced lentils and a sweet crumbled wheat dessert, Rajasthan's most iconic dish.",
     type: "Vegetarian",
@@ -101,6 +105,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "gatte-ki-sabzi",
+    menuCategory: "Curries & Gravies",
     name: "Gatte Ki Sabzi",
     description: "Steamed gram flour dumplings simmered in a spiced yogurt gravy, a Rajasthani specialty born from desert scarcity of vegetables.",
     type: "Vegetarian",
@@ -127,6 +132,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "ker-sangri",
+    menuCategory: "Curries & Gravies",
     name: "Ker Sangri",
     description: "A dry, tangy desert-bean and berry curry, a distinctly Rajasthani dish using drought-resistant ingredients.",
     type: "Vegetarian",
@@ -152,6 +158,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "bajre-ki-roti",
+    menuCategory: "Breads",
     name: "Bajre Ki Roti",
     description: "A rustic pearl millet flatbread, a staple in rural Rajasthan often paired with ghee and jaggery.",
     type: "Vegetarian",
@@ -176,6 +183,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "pyaaz-kachori",
+    menuCategory: "Snacks & Street Food",
     name: "Pyaaz Kachori",
     description: "Crispy pastries stuffed with a spiced onion filling, a beloved Rajasthani street snack.",
     type: "Vegetarian",
@@ -201,6 +209,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "rajasthani-kadhi",
+    menuCategory: "Curries & Gravies",
     name: "Rajasthani Kadhi",
     description: "A tangy, spiced yogurt-gram flour curry with a distinct fiery Rajasthani chili tempering.",
     type: "Vegetarian",
@@ -226,6 +235,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "mirchi-bada",
+    menuCategory: "Snacks & Street Food",
     name: "Mirchi Bada",
     description: "Large green chilies stuffed with spiced potato filling, battered, and deep-fried.",
     type: "Vegetarian",
@@ -251,6 +261,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "papad-ki-sabzi",
+    menuCategory: "Sides & Accompaniments",
     name: "Papad Ki Sabzi",
     description: "A unique curry made with crushed lentil papad simmered in a spiced yogurt gravy.",
     type: "Vegetarian",
@@ -276,6 +287,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "rajasthani-besan-chilla",
+    menuCategory: "Curries & Gravies",
     name: "Rajasthani Besan Chilla",
     description: "A savory gram flour pancake spiced with Rajasthani seasonings, a quick breakfast dish.",
     type: "Vegetarian",
@@ -301,6 +313,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "malpua",
+    menuCategory: "Desserts & Sweets",
     name: "Malpua",
     description: "Sweet, syrup-soaked pancakes, a festive Rajasthani dessert often served with rabri.",
     type: "Vegetarian",
@@ -326,6 +339,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "ghevar",
+    menuCategory: "Curries & Gravies",
     name: "Ghevar",
     description: "A disc-shaped, honeycomb-textured sweet soaked in sugar syrup, a signature Rajasthani festival dessert.",
     type: "Vegetarian",
@@ -351,6 +365,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "rajasthani-pulao",
+    menuCategory: "Rice & Biryani",
     name: "Rajasthani Pulao",
     description: "A fragrant, mildly spiced rice dish with dried fruits and nuts, a royal Rajasthani accompaniment.",
     type: "Vegetarian",
@@ -376,6 +391,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "chana-dal-halwa",
+    menuCategory: "Desserts & Sweets",
     name: "Chana Dal Halwa (Rajasthani Style)",
     description: "A rich, ghee-based split chickpea dal dessert, distinct from the moong dal version.",
     type: "Vegetarian",
@@ -401,6 +417,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "safed-maas",
+    menuCategory: "Curries & Gravies",
     name: "Safed Maas",
     description: "A rich, creamy white mutton curry made with cashews and yogurt, a royal Rajasthani dish.",
     type: "Non-Vegetarian",
@@ -426,6 +443,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "jungli-maas",
+    menuCategory: "Curries & Gravies",
     name: "Jungli Maas",
     description: "An extremely simple, minimally spiced mutton curry cooked in ghee, a hunting-camp-style Rajasthani dish.",
     type: "Non-Vegetarian",
@@ -450,6 +468,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "rajasthani-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Rajasthani Chicken Curry",
     description: "A rich, yogurt-based chicken curry with a distinctive Rajasthani spice blend.",
     type: "Non-Vegetarian",
@@ -475,6 +494,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "mutton-khaad",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Khaad Khargosh Style",
     description: "Mutton slow-cooked in an underground pit-style method (adapted for stovetop), a traditional Rajasthani royal preparation.",
     type: "Non-Vegetarian",
@@ -499,6 +519,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "achar-gosht",
+    menuCategory: "Curries & Gravies",
     name: "Achar Gosht",
     description: "Mutton cooked in a tangy, pickle-spiced masala, a distinctive Rajasthani preparation.",
     type: "Non-Vegetarian",
@@ -523,6 +544,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "rajasthani-mutton-curry",
+    menuCategory: "Curries & Gravies",
     name: "Rajasthani Mutton Curry",
     description: "A rustic, deeply spiced mutton curry distinct from Laal Maas and Safed Maas.",
     type: "Non-Vegetarian",
@@ -548,6 +570,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "khad-kukkad",
+    menuCategory: "Curries & Gravies",
     name: "Khad Kukkad (Chicken in Clay Pot)",
     description: "Chicken marinated and slow-cooked in a sealed pot, a royal Rajasthani method.",
     type: "Non-Vegetarian",
@@ -572,6 +595,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "mutton-soweta",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Soweta",
     description: "A creamy, mildly spiced mutton curry with a nutty gravy, distinct from Safed Maas.",
     type: "Non-Vegetarian",
@@ -597,6 +621,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "chicken-achari-rajasthani",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Achari",
     description: "Chicken cooked in a tangy pickling-spice masala, a Rajasthani favorite.",
     type: "Non-Vegetarian",
@@ -621,6 +646,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "rajasthani-fish-curry",
+    menuCategory: "Curries & Gravies",
     name: "Rajasthani Fish Curry",
     description: "A rare inland-style fish curry made with river fish and a Rajasthani spice blend.",
     type: "Non-Vegetarian",
@@ -645,6 +671,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "bater-curry",
+    menuCategory: "Curries & Gravies",
     name: "Bater (Quail) Curry",
     description: "A traditional Rajasthani quail curry, a royal hunting-heritage dish.",
     type: "Non-Vegetarian",
@@ -669,6 +696,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "mutton-handi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Handi",
     description: "Mutton slow-cooked in a sealed clay handi with rich spices, a festive Rajasthani preparation.",
     type: "Non-Vegetarian",
@@ -693,6 +721,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "chicken-rassa-rajasthani",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Rassa (Rajasthani Style)",
     description: "A thin, spicy red chicken gravy meant to be soaked with bajra roti.",
     type: "Non-Vegetarian",
@@ -717,6 +746,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-rajasthani",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry (Rajasthani Style)",
     description: "Boiled eggs simmered in a fiery red Rajasthani onion-tomato masala.",
     type: "Non-Vegetarian",

@@ -35,6 +35,7 @@ export async function saveRecipe(
     servings: recipe.servings || 2,
     difficulty: recipe.difficulty || "Medium",
     cost: recipe.cost || recipe.estimatedCost || 0,
+    menuCategory: recipe.menuCategory || null,
     ingredients: recipe.ingredients || [],
     steps: recipe.steps || recipe.instructions || [],
     tags: recipe.tags || [],

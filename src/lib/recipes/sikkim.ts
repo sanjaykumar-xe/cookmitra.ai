@@ -4,6 +4,7 @@ export const sikkimRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "pork-momos-sikkim",
+    menuCategory: "Snacks & Street Food",
     name: "Pork Momos",
     description: "Traditional Sikkimese steamed dumplings filled with succulent minced pork and mountain herbs.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "chicken-thukpa-sikkim",
+    menuCategory: "Soups",
     name: "Chicken Thukpa",
     description: "A hearty and warming Himalayan noodle soup loaded with shredded chicken and seasonal vegetables.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "chicken-momos-sikkim",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Momos",
     description: "Delicate steamed dumplings stuffed with spiced minced chicken, a staple of Sikkimese street food.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "pork-thenthuk-sikkim",
+    menuCategory: "Curries & Gravies",
     name: "Pork Thenthuk",
     description: "Tibetan-style hand-pulled noodle soup with pieces of pork and fresh vegetables, known for its rustic texture.",
     type: "Non-Vegetarian",
@@ -111,6 +115,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "sikkimese-pork-curry",
+    menuCategory: "Curries & Gravies",
     name: "Sikkimese Pork Curry",
     description: "A robust and spicy pork curry cooked in mustard oil and flavored with fermented bamboo shoots.",
     type: "Non-Vegetarian",
@@ -137,6 +142,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-sikkimese",
+    menuCategory: "Curries & Gravies",
     name: "Sikkimese Chicken Curry",
     description: "A mild and earthy chicken curry prepared with a simple blend of Himalayan herbs and mountain-grown ginger.",
     type: "Non-Vegetarian",
@@ -163,6 +169,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "gyathuk-sikkim",
+    menuCategory: "Curries & Gravies",
     name: "Gyathuk",
     description: "Sikkimese-style noodle soup with chicken and local greens, known for its restorative properties.",
     type: "Non-Vegetarian",
@@ -189,6 +196,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "pork-sha-phaley-sikkim",
+    menuCategory: "Protein Specialties",
     name: "Pork Sha Phaley",
     description: "Deep-fried bread stuffed with a spicy minced pork mixture, a popular festival snack in Sikkim.",
     type: "Non-Vegetarian",
@@ -215,6 +223,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "egg-thukpa-sikkim",
+    menuCategory: "Soups",
     name: "Egg Thukpa",
     description: "A comforting bowl of noodle soup with hard-boiled eggs and mountain vegetables.",
     type: "Non-Vegetarian",
@@ -241,6 +250,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-bamboo-shoot-sikkim",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry with Fermented Bamboo Shoot",
     description: "A tangy and spicy chicken preparation using the unique flavor of fermented bamboo shoots.",
     type: "Non-Vegetarian",
@@ -269,6 +279,7 @@ export const sikkimRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "vegetable-momos-sikkim",
+    menuCategory: "Snacks & Street Food",
     name: "Vegetable Momos",
     description: "Steamed dumplings filled with a mixture of finely chopped mountain vegetables and mild spices.",
     type: "Vegetarian",
@@ -295,6 +306,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "gundruk-soup-sikkim",
+    menuCategory: "Soups",
     name: "Gundruk Soup",
     description: "A traditional fermented leafy green soup, known for its probiotic benefits and sour-spicy taste.",
     type: "Vegetarian",
@@ -321,6 +333,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "sinki-soup-sikkim",
+    menuCategory: "Soups",
     name: "Sinki Soup",
     description: "A sour soup made from fermented radish roots, a unique preserved food of the Himalayan region.",
     type: "Vegetarian",
@@ -347,6 +360,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "ningro-curry-sikkim",
+    menuCategory: "Curries & Gravies",
     name: "Ningro Curry",
     description: "Wild fiddlehead ferns stir-fried with local spices and sometimes fermented cheese (Chhurpi).",
     type: "Vegetarian",
@@ -373,6 +387,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "vegetable-thukpa-sikkim",
+    menuCategory: "Soups",
     name: "Vegetable Thukpa",
     description: "A nourishing noodle soup packed with fresh mountain vegetables and mountain-grown herbs.",
     type: "Vegetarian",
@@ -399,6 +414,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "chhurpi-curry-sikkim",
+    menuCategory: "Curries & Gravies",
     name: "Chhurpi Curry",
     description: "Local fermented cheese cooked with onions and tomatoes into a savory, slightly pungent curry.",
     type: "Vegetarian",
@@ -425,6 +441,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "kinema-curry-sikkim",
+    menuCategory: "Curries & Gravies",
     name: "Kinema Curry",
     description: "A traditional fermented soybean dish, rich in protein and known for its strong, distinct aroma.",
     type: "Vegetarian",
@@ -451,6 +468,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "bamboo-shoot-curry-sikkimese",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry Sikkimese",
     description: "Tangy fermented bamboo shoots cooked with potatoes and local spices.",
     type: "Vegetarian",
@@ -477,6 +495,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "fapar-ko-roti-sabzi-sikkim",
+    menuCategory: "Breads",
     name: "Fapar Ko Roti with Sabzi",
     description: "Nutritious buckwheat flatbread served with a light mountain vegetable stir-fry.",
     type: "Vegetarian",
@@ -502,6 +521,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "alu-dum-sikkimese",
+    menuCategory: "Curries & Gravies",
     name: "Alu Dum Sikkimese",
     description: "Potatoes in a thick, light spiced Himalayan-style gravy with a tangy finish.",
     type: "Vegetarian",
@@ -530,6 +550,7 @@ export const sikkimRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "sel-roti-sikkim",
+    menuCategory: "Breads",
     name: "Sel Roti",
     description: "A traditional ring-shaped sweet fried rice bread, crispy on the outside and soft inside.",
     type: "Vegetarian",
@@ -554,6 +575,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "vegetable-momos-fried-sikkim",
+    menuCategory: "Snacks & Street Food",
     name: "Fried Vegetable Momos",
     description: "Steamed vegetable dumplings pan-fried until the bottom is crispy and golden.",
     type: "Vegetarian",
@@ -576,6 +598,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "churpi-chatpate-sikkim",
+    menuCategory: "Snacks & Street Food",
     name: "Churpi Chatpate",
     description: "A tangy and spicy snack made from local fermented cheese, onions, and mountain chilies.",
     type: "Vegetarian",
@@ -600,6 +623,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "wai-wai-sadeko-sikkim",
+    menuCategory: "Snacks & Street Food",
     name: "Wai Wai Sadeko",
     description: "A zesty and spicy instant noodle salad, a hugely popular snack among Sikkimese youth.",
     type: "Vegetarian",
@@ -624,6 +648,7 @@ export const sikkimRecipes: Recipe[] = [
   },
   {
     id: "chicken-momos-fried-sikkim",
+    menuCategory: "Snacks & Street Food",
     name: "Fried Chicken Momos",
     description: "Spiced chicken momos deep-fried for a crunchy exterior and juicy interior.",
     type: "Non-Vegetarian",

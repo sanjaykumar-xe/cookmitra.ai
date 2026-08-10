@@ -4,6 +4,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "thukpa-arunachali",
+    menuCategory: "Soups",
     name: "Thukpa Arunachali",
     description: "A hearty and warming noodle soup cooked with tender pork, seasonal vegetables, and a hint of local mountain spices.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-arunachali",
+    menuCategory: "Curries & Gravies",
     name: "Pork with Bamboo Shoot Arunachali",
     description: "A classic tribal preparation where pork is slow-cooked with pungent fermented bamboo shoot and fiery local chilies.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "yak-meat-curry",
+    menuCategory: "Curries & Gravies",
     name: "Yak Meat Curry",
     description: "A rare high-altitude specialty of the Monpa tribe, slow-cooked yak meat with mountain herbs and minimal oil.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-nyishi-style",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry Nyishi Style",
     description: "Boiled chicken preparation typical of the Nyishi tribe, using minimal spices to preserve the natural flavor of the meat.",
     type: "Non-Vegetarian",
@@ -108,6 +112,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "fish-apatani-style",
+    menuCategory: "Curries & Gravies",
     name: "Fish Curry Apatani Style",
     description: "River fish cooked with local greens and rice flour, a delicacy of the Ziro valley.",
     type: "Non-Vegetarian",
@@ -134,6 +139,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "pork-momos-arunachali",
+    menuCategory: "Snacks & Street Food",
     name: "Pork Momos Arunachali",
     description: "Mountain-style steamed dumplings filled with spiced minced pork and local herbs.",
     type: "Non-Vegetarian",
@@ -160,6 +166,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "smoked-pork-soybean-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Smoked Pork with Fermented Soybean",
     description: "Smoked pork pieces cooked with pungent fermented soybean paste (pehak), a favorite across many tribes.",
     type: "Non-Vegetarian",
@@ -185,6 +192,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-bamboo-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Chicken with Bamboo Shoot Arunachali",
     description: "Zesty chicken preparation simmered with fresh shredded bamboo shoots and local hill chilies.",
     type: "Non-Vegetarian",
@@ -210,6 +218,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Arunachali Style",
     description: "Boiled eggs in a very light, almost clear broth-style curry with ginger and local herbs.",
     type: "Non-Vegetarian",
@@ -236,6 +245,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "pork-adi-style",
+    menuCategory: "Curries & Gravies",
     name: "Pork Curry Adi Style",
     description: "A fiery pork curry from the Adi tribe, characterized by the use of local chilies and fermented ingredients.",
     type: "Non-Vegetarian",
@@ -262,6 +272,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "bamboo-shoot-veg-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry Arunachali",
     description: "A light and tangy vegetarian curry made with fermented bamboo shoots and mountain greens.",
     type: "Vegetarian",
@@ -286,6 +297,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "zan-porridge",
+    menuCategory: "Curries & Gravies",
     name: "Zan (Millet Porridge)",
     description: "A traditional nutritious porridge made with finger millet or maize flour, often served with vegetables.",
     type: "Vegetarian",
@@ -310,6 +322,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "veg-thukpa-arunachal",
+    menuCategory: "Soups",
     name: "Vegetable Thukpa Arunachali",
     description: "A comforting Himalayan noodle soup with seasonal vegetables and mountain herbs.",
     type: "Vegetarian",
@@ -334,6 +347,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "soybean-curry-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Fermented Soybean Curry Arunachali",
     description: "A pungent and high-protein curry made from fermented soybean paste and local spices.",
     type: "Vegetarian",
@@ -357,6 +371,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "local-greens-stirfry-arunachal",
+    menuCategory: "Dry & Stir-Fried",
     name: "Local Greens Stir Fry",
     description: "Healthy and simple stir-fry of foraged forest greens with garlic and mountain chilies.",
     type: "Vegetarian",
@@ -381,6 +396,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "boiled-veg-chili-chutney",
+    menuCategory: "Sides & Accompaniments",
     name: "Boiled Vegetable Platter with Chili Chutney",
     description: "A staple tribal meal consisting of assorted boiled vegetables served with a fiery birds-eye chili dip.",
     type: "Vegetarian",
@@ -404,6 +420,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "dal-arunachali",
+    menuCategory: "Curries & Gravies",
     name: "Dal Arunachali Style",
     description: "Simple and comforting lentil curry tempered with mountain herbs and ginger.",
     type: "Vegetarian",
@@ -425,6 +442,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "fiddlehead-fern-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Fiddlehead Fern Curry",
     description: "Wild-harvested fiddlehead ferns stir-fried with basic mountain spices.",
     type: "Vegetarian",
@@ -448,6 +466,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "rice-bamboo-shoot-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Rice with Fermented Bamboo Shoot",
     description: "Fragrant rice tossed with the tangy punch of fermented bamboo shoot (bas-tenga).",
     type: "Vegetarian",
@@ -470,6 +489,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-curry-arunachal",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin Curry Arunachali",
     description: "Simple mountain-style pumpkin curry cooked with minimal oil and spices.",
     type: "Vegetarian",
@@ -495,6 +515,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "veg-momos-arunachal",
+    menuCategory: "Snacks & Street Food",
     name: "Vegetable Momos Arunachali",
     description: "Steamed dumplings stuffed with a mixture of mountain vegetables and herbs.",
     type: "Vegetarian",
@@ -517,6 +538,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "khura-arunachal",
+    menuCategory: "Snacks & Street Food",
     name: "Khura",
     description: "Crispy rice flour pancakes, a popular tea-time snack in Arunachali homes.",
     type: "Vegetarian",
@@ -538,6 +560,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "rice-cake-arunachal",
+    menuCategory: "Snacks & Street Food",
     name: "Rice Cake Arunachali",
     description: "Steamed sticky rice cakes, a traditional tribal sweet.",
     type: "Vegetarian",
@@ -559,6 +582,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "sticky-rice-sesame-arunachal",
+    menuCategory: "Snacks & Street Food",
     name: "Sticky Rice with Sesame",
     description: "Steamed glutinous rice served with a coating of roasted sesame seeds.",
     type: "Vegetarian",
@@ -580,6 +604,7 @@ export const arunachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "fried-pork-momos-arunachal",
+    menuCategory: "Snacks & Street Food",
     name: "Pork Momos Fried",
     description: "Pan-fried crispy pork dumplings, popular as a street snack.",
     type: "Non-Vegetarian",

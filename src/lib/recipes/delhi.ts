@@ -4,6 +4,7 @@ export const delhiRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "butter-chicken-purani-dilli",
+    menuCategory: "Curries & Gravies",
     name: "Butter Chicken Purani Dilli Style",
     description: "Tandoor-charred chicken finished in a rich tomato-butter gravy, inspired by the original recipe from the heart of Old Delhi.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "mutton-korma-delhi-style",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Korma Delhi Style",
     description: "A rich and nutty slow-cooked mutton korma from the Mughlai court traditions of Old Delhi, featuring a smooth, golden gravy.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "chicken-changezi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Changezi",
     description: "A fiery and creamy tomato-cashew chicken curry with a distinct reddish-brown color, a favorite in Delhi's Mughlai restaurants.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "mutton-nihari-delhi-style",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Nihari Delhi Style",
     description: "Slow-simmered spiced mutton stew from the lanes of Old Delhi, known for its silky texture and deep flavors.",
     type: "Non-Vegetarian",
@@ -109,6 +113,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "chicken-seekh-kabab-delhi",
+    menuCategory: "Starters & Appetizers",
     name: "Chicken Seekh Kabab Delhi",
     description: "Hand-pounded minced chicken flavored with fresh herbs and spices, grilled on skewers to a perfect char.",
     type: "Non-Vegetarian",
@@ -135,6 +140,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "mutton-kebab-delhi-style",
+    menuCategory: "Starters & Appetizers",
     name: "Mutton Kebab Delhi Style",
     description: "Smoky char-grilled minced mutton kebabs seasoned with a rich spice blend, a street food masterpiece.",
     type: "Non-Vegetarian",
@@ -161,6 +167,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-chandni-chowk",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry Chandni Chowk Style",
     description: "Rustic and bold bazaar-style chicken curry with a focus on roasted spices and a medium-thin gravy.",
     type: "Non-Vegetarian",
@@ -187,6 +194,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-delhi-style",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Delhi Style",
     description: "Hard-boiled eggs simmered in a rich, buttery onion-tomato gravy with a typical North Indian spice profile.",
     type: "Non-Vegetarian",
@@ -213,6 +221,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "mutton-burra-kebab-delhi",
+    menuCategory: "Starters & Appetizers",
     name: "Mutton Burra Kebab",
     description: "Twice-cooked mutton chops marinated in a punchy spice blend and char-grilled for a smoky finish.",
     type: "Non-Vegetarian",
@@ -239,6 +248,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-karims",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry Karim's Style",
     description: "Mughlai-inspired slow-cooked chicken curry from the legendary kitchens of Delhi, featuring a rich, velvety gravy.",
     type: "Non-Vegetarian",
@@ -267,6 +277,7 @@ export const delhiRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "chana-bhatura-delhi",
+    menuCategory: "Breads",
     name: "Chana Bhatura Delhi Style",
     description: "Spiced chickpea curry (chole) served with large, fluffy deep-fried bread (bhatura), a quintessential Delhi street food.",
     type: "Vegetarian",
@@ -293,6 +304,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "paneer-lababdar-delhi",
+    menuCategory: "Curries & Gravies",
     name: "Paneer Lababdar",
     description: "A restaurant favorite in Delhi—paneer cubes in a rich, creamy, and slightly tangy tomato-cashew gravy.",
     type: "Vegetarian",
@@ -319,6 +331,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "matar-paneer-delhi",
+    menuCategory: "Curries & Gravies",
     name: "Matar Paneer Delhi Style",
     description: "Classic home-style curry with paneer and green peas in a spicy tomato-onion base.",
     type: "Vegetarian",
@@ -345,6 +358,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "kadhi-chawal-delhi",
+    menuCategory: "Curries & Gravies",
     name: "Kadhi Chawal Delhi Style",
     description: "Tangy yogurt and gram flour curry with soft onion fritters, served over steaming basmati rice.",
     type: "Vegetarian",
@@ -371,6 +385,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "dahi-bhalla-delhi",
+    menuCategory: "Snacks & Street Food",
     name: "Dahi Bhalla",
     description: "Soft lentil dumplings soaked in creamy yogurt and topped with sweet and spicy chutneys.",
     type: "Vegetarian",
@@ -397,6 +412,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "baingan-bharta-delhi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Baingan Bharta Delhi Style",
     description: "Smoky fire-roasted mashed eggplant cooked with plenty of onions, tomatoes, and spices.",
     type: "Vegetarian",
@@ -423,6 +439,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "chole-kulche-delhi",
+    menuCategory: "Curries & Gravies",
     name: "Chole Kulche",
     description: "Spiced chickpea curry served with soft, leavened white bread (kulcha), a favorite budget meal in Delhi.",
     type: "Vegetarian",
@@ -448,6 +465,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "paneer-do-pyaza-delhi",
+    menuCategory: "Curries & Gravies",
     name: "Paneer Do Pyaza Delhi Style",
     description: "Paneer curry featuring onions used in two different ways—one for the base and another as crunchy chunks.",
     type: "Vegetarian",
@@ -474,6 +492,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "aloo-tikki-curry-delhi",
+    menuCategory: "Snacks & Street Food",
     name: "Aloo Tikki Curry",
     description: "Pan-fried potato patties simmered in a spiced tomato-onion gravy, a fusion of chaat and main course.",
     type: "Vegetarian",
@@ -499,6 +518,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "kashmiri-dum-aloo-delhi",
+    menuCategory: "Curries & Gravies",
     name: "Kashmiri Dum Aloo Delhi Style",
     description: "Baby potatoes in a rich, red spiced gravy, adapted from the Kashmiri original with a local Delhi touch.",
     type: "Vegetarian",
@@ -527,6 +547,7 @@ export const delhiRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "delhi-aloo-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Delhi Aloo Chaat",
     description: "Spiced fried potato cubes tossed with tangy chutneys and special Delhi chaat masala.",
     type: "Vegetarian",
@@ -552,6 +573,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "golgappe-delhi",
+    menuCategory: "Snacks & Street Food",
     name: "Golgappe (Pani Puri Delhi Style)",
     description: "Crispy hollow wheat puris filled with spiced mashed potatoes and tangy, spicy water.",
     type: "Vegetarian",
@@ -578,6 +600,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "daulat-ki-chaat-delhi",
+    menuCategory: "Snacks & Street Food",
     name: "Daulat Ki Chaat",
     description: "A delicate, airy milk foam winter dessert from Chandni Chowk, flavored with saffron.",
     type: "Vegetarian",
@@ -603,6 +626,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "bedmi-puri-delhi",
+    menuCategory: "Breads",
     name: "Bedmi Puri Delhi Style",
     description: "Spiced lentil-stuffed fried bread served with a tangy potato curry, a classic Delhi morning snack.",
     type: "Vegetarian",
@@ -628,6 +652,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "chicken-tikka-delhi-snack",
+    menuCategory: "Starters & Appetizers",
     name: "Chicken Tikka Delhi Style",
     description: "Smoky char-grilled marinated chicken bites, a favorite non-veg snack from the Tandoors of Delhi.",
     type: "Non-Vegetarian",

@@ -82,7 +82,7 @@ export function LibraryShowcase() {
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-20">
           <div className="text-center space-y-2 group">
-            <StatCounter value="1000" suffix="+" />
+            <StatCounter value={934} suffix="" />
             <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">Recipes</p>
           </div>
           <div className="text-center space-y-2 group">
@@ -129,7 +129,7 @@ export function LibraryShowcase() {
         <motion.div variants={itemVariants} className="mt-16 text-center">
             <Button asChild variant="ghost" className="group h-12 rounded-full px-8 text-primary hover:bg-primary/5 font-bold">
                 <Link href="/recipes" className="flex items-center gap-2">
-                    Browse All 1000+ Recipes
+                    Browse All 934 Recipes
                     <ChevronRight className="h-4 w-4" />
                 </Link>
             </Button>

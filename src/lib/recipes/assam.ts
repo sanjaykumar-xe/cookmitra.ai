@@ -4,6 +4,7 @@ export const assamRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "masor-tenga-assam",
+    menuCategory: "Curries & Gravies",
     name: "Masor Tenga",
     description: "The signature Assamese sour fish curry, light and refreshing, made with tomatoes and finished with a squeeze of local lemon.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "assamese-chicken-curry-light",
+    menuCategory: "Curries & Gravies",
     name: "Assamese Chicken Curry",
     description: "A mild and thin chicken curry cooked with minimal spices and potatoes, typical of Assamese home cooking.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "duck-curry-bamboo-shoot-assam",
+    menuCategory: "Curries & Gravies",
     name: "Duck Curry with Bamboo Shoot",
     description: "A festive Assamese dish where duck is slow-cooked with pungent fermented bamboo shoot (khorisa).",
     type: "Non-Vegetarian",
@@ -84,6 +87,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "pork-with-khorisa-assam",
+    menuCategory: "Curries & Gravies",
     name: "Pork with Khorisa",
     description: "Tender pork chunks cooked with fermented bamboo shoot (khorisa) and fiery local chilies.",
     type: "Non-Vegetarian",
@@ -110,6 +114,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "masor-koni-curry-assam",
+    menuCategory: "Curries & Gravies",
     name: "Masor Koni Curry",
     description: "A spicy and grainy curry made with freshwater fish roe (eggs) and mustard oil.",
     type: "Non-Vegetarian",
@@ -136,6 +141,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "chicken-khorisa-assam",
+    menuCategory: "Curries & Gravies",
     name: "Chicken with Bamboo Shoot Assamese Style",
     description: "Chicken pieces simmered with tangy fermented bamboo shoot, a popular tribal-style curry from Upper Assam.",
     type: "Non-Vegetarian",
@@ -162,6 +168,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "xaak-aru-maas-assam",
+    menuCategory: "Dry & Stir-Fried",
     name: "Xaak Aru Maas",
     description: "A healthy and traditional Assamese preparation of small freshwater fish cooked with seasonal leafy greens.",
     type: "Non-Vegetarian",
@@ -188,6 +195,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "pork-curry-assamese-style",
+    menuCategory: "Curries & Gravies",
     name: "Pork Curry Assamese",
     description: "Traditional Assamese pork curry cooked with local herbs and a generous amount of garlic and ginger.",
     type: "Non-Vegetarian",
@@ -214,6 +222,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-assamese-tomato",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Assamese Style",
     description: "Simple and comforting boiled egg curry in a thin, tangy tomato gravy, perfect with rice.",
     type: "Non-Vegetarian",
@@ -240,6 +249,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "duck-black-sesame-assam",
+    menuCategory: "Curries & Gravies",
     name: "Duck Meat Curry with Black Sesame",
     description: "A rustic and flavorful duck curry prepared with a characteristic black sesame seed paste, a winter specialty.",
     type: "Non-Vegetarian",
@@ -268,6 +278,7 @@ export const assamRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "khar-assamese-authentic",
+    menuCategory: "Curries & Gravies",
     name: "Khar",
     description: "The soul of an Assamese meal—an alkaline dish made with raw papaya and kolakhar (ash extract).",
     type: "Vegetarian",
@@ -295,6 +306,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "tenga-dal-assam",
+    menuCategory: "Curries & Gravies",
     name: "Tenga Dal",
     description: "A light and tangy Assamese lentil curry flavored with tomatoes and finished with lemon.",
     type: "Vegetarian",
@@ -321,6 +333,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "bilahi-tenga-veg-assam",
+    menuCategory: "Curries & Gravies",
     name: "Bilahi Maas Tenga Style Vegetables",
     description: "A vegetarian version of the famous Tenga, using tangy tomatoes and local mountain vegetables.",
     type: "Vegetarian",
@@ -346,6 +359,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "aloo-pitika-assam",
+    menuCategory: "Curries & Gravies",
     name: "Aloo Pitika",
     description: "The ultimate Assamese comfort food—mashed potatoes with raw mustard oil, onions, and green chilies.",
     type: "Vegetarian",
@@ -371,6 +385,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "bamboo-shoot-curry-assam",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry Assamese",
     description: "Tangy fermented bamboo shoot (khorisa) cooked with local seasonal greens.",
     type: "Vegetarian",
@@ -395,6 +410,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "xaak-bhaji-assam",
+    menuCategory: "Dry & Stir-Fried",
     name: "Xaak Bhaji",
     description: "Simple and nutritious stir-fry of assorted Assamese leafy greens with garlic.",
     type: "Vegetarian",
@@ -419,6 +435,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "bor-kumura-curry-assam",
+    menuCategory: "Curries & Gravies",
     name: "Bor Kumura Curry",
     description: "Ash gourd cooked with simple Assamese spices in a light, watery gravy.",
     type: "Vegetarian",
@@ -443,6 +460,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "dal-assamese-style",
+    menuCategory: "Curries & Gravies",
     name: "Dal Assamese Style",
     description: "Simple tempered lentil curry flavored with ginger and local herbs.",
     type: "Vegetarian",
@@ -466,6 +484,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "kordoi-tenga-assam",
+    menuCategory: "Curries & Gravies",
     name: "Kordoi Tenga",
     description: "A sour vegetable curry made with star fruit (Kordoi), a refreshing regional specialty.",
     type: "Vegetarian",
@@ -490,6 +509,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-flower-fritter-curry",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin Flower Fritter Curry",
     description: "Pumpkin flower fritters (Bor) cooked in a light spiced gravy, a delicate Assamese dish.",
     type: "Vegetarian",
@@ -516,6 +536,7 @@ export const assamRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "pitha-assamese-sweet",
+    menuCategory: "Snacks & Street Food",
     name: "Pitha",
     description: "Traditional steamed rice flour cakes stuffed with a sweet mixture of grated coconut and jaggery.",
     type: "Vegetarian",
@@ -540,6 +561,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "til-pitha-assam",
+    menuCategory: "Snacks & Street Food",
     name: "Til Pitha",
     description: "Famous Assamese rice flour rolls filled with a sweet roasted black sesame and jaggery center.",
     type: "Vegetarian",
@@ -564,6 +586,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "doi-chira-assam",
+    menuCategory: "Snacks & Street Food",
     name: "Doi Chira",
     description: "A simple and nutritious Assamese snack or breakfast of flattened rice soaked in creamy yogurt and sweetened with jaggery.",
     type: "Vegetarian",
@@ -587,6 +610,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "ghila-pitha-assam",
+    menuCategory: "Snacks & Street Food",
     name: "Ghila Pitha",
     description: "Deep-fried sweet rice flour and mashed banana fritters, a popular Bihu festival treat.",
     type: "Vegetarian",
@@ -611,6 +635,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "duck-meat-momos-assam",
+    menuCategory: "Snacks & Street Food",
     name: "Duck Meat Momos",
     description: "Steamed dumplings filled with spiced minced duck meat, a specialty of Assamese hill regions.",
     type: "Non-Vegetarian",

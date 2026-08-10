@@ -9,6 +9,7 @@ export const snacksRecipes: Recipe[] = [
   // --- FRIED (5 Veg / 5 Non-Veg) ---
   {
     id: "snack-aloo-bonda",
+    menuCategory: "Snacks & Street Food",
     name: "Aloo Bonda",
     description: "Classic South Indian fried potato balls coated in a golden gram flour batter, spiced with ginger and green chilies.",
     type: "Vegetarian",
@@ -35,6 +36,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-crispy-onion-pakora",
+    menuCategory: "Snacks & Street Food",
     name: "Crispy Onion Pakora",
     description: "Thinly sliced onions mixed with gram flour and aromatic spices, fried to a perfect golden crunch.",
     type: "Vegetarian",
@@ -61,6 +63,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-paneer-pakora",
+    menuCategory: "Snacks & Street Food",
     name: "Paneer Pakora",
     description: "Soft cottage cheese cubes dipped in a seasoned gram flour batter and fried until the exterior is light and crispy.",
     type: "Vegetarian",
@@ -87,6 +90,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-corn-cheese-balls",
+    menuCategory: "Snacks & Street Food",
     name: "Corn Cheese Balls",
     description: "Irresistible fried spheres filled with sweet corn and melting cheese, perfect for parties.",
     type: "Vegetarian",
@@ -113,6 +117,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-vegetable-spring-rolls",
+    menuCategory: "Snacks & Street Food",
     name: "Vegetable Spring Rolls",
     description: "Crispy, golden-fried wrappers stuffed with a savory mixture of stir-fried vegetables and glass noodles.",
     type: "Vegetarian",
@@ -139,6 +144,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-chicken-nuggets-indian",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Nuggets Indian Style",
     description: "Bite-sized chicken pieces marinated in Indian spices, breaded, and fried until crunchy and juicy.",
     type: "Non-Vegetarian",
@@ -165,6 +171,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-fish-fingers",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Fingers",
     description: "Crispy breaded fried fish strips made with succulent white fish, a hit among kids and adults alike.",
     type: "Non-Vegetarian",
@@ -191,6 +198,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-mutton-samosa",
+    menuCategory: "Snacks & Street Food",
     name: "Mutton Samosa",
     description: "Spicy and savory minced mutton filled in a crispy triangular pastry shell.",
     type: "Non-Vegetarian",
@@ -217,6 +225,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-egg-bonda",
+    menuCategory: "Snacks & Street Food",
     name: "Egg Bonda",
     description: "Boiled eggs coated in a spicy gram flour batter and deep-fried until golden, a popular street-side non-veg snack.",
     type: "Non-Vegetarian",
@@ -243,6 +252,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-prawn-fritters",
+    menuCategory: "Snacks & Street Food",
     name: "Prawn Fritters",
     description: "Juicy prawns dipped in a spicy, seasoned batter and fried until crunchy.",
     type: "Non-Vegetarian",
@@ -271,6 +281,7 @@ export const snacksRecipes: Recipe[] = [
   // --- BAKED (5 Veg / 5 Non-Veg) ---
   {
     id: "snack-baked-samosa",
+    menuCategory: "Snacks & Street Food",
     name: "Baked Samosa",
     description: "A healthier take on the traditional samosa, oven-baked to a crispy golden brown with a spiced potato filling.",
     type: "Vegetarian",
@@ -296,6 +307,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-nachos-cheese",
+    menuCategory: "Snacks & Street Food",
     name: "Baked Nachos with Cheese",
     description: "Crispy tortilla chips baked with a generous layer of melted cheese, salsa, and jalapeños.",
     type: "Vegetarian",
@@ -321,6 +333,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-vegetable-cutlet",
+    menuCategory: "Snacks & Street Food",
     name: "Baked Vegetable Cutlet",
     description: "Healthy and delicious spiced mixed-vegetable patties, oven-baked for a low-oil alternative.",
     type: "Vegetarian",
@@ -346,6 +359,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-paneer-tikka",
+    menuCategory: "Starters & Appetizers",
     name: "Baked Paneer Tikka Bites",
     description: "Oven-roasted marinated paneer cubes, served as bite-sized appetizers with mint chutney.",
     type: "Vegetarian",
@@ -370,6 +384,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-whole-wheat-veg-puff",
+    menuCategory: "Snacks & Street Food",
     name: "Whole Wheat Vegetable Puffs",
     description: "Flaky whole wheat pastry stuffed with a savory vegetable filling, a guilt-free bakery snack.",
     type: "Vegetarian",
@@ -393,6 +408,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-chicken-wings",
+    menuCategory: "Snacks & Street Food",
     name: "Baked Chicken Wings",
     description: "Crispy oven-roasted chicken wings marinated in a spicy Indian-style glaze.",
     type: "Non-Vegetarian",
@@ -417,6 +433,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-fish-cutlet",
+    menuCategory: "Snacks & Street Food",
     name: "Baked Fish Cutlet",
     description: "Hearty and healthy fish patties oven-baked to perfection, served with a tangy dip.",
     type: "Non-Vegetarian",
@@ -441,6 +458,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-chicken-tikka",
+    menuCategory: "Starters & Appetizers",
     name: "Baked Chicken Tikka Bites",
     description: "Juicy yogurt-marinated chicken chunks roasted in the oven, a classic favorite made easy.",
     type: "Non-Vegetarian",
@@ -465,6 +483,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-egg-boats",
+    menuCategory: "Snacks & Street Food",
     name: "Baked Egg Boats",
     description: "Halved boiled eggs topped with a savory masala and baked until the edges are firm.",
     type: "Non-Vegetarian",
@@ -489,6 +508,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-mutton-kebab",
+    menuCategory: "Starters & Appetizers",
     name: "Baked Mutton Kebab Bites",
     description: "Minced mutton patties flavored with local spices and baked for a smokier, lower-fat result.",
     type: "Non-Vegetarian",
@@ -514,6 +534,7 @@ export const snacksRecipes: Recipe[] = [
   // --- CHAAT (5 Veg / 5 Non-Veg) ---
   {
     id: "snack-papdi-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Papdi Chaat",
     description: "A symphony of flavors—crispy papdis topped with spiced potatoes, tangy chutneys, and cool yogurt.",
     type: "Vegetarian",
@@ -539,6 +560,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-sev-puri",
+    menuCategory: "Breads",
     name: "Sev Puri",
     description: "Mouth-sized puris loaded with potatoes, a trio of chutneys, and a mountain of crunchy sev.",
     type: "Vegetarian",
@@ -564,6 +586,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-bhel-puri",
+    menuCategory: "Breads",
     name: "Bhel Puri",
     description: "The classic Mumbai beach snack—puffed rice tossed with savory snacks and tangy sauces.",
     type: "Vegetarian",
@@ -588,6 +611,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-ragda-pattice",
+    menuCategory: "Snacks & Street Food",
     name: "Ragda Pattice",
     description: "Crispy potato patties (pattice) served with a hot, spiced white pea curry (ragda).",
     type: "Vegetarian",
@@ -612,6 +636,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-corn-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Corn Chaat",
     description: "A healthy and zesty chaat made with steamed sweet corn, crunchy vegetables, and tangy lime.",
     type: "Vegetarian",
@@ -636,6 +661,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-chicken-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Chaat",
     description: "Spicy and tangy shredded chicken tossed with Indian street-food flavors.",
     type: "Non-Vegetarian",
@@ -660,6 +686,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-egg-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Egg Chaat",
     description: "Zesty chaat made with hard-boiled eggs, perfect for a quick protein-rich snack.",
     type: "Non-Vegetarian",
@@ -684,6 +711,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-keema-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Keema Chaat",
     description: "A hearty and spicy chaat featuring minced mutton (keema) topped with traditional crunchy garnishes.",
     type: "Non-Vegetarian",
@@ -708,6 +736,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-fish-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Chaat",
     description: "Crispy fried fish pieces tossed with tangy chutneys and fresh herbs for a unique coastal chaat experience.",
     type: "Non-Vegetarian",
@@ -731,6 +760,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-chicken-tikka-chaat",
+    menuCategory: "Starters & Appetizers",
     name: "Chicken Tikka Chaat",
     description: "Flavor-packed chaat using grilled chicken tikka, mixed with onions, tomatoes, and street-style chutneys.",
     type: "Non-Vegetarian",
@@ -757,6 +787,7 @@ export const snacksRecipes: Recipe[] = [
   // --- STREET FOOD (5 Veg / 5 Non-Veg) ---
   {
     id: "snack-mumbai-pani-puri",
+    menuCategory: "Snacks & Street Food",
     name: "Mumbai Pani Puri",
     description: "Crispy hollow puris served with a spicy, tangy mint-flavored water and a potato-chickpea filling.",
     type: "Vegetarian",
@@ -781,6 +812,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-dabeli",
+    menuCategory: "Snacks & Street Food",
     name: "Dabeli",
     description: "A popular Kutch specialty—spiced mashed potato stuffed in a pav, served with special dabeli masala and pomegranate.",
     type: "Vegetarian",
@@ -807,6 +839,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-vegetable-frankie",
+    menuCategory: "Snacks & Street Food",
     name: "Vegetable Frankie",
     description: "A popular Mumbai-style roll—spicy potato patty rolled in a flatbread with onions and a special frankie masala.",
     type: "Vegetarian",
@@ -833,6 +866,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-kathi-roll-veg",
+    menuCategory: "Snacks & Street Food",
     name: "Kathi Roll Vegetable",
     description: "Kolkata style street-roll with a savory mixed vegetable filling in a flaky paratha.",
     type: "Vegetarian",
@@ -857,6 +891,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-cut-fruit-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Cut Fruit Chaat",
     description: "Freshly cut seasonal fruits tossed with tangy chaat masala and lime, a healthy street favorite.",
     type: "Vegetarian",
@@ -881,6 +916,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-chicken-kathi-roll",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Kathi Roll",
     description: "Spicy grilled chicken pieces rolled in a flaky, egg-coated paratha, the ultimate Kolkata street snack.",
     type: "Non-Vegetarian",
@@ -906,6 +942,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-egg-roll-kolkata",
+    menuCategory: "Snacks & Street Food",
     name: "Egg Roll Kolkata Style",
     description: "Simple and satisfying street-roll with a golden egg-layered paratha and crunchy spiced onions.",
     type: "Non-Vegetarian",
@@ -930,6 +967,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-chicken-frankie",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Frankie",
     description: "A spicy chicken roll from Mumbai street stalls—juicy chicken pieces in a thin wrap with tangy onions.",
     type: "Non-Vegetarian",
@@ -954,6 +992,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-mutton-roll",
+    menuCategory: "Snacks & Street Food",
     name: "Mutton Roll",
     description: "Indulgent street roll filled with spicy minced mutton and crunchy fresh garnishes.",
     type: "Non-Vegetarian",
@@ -978,6 +1017,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-fish-fry-street",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Fry Street Style",
     description: "Quick and crispy deep-fried fish bites sold as an evening snack on Indian coastlines.",
     type: "Non-Vegetarian",
@@ -1003,6 +1043,7 @@ export const snacksRecipes: Recipe[] = [
   // --- HEALTHY (5 Veg / 5 Non-Veg) ---
   {
     id: "snack-sprouts-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Sprouts Chaat",
     description: "A highly nutritious and crunchy snack made with mixed sprouted lentils, fresh vegetables, and tangy lime.",
     type: "Vegetarian",
@@ -1029,6 +1070,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-roasted-makhana",
+    menuCategory: "Snacks & Street Food",
     name: "Roasted Makhana",
     description: "Light and airy roasted fox nuts seasoned with simple spices, a perfect low-calorie healthy snack.",
     type: "Vegetarian",
@@ -1054,6 +1096,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-baked-sweet-potato-chaat",
+    menuCategory: "Desserts & Sweets",
     name: "Baked Sweet Potato Chaat",
     description: "Nutritious roasted sweet potato cubes tossed with zesty Indian spices and lime.",
     type: "Vegetarian",
@@ -1077,6 +1120,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-steamed-dhokla-bites",
+    menuCategory: "Beverages",
     name: "Steamed Dhokla Bites",
     description: "Mini-sized steamed savory gram flour cakes, a light and airy protein-rich snack.",
     type: "Vegetarian",
@@ -1100,6 +1144,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-roasted-chana-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Roasted Chana Snack",
     description: "Crunchy spiced roasted chickpeas, a high-fiber and protein-dense snack for anytime.",
     type: "Vegetarian",
@@ -1121,6 +1166,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-grilled-chicken-skewers",
+    menuCategory: "Snacks & Street Food",
     name: "Grilled Chicken Skewers",
     description: "Lightly seasoned and grilled chicken chunks, a lean and healthy protein snack.",
     type: "Non-Vegetarian",
@@ -1144,6 +1190,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-steamed-egg-bites",
+    menuCategory: "Beverages",
     name: "Steamed Egg Bites",
     description: "Light and airy steamed egg white bites seasoned with fresh herbs and spices.",
     type: "Non-Vegetarian",
@@ -1167,6 +1214,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-grilled-fish-bites",
+    menuCategory: "Snacks & Street Food",
     name: "Grilled Fish Bites",
     description: "Low-fat grilled fish cubes marinated in a delicate lemon-garlic sauce.",
     type: "Non-Vegetarian",
@@ -1188,6 +1236,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-boiled-egg-chaat-healthy",
+    menuCategory: "Snacks & Street Food",
     name: "Boiled Egg Chaat (Healthy Style)",
     description: "Protein-rich boiled eggs tossed with fresh vegetables and zero-oil dressings.",
     type: "Non-Vegetarian",
@@ -1210,6 +1259,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-grilled-chicken-tikka-healthy",
+    menuCategory: "Starters & Appetizers",
     name: "Grilled Chicken Tikka (Healthy Style)",
     description: "Traditional tikka made with extra-lean chicken and minimal oil, focusing on the yogurt marinade.",
     type: "Non-Vegetarian",

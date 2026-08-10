@@ -4,6 +4,7 @@ export const tripuraRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "mui-borok-fish-curry",
+    menuCategory: "Curries & Gravies",
     name: "Mui Borok Fish Curry",
     description: "The traditional soul food of Tripura—fresh river fish cooked with fermented fish (berma) and local herbs for a pungent, oil-free flavor.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "chakhwi-pork-stew",
+    menuCategory: "Curries & Gravies",
     name: "Chakhwi",
     description: "A unique Tripuri pork stew cooked with bamboo shoots, green papaya, and a hint of soda (kharchi), making it extremely tender.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-shoot-tripuri",
+    menuCategory: "Breads",
     name: "Pork with Bamboo Shoot Tripuri",
     description: "A spicy Tripuri pork curry where the pungent flavor of fermented bamboo shoot complements the rich fat of the pork.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "berma-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Berma Chicken Curry",
     description: "Chicken curry prepared with Tripuri fermented fish (berma), offering a unique earthy and pungent depth to the meat.",
     type: "Non-Vegetarian",
@@ -111,6 +115,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "wahan-mosdeng",
+    menuCategory: "Curries & Gravies",
     name: "Wahan Mosdeng",
     description: "A spicy and savory Tripuri pork salad made with roasted meat, lots of green chilies, and fresh ginger.",
     type: "Non-Vegetarian",
@@ -138,6 +143,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "fish-curry-tripuri",
+    menuCategory: "Breads",
     name: "Fish Curry Tripuri Style",
     description: "A light and refreshing freshwater fish curry prepared with minimal oil and local mountain herbs.",
     type: "Non-Vegetarian",
@@ -165,6 +171,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "muya-awandru-pork",
+    menuCategory: "Curries & Gravies",
     name: "Muya Awandru",
     description: "A thick and creamy Tripuri stew made with bamboo shoots and pork, thickened with rice flour.",
     type: "Non-Vegetarian",
@@ -192,6 +199,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "chicken-bamboo-shoot-tripuri",
+    menuCategory: "Breads",
     name: "Chicken Curry with Bamboo Shoot Tripuri",
     description: "A zesty chicken curry from the hills of Tripura, using fresh bamboo shoots and birds eye chilies.",
     type: "Non-Vegetarian",
@@ -218,6 +226,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "dried-fish-chutney-curry",
+    menuCategory: "Sides & Accompaniments",
     name: "Dried Fish Chutney Curry",
     description: "A fiery and pungent dish made by cooking dried fish into a thick, chutney-like curry with lots of garlic.",
     type: "Non-Vegetarian",
@@ -244,6 +253,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-tripuri",
+    menuCategory: "Breads",
     name: "Egg Curry Tripuri Style",
     description: "Boiled eggs in a light, fermented fish-tinged gravy, a common comfort meal in rural Tripura.",
     type: "Non-Vegetarian",
@@ -272,6 +282,7 @@ export const tripuraRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "mosdeng-veg",
+    menuCategory: "Curries & Gravies",
     name: "Mosdeng",
     description: "A traditional Tripuri mashed salad made with roasted vegetables and fiery local chilies.",
     type: "Vegetarian",
@@ -298,6 +309,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "muya-bwtwi",
+    menuCategory: "Curries & Gravies",
     name: "Muya Bwtwi",
     description: "A healthy Tripuri curry made with bamboo shoots and local green vegetables, cooked with a touch of fermented fish extract.",
     type: "Vegetarian",
@@ -324,6 +336,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "berma-veg-curry",
+    menuCategory: "Curries & Gravies",
     name: "Berma Vegetable Curry",
     description: "Mixed seasonal vegetables simmered in a pungent gravy flavored with fermented fish paste.",
     type: "Vegetarian",
@@ -349,6 +362,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "thwitwi-curry",
+    menuCategory: "Curries & Gravies",
     name: "Thwitwi Curry",
     description: "Banana flower (Thwitwi) cooked in a traditional Tripuri style with roasted spices and minimal oil.",
     type: "Vegetarian",
@@ -374,6 +388,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "muya-awandru-veg",
+    menuCategory: "Curries & Gravies",
     name: "Muya Awandru Vegetarian",
     description: "A thick and wholesome bamboo shoot stew thickened with rice flour and seasoned with local herbs.",
     type: "Vegetarian",
@@ -400,6 +415,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "gudok-veg",
+    menuCategory: "Curries & Gravies",
     name: "Gudok (Vegetarian Style)",
     description: "A healthy and oil-free mashed vegetable stew made with seasonal greens and roots.",
     type: "Vegetarian",
@@ -425,6 +441,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-leaf-tripuri",
+    menuCategory: "Breads",
     name: "Pumpkin Leaf Curry Tripuri",
     description: "Stir-fried tender pumpkin leaves with garlic and green chilies, a simple and nutritious forest dish.",
     type: "Vegetarian",
@@ -449,6 +466,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "dal-tripuri",
+    menuCategory: "Breads",
     name: "Dal Tripuri Style",
     description: "Simple and comforting lentil soup prepared with local hill herbs and ginger.",
     type: "Vegetarian",
@@ -473,6 +491,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "arum-leaf-curry",
+    menuCategory: "Curries & Gravies",
     name: "Arum Leaf Curry",
     description: "Colocasia (arum) leaves cooked into a tangy curry with mountain spices.",
     type: "Vegetarian",
@@ -497,6 +516,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "mixed-veg-berma-curry",
+    menuCategory: "Curries & Gravies",
     name: "Mixed Vegetable Berma Curry",
     description: "Seasonal hill vegetables in a lightly fermented, spicy gravy.",
     type: "Vegetarian",
@@ -523,6 +543,7 @@ export const tripuraRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "chakhwi-rice-bites",
+    menuCategory: "Snacks & Street Food",
     name: "Chakhwi Rice Bites",
     description: "Pan-fried savory rice flour cakes flavored with ginger and local Tripuri seasonings.",
     type: "Vegetarian",
@@ -547,6 +568,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "muya-bhaja",
+    menuCategory: "Snacks & Street Food",
     name: "Muya Bhaja",
     description: "Crispy fried bamboo shoot fritters, a popular evening snack in Tripuri households.",
     type: "Vegetarian",
@@ -571,6 +593,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "malpua-tripuri",
+    menuCategory: "Desserts & Sweets",
     name: "Malpua Tripuri",
     description: "Sweet fried rice flour and jaggery pancakes, common during local Tripuri festivals.",
     type: "Vegetarian",
@@ -594,6 +617,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "muya-pitha",
+    menuCategory: "Snacks & Street Food",
     name: "Muya Pitha",
     description: "Steamed rice flour dumplings with a savory bamboo shoot and ginger filling.",
     type: "Vegetarian",
@@ -618,6 +642,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-skewers",
+    menuCategory: "Snacks & Street Food",
     name: "Pork Bamboo Skewers",
     description: "Grilled spiced pork and bamboo shoot skewers, a popular tribal street snack.",
     type: "Non-Vegetarian",

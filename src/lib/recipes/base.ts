@@ -3,6 +3,7 @@ import { Recipe } from './types';
 export const baseRecipes: Recipe[] = [
   {
     id: "chicken-biryani",
+    menuCategory: "Rice & Biryani",
     name: "Chicken Biryani",
     description: "Aromatic basmati rice layered with spiced chicken and caramelized onions. A classic Indian one-pot meal.",
     type: "Non-Vegetarian",
@@ -33,6 +34,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "butter-chicken",
+    menuCategory: "Curries & Gravies",
     name: "Butter Chicken",
     description: "Creamy tomato-based curry with tender chicken pieces. A restaurant-style classic that's easy to make at home.",
     type: "Non-Vegetarian",
@@ -61,6 +63,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "paneer-tikka-masala",
+    menuCategory: "Protein Specialties",
     name: "Paneer Tikka Masala",
     description: "Creamy tomato-based curry with marinated paneer cubes. A vegetarian delight perfect for any occasion.",
     type: "Vegetarian",
@@ -89,6 +92,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "chole-bhature",
+    menuCategory: "Breads",
     name: "Chole Bhature",
     description: "Deep-fried fluffy bread served with spiced chickpea curry. A North Indian street food favorite.",
     type: "Vegetarian",
@@ -118,6 +122,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "sambar",
+    menuCategory: "Curries & Gravies",
     name: "Sambar",
     description: "A tangy lentil and vegetable stew from South India. Served with rice, idli, or dosa.",
     type: "Vegetarian",
@@ -147,6 +152,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "masala-dosa",
+    menuCategory: "Breads",
     name: "Masala Dosa",
     description: "Crispy crepe made from fermented rice and lentils, filled with a spiced potato filling.",
     type: "Vegetarian",
@@ -175,6 +181,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "dal-makhani",
+    menuCategory: "Curries & Gravies",
     name: "Dal Makhani",
     description: "A rich and creamy lentil curry made with black gram and kidney beans, a specialty from Punjab.",
     type: "Vegetarian",
@@ -207,6 +214,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "rajma-chawal",
+    menuCategory: "Curries & Gravies",
     name: "Rajma Chawal",
     description: "A comforting North Indian dish of red kidney beans in a thick gravy served with rice.",
     type: "Vegetarian",
@@ -234,6 +242,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "palak-paneer",
+    menuCategory: "Curries & Gravies",
     name: "Palak Paneer",
     description: "A classic vegetarian dish from North India consisting of paneer in a thick paste made from puréed spinach.",
     type: "Vegetarian",

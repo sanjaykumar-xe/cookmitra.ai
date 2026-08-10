@@ -90,10 +90,15 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
                                 </div>
                             )}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                            <div className="absolute top-4 left-4">
+                            <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2">
                                 <Badge variant={recipe.type === 'Vegetarian' ? 'secondary' : 'destructive'} className="font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-lg">
                                     {recipe.type}
                                 </Badge>
+                                {recipe.menuCategory && (
+                                    <Badge variant="outline" className="font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-lg bg-black/40 text-white backdrop-blur-md border-white/20">
+                                        {recipe.menuCategory}
+                                    </Badge>
+                                )}
                             </div>
                         </div>
 
@@ -106,6 +111,11 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
                                     {recipe.description}
                                 </CardDescription>
                                 <div className="flex flex-wrap gap-1.5">
+                                    {recipe.menuCategory && (
+                                        <Badge variant="secondary" className="text-[9px] font-black uppercase tracking-tighter bg-primary/10 text-primary border-primary/20">
+                                            {recipe.menuCategory}
+                                        </Badge>
+                                    )}
                                     {recipe.tags?.slice(0, 3).map(tag => (
                                         <Badge key={tag} variant="outline" className="text-[9px] font-black uppercase tracking-tighter bg-muted/30 border-border/40">
                                             {tag}

@@ -4,6 +4,7 @@ export const biharRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "bihari-mutton-curry",
+    menuCategory: "Curries & Gravies",
     name: "Bihari Mutton Curry",
     description: "A rustic and robust mutton curry made with mustard oil and a unique blend of roasted spices, typical of Bihari households.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "bihari-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Bihari Chicken Curry",
     description: "A simple yet flavorful chicken curry cooked in mustard oil with a dominance of onions and garlic.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "machh-ka-salan",
+    menuCategory: "Curries & Gravies",
     name: "Machh Ka Salan",
     description: "Traditional Bihari river fish curry prepared with a spicy mustard and garlic paste.",
     type: "Non-Vegetarian",
@@ -81,6 +84,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "mutton-kaleji-bihari",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kaleji Bihari",
     description: "Dry roasted spiced mutton liver, a popular snack or side dish in Bihari meat-eating traditions.",
     type: "Non-Vegetarian",
@@ -106,6 +110,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "chicken-rezala-bihari",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Rezala Bihari",
     description: "A mild and aromatic white chicken curry influenced by Mughlai traditions, using yogurt and nut pastes.",
     type: "Non-Vegetarian",
@@ -132,6 +137,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "anda-curry-bihari",
+    menuCategory: "Curries & Gravies",
     name: "Anda Curry Bihari Style",
     description: "Boiled eggs simmered in a sharp mustard oil gravy with a deep red color and bold spices.",
     type: "Non-Vegetarian",
@@ -158,6 +164,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "machh-bhuja",
+    menuCategory: "Protein Specialties",
     name: "Machh Bhuja",
     description: "A dry-roasted river fish fry, heavily seasoned with garlic and local Bihari spices.",
     type: "Non-Vegetarian",
@@ -183,6 +190,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "champaran-mutton",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Champaran Style (Ahuna Mutton)",
     description: "The legendary slow-cooked mutton from Champaran, prepared in an earthen pot (Handi) with whole garlic and raw spices.",
     type: "Non-Vegetarian",
@@ -209,6 +217,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "chicken-bhuna-bihari",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Bhuna Bihari",
     description: "A thick and spicy chicken preparation where the meat is roasted with spices until the liquid is almost evaporated.",
     type: "Non-Vegetarian",
@@ -234,6 +243,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "kadhi-machhi",
+    menuCategory: "Curries & Gravies",
     name: "Kadhi Machhi",
     description: "A rare and tangy Bihari fish curry where fish steaks are cooked in a yogurt and gram-flour based gravy.",
     type: "Non-Vegetarian",
@@ -261,6 +271,7 @@ export const biharRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "litti-chokha",
+    menuCategory: "Dry & Stir-Fried",
     name: "Litti Chokha",
     description: "The ultimate soul food of Bihar—roasted wheat balls stuffed with sattu, served with smoky mashed vegetables.",
     type: "Vegetarian",
@@ -287,6 +298,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "chana-ghugni",
+    menuCategory: "Curries & Gravies",
     name: "Chana Ghugni",
     description: "A spicy and tangy curry made with dried yellow peas, a popular Bihari evening staple.",
     type: "Vegetarian",
@@ -312,6 +324,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "dal-pitha",
+    menuCategory: "Curries & Gravies",
     name: "Dal Pitha",
     description: "Steamed rice flour dumplings stuffed with a spicy lentil paste, a healthy and filling Bihari snack.",
     type: "Vegetarian",
@@ -337,6 +350,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "kadhi-bihari",
+    menuCategory: "Curries & Gravies",
     name: "Kadhi Bihari Style",
     description: "A tangy yogurt-based curry with soft gram flour dumplings (Bari), uniquely seasoned with panchphoran.",
     type: "Vegetarian",
@@ -362,6 +376,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "sattu-paratha",
+    menuCategory: "Breads",
     name: "Sattu Paratha",
     description: "Whole wheat flatbread stuffed with a spicy roasted gram flour mixture, a nutrient-dense Bihari breakfast.",
     type: "Vegetarian",
@@ -386,6 +401,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "bhindi-bihari",
+    menuCategory: "Dry & Stir-Fried",
     name: "Bhindi Bihari Style",
     description: "Dry okra stir-fry with a distinct panchphoran tempering and spicy mustard oil flavor.",
     type: "Vegetarian",
@@ -410,6 +426,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "aloo-chokha",
+    menuCategory: "Dry & Stir-Fried",
     name: "Aloo Chokha",
     description: "Classic Bihari mashed potato seasoned with raw mustard oil, roasted red chilies, and raw onions.",
     type: "Vegetarian",
@@ -434,6 +451,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "baingan-chokha",
+    menuCategory: "Dry & Stir-Fried",
     name: "Baingan Chokha",
     description: "Smoky roasted mashed brinjal with mustard oil and garlic, a mandatory side for Litti.",
     type: "Vegetarian",
@@ -458,6 +476,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "dal-bihari",
+    menuCategory: "Curries & Gravies",
     name: "Dal Bihari (Arhar Dal)",
     description: "Simple tempered pigeon pea dal with a punchy garlic and red chili tadka.",
     type: "Vegetarian",
@@ -482,6 +501,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "kaddu-bhaji-bihari",
+    menuCategory: "Dry & Stir-Fried",
     name: "Kaddu Bhaji Bihari Style",
     description: "Sweet and spicy pumpkin stir-fry with a hint of panchphoran.",
     type: "Vegetarian",
@@ -508,6 +528,7 @@ export const biharRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "sattu-snack-balls",
+    menuCategory: "Beverages",
     name: "Sattu Sharbat Snack Balls",
     description: "Protein-rich energy bites made from roasted gram flour, salt, and spices.",
     type: "Vegetarian",
@@ -531,6 +552,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "khaja",
+    menuCategory: "Desserts & Sweets",
     name: "Khaja",
     description: "Flaky and crisp layered sweet pastry soaked in sugar syrup, a traditional festive snack.",
     type: "Vegetarian",
@@ -555,6 +577,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "thekua",
+    menuCategory: "Snacks & Street Food",
     name: "Thekua",
     description: "Sturdy and sweet fried wheat-jaggery cookies, the signature prasad of Chhath Puja.",
     type: "Vegetarian",
@@ -579,6 +602,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "pua",
+    menuCategory: "Snacks & Street Food",
     name: "Pua",
     description: "Sweet fried pancakes made from wheat flour and mashed banana, a festive Bihari treat.",
     type: "Vegetarian",
@@ -603,6 +627,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "fish-pakora-bihari",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Pakora Bihari Style",
     description: "Crispy river fish fritters coated in a spiced gram flour batter with a hint of garlic.",
     type: "Non-Vegetarian",

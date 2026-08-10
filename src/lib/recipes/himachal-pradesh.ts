@@ -4,6 +4,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "himachali-chicken-curry-pahari",
+    menuCategory: "Curries & Gravies",
     name: "Himachali Chicken Curry",
     description: "A mild and creamy mountain-style chicken curry prepared with a whisked curd base and aromatic spices.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-himachali-style",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Himachali",
     description: "A slow-cooked, rustic mutton curry made with hand-pounded spices, typical of the Kangra valley.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-anardana-pahari",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Anardana",
     description: "A unique Himachali chicken preparation flavored with dried pomegranate seeds, giving it a distinct tang and dark color.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "khatta-meat-himachali",
+    menuCategory: "Curries & Gravies",
     name: "Khatta Meat",
     description: "A famous Pahari mutton delicacy cooked with dry mango powder (amchur) for a sharp, tangy flavor.",
     type: "Non-Vegetarian",
@@ -108,6 +112,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-dham-style",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Dham Style",
     description: "A mountain-style chicken curry inspired by the traditional Himachali 'Dham' feast, using simple yet robust spices.",
     type: "Non-Vegetarian",
@@ -134,6 +139,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-rara-himachali-style",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Rara Himachali",
     description: "A combination of mutton chunks and minced mutton (keema) slow-cooked in a rich mountain-spice gravy.",
     type: "Non-Vegetarian",
@@ -160,6 +166,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "trout-fish-curry-himalayan",
+    menuCategory: "Curries & Gravies",
     name: "Trout Fish Curry",
     description: "Fresh Himalayan trout cooked in a light, spicy, and tangy gravy, a specialty of the Kullu and Manali regions.",
     type: "Non-Vegetarian",
@@ -187,6 +194,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-himachali-style",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Himachali",
     description: "Boiled eggs simmered in a tangy yogurt and tomato gravy, a quick and satisfying mountain meal.",
     type: "Non-Vegetarian",
@@ -213,6 +221,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-kaleji-himachali-style",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kaleji Himachali",
     description: "Dry roasted spicy mutton liver fry, heavily seasoned with garlic and local Pahari spices.",
     type: "Non-Vegetarian",
@@ -239,6 +248,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-korma-himachali-style",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Korma Himachali",
     description: "A rich and creamy chicken korma with mountain-fresh ingredients and a smooth yogurt base.",
     type: "Non-Vegetarian",
@@ -267,6 +277,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "madra-himachali",
+    menuCategory: "Curries & Gravies",
     name: "Madra",
     description: "The crown jewel of Himachali Dham—chickpeas or kidney beans cooked in a luscious yogurt and nut-based gravy.",
     type: "Vegetarian",
@@ -294,6 +305,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "siddu-authentic",
+    menuCategory: "Curries & Gravies",
     name: "Siddu",
     description: "Hearty steamed stuffed wheat buns, a traditional winter staple often eaten with ghee or dal.",
     type: "Vegetarian",
@@ -319,6 +331,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chana-madra-pahari",
+    menuCategory: "Curries & Gravies",
     name: "Chana Madra",
     description: "A variation of the classic Madra, using chickpeas simmered in a spiced mountain yogurt gravy.",
     type: "Vegetarian",
@@ -344,6 +357,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "kaddu-ka-khatta-himachali",
+    menuCategory: "Curries & Gravies",
     name: "Kaddu Ka Khatta",
     description: "A tangy and sweet-sour pumpkin curry made with a distinctive Pahari spice profile.",
     type: "Vegetarian",
@@ -369,6 +383,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "rajma-madra-pahari",
+    menuCategory: "Curries & Gravies",
     name: "Rajma Madra",
     description: "Kidney beans cooked in a rich, velvety yogurt-based gravy, a festive Himachali Dham specialty.",
     type: "Vegetarian",
@@ -393,6 +408,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "auriya-kaddu-himachali",
+    menuCategory: "Curries & Gravies",
     name: "Auriya Kaddu",
     description: "Pumpkin cooked with mustard seeds and fennel, providing a sharp and aromatic flavor profile.",
     type: "Vegetarian",
@@ -418,6 +434,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "dham-rice-authentic",
+    menuCategory: "Curries & Gravies",
     name: "Dham Rice",
     description: "Fragrant rice mildly spiced with saffron and whole spices, served as the base of the Himachali Dham platter.",
     type: "Vegetarian",
@@ -442,6 +459,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "sepu-vadi-himachali",
+    menuCategory: "Curries & Gravies",
     name: "Sepu Vadi",
     description: "Split black gram dumplings (vadi) cooked in a silky yogurt gravy, a hallmark of Mandi cuisine.",
     type: "Vegetarian",
@@ -466,6 +484,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "palda-himachali",
+    menuCategory: "Curries & Gravies",
     name: "Palda",
     description: "A simple and nutritious yogurt-based vegetable curry, common in the rural homes of Himachal.",
     type: "Vegetarian",
@@ -490,6 +509,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chutney-wale-aloo-pahari",
+    menuCategory: "Sides & Accompaniments",
     name: "Chutney Wale Aloo",
     description: "Boiled potato cubes tossed in a fiery and tangy mint-coriander chutney.",
     type: "Vegetarian",
@@ -515,6 +535,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "babru-himachali",
+    menuCategory: "Snacks & Street Food",
     name: "Babru",
     description: "Stuffed and deep-fried wheat bread patties with a savory black gram filling.",
     type: "Vegetarian",
@@ -538,6 +559,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "patande-himachali",
+    menuCategory: "Snacks & Street Food",
     name: "Patande",
     description: "A thin and sweet wheat pancake, often enjoyed for breakfast in the Sirmaur district.",
     type: "Vegetarian",
@@ -561,6 +583,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chana-madra-chaat-bites",
+    menuCategory: "Snacks & Street Food",
     name: "Chana Madra Chaat Bites",
     description: "A bite-sized snack version of the chickpea yogurt curry, served on small crispy crackers.",
     type: "Vegetarian",
@@ -583,6 +606,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "mittha-himachali",
+    menuCategory: "Snacks & Street Food",
     name: "Mittha",
     description: "Sweet saffron-colored rice pudding with an abundance of dried fruits and nuts.",
     type: "Vegetarian",
@@ -605,6 +629,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-pakora-himachali-pahari",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Pakora Himachali",
     description: "Crispy mountain-style fried chicken bites coated in a spiced gram flour batter.",
     type: "Non-Vegetarian",

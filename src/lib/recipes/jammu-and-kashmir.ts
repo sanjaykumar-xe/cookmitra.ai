@@ -4,6 +4,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "rogan-josh-authentic",
+    menuCategory: "Curries & Gravies",
     name: "Rogan Josh",
     description: "A world-famous deep red aromatic lamb curry from the Kashmiri Wazwan tradition, flavored with mace and ratanjot.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "yakhni-mutton-kashmiri",
+    menuCategory: "Curries & Gravies",
     name: "Yakhni",
     description: "A delicate yogurt-based mutton curry flavored with dried mint and whole spices like cardamom and fennel.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "kashmiri-chicken-curry-mild",
+    menuCategory: "Curries & Gravies",
     name: "Kashmiri Chicken Curry",
     description: "A mild chicken curry prepared with a base of yogurt and tomatoes, distinct for its use of Kashmiri red chili for color.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "gushtaba-wazwan",
+    menuCategory: "Curries & Gravies",
     name: "Gushtaba",
     description: "Hand-pounded mutton dumplings cooked in a rich, creamy yogurt gravy; a masterpiece of the Kashmiri Wazwan.",
     type: "Non-Vegetarian",
@@ -112,6 +116,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "rista-authentic",
+    menuCategory: "Curries & Gravies",
     name: "Rista",
     description: "Spiced mutton meatballs cooked in a fiery red gravy, known for its intense color and bouncy texture.",
     type: "Non-Vegetarian",
@@ -139,6 +144,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "tabak-maaz-fried-ribs",
+    menuCategory: "Curries & Gravies",
     name: "Tabak Maaz",
     description: "Tender mutton ribs parboiled in milk and spices, then shallow fried in ghee until crispy and golden.",
     type: "Non-Vegetarian",
@@ -165,6 +171,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "kashmiri-fish-curry-river-trout",
+    menuCategory: "Curries & Gravies",
     name: "Kashmiri Fish Curry",
     description: "Fresh river trout prepared in a pungent mustard oil and spice gravy, reflecting the riverine culture of the valley.",
     type: "Non-Vegetarian",
@@ -192,6 +199,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "mutton-kabab-kashmiri-spiced",
+    menuCategory: "Starters & Appetizers",
     name: "Mutton Kabab Kashmiri",
     description: "Hand-pounded minced mutton skewers grilled with a unique blend of local spices and fresh herbs.",
     type: "Non-Vegetarian",
@@ -218,6 +226,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-kashmiri-yogurt",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Kashmiri Style",
     description: "Boiled eggs simmered in a tangy yogurt-based gravy with a hint of fennel and dried ginger.",
     type: "Non-Vegetarian",
@@ -244,6 +253,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "chicken-yakhni-kashmiri",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Yakhni",
     description: "A lighter version of the traditional yakhni, using tender chicken pieces in a thin yogurt and mint broth.",
     type: "Non-Vegetarian",
@@ -272,6 +282,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "dum-aloo-kashmiri-spicy",
+    menuCategory: "Curries & Gravies",
     name: "Dum Aloo Kashmiri",
     description: "Fried baby potatoes simmered in a thick, spicy red gravy made with yogurt and Kashmiri red chili powder.",
     type: "Vegetarian",
@@ -299,6 +310,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "haak-collard-greens",
+    menuCategory: "Curries & Gravies",
     name: "Haak",
     description: "The most basic and essential Kashmiri green dish—collard greens simmered simply with mustard oil and salt.",
     type: "Vegetarian",
@@ -324,6 +336,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "nadru-yakhni-lotus-stem",
+    menuCategory: "Curries & Gravies",
     name: "Nadru Yakhni",
     description: "Sliced lotus stems cooked in a mild and creamy yogurt gravy with aromatic whole spices.",
     type: "Vegetarian",
@@ -350,6 +363,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "rajma-kashmiri-authentic",
+    menuCategory: "Curries & Gravies",
     name: "Rajma Kashmiri",
     description: "Red kidney beans slow-cooked with distinct Kashmiri spices like fennel and dried ginger, served with rice.",
     type: "Vegetarian",
@@ -376,6 +390,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "modur-pulav-saffron-rice",
+    menuCategory: "Rice & Biryani",
     name: "Modur Pulav",
     description: "A fragrant sweet pulao made with long-grain rice, heavy saffron, and an abundance of dried fruits and nuts.",
     type: "Vegetarian",
@@ -402,6 +417,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "chaman-paneer-curry",
+    menuCategory: "Curries & Gravies",
     name: "Chaman",
     description: "Fried cottage cheese cubes simmered in a mild, tomato-yogurt gravy with fennel and ginger.",
     type: "Vegetarian",
@@ -428,6 +444,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "nadru-monje-fritters",
+    menuCategory: "Protein Specialties",
     name: "Nadru Monje",
     description: "Deep-fried lotus stem fritters that are often served as a tea-time snack or simmered in a light gravy.",
     type: "Vegetarian",
@@ -453,6 +470,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "tsok-wangun-sour-brinjal",
+    menuCategory: "Curries & Gravies",
     name: "Tsok Wangun",
     description: "Fried brinjal slices cooked in a tangy tamarind and tomato gravy, a staple in Kashmiri Pandit cuisine.",
     type: "Vegetarian",
@@ -478,6 +496,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "kashmiri-kadam-pumpkin",
+    menuCategory: "Curries & Gravies",
     name: "Kashmiri Kadam",
     description: "Yellow pumpkin slow-cooked with a distinct seasoning of fennel seeds, ginger powder, and mustard oil.",
     type: "Vegetarian",
@@ -502,6 +521,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "monji-haakh-turnip-greens",
+    menuCategory: "Curries & Gravies",
     name: "Monji Haakh",
     description: "Turnip greens and turnip slices simmered in a light, watery gravy seasoned with asafoetida and mustard oil.",
     type: "Vegetarian",
@@ -528,6 +548,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "kashmiri-kulcha-breakfast",
+    menuCategory: "Breads",
     name: "Kashmiri Kulcha",
     description: "A hard, crumbly baked leavened bread, traditionally enjoyed with pink tea (Nun Chai).",
     type: "Vegetarian",
@@ -553,6 +574,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "shufta-dessert-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Shufta",
     description: "A rich mixture of mixed dry fruits, paneer, and coconut soaked in a heavy saffron and cardamom syrup.",
     type: "Vegetarian",
@@ -577,6 +599,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "kashmiri-bread-pakora-stuffed",
+    menuCategory: "Snacks & Street Food",
     name: "Kashmiri Bread Pakora",
     description: "Spiced mashed potato stuffed between bread slices, dipped in a thick gram flour batter and deep fried.",
     type: "Vegetarian",
@@ -601,6 +624,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "sheermal-kashmiri-sweet-bread",
+    menuCategory: "Breads",
     name: "Sheermal Kashmiri",
     description: "A mildly sweet, saffron-flavored traditional flatbread made with refined flour and milk.",
     type: "Vegetarian",
@@ -626,6 +650,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "mutton-seekh-kabab-kashmiri-grilled",
+    menuCategory: "Starters & Appetizers",
     name: "Mutton Seekh Kabab Kashmiri",
     description: "Spiced minced mutton skewers grilled over charcoal, a staple street snack in the old city of Srinagar.",
     type: "Non-Vegetarian",

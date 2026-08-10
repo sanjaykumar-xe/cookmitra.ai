@@ -4,6 +4,7 @@ export const odishaRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "machha-jhola-odia",
+    menuCategory: "Curries & Gravies",
     name: "Machha Jhola",
     description: "A light and flavorful Odia fish curry cooked with ginger, garlic, and a tangy tomato-tamarind base.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chingudi-jhola-odia",
+    menuCategory: "Curries & Gravies",
     name: "Chingudi Jhola",
     description: "Succulent prawns cooked in a traditional Odia mustard and tomato gravy.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "mutton-kassa-odia",
+    menuCategory: "Dry & Stir-Fried",
     name: "Mutton Kassa",
     description: "A slow-cooked, spicy, and semi-dry Odia mutton preparation where the meat is roasted with onions and spices.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chicken-kassa-odia",
+    menuCategory: "Protein Specialties",
     name: "Chicken Kassa",
     description: "Chicken pieces slow-roasted in a thick onion-tomato gravy with traditional Odia spices.",
     type: "Non-Vegetarian",
@@ -112,6 +116,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "dahi-machha-odia",
+    menuCategory: "Curries & Gravies",
     name: "Dahi Machha",
     description: "Fish steaks simmered in a creamy and mildly spiced yogurt-based gravy, an Odia delicacy.",
     type: "Non-Vegetarian",
@@ -139,6 +144,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "kankada-jhola-odia",
+    menuCategory: "Curries & Gravies",
     name: "Kankada Jhola",
     description: "Spicy Odia crab curry made with a hearty onion-tomato base and fresh coastal crabs.",
     type: "Non-Vegetarian",
@@ -166,6 +172,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chicken-rai-odia",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Rai",
     description: "A unique Odia chicken curry where mustard seeds (Rai) form the pungent and spicy base of the gravy.",
     type: "Non-Vegetarian",
@@ -193,6 +200,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "macha-besara-odia",
+    menuCategory: "Curries & Gravies",
     name: "Macha Besara",
     description: "Classic Odia fish curry prepared with a mustard-seed paste and flavored with sun-dried mango (Ambula).",
     type: "Non-Vegetarian",
@@ -220,6 +228,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-odia-style",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Odia Style",
     description: "A traditional mutton curry with a rich gravy of onions and poppy seeds, typical of Odia home cooking.",
     type: "Non-Vegetarian",
@@ -247,6 +256,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "prawn-malai-curry-odia",
+    menuCategory: "Curries & Gravies",
     name: "Prawn Malai Curry Odia Style",
     description: "Creamy and rich prawn curry cooked in fresh coconut milk with subtle Odia spices.",
     type: "Non-Vegetarian",
@@ -274,6 +284,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-odia-style",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry Odia Style",
     description: "Comforting home-style chicken curry with large potato chunks in a light ginger-garlic gravy.",
     type: "Non-Vegetarian",
@@ -301,6 +312,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "anda-tarkari-odia",
+    menuCategory: "Curries & Gravies",
     name: "Anda Tarkari",
     description: "Hard-boiled eggs simmered in a spicy Odia-style onion-tomato gravy.",
     type: "Non-Vegetarian",
@@ -328,6 +340,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "machha-ambila-odia",
+    menuCategory: "Curries & Gravies",
     name: "Machha Ambila",
     description: "A sour and tangy fish curry prepared with tomatoes and raw mango, a refreshing coastal dish.",
     type: "Non-Vegetarian",
@@ -355,6 +368,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "kosha-mangsho-odia-style",
+    menuCategory: "Curries & Gravies",
     name: "Kosha Mangsho Odia Style",
     description: "A dark and spicy slow-cooked mutton curry, heavily roasted until the gravy is thick and intense.",
     type: "Non-Vegetarian",
@@ -381,6 +395,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chuna-machha-bhaja-odia",
+    menuCategory: "Protein Specialties",
     name: "Chuna Machha Bhaja",
     description: "Crispy shallow-fried small freshwater fish marinated in Odia spices, a crunchy appetizer.",
     type: "Non-Vegetarian",
@@ -409,6 +424,7 @@ export const odishaRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "dalma-odia",
+    menuCategory: "Curries & Gravies",
     name: "Dalma",
     description: "The most iconic Odia dish—lentils cooked with mixed vegetables and finished with a roasted cumin-chili spice.",
     type: "Vegetarian",
@@ -435,6 +451,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "santula-odia",
+    menuCategory: "Curries & Gravies",
     name: "Santula",
     description: "A light and nutritious mixed vegetable stew, either boiled or fried, with minimal spices.",
     type: "Vegetarian",
@@ -462,6 +479,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "ghanta-tarkari-odia",
+    menuCategory: "Curries & Gravies",
     name: "Ghanta Tarkari",
     description: "A grand mixed vegetable curry prepared during festivals using local produce and panchphoran.",
     type: "Vegetarian",
@@ -489,6 +507,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chhena-poda-odia",
+    menuCategory: "Desserts & Sweets",
     name: "Chhena Poda",
     description: "The pride of Odia sweets—baked cottage cheese cake with a caramelized crust, traditionally cooked in a wood-fired oven.",
     type: "Vegetarian",
@@ -516,6 +535,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "besara-odia",
+    menuCategory: "Curries & Gravies",
     name: "Besara",
     description: "Mixed vegetables cooked in a pungent and aromatic mustard-seed gravy, a hallmark of Odia cuisine.",
     type: "Vegetarian",
@@ -543,6 +563,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "saga-bhaja-odia",
+    menuCategory: "Dry & Stir-Fried",
     name: "Saga Bhaja",
     description: "Simple stir-fried seasonal leafy greens with a healthy dose of garlic and dried red chilies.",
     type: "Vegetarian",
@@ -570,6 +591,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "kanika-odia",
+    menuCategory: "Curries & Gravies",
     name: "Kanika",
     description: "A sweet and aromatic yellow rice dish (pulao) enriched with ghee, sugar, and dried fruits.",
     type: "Vegetarian",
@@ -597,6 +619,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "alu-potala-rasa-odia",
+    menuCategory: "Curries & Gravies",
     name: "Alu Potala Rasa",
     description: "A classic potato and pointed gourd (parwal) curry in a spiced tomato gravy.",
     type: "Vegetarian",
@@ -624,6 +647,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "dahi-baigana-odia",
+    menuCategory: "Curries & Gravies",
     name: "Dahi Baigana",
     description: "Fried brinjal slices soaked in a cool and tempered yogurt sauce.",
     type: "Vegetarian",
@@ -651,6 +675,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chhena-tarkari-odia",
+    menuCategory: "Curries & Gravies",
     name: "Chhena Tarkari",
     description: "Homemade cottage cheese (chhena) cubes simmered in a light, spicy tomato-onion gravy.",
     type: "Vegetarian",
@@ -679,6 +704,7 @@ export const odishaRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "pakhala-bhaja-odia",
+    menuCategory: "Snacks & Street Food",
     name: "Pakhala Bhaja",
     description: "Fermented rice served with a variety of crispy fried side dishes—the ultimate Odia summer comfort food.",
     type: "Vegetarian",
@@ -705,6 +731,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "aloo-chop-odia",
+    menuCategory: "Snacks & Street Food",
     name: "Aloo Chop",
     description: "The classic street snack of Odisha—spiced mashed potato balls dipped in gram flour batter and deep-fried.",
     type: "Vegetarian",
@@ -730,6 +757,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "dahi-vada-odia-style",
+    menuCategory: "Snacks & Street Food",
     name: "Dahi Vada Odia Style",
     description: "Spiced lentil dumplings soaked in thin, flavored yogurt, a famous Cuttack street food.",
     type: "Vegetarian",
@@ -755,6 +783,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chhena-jhili-odia",
+    menuCategory: "Snacks & Street Food",
     name: "Chhena Jhili",
     description: "Delicate and soft fried cottage cheese dumplings soaked in a light sugar syrup, a sweet specialty from Nimapada.",
     type: "Vegetarian",
@@ -781,6 +810,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "fish-chop-odia",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Chop",
     description: "Crispy breaded croquettes made with spiced minced fish and potatoes, a favorite evening snack.",
     type: "Non-Vegetarian",

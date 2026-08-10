@@ -4,6 +4,7 @@ export const maharashtraRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "kolhapuri-chicken",
+    menuCategory: "Breads",
     name: "Kolhapuri Chicken",
     description: "An intensely fiery chicken curry from Kolhapur, known as one of India's spiciest regional dishes featuring a dark red, roasted masala.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "mutton-kolhapuri",
+    menuCategory: "Breads",
     name: "Mutton Kolhapuri",
     description: "An extremely spicy Kolhapuri-style mutton curry made with a potent blend of roasted spices and dry coconut.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "malvani-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Malvani Chicken Curry",
     description: "A coconut-based coastal Maharashtrian chicken curry with a distinct Malvani spice blend and tamarind tang.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "malvani-fish-curry",
+    menuCategory: "Curries & Gravies",
     name: "Malvani Fish Curry",
     description: "A tangy coastal fish curry made with coconut, tamarind, and the signature Malvani spice blend.",
     type: "Non-Vegetarian",
@@ -108,6 +112,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "chicken-sukka-maharashtrian",
+    menuCategory: "Protein Specialties",
     name: "Chicken Sukka (Maharashtrian)",
     description: "A dry, roasted coconut and spice-coated chicken preparation common in coastal Maharashtra.",
     type: "Non-Vegetarian",
@@ -134,6 +139,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "bombil-fry",
+    menuCategory: "Protein Specialties",
     name: "Bombil Fry (Bombay Duck Fry)",
     description: "Crispy, semolina-coated fried Bombay Duck fish, a legendary coastal Maharashtrian delicacy.",
     type: "Non-Vegetarian",
@@ -160,6 +166,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "kombdi-vade",
+    menuCategory: "Protein Specialties",
     name: "Kombdi Vade",
     description: "A spicy country chicken curry served with deep-fried multi-grain puris (vade), a classic rural Maharashtrian combo.",
     type: "Non-Vegetarian",
@@ -186,6 +193,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "mutton-rassa",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Rassa",
     description: "A thin, fiery red mutton gravy from rural Maharashtra, meant to be soaked up with bhakri.",
     type: "Non-Vegetarian",
@@ -212,6 +220,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "chicken-rassa",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Rassa",
     description: "The classic Maharashtrian thin chicken gravy, spicy and perfect for a rustic meal.",
     type: "Non-Vegetarian",
@@ -238,6 +247,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "prawns-koliwada",
+    menuCategory: "Protein Specialties",
     name: "Prawns Koliwada",
     description: "Crispy deep-fried spiced prawns, a specialty of the Koli fishing community of Mumbai.",
     type: "Non-Vegetarian",
@@ -263,6 +273,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "surmai-curry",
+    menuCategory: "Curries & Gravies",
     name: "Surmai Curry",
     description: "Kingfish steaks simmered in a coconut-based Konkani gravy flavored with kokum.",
     type: "Non-Vegetarian",
@@ -289,6 +300,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-maharashtrian",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry (Maharashtrian)",
     description: "Hard-boiled eggs simmered in a spicy onion-coconut masala with roasted spices.",
     type: "Non-Vegetarian",
@@ -314,6 +326,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "chicken-kolhapuri-sukka",
+    menuCategory: "Breads",
     name: "Chicken Kolhapuri Sukka",
     description: "Dry roasted spicy chicken with the signature Kolhapuri masala and dark coconut flakes.",
     type: "Non-Vegetarian",
@@ -340,6 +353,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "mutton-kheema-maharashtra",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kheema",
     description: "Spiced minced mutton curry, a favorite breakfast dish in Mumbai's Irani cafes.",
     type: "Non-Vegetarian",
@@ -366,6 +380,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "crab-malvani",
+    menuCategory: "Curries & Gravies",
     name: "Crab Malvani",
     description: "Fresh crabs simmered in a spicy coconut-based coastal masala, a seafood lover's delight.",
     type: "Non-Vegetarian",
@@ -394,6 +409,7 @@ export const maharashtraRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "puran-poli",
+    menuCategory: "Desserts & Sweets",
     name: "Puran Poli",
     description: "A sweet festive flatbread stuffed with a blend of cooked chana dal and jaggery.",
     type: "Vegetarian",
@@ -420,6 +436,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "batata-vada-curry",
+    menuCategory: "Snacks & Street Food",
     name: "Batata Vada Curry",
     description: "Spiced potato curry served with bread or bhakri, a common household alternative to the street food vada pav.",
     type: "Vegetarian",
@@ -445,6 +462,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "varan-bhaat",
+    menuCategory: "Curries & Gravies",
     name: "Varan Bhaat",
     description: "Simple and comforting Maharashtrian dal made with toor dal, served over steamed rice with a dollop of ghee.",
     type: "Vegetarian",
@@ -470,6 +488,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "sabudana-khichdi",
+    menuCategory: "Rice & Biryani",
     name: "Sabudana Khichdi",
     description: "A light and nutty dish made with sago pearls, roasted peanuts, and potatoes, traditionally eaten during fasts.",
     type: "Vegetarian",
@@ -496,6 +515,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "pithla",
+    menuCategory: "Curries & Gravies",
     name: "Pithla",
     description: "A thick gram flour curry, a rustic staple often served with Bhakri and onions.",
     type: "Vegetarian",
@@ -522,6 +542,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "zunka",
+    menuCategory: "Curries & Gravies",
     name: "Zunka",
     description: "A dry-cooked version of gram flour curry with onions and spices, a spicy rustic favorite.",
     type: "Vegetarian",
@@ -548,6 +569,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "masale-bhaat",
+    menuCategory: "Curries & Gravies",
     name: "Masale Bhaat",
     description: "A traditional spiced mixed vegetable rice dish made with special 'Goda Masala'.",
     type: "Vegetarian",
@@ -574,6 +596,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "vangyache-bharit",
+    menuCategory: "Curries & Gravies",
     name: "Vangyache Bharit",
     description: "Smoky roasted eggplant mash with onions and chilies, a rustic Maharashtrian classic.",
     type: "Vegetarian",
@@ -600,6 +623,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "amti-maharashtra",
+    menuCategory: "Curries & Gravies",
     name: "Amti",
     description: "A tangy and slightly sweet Maharashtrian dal made with toor dal and flavored with goda masala and tamarind.",
     type: "Vegetarian",
@@ -626,6 +650,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "aluchi-vadi",
+    menuCategory: "Breads",
     name: "Aluchi Vadi",
     description: "Steamed and fried rolls made from colocasia leaves with a spicy and tangy gram flour spread.",
     type: "Vegetarian",
@@ -654,6 +679,7 @@ export const maharashtraRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "vada-pav",
+    menuCategory: "Snacks & Street Food",
     name: "Vada Pav",
     description: "The iconic street food of Mumbai—spicy potato fritter inside a soft bun with various chutneys.",
     type: "Vegetarian",
@@ -680,6 +706,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "misal-pav",
+    menuCategory: "Snacks & Street Food",
     name: "Misal Pav",
     description: "A spicy sprouted lentil curry topped with crunchy farsan, served with pav and onions.",
     type: "Vegetarian",
@@ -706,6 +733,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "kothimbir-vadi",
+    menuCategory: "Snacks & Street Food",
     name: "Kothimbir Vadi",
     description: "Spiced coriander and gram flour cakes, steamed and then fried for a crispy exterior.",
     type: "Vegetarian",
@@ -732,6 +760,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "maharashtrian-poha",
+    menuCategory: "Snacks & Street Food",
     name: "Kanda Poha",
     description: "Flattened rice tempered with onions, peanuts, and potatoes—the breakfast staple of Maharashtra.",
     type: "Vegetarian",
@@ -758,6 +787,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "chicken-kolivada",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Kolivada",
     description: "Mumbai-style crispy fried spiced chicken bites, a favorite coastal snack.",
     type: "Non-Vegetarian",

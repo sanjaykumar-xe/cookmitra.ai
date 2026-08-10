@@ -24,10 +24,24 @@ import {
     Map as MapIcon,
     CheckCircle2
 } from "lucide-react";
+import { 
+    IconFlame, 
+    IconSoup, 
+    IconSalad, 
+    IconToolsKitchen2, 
+    IconMeat,
+    IconBowl, 
+    IconBread, 
+    IconCookie, 
+    IconCake, 
+    IconCup, 
+    IconPepper 
+} from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { RecipeCard } from "@/components/recipe/recipe-card";
 import { IndiaRegionMap } from "@/components/recipes/india-region-map";
+import type { MenuCategory } from "@/lib/recipes/types";
 
 const moods = [
     { name: 'Lazy', icon: <Sofa className="h-8 w-8" /> },
@@ -39,6 +53,21 @@ const moods = [
     { name: 'Spicy Mood', icon: <Flame className="h-8 w-8" /> },
 ];
 
+const courseCategories: { name: MenuCategory; icon: React.ReactNode }[] = [
+    { name: 'Starters & Appetizers', icon: <IconFlame className="h-8 w-8" /> },
+    { name: 'Soups', icon: <IconSoup className="h-8 w-8" /> },
+    { name: 'Salads', icon: <IconSalad className="h-8 w-8" /> },
+    { name: 'Curries & Gravies', icon: <IconSoup className="h-8 w-8" /> },
+    { name: 'Dry & Stir-Fried', icon: <IconToolsKitchen2 className="h-8 w-8" /> },
+    { name: 'Protein Specialties', icon: <IconMeat className="h-8 w-8" /> },
+    { name: 'Rice & Biryani', icon: <IconBowl className="h-8 w-8" /> },
+    { name: 'Breads', icon: <IconBread className="h-8 w-8" /> },
+    { name: 'Snacks & Street Food', icon: <IconCookie className="h-8 w-8" /> },
+    { name: 'Desserts & Sweets', icon: <IconCake className="h-8 w-8" /> },
+    { name: 'Beverages', icon: <IconCup className="h-8 w-8" /> },
+    { name: 'Sides & Accompaniments', icon: <IconPepper className="h-8 w-8" /> },
+];
+
 export default function RecipesExplorerPage() {
   const { user, isUserLoading } = useUser();
   const router = useRouter();
@@ -47,6 +76,7 @@ export default function RecipesExplorerPage() {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
   const [searchIngredients, setSearchIngredients] = useState<string[]>([]);
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<MenuCategory | null>(null);
   const [selectedRegionTag, setSelectedRegionTag] = useState<string | null>(null);
   const [selectedStateName, setSelectedStateName] = useState<string | null>(null);
   const [displayLimit, setDisplayLimit] = useState(24);
@@ -57,7 +87,7 @@ export default function RecipesExplorerPage() {
 
   useEffect(() => { 
     setDisplayLimit(24); 
-  }, [selectedMood, searchIngredients, selectedRegionTag]);
+  }, [selectedMood, selectedCategory, searchIngredients, selectedRegionTag]);
 
   const handleAddIngredient = (ing: string) => {
     const newIngredient = ing.trim().toLowerCase();
@@ -76,6 +106,10 @@ export default function RecipesExplorerPage() {
 
     if (selectedRegionTag) {
         recipes = recipes.filter(r => r.tags?.includes(selectedRegionTag));
+    }
+
+    if (selectedCategory) {
+        recipes = recipes.filter(r => r.menuCategory === selectedCategory);
     }
 
     if (selectedMood) {
@@ -113,7 +147,7 @@ export default function RecipesExplorerPage() {
     }
 
     return recipes.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-  }, [selectedMood, searchIngredients, selectedRegionTag]);
+  }, [selectedMood, selectedCategory, searchIngredients, selectedRegionTag]);
 
   const recipesToDisplay = useMemo(() => allFilteredRecipes.slice(0, displayLimit), [allFilteredRecipes, displayLimit]);
 
@@ -219,6 +253,38 @@ export default function RecipesExplorerPage() {
         </div>
       </div>
 
+      {/* Browse by Course (Menu Category) */}
+      <div className="text-center mb-16">
+        <h2 className="font-headline text-2xl font-medium mb-8">Browse by Course</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-4">
+            {courseCategories.map((cat) => {
+                const isSelected = selectedCategory === cat.name;
+                return (
+                    <Card
+                        key={cat.name}
+                        onClick={() => setSelectedCategory(isSelected ? null : cat.name)}
+                        className={cn(
+                            "p-5 text-center cursor-pointer transition-all rounded-3xl border-2 flex flex-col items-center justify-center min-h-[140px]",
+                            isSelected 
+                                ? "border-primary bg-primary/10 shadow-inner scale-105" 
+                                : "border-border/40 hover:border-primary/40 bg-card/50"
+                        )}
+                    >
+                        <div className={cn(
+                            "mb-3 h-12 w-12 mx-auto rounded-2xl flex items-center justify-center transition-colors shrink-0", 
+                            isSelected ? "bg-primary text-primary-foreground shadow-lg" : "bg-primary/10 text-primary"
+                        )}>
+                            {cat.icon}
+                        </div>
+                        <p className={cn("font-bold text-xs leading-tight text-center", isSelected ? "text-primary" : "text-muted-foreground")}>
+                            {cat.name}
+                        </p>
+                    </Card>
+                );
+            })}
+        </div>
+      </div>
+
       {/* Search by Ingredients */}
       <Card className="w-full mb-12 p-8 rounded-[2.5rem] glass-card shadow-2xl border-primary/5">
         <div className="space-y-2 mb-8">
@@ -293,12 +359,13 @@ export default function RecipesExplorerPage() {
             </div>
             <h3 className="text-2xl font-headline font-medium text-muted-foreground">No matching recipes found</h3>
             <p className="text-muted-foreground mt-2">Try different ingredients or clear your filters.</p>
-            {(selectedMood || searchIngredients.length > 0 || selectedRegionTag) && (
+            {(selectedMood || selectedCategory || searchIngredients.length > 0 || selectedRegionTag) && (
                 <Button 
                     variant="link" 
                     className="mt-4 text-primary font-bold"
                     onClick={() => { 
                         setSelectedMood(null); 
+                        setSelectedCategory(null);
                         setSearchIngredients([]); 
                         setSelectedIngredients([]); 
                         setSelectedRegionTag(null);

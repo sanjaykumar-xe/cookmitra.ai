@@ -4,6 +4,7 @@ export const keralaRecipes: Recipe[] = [
   // --- VEGETARIAN (15) ---
   {
     id: "avial",
+    menuCategory: "Curries & Gravies",
     name: "Avial",
     description: "A thick mixture of 13 vegetables commonly found in the Western Ghats, seasoned with coconut oil and curry leaves.",
     type: "Vegetarian",
@@ -32,6 +33,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "appam-veg-stew",
+    menuCategory: "Breads",
     name: "Appam with Vegetable Stew",
     description: "Lacy, fermented rice pancakes with a soft center and crispy edges, served with a mild, aromatic coconut milk vegetable stew.",
     type: "Vegetarian",
@@ -60,6 +62,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "puttu-kadala-curry",
+    menuCategory: "Breads",
     name: "Puttu with Kadala Curry",
     description: "Steamed cylinders of ground rice and coconut served with a spicy, black chickpea curry flavored with roasted coconut.",
     type: "Vegetarian",
@@ -88,6 +91,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "olan",
+    menuCategory: "Curries & Gravies",
     name: "Olan",
     description: "A very mild and elegant Kerala dish made with white ash gourd and black-eyed peas in coconut milk.",
     type: "Vegetarian",
@@ -116,6 +120,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "cabbage-thoran",
+    menuCategory: "Dry & Stir-Fried",
     name: "Cabbage Thoran",
     description: "A dry vegetable stir-fry with finely shredded cabbage, tempered with mustard seeds and finished with a coconut-garlic crumble.",
     type: "Vegetarian",
@@ -144,6 +149,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "erissery",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin & Lentil Erissery",
     description: "A classic Kerala dish made with sweet pumpkin and cowpeas in a roasted coconut base.",
     type: "Vegetarian",
@@ -172,6 +178,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kaalan",
+    menuCategory: "Curries & Gravies",
     name: "Kaalan",
     description: "A thick and tangy traditional Kerala curry made with yam, yogurt, and a lot of black pepper.",
     type: "Vegetarian",
@@ -200,6 +207,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "parippu-curry-kerala",
+    menuCategory: "Curries & Gravies",
     name: "Kerala Parippu Curry",
     description: "Roasted moong dal cooked with a spiced coconut paste, a mandatory first course in a Kerala Sadya.",
     type: "Vegetarian",
@@ -228,6 +236,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kerala-veg-stew",
+    menuCategory: "Curries & Gravies",
     name: "Kerala Vegetable Stew",
     description: "A fragrant, mildly spiced coconut milk stew with mixed vegetables, a popular companion for Appam and Idiyappam.",
     type: "Vegetarian",
@@ -256,6 +265,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "cherupayar-curry",
+    menuCategory: "Curries & Gravies",
     name: "Cherupayar Curry",
     description: "Wholesome green gram curry made in a light coconut base, traditionally served with Puttu or Kanji.",
     type: "Vegetarian",
@@ -284,6 +294,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kappa-vevichathu",
+    menuCategory: "Curries & Gravies",
     name: "Kappa Vevichathu",
     description: "Boiled tapioca chunks mashed and seasoned with a spicy coconut-shallot mixture, a staple Kerala comfort food.",
     type: "Vegetarian",
@@ -312,6 +323,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kerala-kanji",
+    menuCategory: "Beverages",
     name: "Kerala Rice Kanji",
     description: "Light and soothing red rice porridge, traditionally served for dinner with simple sides like pickle and roasted papadam.",
     type: "Vegetarian",
@@ -339,6 +351,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "pachadi-kerala",
+    menuCategory: "Sides & Accompaniments",
     name: "Cucumber Pachadi",
     description: "A cooling yogurt-based side dish with finely chopped cucumber and a mustard-coconut base.",
     type: "Vegetarian",
@@ -366,6 +379,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "puliyinji",
+    menuCategory: "Curries & Gravies",
     name: "Puliyinji",
     description: "The essential 'ginger-tamarind-jaggery' dark relish that balances the flavors of a Kerala Sadya feast.",
     type: "Vegetarian",
@@ -394,6 +408,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kerala-sambar",
+    menuCategory: "Curries & Gravies",
     name: "Kerala Style Sambar",
     description: "A unique sambar variant using roasted and ground coconut paste, offering a deeper, richer flavor than standard sambar.",
     type: "Vegetarian",
@@ -424,6 +439,7 @@ export const keralaRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "kerala-fish-curry",
+    menuCategory: "Curries & Gravies",
     name: "Kerala Fish Curry (Meen Curry)",
     description: "A signature coastal red curry made with tamarind (Kudampuli) and coconut milk, perfectly balancing sour and spicy notes.",
     type: "Non-Vegetarian",
@@ -452,6 +468,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kerala-beef-fry",
+    menuCategory: "Protein Specialties",
     name: "Kerala Beef Fry (Ularthiyathu)",
     description: "The most iconic Kerala dish—beef pieces slow-cooked with roasted spices and fried with coconut slivers.",
     type: "Non-Vegetarian",
@@ -480,6 +497,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "fish-molee",
+    menuCategory: "Curries & Gravies",
     name: "Fish Molee",
     description: "A mild, creamy coconut milk fish stew with its origins in Kerala's Syrian Christian community.",
     type: "Non-Vegetarian",
@@ -508,6 +526,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kerala-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Kerala Chicken Curry",
     description: "A rich and spicy chicken curry made with roasted coconut and a blend of traditional Malabar spices.",
     type: "Non-Vegetarian",
@@ -535,6 +554,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "chicken-mappas",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Mappas",
     description: "A mild and creamy Syrian Christian style chicken curry cooked in thick coconut milk with potatoes.",
     type: "Non-Vegetarian",
@@ -563,6 +583,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "meen-pollichathu",
+    menuCategory: "Protein Specialties",
     name: "Meen Pollichathu",
     description: "Fish coated in a fiery masala, wrapped in a banana leaf, and pan-roasted for a smoky, tender finish.",
     type: "Non-Vegetarian",
@@ -591,6 +612,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "karimeen-fry",
+    menuCategory: "Protein Specialties",
     name: "Karimeen Fry",
     description: "Deep-fried Pearl Spot fish, marinated in a classic Kerala spice blend, a backwater specialty.",
     type: "Non-Vegetarian",
@@ -619,6 +641,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "prawn-mango-curry",
+    menuCategory: "Curries & Gravies",
     name: "Prawn Mango Curry",
     description: "Tangy and creamy coconut prawn curry made with raw mangoes, a coastal Kerala classic.",
     type: "Non-Vegetarian",
@@ -647,6 +670,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "egg-roast-kerala",
+    menuCategory: "Protein Specialties",
     name: "Kerala Egg Roast",
     description: "Hard-boiled eggs cooked in a thick, spicy onion-tomato gravy with a heavy dose of Malabar spices.",
     type: "Non-Vegetarian",
@@ -675,6 +699,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "duck-roast-kerala",
+    menuCategory: "Protein Specialties",
     name: "Kerala Duck Roast",
     description: "A rich and festive duck curry from the Kuttanad region, slow-cooked with potatoes and dark roasted spices.",
     type: "Non-Vegetarian",
@@ -705,6 +730,7 @@ export const keralaRecipes: Recipe[] = [
   // --- SNACKS (10) ---
   {
     id: "unniyappam",
+    menuCategory: "Desserts & Sweets",
     name: "Unniyappam",
     description: "Sweet, spongy, deep-fried dumplings made from rice flour, jaggery, and banana, a beloved Kerala festival snack.",
     type: "Vegetarian",
@@ -732,6 +758,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "parippu-vada-kerala",
+    menuCategory: "Snacks & Street Food",
     name: "Kerala Parippu Vada",
     description: "Crispy, crunchy chana dal fritters with onions and curry leaves, a popular tea-time snack across Kerala.",
     type: "Vegetarian",
@@ -759,6 +786,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "banana-chips-kerala",
+    menuCategory: "Snacks & Street Food",
     name: "Kerala Banana Chips",
     description: "Thinly sliced raw bananas deep-fried in fresh coconut oil, the signature snack of Kerala.",
     type: "Vegetarian",
@@ -785,6 +813,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "ada-pradhaman",
+    menuCategory: "Snacks & Street Food",
     name: "Ada Pradhaman",
     description: "The king of Kerala payasams, made with rice ada flakes, molten jaggery, and creamy coconut milk.",
     type: "Vegetarian",
@@ -813,6 +842,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "pazham-pori",
+    menuCategory: "Snacks & Street Food",
     name: "Pazham Pori",
     description: "The classic Kerala evening snack—ripe plantain slices dipped in a sweet batter and deep-fried.",
     type: "Vegetarian",

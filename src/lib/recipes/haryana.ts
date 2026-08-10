@@ -4,6 +4,7 @@ export const haryanaRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "haryanvi-mutton-curry",
+    menuCategory: "Curries & Gravies",
     name: "Haryanvi Mutton Curry",
     description: "A rustic mutton curry made with pure desi ghee and hand-pounded spices, a favorite among Haryanvi wrestlers for its strength-giving properties.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "haryanvi-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Haryanvi Chicken Curry",
     description: "Homestyle chicken curry cooked with a base of roasted onions and tomatoes, finished with a signature desi ghee tempering.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "sarson-wala-mutton",
+    menuCategory: "Curries & Gravies",
     name: "Sarson Wala Mutton",
     description: "A hearty combination of mutton and fresh mustard greens, reflecting Haryana's rich agricultural produce and love for greens.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "chicken-handi-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Handi Haryanvi",
     description: "Slow-cooked chicken in its own juices with minimal spices in a traditional clay pot, capturing the earthy rural essence.",
     type: "Non-Vegetarian",
@@ -112,6 +116,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "mutton-do-pyaza-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Do Pyaza Haryanvi",
     description: "A robust mutton curry where onions are used in two stages—one for the base and another as crunchy cubes for texture.",
     type: "Non-Vegetarian",
@@ -138,6 +143,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Haryanvi Style",
     description: "Boiled eggs simmered in a rustic onion-tomato gravy with a distinct mustard oil pungency, a staple for quick non-veg meals.",
     type: "Non-Vegetarian",
@@ -164,6 +170,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "chicken-bhuna-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Bhuna Haryanvi",
     description: "Dry roasted chicken with a coarse masala, highly seasoned with black pepper and garlic, popular as a hearty side.",
     type: "Non-Vegetarian",
@@ -190,6 +197,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "mutton-kaleji-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kaleji Haryanvi",
     description: "Spiced mutton liver fry with a heavy dose of garlic and ginger, popular among athletes for its high protein content.",
     type: "Non-Vegetarian",
@@ -215,6 +223,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "chicken-korma-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Korma Haryanvi",
     description: "A rich and robust chicken korma cooked with cashews and plenty of desi ghee, reflecting the prosperity of Haryanvi farms.",
     type: "Non-Vegetarian",
@@ -241,6 +250,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "mutton-bathua-curry",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Bathua Curry",
     description: "Tender mutton pieces simmered with winter-special bathua (chenopodium) leaves, a healthy and warming regional specialty.",
     type: "Non-Vegetarian",
@@ -270,6 +280,7 @@ export const haryanaRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "bajra-khichdi-haryanvi",
+    menuCategory: "Rice & Biryani",
     name: "Bajra Khichdi",
     description: "The ultimate winter comfort food of Haryana, made with pearl millet and moong dal, traditionally served with a huge dollop of desi ghee.",
     type: "Vegetarian",
@@ -295,6 +306,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "kadhi-pakora-haryanvi",
+    menuCategory: "Snacks & Street Food",
     name: "Kadhi Pakora Haryanvi",
     description: "Sour yogurt curry with gram flour dumplings, specifically made with a lot of garlic and a punchy red chili tadka.",
     type: "Vegetarian",
@@ -320,6 +332,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "hara-dhania-cholia",
+    menuCategory: "Curries & Gravies",
     name: "Hara Dhania Cholia",
     description: "Fresh green chickpeas (cholia) cooked with plenty of fresh coriander and simple home spices, a regional winter specialty.",
     type: "Vegetarian",
@@ -346,6 +359,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "sarson-ka-saag-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Sarson Ka Saag Haryanvi",
     description: "Mustard greens slow-cooked and mashed, enriched with maize flour and plenty of white butter.",
     type: "Vegetarian",
@@ -372,6 +386,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "bathua-raita-sabzi",
+    menuCategory: "Sides & Accompaniments",
     name: "Bathue Ka Raita with Sabzi",
     description: "A cooling bathua greens yogurt dip paired with a simple dry potato-cauliflower sabzi, a classic rustic lunch.",
     type: "Vegetarian",
@@ -396,6 +411,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "alsi-pinni-sabzi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Alsi Ki Pinni Sabzi Combo",
     description: "Flaxseed energy balls paired with a light vegetable curry, providing a balance of healthy fats and vitamins.",
     type: "Vegetarian",
@@ -420,6 +436,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "churma-with-dal",
+    menuCategory: "Curries & Gravies",
     name: "Churma with Dal",
     description: "Sweetened, hand-crushed wheat cakes served with a simple, tempered yellow dal, Haryana's answer to festive comfort.",
     type: "Vegetarian",
@@ -445,6 +462,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "gatte-ki-sabzi-haryanvi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Gatte Ki Sabzi Haryanvi",
     description: "Steamed gram flour dumplings in a tangy and spicy yogurt-based gravy, a favorite across rural North India.",
     type: "Vegetarian",
@@ -470,6 +488,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "bajra-roti-lehsun-chutney",
+    menuCategory: "Breads",
     name: "Bajra Roti with Lehsun Chutney",
     description: "Rustic pearl millet flatbread served with a fiery, hand-pounded garlic chutney, the quintessential Haryanvi farmer's meal.",
     type: "Vegetarian",
@@ -495,6 +514,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "malai-kofta-haryanvi",
+    menuCategory: "Curries & Gravies",
     name: "Malai Kofta Haryanvi Style",
     description: "Dairy-rich vegetable and paneer dumplings in a creamy, mildly spiced gravy, reflecting the abundance of milk in the region.",
     type: "Vegetarian",
@@ -522,6 +542,7 @@ export const haryanaRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "bajre-ki-khichdi-bites",
+    menuCategory: "Rice & Biryani",
     name: "Bajre Ki Khichdi Bites",
     description: "Leftover bajra khichdi mixed with herbs and pan-fried into crispy patties, a sustainable and tasty snack.",
     type: "Vegetarian",
@@ -546,6 +567,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "ghevar-haryanvi",
+    menuCategory: "Snacks & Street Food",
     name: "Ghevar Haryanvi",
     description: "A disc-shaped fried sweet sweet made from flour and ghee, soaked in sugar syrup, iconic for festivals like Teej.",
     type: "Vegetarian",
@@ -571,6 +593,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "kachri-chutney-snack",
+    menuCategory: "Sides & Accompaniments",
     name: "Kachri Ki Chutney Snack Plate",
     description: "Tangy chutney made from wild melon (kachri), served with crunchy fried wheat strips.",
     type: "Vegetarian",
@@ -595,6 +618,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "alsi-pinni-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Alsi Pinni",
     description: "Roasted flaxseed, jaggery, and nut balls, a traditional high-protein winter snack for strength.",
     type: "Vegetarian",
@@ -620,6 +644,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "chicken-pakora-haryanvi",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Pakora Haryanvi",
     description: "Crispy fried chicken pieces coated in a spicy, garlic-heavy gram flour batter, a popular highway treat.",
     type: "Non-Vegetarian",

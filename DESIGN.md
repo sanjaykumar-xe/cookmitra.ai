@@ -95,9 +95,9 @@ Serif headlines (`font-serif`, `Playfair Display`) must be used consistently for
 
 ## 6. Motion & Scroll Animation Conventions
 
-- **Duration**: Scroll-triggered entrance animations use a visible duration of **0.8s to 1.0s** (`duration={0.8}` to `1.0`).
-- **Stagger Delays**: Multi-item grids or lists use staggered entrance delays of **150ms to 200ms** between items (`delay={index * 0.15}`).
-- **Viewport Trigger Offset**: Motion triggers must use `margin: "0px 0px -100px 0px"` (or `amount: 0.2`) so motion is smoothly visible during normal scroll speeds rather than snapping instantly into view.
+- **Duration**: Scroll-triggered entrance animations use a visible duration of **0.6s to 1.0s** (`duration={0.6}` to `1.0`).
+- **Stagger Delays**: Multi-item grids or lists use staggered entrance delays of **100ms to 200ms** between items (`delay={index * 0.12}`).
+- **Viewport Trigger Specification**: Motion triggers MUST use percentage-based visible amounts `viewport={{ once: true, amount: 0.1 }}` (10% of element visible in viewport) as the project standard. Do NOT use negative margin offsets (such as `margin: "0px 0px -100px 0px"`), as negative offsets cause scroll animations to remain stuck at `opacity: 0` on certain screen resolutions and zoom levels. Percentage-based `amount: 0.1` guarantees reliable, smooth scroll-triggered entrances across all viewports.
 
 ---
 
@@ -202,5 +202,5 @@ Standard reusable 3D flip card component pattern established in `src/app/globals
 | **Responsive Rules** | `grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`; `px-4 sm:px-6 lg:px-8`; Mobile touch tap flips |
 | **Feature Tints** | Amber (AI), Pink (Healing Foods), Teal (Encyclopedia), Blue (Planning) |
 | **Buttons** | Solid Amber Pill (`rounded-full`) for primary; Ghost Pill for secondary; High-contrast disabled |
-| **Animations** | `0.8s - 1.0s` duration, `150ms - 200ms` stagger, `-100px` viewport margin |
+| **Animations** | `0.6s - 1.0s` duration, `100ms - 200ms` stagger, `viewport={{ once: true, amount: 0.1 }}` |
 | **Footer Policy** | Visible on browsing pages; Hidden on task-focused/interactive pages |

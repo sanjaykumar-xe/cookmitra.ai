@@ -4,6 +4,7 @@ export const manipurRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "eromba-manipur",
+    menuCategory: "Curries & Gravies",
     name: "Eromba",
     description: "The soul of Manipuri cuisine—a pungent and spicy dish made by mashing boiled vegetables and fermented fish (Ngari) with fiery chilies.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "ngari-fish-curry-manipur",
+    menuCategory: "Curries & Gravies",
     name: "Ngari Fish Curry",
     description: "A simple and pungent river fish curry prepared with fermented fish paste and local mountain herbs.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "chak-hao-kheer-chicken-side",
+    menuCategory: "Desserts & Sweets",
     name: "Chak-hao Kheer with Chicken Side",
     description: "A unique combination of sweet black rice pudding served with a savory, lightly spiced chicken accompaniment.",
     type: "Non-Vegetarian",
@@ -84,6 +87,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-shoot-manipur",
+    menuCategory: "Breads",
     name: "Pork with Bamboo Shoot Manipuri",
     description: "Tender pork chunks slow-cooked with pungent fermented bamboo shoot and local Manipuri chilies.",
     type: "Non-Vegetarian",
@@ -110,6 +114,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-manipur",
+    menuCategory: "Breads",
     name: "Chicken Curry Manipuri",
     description: "A light and healthy chicken preparation using local herbs like maroi nakupi and minimal oil.",
     type: "Non-Vegetarian",
@@ -136,6 +141,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "utong-metpa-pork",
+    menuCategory: "Curries & Gravies",
     name: "Utong Metpa",
     description: "Bamboo-steamed pork flavored with local spices and fermented ingredients, a traditional tribal method.",
     type: "Non-Vegetarian",
@@ -162,6 +168,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "fish-curry-local-herbs-manipur",
+    menuCategory: "Curries & Gravies",
     name: "Fish Curry with Local Herbs",
     description: "River fish simmered in a very light broth flavored with fresh Manipuri herbs and a hint of Ngari.",
     type: "Non-Vegetarian",
@@ -188,6 +195,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "kangshoi-chicken-manipur",
+    menuCategory: "Curries & Gravies",
     name: "Kangshoi with Chicken",
     description: "A nutritious and light mixed vegetable stew with chicken, focused on the natural sweetness of local produce.",
     type: "Non-Vegetarian",
@@ -214,6 +222,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-manipur",
+    menuCategory: "Breads",
     name: "Egg Curry Manipuri Style",
     description: "Boiled eggs in a light gravy flavored with Ngari and local chilies, a common side for lunch.",
     type: "Non-Vegetarian",
@@ -240,6 +249,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "pork-curry-manipur",
+    menuCategory: "Breads",
     name: "Pork Curry Manipuri",
     description: "A spicy and savory pork preparation from Manipur featuring local mountain chilies and bamboo shoot.",
     type: "Non-Vegetarian",
@@ -268,6 +278,7 @@ export const manipurRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "kangshoi-manipur",
+    menuCategory: "Curries & Gravies",
     name: "Kangshoi",
     description: "The healthy staple of every Manipuri home—a boiled mixed vegetable stew seasoned with ginger and salt.",
     type: "Vegetarian",
@@ -293,6 +304,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "singju-manipur",
+    menuCategory: "Curries & Gravies",
     name: "Singju",
     description: "A zesty and spicy Manipuri salad made with finely shredded vegetables, herbs, and roasted chili powder.",
     type: "Vegetarian",
@@ -319,6 +331,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "chak-hao-kheer-manipur",
+    menuCategory: "Desserts & Sweets",
     name: "Chak-hao Kheer",
     description: "A gorgeous purple-colored dessert made from black rice, milk, and sugar, a hallmark of Manipuri celebrations.",
     type: "Vegetarian",
@@ -345,6 +358,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "bamboo-shoot-curry-manipur-veg",
+    menuCategory: "Breads",
     name: "Bamboo Shoot Curry Manipuri",
     description: "Tangy fermented bamboo shoots cooked with local mountain greens and mountain chilies.",
     type: "Vegetarian",
@@ -370,6 +384,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "yongchak-eromba-veg",
+    menuCategory: "Curries & Gravies",
     name: "Yongchak Eromba",
     description: "A specialty dish made with mashed stink beans (Yongchak) and seasonal vegetables with fermented soybean.",
     type: "Vegetarian",
@@ -396,6 +411,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "hawaijar-curry-veg",
+    menuCategory: "Curries & Gravies",
     name: "Hawaijar Curry",
     description: "A pungent and high-protein curry made from fermented soybean paste and local mountain spices.",
     type: "Vegetarian",
@@ -422,6 +438,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "local-greens-kangshoi-veg",
+    menuCategory: "Curries & Gravies",
     name: "Local Greens Kangshoi",
     description: "Simple and nutritious boiled seasonal leafy greens seasoned with ginger and salt.",
     type: "Vegetarian",
@@ -446,6 +463,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "dal-manipur-style-veg",
+    menuCategory: "Breads",
     name: "Dal Manipuri Style",
     description: "Simple and comforting lentil curry tempered with cumin and local Manipuri herbs.",
     type: "Vegetarian",
@@ -470,6 +488,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-curry-manipur-veg",
+    menuCategory: "Breads",
     name: "Pumpkin Curry Manipuri",
     description: "Simple mountain-style pumpkin curry cooked with minimal oil and mountain spices.",
     type: "Vegetarian",
@@ -494,6 +513,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "kanghou-veg",
+    menuCategory: "Dry & Stir-Fried",
     name: "Kanghou",
     description: "A dry vegetable stir-fry with local greens and peas, a favorite side dish in Meitei meals.",
     type: "Vegetarian",
@@ -518,6 +538,7 @@ export const manipurRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "chak-hao-poori-snack",
+    menuCategory: "Breads",
     name: "Chak-hao Poori",
     description: "Fluffy deep-fried bread made from a mixture of wheat flour and ground black rice, offering a unique color and nutty flavor.",
     type: "Vegetarian",
@@ -542,6 +563,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "hawaijar-bites-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Hawaijar Bites",
     description: "Crispy fried snacks made from fermented soybean paste and rice flour.",
     type: "Vegetarian",
@@ -564,6 +586,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "kabok-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Kabok",
     description: "Traditional sweet puffed rice snack bound together with jaggery syrup.",
     type: "Vegetarian",
@@ -586,6 +609,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "singju-bites-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Singju Bites",
     description: "Small portions of spicy shredded vegetable salad served on crispy rice crackers.",
     type: "Vegetarian",
@@ -608,6 +632,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "fish-cake-manipur-snack",
+    menuCategory: "Breads",
     name: "Fish Cake Manipuri Style",
     description: "Steamed spiced fish cakes made with river fish and fermented fish (ngari) for a deep flavor.",
     type: "Non-Vegetarian",

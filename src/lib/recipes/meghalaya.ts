@@ -4,6 +4,7 @@ export const meghalayaRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "jadoh-khasi-authentic",
+    menuCategory: "Curries & Gravies",
     name: "Jadoh",
     description: "The most iconic Khasi dish—fragrant short-grain rice cooked with smoked pork, onions, and local spices.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "dohneiiong-pork-sesame",
+    menuCategory: "Curries & Gravies",
     name: "Dohneiiong",
     description: "A rich and flavorful Khasi pork curry prepared with a characteristic black sesame seed paste.",
     type: "Non-Vegetarian",
@@ -57,6 +59,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-shoot-meghalaya",
+    menuCategory: "Curries & Gravies",
     name: "Pork with Bamboo Shoot",
     description: "Tender pork chunks simmered with pungent fermented bamboo shoots and fiery local chilies.",
     type: "Non-Vegetarian",
@@ -83,6 +86,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "khasi-chicken-curry-rustic",
+    menuCategory: "Curries & Gravies",
     name: "Khasi Chicken Curry",
     description: "A mild and rustic mountain-style chicken curry cooked with local herbs and minimal spices.",
     type: "Non-Vegetarian",
@@ -109,6 +113,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "tungrymbai-pork-spicy",
+    menuCategory: "Curries & Gravies",
     name: "Tungrymbai Pork",
     description: "A pungent and earthy preparation of pork cooked with fermented soybean paste (Tungrymbai) and black sesame.",
     type: "Non-Vegetarian",
@@ -135,6 +140,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-shoot-fry-dry",
+    menuCategory: "Protein Specialties",
     name: "Pork Bamboo Shoot Fry",
     description: "A dry and spicy stir-fry featuring pork and bamboo shoots, a favorite accompaniment to local rice.",
     type: "Non-Vegetarian",
@@ -161,6 +167,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "dohkhlieh-pork-salad",
+    menuCategory: "Curries & Gravies",
     name: "Dohkhlieh",
     description: "A refreshing and sharp minced pork salad made with onions, green chilies, and ginger, often served as a side or snack.",
     type: "Non-Vegetarian",
@@ -187,6 +194,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "chicken-black-sesame-meghalaya",
+    menuCategory: "Curries & Gravies",
     name: "Chicken with Black Sesame",
     description: "Chicken pieces cooked in a rich, earthy gravy made from roasted black sesame seeds.",
     type: "Non-Vegetarian",
@@ -212,6 +220,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "nakham-bitchi-dried-fish-soup",
+    menuCategory: "Curries & Gravies",
     name: "Nakham Bitchi",
     description: "A traditional Garo-style soup made with dried fish, soda (kharchi), and local chilies, known for its bold flavor.",
     type: "Non-Vegetarian",
@@ -238,6 +247,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "pork-curry-garo-style-spicy",
+    menuCategory: "Curries & Gravies",
     name: "Pork Curry Garo Style",
     description: "A spicy and tangy pork preparation from the Garo hills, featuring local chilies and a unique spice blend.",
     type: "Non-Vegetarian",
@@ -266,6 +276,7 @@ export const meghalayaRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "ja-mynthdu-rice-peas",
+    menuCategory: "Curries & Gravies",
     name: "Ja Mynthdu",
     description: "A simple and nutritious Khasi dish where black-eyed peas and rice are cooked together into a savory meal.",
     type: "Vegetarian",
@@ -292,6 +303,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "tungrymbai-vegetarian-style",
+    menuCategory: "Curries & Gravies",
     name: "Tungrymbai (Vegetarian Style)",
     description: "A pungent fermented soybean paste curry cooked with vegetables and mountain spices.",
     type: "Vegetarian",
@@ -318,6 +330,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-sesame-meghalaya",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin with Sesame",
     description: "Sweet pumpkin pieces cooked in an earthy black sesame seed paste, a common Khasi vegetable dish.",
     type: "Vegetarian",
@@ -343,6 +356,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "bamboo-shoot-curry-khasi",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry Khasi",
     description: "Tangy and sharp fermented bamboo shoot curry cooked with local green beans and mountain chilies.",
     type: "Vegetarian",
@@ -369,6 +383,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "ja-prue-rice-sabzi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Ja Prue Simple Rice with Sabzi",
     description: "Plain mountain rice served with a very light vegetable stir-fry, the daily sustenance in rural Meghalaya.",
     type: "Vegetarian",
@@ -393,6 +408,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "khasi-bean-curry",
+    menuCategory: "Curries & Gravies",
     name: "Khasi Bean Curry",
     description: "A simple and earthy bean curry cooked with local varieties of mountain beans and mild herbs.",
     type: "Vegetarian",
@@ -417,6 +433,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "mustard-greens-stir-fry-khasi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Mustard Greens Stir Fry Khasi",
     description: "Fresh mustard greens quickly stir-fried with garlic and green chilies, a healthy and vibrant side dish.",
     type: "Vegetarian",
@@ -441,6 +458,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "perilla-seed-chutney-sabzi",
+    menuCategory: "Sides & Accompaniments",
     name: "Perilla Seed Chutney with Sabzi",
     description: "Nutty and fragrant perilla seed chutney served as a condiment for a mixed vegetable curry.",
     type: "Vegetarian",
@@ -465,6 +483,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "sohphlang-curry-veg",
+    menuCategory: "Curries & Gravies",
     name: "Sohphlang Curry",
     description: "A unique curry made from Sohphlang (yam bean), a crunchy local root tuber found in Meghalaya.",
     type: "Vegetarian",
@@ -489,6 +508,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "dal-khasi-style",
+    menuCategory: "Curries & Gravies",
     name: "Dal Khasi Style",
     description: "Simple and nutritious red lentil curry flavored with local herbs and ginger.",
     type: "Vegetarian",
@@ -515,6 +535,7 @@ export const meghalayaRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "putharo-steamed-rice-cake",
+    menuCategory: "Snacks & Street Food",
     name: "Putharo",
     description: "A traditional Khasi steamed rice flour cake, often enjoyed for breakfast with tea or Jadoh.",
     type: "Vegetarian",
@@ -539,6 +560,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "pukhlein-sweet-fritters",
+    menuCategory: "Snacks & Street Food",
     name: "Pukhlein",
     description: "Sweet and crunchy deep-fried fritters made from rice flour and jaggery, a popular tea-time treat.",
     type: "Vegetarian",
@@ -563,6 +585,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "sakin-genjey-rice-cake",
+    menuCategory: "Snacks & Street Food",
     name: "Sakin Genjey Style Rice Cake",
     description: "A sweet rice snack made with parboiled rice and jaggery, typical of Jaintia hills.",
     type: "Vegetarian",
@@ -586,6 +609,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "kyat-rice-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Kyat",
     description: "A fermented rice cake snack with a subtle tangy and sweet flavor profile.",
     type: "Vegetarian",
@@ -609,6 +633,7 @@ export const meghalayaRecipes: Recipe[] = [
   },
   {
     id: "pork-sausage-meghalayan-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Pork Sausage Meghalayan",
     description: "Smoked and spiced local pork sausage bites, a popular market snack across the state.",
     type: "Non-Vegetarian",

@@ -4,6 +4,7 @@ export const telanganaRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "hyderabadi-chicken-biryani",
+    menuCategory: "Rice & Biryani",
     name: "Hyderabadi Chicken Biryani",
     description: "The world-famous dum-cooked layered biryani where raw marinated chicken is cooked slowly with fragrant basmati rice.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "hyderabadi-mutton-biryani",
+    menuCategory: "Rice & Biryani",
     name: "Hyderabadi Mutton Biryani",
     description: "A rich and aromatic layered mutton biryani cooked in the traditional 'Kachchi Yakhni' style.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "haleem",
+    menuCategory: "Curries & Gravies",
     name: "Haleem",
     description: "A nutritious, slow-cooked porridge of wheat, lentils, and meat, traditionally served during Ramadan.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "chicken-marag",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Marag",
     description: "A thin, spicy, and extremely flavorful chicken bone soup, a staple starter at Hyderabadi weddings.",
     type: "Non-Vegetarian",
@@ -112,6 +116,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "mutton-marag",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Marag",
     description: "A rich and thin mutton soup made with tender meat on the bone, flavored with cashews and pepper.",
     type: "Non-Vegetarian",
@@ -139,6 +144,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "boti-kurma",
+    menuCategory: "Curries & Gravies",
     name: "Boti Kurma",
     description: "A traditional Hyderabadi specialty where mutton offal is cooked in a spicy and tangy gravy.",
     type: "Non-Vegetarian",
@@ -166,6 +172,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "shikampuri-kebab",
+    menuCategory: "Breads",
     name: "Shikampuri Kebab",
     description: "Melt-in-the-mouth minced mutton patties stuffed with a core of tangy yogurt and onions.",
     type: "Non-Vegetarian",
@@ -193,6 +200,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "pathar-ka-gosht",
+    menuCategory: "Curries & Gravies",
     name: "Pathar Ka Gosht",
     description: "Slices of mutton marinated in spices and slow-cooked on a wide stone slab over charcoal.",
     type: "Non-Vegetarian",
@@ -219,6 +227,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "dum-ka-murgh",
+    menuCategory: "Curries & Gravies",
     name: "Dum Ka Murgh",
     description: "Chicken marinated in a rich paste of nuts and slow-cooked (dum) for a silky, rich finish.",
     type: "Non-Vegetarian",
@@ -246,6 +255,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "chicken-do-pyaza-hyderabadi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Do Pyaza Hyderabadi",
     description: "A flavorful chicken curry featuring onions added at two different stages for texture and sweetness.",
     type: "Non-Vegetarian",
@@ -273,6 +283,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "gongura-mutton",
+    menuCategory: "Curries & Gravies",
     name: "Gongura Mutton",
     description: "A classic Telangana dish where tender mutton is cooked with the sharp, tangy punch of sorrel leaves.",
     type: "Non-Vegetarian",
@@ -300,6 +311,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "kodi-kharam",
+    menuCategory: "Curries & Gravies",
     name: "Kodi Kharam",
     description: "A fiery and dry chicken stir-fry from rural Telangana, heavily flavored with red chili and garlic.",
     type: "Non-Vegetarian",
@@ -327,6 +339,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "talawa-gosht",
+    menuCategory: "Protein Specialties",
     name: "Talawa Gosht",
     description: "Hyderabadi style deep-fried mutton pieces, crispy on the outside and juicy inside.",
     type: "Non-Vegetarian",
@@ -354,6 +367,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "natukodi-iguru",
+    menuCategory: "Curries & Gravies",
     name: "Natukodi Iguru",
     description: "A thick and spicy country chicken preparation, a rural Telangana favorite known for its intense heat.",
     type: "Non-Vegetarian",
@@ -381,6 +395,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "egg-biryani-hyderabadi",
+    menuCategory: "Rice & Biryani",
     name: "Egg Biryani Hyderabadi",
     description: "A lighter version of the Hyderabadi biryani, featuring spiced boiled eggs layered with fragrant rice.",
     type: "Non-Vegetarian",
@@ -410,6 +425,7 @@ export const telanganaRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "mirchi-ka-salan",
+    menuCategory: "Curries & Gravies",
     name: "Mirchi Ka Salan",
     description: "A rich, tangy, and nutty gravy made with long green chilies, the traditional partner to Hyderabadi Biryani.",
     type: "Vegetarian",
@@ -437,6 +453,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "bagara-baingan",
+    menuCategory: "Curries & Gravies",
     name: "Bagara Baingan",
     description: "Small brinjals cooked in a creamy and tangy nut-based gravy, a Hyderabadi royal vegetarian specialty.",
     type: "Vegetarian",
@@ -464,6 +481,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "khatti-dal",
+    menuCategory: "Curries & Gravies",
     name: "Khatti Dal",
     description: "The soul of Hyderabadi home cooking—a simple, tangy dal spiked with tamarind and tempered with garlic.",
     type: "Vegetarian",
@@ -490,6 +508,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "sorakaya-curry",
+    menuCategory: "Curries & Gravies",
     name: "Sorakaya Curry",
     description: "A light and cooling bottle gourd curry cooked with lentils and a subtle tempering.",
     type: "Vegetarian",
@@ -516,6 +535,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "palak-pappu",
+    menuCategory: "Curries & Gravies",
     name: "Palak Pappu",
     description: "Nutritious and comforting spinach-dal, a daily staple in Telangana households.",
     type: "Vegetarian",
@@ -542,6 +562,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "chintakaya-pappu",
+    menuCategory: "Curries & Gravies",
     name: "Chintakaya Pappu",
     description: "A seasonal specialty dal made with raw, green tamarind for a unique, sharp tang.",
     type: "Vegetarian",
@@ -568,6 +589,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "uppu-kura",
+    menuCategory: "Curries & Gravies",
     name: "Uppu Kura",
     description: "Simple, rustic dry stir-fry of seasonal vegetables, highlighting the natural flavors of the produce.",
     type: "Vegetarian",
@@ -594,6 +616,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "bagara-rice",
+    menuCategory: "Curries & Gravies",
     name: "Bagara Rice",
     description: "A fragrant and mildly spiced rice dish, the standard accompaniment for non-veg curries in Telangana.",
     type: "Vegetarian",
@@ -620,6 +643,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "gongura-pachadi-telangana",
+    menuCategory: "Sides & Accompaniments",
     name: "Gongura Pachadi",
     description: "A spicy and tangy sorrel leaf chutney, arguably the most beloved pickle in the region.",
     type: "Vegetarian",
@@ -645,6 +669,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "sabzi-khatti-meethi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Sabzi Khatti Meethi",
     description: "A rare Hyderabadi vegetable curry that balances sweet and sour notes using jaggery and tamarind.",
     type: "Vegetarian",
@@ -673,6 +698,7 @@ export const telanganaRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "sarva-pindi",
+    menuCategory: "Snacks & Street Food",
     name: "Sarva Pindi",
     description: "A savory, spicy rice flour griddle cake studded with peanuts, a signature rural Telangana snack.",
     type: "Vegetarian",
@@ -700,6 +726,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "sakinalu",
+    menuCategory: "Snacks & Street Food",
     name: "Sakinalu",
     description: "Crispy, fried concentric circles made from rice flour and sesame, a traditional Sankranti specialty.",
     type: "Vegetarian",
@@ -727,6 +754,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "double-ka-meetha",
+    menuCategory: "Snacks & Street Food",
     name: "Double Ka Meetha",
     description: "Iconic Hyderabadi bread pudding made with fried bread slices soaked in thickened saffron milk.",
     type: "Vegetarian",
@@ -754,6 +782,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "qubani-ka-meetha",
+    menuCategory: "Snacks & Street Food",
     name: "Qubani Ka Meetha",
     description: "A royal Hyderabadi dessert made from stewed dried apricots, traditionally served with malai.",
     type: "Vegetarian",
@@ -780,6 +809,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "chicken-majestic",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Majestic",
     description: "A popular Hyderabadi restaurant snack—dry fried chicken strips tossed in a spicy, tangy yogurt sauce.",
     type: "Non-Vegetarian",

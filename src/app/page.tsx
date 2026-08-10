@@ -12,7 +12,6 @@ import {
     MessageSquare, 
     UtensilsCrossed, 
     Library,
-    ChevronRight,
     Sparkles,
     ShoppingCart,
     Loader2,
@@ -45,7 +44,7 @@ interface ServiceCardProps {
   iconTint?: string;
 }
 
-function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-primary/10 text-primary" }: ServiceCardProps) {
+function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" }: ServiceCardProps) {
   const shouldReduceMotion = useReducedMotion();
   const [isFlipped, setIsFlipped] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -69,11 +68,11 @@ function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-
   };
 
   const entranceVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.9, ease: [0.25, 0.1, 0.25, 1.0] }
+      transition: { duration: 0.7, ease: "easeOut" }
     }
   };
 
@@ -121,8 +120,8 @@ function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-
 
 function PersonaCard({ title, description, icon }: { title: string, description: string, icon: React.ReactElement }) {
     return (
-        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25, 0.1, 0.25, 1.0] } } }} className="h-full">
-            <Card className="h-full flex flex-col p-8 rounded-3xl bg-card border-primary/5 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
+        <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } }} className="h-full">
+            <Card className="h-full flex flex-col p-8 rounded-3xl bg-card border border-border/80 hover:border-primary/40 transition-all duration-300 hover:shadow-xl shadow-sm">
                 <div className="bg-primary/10 text-primary p-3 rounded-2xl w-fit mb-6 shadow-inner">
                     {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
                 </div>
@@ -145,32 +144,32 @@ function ComparisonSection() {
 
     const renderCell = (value: boolean | string, isCookmitra: boolean = false) => {
         if (typeof value === 'string') return <span className={cn("text-sm font-bold", isCookmitra ? "text-primary" : "text-muted-foreground")}>{value}</span>;
-        return value ? <div className="flex justify-center"><Check className={cn("h-6 w-6", isCookmitra ? "text-primary" : "text-green-500")} strokeWidth={3} /></div> : <div className="flex justify-center"><X className="h-6 w-6 text-muted-foreground/30" strokeWidth={3} /></div>;
+        return value ? <div className="flex justify-center"><Check className={cn("h-6 w-6", isCookmitra ? "text-primary" : "text-emerald-500")} strokeWidth={3} /></div> : <div className="flex justify-center"><X className="h-6 w-6 text-muted-foreground/40" strokeWidth={3} /></div>;
     };
 
     return (
-        <section className="py-24 md:py-32 bg-background relative overflow-hidden">
-            <div className="container max-w-6xl mx-auto px-6 pt-8">
-                <div className="text-center mb-16 md:mb-24 space-y-4">
+        <section className="py-20 md:py-28 bg-background relative overflow-hidden">
+            <div className="container max-w-6xl mx-auto px-6">
+                <div className="text-center mb-12 md:mb-16 space-y-4">
                     <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight">Why CookMitra?</h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">Not just another recipe app.</p>
                 </div>
-                <div className="overflow-x-auto pt-8 pb-4 custom-scrollbar">
-                    <table className="w-full min-w-[700px] border-separate border-spacing-0">
+                <div className="overflow-x-auto pb-4 custom-scrollbar">
+                    <table className="w-full min-w-[700px] border-separate border-spacing-0 rounded-2xl overflow-hidden shadow-sm border border-border/60">
                         <thead>
-                            <tr>
+                            <tr className="bg-muted/40">
                                 <th className="p-6 text-left border-b border-border/60"></th>
                                 <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">Generic Recipe Apps</th>
                                 <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">Cooking Blogs</th>
-                                <th className="p-6 text-center relative border-x border-t border-primary/20 bg-primary/5 rounded-t-[2rem]">
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"><Badge className="bg-primary text-[#412402] font-black uppercase tracking-widest text-[10px] py-1 px-3 shadow-lg whitespace-nowrap">That's Us</Badge></div>
+                                <th className="p-6 text-center relative border-x border-t border-primary/30 bg-primary/10 rounded-t-[2rem]">
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"><Badge className="bg-primary text-[#412402] font-black uppercase tracking-widest text-[10px] py-1 px-3 shadow-md whitespace-nowrap">That's Us</Badge></div>
                                     <span className="font-headline text-2xl font-bold text-primary">CookMitra AI</span>
                                 </th>
                             </tr>
                         </thead>
-                        <motion.tbody initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }} variants={{ visible: { transition: { staggerChildren: 0.18 } } }}>
+                        <motion.tbody initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
                             {comparisonRows.map((row, i) => (
-                                <motion.tr key={i} variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.25, 0.1, 0.25, 1.0] } } }} className="group">
+                                <motion.tr key={i} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="group">
                                     <td className={cn("p-6 text-left border-b border-border/60 font-bold text-base transition-colors group-hover:text-primary", i === comparisonRows.length - 1 && "border-b-0")}>{row.label}</td>
                                     <td className={cn("p-6 text-center border-b border-border/60", i === comparisonRows.length - 1 && "border-b-0")}>{renderCell(row.generic)}</td>
                                     <td className={cn("p-6 text-center border-b border-border/60", i === comparisonRows.length - 1 && "border-b-0")}>{renderCell(row.blogs)}</td>
@@ -217,9 +216,9 @@ export default function Home() {
   return (
     <div className="bg-background overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-zinc-950 p-0 m-0">
+        <section className="relative w-full h-[85vh] max-h-[750px] min-h-[550px] flex items-center justify-center overflow-hidden bg-zinc-950 p-0 m-0">
           <div className="absolute inset-0 z-10 bg-black/60" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%)' }} />
-          <motion.div initial={{ scale: 1 }} animate={{ scale: 1.08 }} transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }} className="absolute inset-0 z-0">
+          <motion.div initial={{ scale: 1 }} animate={{ scale: 1.08 }} transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             {heroImage && (
                 <Image src={heroImage.imageUrl} alt={heroImage.description} fill sizes="100vw" className="object-cover object-center w-full h-full" priority={true} data-ai-hint={heroImage.imageHint} />
             )}
@@ -250,13 +249,13 @@ export default function Home() {
 
         <LibraryShowcase />
         
-        <section className="py-16 md:py-32 bg-background overflow-hidden">
+        <section className="py-16 md:py-24 bg-background overflow-hidden">
             <div className="container max-w-5xl mx-auto px-4 md:px-8">
                 <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
                     <h2 className="font-headline text-3xl md:text-5xl font-medium tracking-tight">Our Services</h2>
                     <p className="text-muted-foreground text-xs font-medium uppercase tracking-[0.2em]">Elevate your kitchen with AI expertise</p>
                 </div>
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }} variants={{ visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                     {services.map((service, i) => <ServiceCard key={i} index={i} {...service} />)}
                 </motion.div>
             </div>
@@ -264,25 +263,25 @@ export default function Home() {
 
         <ComparisonSection />
 
-        <section className="py-24 md:py-32 bg-muted/20 relative overflow-hidden">
+        <section className="py-20 md:py-28 bg-muted/20 relative overflow-hidden">
             <div className="container max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16 md:mb-24 space-y-4">
+                <div className="text-center mb-12 md:mb-16 space-y-4">
                     <h2 className="font-headline text-3xl md:text-5xl font-medium tracking-tight">Built for Every Kind of Cook</h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">Wherever you are in your cooking journey, CookMitra meets you there.</p>
                 </div>
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }} variants={{ visible: { transition: { staggerChildren: 0.18, delayChildren: 0.1 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
+                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
                     {personas.map((persona, i) => <PersonaCard key={i} {...persona} />)}
                 </motion.div>
             </div>
         </section>
 
-        <section className="py-16 md:py-32 relative overflow-hidden">
+        <section className="py-16 md:py-24 relative overflow-hidden">
             <div className="container max-w-5xl mx-auto px-4 md:px-8">
                 <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3, margin: "0px 0px -100px 0px" }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     className="relative overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-primary/20 bg-card py-10 sm:py-16 text-center space-y-10 group backdrop-blur-md shadow-2xl shadow-primary/5"
                 >
                     <div className="space-y-4 relative z-10 max-w-3xl mx-auto px-6">

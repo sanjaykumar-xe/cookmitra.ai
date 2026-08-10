@@ -4,6 +4,7 @@ export const karnatakaRecipes: Recipe[] = [
   // --- VEGETARIAN (15) ---
   {
     id: "bisi-bele-bath",
+    menuCategory: "Rice & Biryani",
     name: "Bisi Bele Bath",
     description: "A wholesome and spicy one-pot meal made of rice, lentils, and mixed vegetables, flavored with a unique spice blend.",
     type: "Vegetarian",
@@ -30,6 +31,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "ragi-mudde",
+    menuCategory: "Curries & Gravies",
     name: "Ragi Mudde",
     description: "Nutritious steamed finger millet balls, a traditional staple in South Karnataka, usually eaten with a spicy saaru.",
     type: "Vegetarian",
@@ -55,6 +57,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "vangi-bath",
+    menuCategory: "Rice & Biryani",
     name: "Vangi Bath",
     description: "Fragrant and spicy brinjal rice made with a signature roasted spice powder called Vangi Bath powder.",
     type: "Vegetarian",
@@ -81,6 +84,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "akki-roti",
+    menuCategory: "Breads",
     name: "Akki Roti",
     description: "A popular breakfast flatbread made from rice flour, flavored with onions, dill leaves, and green chilies.",
     type: "Vegetarian",
@@ -107,6 +111,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "huli-karnataka",
+    menuCategory: "Curries & Gravies",
     name: "Huli",
     description: "A classic South Karnataka lentil-vegetable stew, more robust and slightly sweeter than Tamil sambar.",
     type: "Vegetarian",
@@ -133,6 +138,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "majjige-huli",
+    menuCategory: "Curries & Gravies",
     name: "Majjige Huli",
     description: "A cooling and aromatic white pumpkin curry made with a spiced yogurt and coconut base.",
     type: "Vegetarian",
@@ -159,6 +165,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "kosambari",
+    menuCategory: "Salads",
     name: "Kosambari",
     description: "A light and refreshing lentil salad made with soaked moong dal, cucumber, and fresh coconut.",
     type: "Vegetarian",
@@ -185,6 +192,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "ennegai",
+    menuCategory: "Curries & Gravies",
     name: "Ennegai",
     description: "North Karnataka specialty stuffed brinjal curry made with a spicy peanut and sesame seed masala.",
     type: "Vegetarian",
@@ -211,6 +219,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "gojju",
+    menuCategory: "Curries & Gravies",
     name: "Pineapple Gojju",
     description: "A unique sweet, tangy, and spicy curry made with chunks of pineapple and a ground coconut-spice paste.",
     type: "Vegetarian",
@@ -237,6 +246,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "chitranna",
+    menuCategory: "Rice & Biryani",
     name: "Chitranna (Lemon Rice)",
     description: "Traditional Karnataka lemon rice tempered with peanuts and turmeric, a common temple prasada.",
     type: "Vegetarian",
@@ -263,6 +273,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-sagu",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin Sagu",
     description: "A mild and creamy vegetable curry made with red pumpkin and a ground coconut-poppy seed masala.",
     type: "Vegetarian",
@@ -289,6 +300,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "beans-palya",
+    menuCategory: "Dry & Stir-Fried",
     name: "Beans Palya",
     description: "Simple and nutritious green beans stir-fry finished with a generous garnish of fresh coconut.",
     type: "Vegetarian",
@@ -315,6 +327,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "kadubu",
+    menuCategory: "Curries & Gravies",
     name: "Kadubu",
     description: "Traditional steamed rice flour dumplings, often made during festivals as an offering.",
     type: "Vegetarian",
@@ -341,6 +354,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "avarekalu-usli",
+    menuCategory: "Dry & Stir-Fried",
     name: "Avarekalu Usli",
     description: "Seasonal specialty made with hyacinth beans, stir-fried with coconut and green chilies.",
     type: "Vegetarian",
@@ -367,6 +381,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "karnataka-sambar",
+    menuCategory: "Curries & Gravies",
     name: "Karnataka Style Sambar",
     description: "A quintessential South Karnataka sambar variant made with fresh ground spices and a hint of sweetness.",
     type: "Vegetarian",
@@ -395,6 +410,7 @@ export const karnatakaRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "kori-gassi",
+    menuCategory: "Curries & Gravies",
     name: "Kori Gassi",
     description: "Authentic Mangalorean chicken curry with a rich and spicy coconut-based gravy, usually served with Neer Dosa.",
     type: "Non-Vegetarian",
@@ -421,6 +437,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "mutton-sukka-karnataka",
+    menuCategory: "Protein Specialties",
     name: "Karnataka Mutton Sukka",
     description: "A dry mutton preparation where meat is slow-cooked and roasted with a coarse coconut and black pepper masala.",
     type: "Non-Vegetarian",
@@ -447,6 +464,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "chicken-ghee-roast-karnataka",
+    menuCategory: "Protein Specialties",
     name: "Chicken Ghee Roast",
     description: "Fiery red, tangy and rich Mangalorean chicken dish roasted in a generous amount of pure ghee.",
     type: "Non-Vegetarian",
@@ -473,6 +491,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "koli-saaru",
+    menuCategory: "Curries & Gravies",
     name: "Koli Saaru",
     description: "Rustic Karnataka style soupy chicken curry, usually made in rural households and served with Ragi Mudde.",
     type: "Non-Vegetarian",
@@ -499,6 +518,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "mangalore-fish-curry",
+    menuCategory: "Curries & Gravies",
     name: "Mangalorean Fish Curry",
     description: "A tangy coastal delicacy with coconut and tamarind, featuring the distinct aroma of roasted spices.",
     type: "Non-Vegetarian",
@@ -525,6 +545,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "bangude-pulimunchi",
+    menuCategory: "Curries & Gravies",
     name: "Bangude Pulimunchi",
     description: "Famous coastal dish where mackerel (Bangude) is cooked in a sharp tamarind (Puli) and chili (Munchi) paste.",
     type: "Non-Vegetarian",
@@ -551,6 +572,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "kundapur-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Kundapur Chicken Curry",
     description: "A signature chicken curry from the coastal town of Kundapur, known for its unique roasted coconut masala.",
     type: "Non-Vegetarian",
@@ -577,6 +599,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "coorg-pandi-curry",
+    menuCategory: "Curries & Gravies",
     name: "Coorg Pandi Curry",
     description: "Legendary Kodava style pork curry featuring the unique, dark 'Kachampuli' (Coorg vinegar).",
     type: "Non-Vegetarian",
@@ -603,6 +626,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "kori-rotti",
+    menuCategory: "Curries & Gravies",
     name: "Kori Rotti",
     description: "Spicy Mangalorean chicken curry served with crisp, thin rice wafers (Rotti) that soften as they soak up the gravy.",
     type: "Non-Vegetarian",
@@ -629,6 +653,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "chicken-sukka-karnataka",
+    menuCategory: "Protein Specialties",
     name: "Chicken Sukka",
     description: "Mangalorean dry chicken dish where meat is slow-cooked with a heavily seasoned roasted coconut crumble.",
     type: "Non-Vegetarian",
@@ -655,6 +680,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "prawn-ghee-roast",
+    menuCategory: "Protein Specialties",
     name: "Prawn Ghee Roast",
     description: "Succulent prawns tossed in a fiery Mangalorean ghee-roasted masala, a coastal favorite.",
     type: "Non-Vegetarian",
@@ -681,6 +707,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-karnataka",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Karnataka Style",
     description: "Hearty and spicy mutton curry from the plains of Karnataka, made with a fresh poppy seed and coconut base.",
     type: "Non-Vegetarian",
@@ -707,6 +734,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-karnataka",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Karnataka Style",
     description: "Boiled eggs simmered in a spicy coconut-based green masala with coriander and mint.",
     type: "Non-Vegetarian",
@@ -733,6 +761,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "mangalore-fish-fry",
+    menuCategory: "Protein Specialties",
     name: "Fish Fry Mangalorean Style",
     description: "Crispy, spicy shallow-fried fish steaks coated with semolina (Rava) for extra crunch.",
     type: "Non-Vegetarian",
@@ -759,6 +788,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "crab-sukka",
+    menuCategory: "Protein Specialties",
     name: "Crab Sukka",
     description: "Coastal style dry roasted crab curry featuring the intense heat of Guntur chilies and sweet coconut.",
     type: "Non-Vegetarian",
@@ -787,6 +817,7 @@ export const karnatakaRecipes: Recipe[] = [
   // --- SNACKS (10) ---
   {
     id: "mysore-masala-dosa",
+    menuCategory: "Breads",
     name: "Mysore Masala Dosa",
     description: "Famous crispy dosa with a signature spicy red garlic-chili chutney spread inside and a potato filling.",
     type: "Vegetarian",
@@ -813,6 +844,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "maddur-vada",
+    menuCategory: "Snacks & Street Food",
     name: "Maddur Vada",
     description: "The legendary railway snack—crisp, flat onion fritters from the town of Maddur, flavored with curry leaves.",
     type: "Vegetarian",
@@ -839,6 +871,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "goli-baje",
+    menuCategory: "Snacks & Street Food",
     name: "Goli Baje (Mangalore Bajji)",
     description: "Soft, spongy fried fritters from coastal Karnataka, made from a fermented yogurt and maida batter.",
     type: "Vegetarian",
@@ -865,6 +898,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "benne-dosa",
+    menuCategory: "Breads",
     name: "Davangere Benne Dosa",
     description: "Famous buttery dosa from Davangere, served with a specific potato mash and spicy coconut chutney.",
     type: "Vegetarian",
@@ -890,6 +924,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "kodubale",
+    menuCategory: "Snacks & Street Food",
     name: "Kodubale",
     description: "Crunchy, ring-shaped savory snack made from rice flour and roasted gram flour, flavored with cumin and chili.",
     type: "Vegetarian",
@@ -916,6 +951,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "ambode",
+    menuCategory: "Snacks & Street Food",
     name: "Ambode (Masala Vada)",
     description: "Crispy and spicy deep-fried chana dal fritters flavored with dill leaves and ginger.",
     type: "Vegetarian",
@@ -942,6 +978,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "nippattu",
+    menuCategory: "Snacks & Street Food",
     name: "Nippattu",
     description: "Famous savory rice crackers from Karnataka, studded with peanuts and gram dal for extra crunch.",
     type: "Vegetarian",
@@ -968,6 +1005,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "mysore-pak",
+    menuCategory: "Desserts & Sweets",
     name: "Mysore Pak",
     description: "The royal sweet of Karnataka—a rich and porous melt-in-the-mouth fudge made with gram flour and ghee.",
     type: "Vegetarian",
@@ -993,6 +1031,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "obbattu",
+    menuCategory: "Desserts & Sweets",
     name: "Obbattu (Holige)",
     description: "Sweet festive flatbread stuffed with a blend of cooked lentils and jaggery.",
     type: "Vegetarian",
@@ -1019,6 +1058,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "mangalore-buns",
+    menuCategory: "Snacks & Street Food",
     name: "Mangalore Buns",
     description: "Soft, sweet, and fluffy banana-based fried bread, a coastal Karnataka breakfast specialty.",
     type: "Vegetarian",

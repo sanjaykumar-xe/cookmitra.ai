@@ -4,6 +4,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "lucknowi-chicken-biryani",
+    menuCategory: "Rice & Biryani",
     name: "Lucknowi Chicken Biryani",
     description: "A delicate and aromatic Awadhi-style biryani where chicken is dum-cooked with long-grain basmati rice and mild spices.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "galouti-kebab",
+    menuCategory: "Starters & Appetizers",
     name: "Galouti Kebab",
     description: "The 'melt-in-the-mouth' kebabs originally made for a toothless Nawab, featuring finely minced meat and over 150 spices.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "awadhi-mutton-korma",
+    menuCategory: "Curries & Gravies",
     name: "Awadhi Mutton Korma",
     description: "A rich and silky mutton curry from the royal kitchens of Lucknow, focusing on nut pastes and slow cooking.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "nihari-up",
+    menuCategory: "Curries & Gravies",
     name: "Nihari",
     description: "A slow-cooked, spicy mutton stew enriched with bone marrow, traditionally eaten as a breakfast dish in Lucknow.",
     type: "Non-Vegetarian",
@@ -112,6 +116,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "tunday-kebab",
+    menuCategory: "Starters & Appetizers",
     name: "Tunday Kebab",
     description: "Smoky and soft minced meat patties, a world-famous street food staple from the lanes of Lucknow.",
     type: "Non-Vegetarian",
@@ -139,6 +144,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-rezala-lucknowi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Rezala Lucknowi",
     description: "A white, fragrant, and mild chicken curry made with a base of yogurt, cashews, and poppy seeds.",
     type: "Non-Vegetarian",
@@ -166,6 +172,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "kakori-kebab",
+    menuCategory: "Starters & Appetizers",
     name: "Kakori Kebab",
     description: "Extremely delicate lamb kebabs seasoned with cloves and rose petals, grilled on skewers.",
     type: "Non-Vegetarian",
@@ -193,6 +200,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-rara-up",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Rara",
     description: "A unique combination where mutton chunks and mutton mince are cooked together in a rich, spiced gravy.",
     type: "Non-Vegetarian",
@@ -220,6 +228,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-korma-awadhi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Korma Awadhi",
     description: "A royal chicken korma from the heart of Lucknow, mildly spiced with a rich, nutty gravy.",
     type: "Non-Vegetarian",
@@ -247,6 +256,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "bhuna-gosht-up",
+    menuCategory: "Curries & Gravies",
     name: "Bhuna Gosht UP Style",
     description: "Deeply roasted mutton pieces cooked in their own juices with a coarse, spicy masala base.",
     type: "Non-Vegetarian",
@@ -274,6 +284,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-lucknowi",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Lucknowi Style",
     description: "Hard-boiled eggs simmered in a rich and aromatic onion-cashew gravy, reflecting the Awadhi style of breakfast.",
     type: "Non-Vegetarian",
@@ -301,6 +312,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "murgh-musallam-lucknow",
+    menuCategory: "Curries & Gravies",
     name: "Murgh Musallam",
     description: "A whole roasted chicken marinated in royal spices and cooked in a rich, nut-based gravy with hard-boiled eggs.",
     type: "Non-Vegetarian",
@@ -328,6 +340,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-do-pyaza-up",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Do Pyaza UP Style",
     description: "A savory mutton curry featuring onions added at two different stages to provide both sweetness and texture.",
     type: "Non-Vegetarian",
@@ -355,6 +368,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-chaap-lucknowi",
+    menuCategory: "Protein Specialties",
     name: "Chicken Chaap Lucknowi",
     description: "Pan-roasted spiced chicken pieces slow-cooked in a nutty and oily gravy, a specialty of Lucknowi Nawabi cuisine.",
     type: "Non-Vegetarian",
@@ -382,6 +396,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "machli-amritsari-up",
+    menuCategory: "Curries & Gravies",
     name: "Machli Amritsari UP Style",
     description: "A popular fried fish delicacy from the northern belt, marinated with carom seeds and gram flour.",
     type: "Non-Vegetarian",
@@ -410,6 +425,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "kashi-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Kashi Chaat",
     description: "The iconic street chaat of Varanasi—spiced mashed potatoes topped with chickpeas, chutneys, and a signature cumin water syrup.",
     type: "Vegetarian",
@@ -436,6 +452,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "bedmi-puri-sabzi",
+    menuCategory: "Breads",
     name: "Bedmi Puri with Aloo Sabzi",
     description: "Deep-fried, lentil-stuffed whole wheat puris served with a spicy and thin potato curry, a classic UP breakfast.",
     type: "Vegetarian",
@@ -462,6 +479,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "nimona-up",
+    menuCategory: "Curries & Gravies",
     name: "Nimona",
     description: "A winter delicacy from Uttar Pradesh made with a coarse puree of fresh green peas and potatoes.",
     type: "Vegetarian",
@@ -489,6 +507,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "dubki-wale-aloo",
+    menuCategory: "Curries & Gravies",
     name: "Dubki Wale Aloo",
     description: "Small, boiled potatoes simmered in a tangy and thin yogurt-spiced gravy, a specialty of Mathura.",
     type: "Vegetarian",
@@ -516,6 +535,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "kaddu-ki-sabzi-up",
+    menuCategory: "Dry & Stir-Fried",
     name: "Kaddu Ki Sabzi UP Style",
     description: "A tangy and sweet pumpkin curry flavored with fenugreek seeds and dried mango powder.",
     type: "Vegetarian",
@@ -543,6 +563,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "arhar-dal-banarasi",
+    menuCategory: "Curries & Gravies",
     name: "Arhar Dal Banarasi",
     description: "Simple yet aromatic pigeon pea dal tempered with cumin, garlic, and dried whole red chilies in ghee.",
     type: "Vegetarian",
@@ -570,6 +591,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "bharwa-baingan-up",
+    menuCategory: "Curries & Gravies",
     name: "Bharwa Baingan UP Style",
     description: "Small brinjals stuffed with a dry-roasted spice mix of fennel, coriander, and amchur.",
     type: "Vegetarian",
@@ -596,6 +618,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "lauki-kofta-up",
+    menuCategory: "Protein Specialties",
     name: "Lauki Kofta",
     description: "Soft bottle gourd dumplings deep-fried and simmered in a creamy onion-tomato gravy.",
     type: "Vegetarian",
@@ -622,6 +645,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "petha-ki-sabzi-up",
+    menuCategory: "Desserts & Sweets",
     name: "Petha ki Sabzi",
     description: "A mildly sweet and savory curry made with ash gourd, typical of the Braj region.",
     type: "Vegetarian",
@@ -648,6 +672,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "til-chutney-sabzi",
+    menuCategory: "Sides & Accompaniments",
     name: "Til Ki Chutney with Sabzi",
     description: "A rustic combination of mixed vegetable stir-fry served with a pungent and nutty sesame seed chutney.",
     type: "Vegetarian",
@@ -674,6 +699,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "banarasi-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Banarasi Chaat",
     description: "Classic Kashi street food—tangy potato mash with crispy papdi, chickpeas, and a distinct Jeera syrup.",
     type: "Vegetarian",
@@ -700,6 +726,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "agra-petha",
+    menuCategory: "Desserts & Sweets",
     name: "Agra Petha",
     description: "The world-famous translucent sweet from Agra, made from ash gourd chunks soaked in sugar syrup.",
     type: "Vegetarian",
@@ -727,6 +754,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "kachori-aloo-up",
+    menuCategory: "Snacks & Street Food",
     name: "Kachori with Aloo Sabzi",
     description: "Flaky, deep-fried pastries stuffed with a spicy lentil mixture, served with a fiery potato gravy.",
     type: "Vegetarian",
@@ -752,6 +780,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "malaiyyo",
+    menuCategory: "Snacks & Street Food",
     name: "Malaiyyo",
     description: "The delicate, airy milk foam dessert from the narrow lanes of Varanasi, flavored with saffron and cardamom.",
     type: "Vegetarian",
@@ -777,6 +806,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-tikka-lucknowi",
+    menuCategory: "Starters & Appetizers",
     name: "Chicken Tikka Lucknowi",
     description: "Succulent boneless chicken marinated in a cream and nut-based Awadhi masala, char-grilled to perfection.",
     type: "Non-Vegetarian",

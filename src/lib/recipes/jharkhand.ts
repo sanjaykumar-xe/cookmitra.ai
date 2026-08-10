@@ -4,6 +4,7 @@ export const jharkhandRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "jharkhandi-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Jharkhandi Chicken Curry",
     description: "A rustic and flavorful chicken curry cooked in mustard oil with a dominance of garlic and whole spices.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-jharkhandi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Jharkhandi Style",
     description: "Slow-cooked spicy mutton curry featuring roasted spices and a rich mustard oil base.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "handia-chicken",
+    menuCategory: "Curries & Gravies",
     name: "Handia Chicken",
     description: "A tribal-inspired chicken curry slow-cooked with earthy spices, traditionally paired with local rice preparations.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-bamboo-shoot-jh",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry with Bamboo Shoot",
     description: "A distinct tribal specialty where chicken is simmered with tangy fermented bamboo shoots.",
     type: "Non-Vegetarian",
@@ -108,6 +112,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-rogra",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Rogra",
     description: "A hearty combination of mutton and wild Rogra mushrooms (black gram mushrooms), a rare forest specialty.",
     type: "Non-Vegetarian",
@@ -134,6 +139,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "machh-jhor-jharkhand",
+    menuCategory: "Curries & Gravies",
     name: "Machh Jhor Jharkhandi Style",
     description: "A thin and spicy river fish curry prepared with mustard paste and local seasonings.",
     type: "Non-Vegetarian",
@@ -160,6 +166,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "chicken-bhuja-jharkhand",
+    menuCategory: "Protein Specialties",
     name: "Chicken Bhuja Jharkhandi",
     description: "A dry-roasted spicy chicken preparation, following the traditional Bhuja style of intense sautéing.",
     type: "Non-Vegetarian",
@@ -186,6 +193,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-jharkhand",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Jharkhandi Style",
     description: "Boiled eggs simmered in a sharp mustard oil gravy with a deep red color and bold spices.",
     type: "Non-Vegetarian",
@@ -212,6 +220,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-kaleji-jharkhand",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kaleji Jharkhandi",
     description: "Spiced mutton liver fry, heavily seasoned with garlic and local spices, a popular rustic side dish.",
     type: "Non-Vegetarian",
@@ -238,6 +247,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "chicken-mahua-jharkhand",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry with Mahua Notes",
     description: "An earthy chicken curry inspired by tribal culinary practices using mahua flower essences for a unique aroma.",
     type: "Non-Vegetarian",
@@ -266,6 +276,7 @@ export const jharkhandRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "rugra-curry",
+    menuCategory: "Curries & Gravies",
     name: "Rugra Curry",
     description: "A seasonal specialty of Jharkhand—wild mushrooms (Rugra) cooked in a spicy onion-tomato gravy.",
     type: "Vegetarian",
@@ -292,6 +303,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "dhuska-ghugni-combo",
+    menuCategory: "Protein Specialties",
     name: "Dhuska with Ghugni",
     description: "Deep-fried rice-lentil pancakes served with a spicy dried yellow pea curry, a quintessential Jharkhandi breakfast.",
     type: "Vegetarian",
@@ -317,6 +329,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "bamboo-shoot-curry-jh",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry",
     description: "A tangy and earthy curry made from fermented bamboo shoots, common in tribal diets.",
     type: "Vegetarian",
@@ -343,6 +356,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "chana-ghugni-jharkhand",
+    menuCategory: "Curries & Gravies",
     name: "Chana Ghugni Jharkhandi",
     description: "Spiced dried yellow pea curry with local Jharkhandi seasoning, a popular street-side evening snack.",
     type: "Vegetarian",
@@ -368,6 +382,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "saag-jharkhand",
+    menuCategory: "Dry & Stir-Fried",
     name: "Saag Jharkhandi",
     description: "Simple stir-fried foraged leafy greens with garlic and mustard oil, a nutritious tribal staple.",
     type: "Vegetarian",
@@ -393,6 +408,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "arhar-dal-jharkhand",
+    menuCategory: "Curries & Gravies",
     name: "Arhar Dal Jharkhandi",
     description: "Simple tempered pigeon pea dal with a punchy garlic and red chili tadka in mustard oil.",
     type: "Vegetarian",
@@ -417,6 +433,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "aloo-posto-jharkhand",
+    menuCategory: "Curries & Gravies",
     name: "Aloo Posto Jharkhandi",
     description: "Potatoes cooked in a creamy poppy seed paste with a subtle mustard oil aroma, influenced by neighboring traditions.",
     type: "Vegetarian",
@@ -441,6 +458,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "kohra-bhaji-jh",
+    menuCategory: "Dry & Stir-Fried",
     name: "Kohra Bhaji",
     description: "Sweet and spicy pumpkin stir-fry with a simple tempering, a common home-style vegetable dish.",
     type: "Vegetarian",
@@ -466,6 +484,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "til-baigan-jh",
+    menuCategory: "Curries & Gravies",
     name: "Til Baigan",
     description: "Brinjal pieces cooked with a roasted sesame seed paste, providing a nutty and spicy regional flavor.",
     type: "Vegetarian",
@@ -490,6 +509,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "gundli-kheer-combo",
+    menuCategory: "Desserts & Sweets",
     name: "Gundli Ki Kheer with Sabzi",
     description: "Millet pudding served alongside a light vegetable curry, a traditional and healthy tribal meal.",
     type: "Vegetarian",
@@ -516,6 +536,7 @@ export const jharkhandRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "dhuska-snack",
+    menuCategory: "Snacks & Street Food",
     name: "Dhuska",
     description: "Deep-fried spiced rice-lentil pancakes, the iconic street-side snack of Jharkhand.",
     type: "Vegetarian",
@@ -540,6 +561,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "pitha-jharkhand",
+    menuCategory: "Snacks & Street Food",
     name: "Pitha Jharkhandi",
     description: "Steamed rice flour dumplings with a sweet jaggery or savory lentil filling.",
     type: "Vegetarian",
@@ -564,6 +586,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "thekua-jharkhand",
+    menuCategory: "Snacks & Street Food",
     name: "Thekua Jharkhandi",
     description: "Crunchy fried wheat flour cookies made with jaggery and dried fruits, a durable travel snack.",
     type: "Vegetarian",
@@ -588,6 +611,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "malpua-jharkhand",
+    menuCategory: "Desserts & Sweets",
     name: "Malpua Jharkhandi Style",
     description: "Sweet fried wheat pancakes soaked in sugar syrup, a festive treat in Jharkhand.",
     type: "Vegetarian",
@@ -612,6 +636,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "fish-pakora-jharkhand",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Pakora Jharkhandi",
     description: "Crispy river fish fritters coated in a spiced gram flour batter, a popular street-side snack.",
     type: "Non-Vegetarian",

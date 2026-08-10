@@ -4,6 +4,7 @@ export const mizoramRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "bai-mizo-pork",
+    menuCategory: "Curries & Gravies",
     name: "Bai",
     description: "The quintessential Mizo stew—a healthy, boiled mixture of pork, seasonal greens, and fermented pork fat (Sa-um).",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "sawhchiar-pork",
+    menuCategory: "Curries & Gravies",
     name: "Sawhchiar",
     description: "A traditional Mizo rice and meat porridge, flavored with local herbs and slow-cooked to a creamy consistency.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "pork-bekang-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Pork with Bekang",
     description: "A pungent and savory Mizo pork curry cooked with fermented soybean paste (Bekang) and local mountain chilies.",
     type: "Non-Vegetarian",
@@ -84,6 +87,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "vawksa-rep-mustard",
+    menuCategory: "Dry & Stir-Fried",
     name: "Vawksa Rep with Mustard Leaves",
     description: "Smoked pork pieces stir-fried with fresh mustard greens and local Mizo spices.",
     type: "Non-Vegetarian",
@@ -111,6 +115,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "chicken-bai-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Bai",
     description: "A light and clear chicken stew with assorted mountain vegetables, focused on the natural flavors of the ingredients.",
     type: "Non-Vegetarian",
@@ -137,6 +142,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-shoot-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Pork with Bamboo Shoot",
     description: "Classic Mizo pork preparation cooked with fresh bamboo shoots and minimal oil.",
     type: "Non-Vegetarian",
@@ -163,6 +169,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "sa-um-vegetables",
+    menuCategory: "Curries & Gravies",
     name: "Sa Um with Vegetables",
     description: "A unique tribal preparation using fermented pork fat (Sa-um) as a flavoring agent for mixed mountain vegetables.",
     type: "Non-Vegetarian",
@@ -188,6 +195,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "fish-bai-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Fish Bai",
     description: "A healthy and light fish stew cooked with local greens and minimal spices, typical of Mizo riverine regions.",
     type: "Non-Vegetarian",
@@ -214,6 +222,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "egg-bai-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Egg Bai",
     description: "Boiled eggs simmered in a light, clear broth with mixed mountain vegetables, a common Mizo breakfast side.",
     type: "Non-Vegetarian",
@@ -239,6 +248,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "pork-curry-mizo-style",
+    menuCategory: "Curries & Gravies",
     name: "Mizo Style Pork Curry",
     description: "A simple, rustic pork curry from Mizoram featuring local mountain chilies and a thin, flavorful gravy.",
     type: "Non-Vegetarian",
@@ -267,6 +277,7 @@ export const mizoramRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "bekang-fermented-soybean",
+    menuCategory: "Curries & Gravies",
     name: "Bekang",
     description: "A Mizo household staple—fermented soybeans cooked with minimal seasoning to highlight its unique, strong flavor.",
     type: "Vegetarian",
@@ -292,6 +303,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "anhla-boiled-greens",
+    menuCategory: "Curries & Gravies",
     name: "Anhla",
     description: "Healthy and simple boiled mixed mountain greens, the most common everyday accompaniment in Mizoram.",
     type: "Vegetarian",
@@ -316,6 +328,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "bamboo-shoot-curry-mizo-veg",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry Mizo",
     description: "Tangy fermented bamboo shoots cooked with local seasonal vegetables and herbs.",
     type: "Vegetarian",
@@ -341,6 +354,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "vegetable-bai-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Vegetable Bai",
     description: "A wholesome and healthy boiled mixed vegetable stew, a staple for everyday Mizo meals.",
     type: "Vegetarian",
@@ -364,6 +378,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "rep-fermented-mustard",
+    menuCategory: "Dry & Stir-Fried",
     name: "Rep (Fermented Mustard Leaves)",
     description: "Preserved mustard leaves cooked into a dry or semi-dry savory dish with minimal spices.",
     type: "Vegetarian",
@@ -387,6 +402,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "bekang-umtak-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Bekang Umtak",
     description: "Fermented soybean cooked with local aromatic mountain herbs, a savory and high-protein side dish.",
     type: "Vegetarian",
@@ -410,6 +426,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-leaf-bai-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin Leaf Bai",
     description: "Lightly boiled tender pumpkin leaves seasoned with ginger and salt, reflecting the simplicity of Mizo cooking.",
     type: "Vegetarian",
@@ -433,6 +450,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "dal-mizo-style",
+    menuCategory: "Curries & Gravies",
     name: "Dal Mizo Style",
     description: "Simple boiled red lentils with minimal tempering, served as a clean and nutritious protein source.",
     type: "Vegetarian",
@@ -456,6 +474,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "chow-chow-curry-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Chow Chow Curry",
     description: "Chayote squash (Chow Chow) cooked with local herbs in a light mountain-style preparation.",
     type: "Vegetarian",
@@ -479,6 +498,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "mustard-greens-bai-mizo",
+    menuCategory: "Curries & Gravies",
     name: "Mustard Greens Bai",
     description: "Boiled mustard greens with minimal seasoning, a healthy and cleansing regional staple.",
     type: "Vegetarian",
@@ -504,6 +524,7 @@ export const mizoramRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "chhangban-rice-cake",
+    menuCategory: "Snacks & Street Food",
     name: "Chhangban",
     description: "A traditional Mizo steamed rice cake wrapped in leaves, known for its sticky texture and subtle flavor.",
     type: "Vegetarian",
@@ -528,6 +549,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "vawksa-rep-bites",
+    menuCategory: "Snacks & Street Food",
     name: "Vawksa Rep Bites",
     description: "Snack-sized bites of smoked pork tossed with fresh mountain herbs and a hint of local chili.",
     type: "Non-Vegetarian",
@@ -551,6 +573,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "rice-cake-mizo-style",
+    menuCategory: "Snacks & Street Food",
     name: "Rice Cake Mizo Style",
     description: "Simple steamed sticky rice cakes, a traditional tribal sweet often enjoyed with tea.",
     type: "Vegetarian",
@@ -573,6 +596,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "bekang-chutney-snack",
+    menuCategory: "Sides & Accompaniments",
     name: "Bekang Chutney Snack",
     description: "Pungent fermented soybean chutney served with small crispy rice bites.",
     type: "Vegetarian",
@@ -594,6 +618,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "fish-cake-mizo-style",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Cake Mizo Style",
     description: "Steamed spiced fish cakes prepared with local river fish and mountain herbs.",
     type: "Non-Vegetarian",

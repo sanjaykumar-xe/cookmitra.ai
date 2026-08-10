@@ -4,6 +4,7 @@ export const westBengalRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "machher-jhol-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Machher Jhol",
     description: "The soul of a Bengali meal—a light and healthy fish curry with potatoes and cauliflower, seasoned with ginger and cumin.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "shorshe-ilish",
+    menuCategory: "Curries & Gravies",
     name: "Shorshe Ilish",
     description: "The most prized Bengali delicacy—Hilsa fish cooked in a pungent and creamy mustard-poppy seed gravy.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "kosha-mangsho-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Kosha Mangsho",
     description: "Iconic Bengali slow-cooked mutton curry, known for its deep brown color, rich spices, and velvety texture.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "chingri-malai-curry",
+    menuCategory: "Curries & Gravies",
     name: "Chingri Malai Curry",
     description: "Classic festive prawn curry cooked in fresh coconut milk with subtle spices, a signature of Bengali weddings.",
     type: "Non-Vegetarian",
@@ -112,6 +116,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "doi-maach-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Doi Maach",
     description: "Fish steaks cooked in a mild and fragrant yogurt-based gravy with a touch of sweetness and whole spices.",
     type: "Non-Vegetarian",
@@ -138,6 +143,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "chicken-kosha-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Kosha",
     description: "Spicy and thick chicken curry roasted with onions and spices, following the traditional kosha method.",
     type: "Non-Vegetarian",
@@ -164,6 +170,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "bhetki-paturi",
+    menuCategory: "Curries & Gravies",
     name: "Bhetki Paturi",
     description: "Barramundi fillets marinated in a sharp mustard-coconut paste, wrapped in banana leaves, and steamed to perfection.",
     type: "Non-Vegetarian",
@@ -191,6 +198,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "kolkata-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Kolkata Chicken Curry",
     description: "A comforting, mildly sweet chicken curry with large potato chunks, a staple on Sunday afternoons in Kolkata.",
     type: "Non-Vegetarian",
@@ -218,6 +226,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "dimer-jhol",
+    menuCategory: "Curries & Gravies",
     name: "Dimer Jhol",
     description: "Hard-boiled eggs and potatoes in a light, spiced Bengali gravy, the quintessential quick non-veg meal.",
     type: "Non-Vegetarian",
@@ -244,6 +253,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "mutton-kosha-alu",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kosha with Alu",
     description: "The classic feast of slow-roasted mutton served with large fried potatoes that absorb the rich meat juices.",
     type: "Non-Vegetarian",
@@ -273,6 +283,7 @@ export const westBengalRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "aloo-posto-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Aloo Posto",
     description: "The most beloved Bengali comfort dish—potatoes cooked in a creamy, nutty poppy seed paste.",
     type: "Vegetarian",
@@ -300,6 +311,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "shukto-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Shukto",
     description: "A complex and cooling mixed vegetable stew with a hint of bitterness, traditionally the start of a multi-course meal.",
     type: "Vegetarian",
@@ -327,6 +339,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "dhokar-dalna",
+    menuCategory: "Curries & Gravies",
     name: "Dhokar Dalna",
     description: "Fried lentil cakes (dhoka) simmered in a spiced tomato-ginger gravy, a high-protein vegetarian delicacy.",
     type: "Vegetarian",
@@ -354,6 +367,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "chholar-dal-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Chholar Dal",
     description: "Sweet and nutty Bengal gram dal flavored with coconut slices and aromatic whole spices, served with Luchi.",
     type: "Vegetarian",
@@ -381,6 +395,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "begun-bhaja-dal-combo",
+    menuCategory: "Curries & Gravies",
     name: "Begun Bhaja with Dal",
     description: "Classic Bengali meal pairing of thick, spicy fried brinjal slices with tempered yellow lentils.",
     type: "Vegetarian",
@@ -405,6 +420,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "labra-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Labra",
     description: "A traditional mixed vegetable mush cooked with panch phoron and ginger, often served at religious festivals.",
     type: "Vegetarian",
@@ -430,6 +446,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "cholar-ghonto",
+    menuCategory: "Dry & Stir-Fried",
     name: "Cholar Ghonto",
     description: "A dry preparation of Bengal gram and grated coconut seasoned with traditional spices.",
     type: "Vegetarian",
@@ -455,6 +472,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "bandhakopir-ghonto",
+    menuCategory: "Dry & Stir-Fried",
     name: "Bandhakopir Ghonto",
     description: "Bengali style cabbage curry cooked with potato cubes, green peas, and fresh coconut.",
     type: "Vegetarian",
@@ -480,6 +498,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "aloo-potol-posto-bengali",
+    menuCategory: "Curries & Gravies",
     name: "Aloo Potol Posto",
     description: "Pointed gourd and potatoes cooked in a rich and aromatic poppy seed paste.",
     type: "Vegetarian",
@@ -504,6 +523,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "mochar-ghonto-bengali",
+    menuCategory: "Dry & Stir-Fried",
     name: "Mochar Ghonto",
     description: "Exquisite banana flower curry cooked with small potato cubes and grated coconut, featuring a complex spice profile.",
     type: "Vegetarian",
@@ -531,6 +551,7 @@ export const westBengalRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "beguni-bengali",
+    menuCategory: "Snacks & Street Food",
     name: "Beguni",
     description: "Classic Bengali evening snack—thinly sliced brinjal dipped in a spiced gram flour batter and deep-fried.",
     type: "Vegetarian",
@@ -556,6 +577,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "rasgulla-bengali",
+    menuCategory: "Desserts & Sweets",
     name: "Rasgulla (Rosogolla)",
     description: "The world-famous Bengali sweet—spongy, melt-in-mouth balls of fresh cottage cheese soaked in a light sugar syrup.",
     type: "Vegetarian",
@@ -582,6 +604,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "sandesh-bengali",
+    menuCategory: "Desserts & Sweets",
     name: "Sandesh",
     description: "A delicate and aristocratic Bengali sweet made from hand-kneaded fresh cottage cheese and flavored with cardamom.",
     type: "Vegetarian",
@@ -608,6 +631,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "ghugni-chaat-bengali",
+    menuCategory: "Snacks & Street Food",
     name: "Ghugni Chaat",
     description: "A popular Kolkata street snack made with spiced dried yellow peas, topped with onions and tangy tamarind water.",
     type: "Vegetarian",
@@ -633,6 +657,7 @@ export const westBengalRecipes: Recipe[] = [
   },
   {
     id: "fish-fry-kolkata-style",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Fry Kolkata Style",
     description: "Famous diamond-shaped breaded fish fillets, marinated in a special green masala and fried until crispy.",
     type: "Non-Vegetarian",

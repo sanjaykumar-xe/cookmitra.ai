@@ -4,6 +4,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "chhattisgarhi-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Chhattisgarhi Chicken Curry",
     description: "A rustic, homestyle chicken curry cooked with local spices and an onion-tomato base, typical of the plains of Chhattisgarh.",
     type: "Non-Vegetarian",
@@ -31,6 +32,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-chhattisgarhi",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Chhattisgarhi Style",
     description: "Slow-cooked mutton with a blend of ground spices, following the traditional village preparation methods of Central India.",
     type: "Non-Vegetarian",
@@ -58,6 +60,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "bhajir-machhi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Bhajir Machhi",
     description: "A unique Chhattisgarhi river fish curry cooked with seasonal leafy greens, providing a distinct earthy flavor.",
     type: "Non-Vegetarian",
@@ -85,6 +88,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "chicken-bafauri-curry",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Bafauri Style Curry",
     description: "A variation of the traditional Bafauri, using steamed chicken and lentil dumplings in a light gravy.",
     type: "Non-Vegetarian",
@@ -112,6 +116,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "mutton-kaliya-cg",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kaliya",
     description: "A thick, heavily spiced mutton curry from Central India, featuring a rich blend of roasted coriander and dry red chilies.",
     type: "Non-Vegetarian",
@@ -138,6 +143,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "machli-bhuja",
+    menuCategory: "Protein Specialties",
     name: "Machli Bhuja",
     description: "A dry-roasted spicy fish fry, marinated with local Chhattisgarhi spices and fried until crispy.",
     type: "Non-Vegetarian",
@@ -164,6 +170,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "chicken-kaliya-cg",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Kaliya",
     description: "A thick and potent chicken curry cooked with a special spice blend, a favorite for festive dinners in Chhattisgarh.",
     type: "Non-Vegetarian",
@@ -190,6 +197,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-chhattisgarhi",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Chhattisgarhi Style",
     description: "Hard-boiled eggs simmered in a tangy and spicy onion-tomato gravy, a common morning meal in Central India.",
     type: "Non-Vegetarian",
@@ -216,6 +224,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "kadai-chicken-chhattisgarhi",
+    menuCategory: "Breads",
     name: "Kadai Chicken Chhattisgarhi",
     description: "Chicken pieces stir-fried with capsicum and a coarse blend of spices in an iron wok (kadai).",
     type: "Non-Vegetarian",
@@ -243,6 +252,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "mutton-bhutwa-cg",
+    menuCategory: "Protein Specialties",
     name: "Mutton Bhutwa",
     description: "A dry, spicy mutton stir-fry from rural Chhattisgarh, traditionally served as a rustic accompaniment.",
     type: "Non-Vegetarian",
@@ -269,6 +279,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "chicken-bhutwa-cg",
+    menuCategory: "Protein Specialties",
     name: "Chicken Bhutwa",
     description: "Dry spiced chicken stir-fry, following the traditional Bhutwa style of intense roasting.",
     type: "Non-Vegetarian",
@@ -295,6 +306,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "machhi-jhor-cg",
+    menuCategory: "Curries & Gravies",
     name: "Machhi Jhor",
     description: "A thin and spicy freshwater fish soup-curry, widely consumed in the river-rich regions of Chhattisgarh.",
     type: "Non-Vegetarian",
@@ -322,6 +334,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "desi-murga-curry-cg",
+    menuCategory: "Curries & Gravies",
     name: "Desi Murga Curry",
     description: "Tough but highly flavorful country chicken curry slow-cooked with mustard oil and rural spices.",
     type: "Non-Vegetarian",
@@ -349,6 +362,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "mutton-kohda-curry",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry with Kohda",
     description: "A rustic and flavorful mutton curry cooked with sweet pumpkin chunks (Kohda), a unique regional combination.",
     type: "Non-Vegetarian",
@@ -375,6 +389,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "anda-bhutwa-cg",
+    menuCategory: "Protein Specialties",
     name: "Anda Bhutwa",
     description: "A dry and spicy egg stir-fry with onions and green chilies, perfect for a quick breakfast or snack.",
     type: "Non-Vegetarian",
@@ -403,6 +418,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "chana-bhaji-chhattisgarhi",
+    menuCategory: "Dry & Stir-Fried",
     name: "Chana Bhaji Chhattisgarhi",
     description: "A nutrient-rich curry made from fresh chickpea greens, a winter specialty in Chhattisgarhi homes.",
     type: "Vegetarian",
@@ -428,6 +444,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "bafauri-veg-cg",
+    menuCategory: "Curries & Gravies",
     name: "Bafauri",
     description: "Traditional steamed chana dal dumplings, a light and oil-free vegetarian snack or side dish.",
     type: "Vegetarian",
@@ -453,6 +470,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "chousela-roti-sabzi",
+    menuCategory: "Breads",
     name: "Chousela Roti with Sabzi",
     description: "Deep-fried rice flour flatbread (Chousela) served with a simple mixed vegetable curry.",
     type: "Vegetarian",
@@ -477,6 +495,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "aamat-curry",
+    menuCategory: "Curries & Gravies",
     name: "Aamat",
     description: "A signature Chhattisgarhi tangy curry made with bamboo shoots and mixed vegetables, traditionally prepared in bamboo containers.",
     type: "Vegetarian",
@@ -502,6 +521,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "muthiya-bhaji",
+    menuCategory: "Dry & Stir-Fried",
     name: "Muthiya Bhaji",
     description: "Steamed rice flour dumplings (Muthiya) cooked in a light green leafy curry.",
     type: "Vegetarian",
@@ -527,6 +547,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "dubki-kadhi-cg",
+    menuCategory: "Curries & Gravies",
     name: "Dubki Kadhi",
     description: "Gram flour dumplings dropped directly into a tangy yogurt gravy, an Odia-Chhattisgarhi staple.",
     type: "Vegetarian",
@@ -552,6 +573,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "chhattisgarhi-mixed-greens",
+    menuCategory: "Dry & Stir-Fried",
     name: "Bhaji Chhattisgarhi (Mixed Greens)",
     description: "A combination of local wild greens stir-fried with simple tempering, highlighting the region's produce.",
     type: "Vegetarian",
@@ -577,6 +599,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "farra-rolls",
+    menuCategory: "Curries & Gravies",
     name: "Farra",
     description: "Steamed rice flour rolls served with a spicy sesame-mustard tempering, a favorite Chhattisgarhi breakfast.",
     type: "Vegetarian",
@@ -603,6 +626,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "tilgur-chana",
+    menuCategory: "Curries & Gravies",
     name: "Tilgur Chana",
     description: "A sweet and savory festive dish made with jaggery, sesame seeds, and chickpeas.",
     type: "Vegetarian",
@@ -628,6 +652,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "kusli-sabzi-cg",
+    menuCategory: "Dry & Stir-Fried",
     name: "Kusli Sabzi",
     description: "A traditional curry made with sun-dried lentil dumplings (Kusli), typical of the rural Chhattisgarh kitchen.",
     type: "Vegetarian",
@@ -655,6 +680,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "chila-chhattisgarhi",
+    menuCategory: "Snacks & Street Food",
     name: "Chila",
     description: "Savory and crispy rice pancakes, a daily breakfast staple in Chhattisgarh.",
     type: "Vegetarian",
@@ -680,6 +706,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "aamat-bhajiya",
+    menuCategory: "Snacks & Street Food",
     name: "Aamat Bhajiya",
     description: "Crispy gram flour vegetable fritters spiced with local seasonings.",
     type: "Vegetarian",
@@ -704,6 +731,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "khurma-chhattisgarhi",
+    menuCategory: "Snacks & Street Food",
     name: "Khurma Chhattisgarhi",
     description: "Sweet and crunchy deep-fried wheat flour sticks, a popular festive snack.",
     type: "Vegetarian",
@@ -728,6 +756,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "thethri-cg",
+    menuCategory: "Snacks & Street Food",
     name: "Thethri",
     description: "Iconic Chhattisgarhi crunchy spiced fried flour twists, mandatory for regional festivals.",
     type: "Vegetarian",
@@ -752,6 +781,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "fish-pakora-chhattisgarhi",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Pakora Chhattisgarhi",
     description: "Crispy river fish fritters coated in a spiced gram flour batter, a popular street-side non-veg snack.",
     type: "Non-Vegetarian",

@@ -9,6 +9,7 @@ export const gujaratRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "kathiawadi-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Kathiawadi Chicken Curry",
     description: "A fiery and pungent chicken curry from the Kathiawar region, known for its heavy use of garlic and red chilies.",
     type: "Non-Vegetarian",
@@ -35,6 +36,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "kathiawadi-mutton-curry",
+    menuCategory: "Curries & Gravies",
     name: "Kathiawadi Mutton Curry",
     description: "A robust and spicy mutton curry prepared in the rustic style of rural Gujarat, featuring a coarse masala base.",
     type: "Non-Vegetarian",
@@ -61,6 +63,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "chicken-bharuchi",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Bharuchi",
     description: "A Parsi-Gujarati fusion dish from Bharuch, featuring a unique balance of sweetness from jaggery and tang from vinegar.",
     type: "Non-Vegetarian",
@@ -87,6 +90,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "surti-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Surti Chicken Curry",
     description: "A Surat-style chicken curry influenced by local coastal flavors, often using a touch of coconut and fresh green spices.",
     type: "Non-Vegetarian",
@@ -113,6 +117,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "machhi-nu-shaak",
+    menuCategory: "Dry & Stir-Fried",
     name: "Machhi Nu Shaak",
     description: "A traditional Gujarati coastal fish curry made with a pungent mustard and garlic paste, common in the Veraval region.",
     type: "Non-Vegetarian",
@@ -139,6 +144,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "chicken-khiro",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Khiro",
     description: "A specialty of the Gujarati Muslim community, chicken is slow-cooked in a silky coconut milk and poppy seed gravy.",
     type: "Non-Vegetarian",
@@ -164,6 +170,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "mutton-bafat-gujarati",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Bafat",
     description: "A heavily spiced mutton curry influenced by the spice-trade history of Gujarati ports, using a roasted masala.",
     type: "Non-Vegetarian",
@@ -190,6 +197,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "chicken-ambot-tik",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Ambot Tik (Gujarati Style)",
     description: "A tangy (Ambot) and spicy (Tik) chicken curry found in the Konkan-bordering regions of Gujarat.",
     type: "Non-Vegetarian",
@@ -215,6 +223,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-gujarati",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Gujarati Style",
     description: "Boiled eggs simmered in a mildly sweet tomato-onion gravy, a comfort meal in urban Gujarati households.",
     type: "Non-Vegetarian",
@@ -240,6 +249,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "kolamba-fish-curry",
+    menuCategory: "Curries & Gravies",
     name: "Kolamba Fish Curry",
     description: "Coastal Gujarati fish curry using freshwater river fish and a sharp tamarind-based base.",
     type: "Non-Vegetarian",
@@ -265,6 +275,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "chicken-handi-gujarati",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Handi Gujarati Style",
     description: "Chicken slow-cooked in a sealed clay handi with central Gujarati spices and caramelized onions.",
     type: "Non-Vegetarian",
@@ -290,6 +301,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "mutton-kheema-gujarati",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kheema Gujarati",
     description: "Minced mutton cooked with cubed potatoes and green peas, a favorite Irani-cafe style breakfast in Gujarat.",
     type: "Non-Vegetarian",
@@ -316,6 +328,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-parsi",
+    menuCategory: "Curries & Gravies",
     name: "Parsi Chicken Curry",
     description: "A mild and silky chicken curry with Parsi spices, focusing on the sweetness of roasted nuts and coconut.",
     type: "Non-Vegetarian",
@@ -341,6 +354,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "prawn-curry-surti",
+    menuCategory: "Curries & Gravies",
     name: "Prawn Curry Surti",
     description: "Fresh prawns simmered in a coconut and garlic gravy typical of the Surat coastline.",
     type: "Non-Vegetarian",
@@ -366,6 +380,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "chicken-fry-kathiawadi",
+    menuCategory: "Protein Specialties",
     name: "Chicken Fry Kathiawadi",
     description: "Dry roasted spicy chicken with a heavy dose of garlic and crushed red chilies, a popular highway snack.",
     type: "Non-Vegetarian",
@@ -393,6 +408,7 @@ export const gujaratRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "undhiyu",
+    menuCategory: "Curries & Gravies",
     name: "Undhiyu",
     description: "A mixed winter vegetable dish from Surat, slow-cooked in a classic green masala with fried fenugreek dumplings.",
     type: "Vegetarian",
@@ -420,6 +436,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "gujarati-kadhi",
+    menuCategory: "Curries & Gravies",
     name: "Gujarati Kadhi",
     description: "A sweet and tangy yogurt-based curry made with gram flour and tempered with fragrant spices.",
     type: "Vegetarian",
@@ -446,6 +463,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "dal-dhokli",
+    menuCategory: "Curries & Gravies",
     name: "Dal Dhokli",
     description: "Wheat flour dumplings (dhokli) simmered in a sweet, tangy, and spicy dal, providing a complete meal in one pot.",
     type: "Vegetarian",
@@ -472,6 +490,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "sev-tameta-nu-shaak",
+    menuCategory: "Snacks & Street Food",
     name: "Sev Tameta Nu Shaak",
     description: "A quick and spicy tomato curry topped with crunchy thick sev, a staple across Gujarati homes.",
     type: "Vegetarian",
@@ -498,6 +517,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "bateta-nu-shaak",
+    menuCategory: "Dry & Stir-Fried",
     name: "Bateta Nu Shaak",
     description: "A simple dry-roasted potato curry with cumin and turmeric, often served with Poori and Shrikhand.",
     type: "Vegetarian",
@@ -522,6 +542,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "ringan-no-olo",
+    menuCategory: "Curries & Gravies",
     name: "Ringan No Olo",
     description: "Roasted eggplant mash seasoned with plenty of garlic and green chilies, a Kathiawadi winter specialty.",
     type: "Vegetarian",
@@ -548,6 +569,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "gujarati-dal",
+    menuCategory: "Curries & Gravies",
     name: "Gujarati Dal",
     description: "The classic sweet and tangy toor dal that is the centerpiece of a Gujarati thali.",
     type: "Vegetarian",
@@ -574,6 +596,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "handvo",
+    menuCategory: "Curries & Gravies",
     name: "Handvo",
     description: "A savory, protein-packed baked cake made with fermented rice-lentil batter and various vegetables like bottle gourd.",
     type: "Vegetarian",
@@ -601,6 +624,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "muthiya-nu-shaak",
+    menuCategory: "Dry & Stir-Fried",
     name: "Muthiya Nu Shaak",
     description: "Steamed and then simmered dumplings made from gram flour and bottle gourd in a light tomato curry.",
     type: "Vegetarian",
@@ -627,6 +651,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "sev-khamani",
+    menuCategory: "Snacks & Street Food",
     name: "Sev Khamani",
     description: "A Surat delicacy made from crumbled steamed chana dal cake, sautéed with spices and garnished with sev.",
     type: "Vegetarian",
@@ -655,6 +680,7 @@ export const gujaratRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "dhokla",
+    menuCategory: "Snacks & Street Food",
     name: "Dhokla",
     description: "A light, fermented, and steamed savory cake made from gram flour, tempered with mustard and chilies.",
     type: "Vegetarian",
@@ -681,6 +707,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "khandvi",
+    menuCategory: "Snacks & Street Food",
     name: "Khandvi",
     description: "Thin, silky rolled ribbons of cooked gram flour batter, a delicate and technical Gujarati snack.",
     type: "Vegetarian",
@@ -707,6 +734,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "fafda-jalebi",
+    menuCategory: "Desserts & Sweets",
     name: "Fafda Jalebi",
     description: "The classic Sunday breakfast of Gujarat—crispy chickpea flour strips paired with hot syrupy jalebis.",
     type: "Vegetarian",
@@ -732,6 +760,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "khaman",
+    menuCategory: "Snacks & Street Food",
     name: "Khaman",
     description: "A softer, spongier, and slightly sweeter version of dhokla, made with a more hydrated chana dal batter.",
     type: "Vegetarian",
@@ -758,6 +787,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "chicken-pakora-gujarati",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Pakora (Gujarati Style)",
     description: "Crispy fried chicken bites coated in a spiced gram flour batter with a hint of garlic and coriander.",
     type: "Non-Vegetarian",

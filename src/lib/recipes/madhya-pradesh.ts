@@ -4,6 +4,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "bhopali-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Bhopali Chicken Curry",
     description: "A rich and aromatic chicken curry from the city of lakes, characterized by its deep onion-tomato base and local spice blend.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-korma-bhopali",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Korma Bhopali",
     description: "A royal, creamy, and mildly spicy mutton korma made with a rich paste of nuts and slow-cooked to perfection.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "malwa-chicken-curry",
+    menuCategory: "Curries & Gravies",
     name: "Malwa Style Chicken Curry",
     description: "A tangy and garlic-forward chicken curry typical of the Malwa plateau, using mustard oil for a pungent kick.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "keema-matar-mp",
+    menuCategory: "Curries & Gravies",
     name: "Keema Matar",
     description: "Classic spiced minced mutton cooked with fresh green peas and a fragrant blend of central Indian spices.",
     type: "Non-Vegetarian",
@@ -108,6 +112,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-rogan-josh-bhopali",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Rogan Josh Bhopali",
     description: "A Central Indian take on Rogan Josh, using a deep red spice blend and slow-cooking for tender, falling-off-the-bone meat.",
     type: "Non-Vegetarian",
@@ -134,6 +139,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-curry-malwa",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry Malwa Style",
     description: "Rustic and slow-cooked mutton curry from the Malwa region, known for its spicy and thin gravy.",
     type: "Non-Vegetarian",
@@ -160,6 +166,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-do-pyaza-mp",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Do Pyaza MP Style",
     description: "A Central Indian version of the double-onion chicken curry, balancing sweetness and spice.",
     type: "Non-Vegetarian",
@@ -186,6 +193,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-seekh-kebab-mp",
+    menuCategory: "Starters & Appetizers",
     name: "Mutton Seekh Kebab",
     description: "Spiced minced mutton skewers grilled to perfection, a popular street-side delicacy in Bhopali bazaars.",
     type: "Non-Vegetarian",
@@ -212,6 +220,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-chaap-bhopali",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Chaap Bhopali",
     description: "Pan-seared spiced chicken pieces slow-cooked in a rich, oily gravy, a specialty of Bhopal.",
     type: "Non-Vegetarian",
@@ -238,6 +247,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-mp",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry MP Style",
     description: "Hard-boiled eggs simmered in a tangy and spicy onion-tomato gravy, a common morning meal in central India.",
     type: "Non-Vegetarian",
@@ -264,6 +274,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-nihari-bhopali",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Nihari Bhopali",
     description: "A slow-simmered, extremely tender mutton stew, traditionally cooked overnight and served for breakfast in Bhopal.",
     type: "Non-Vegetarian",
@@ -291,6 +302,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-korma-bhopali-mild",
+    menuCategory: "Curries & Gravies",
     name: "Mild Bhopali Chicken Korma",
     description: "A mild and creamy chicken korma from Bhopal, focusing on the sweetness of onions and the richness of nuts.",
     type: "Non-Vegetarian",
@@ -317,6 +329,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "fish-curry-narmada",
+    menuCategory: "Curries & Gravies",
     name: "Fish Curry Narmada Style",
     description: "A spicy river fish curry from the banks of the Narmada, cooked with mustard oil and rural Central Indian spices.",
     type: "Non-Vegetarian",
@@ -343,6 +356,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-kaleji-mp",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kaleji",
     description: "Spiced mutton liver stir-fry, a popular Central Indian delicacy often served as a side or snack.",
     type: "Non-Vegetarian",
@@ -369,6 +383,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-handi-mp",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Handi",
     description: "Chicken curry slow-cooked in a traditional clay handi, absorbing the earthy aroma of the pot.",
     type: "Non-Vegetarian",
@@ -397,6 +412,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "bhutte-ka-kees",
+    menuCategory: "Curries & Gravies",
     name: "Bhutte Ka Kees",
     description: "A unique Indori specialty made with grated corn cooked with milk and tempered with spices.",
     type: "Vegetarian",
@@ -423,6 +439,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "dal-bafla",
+    menuCategory: "Curries & Gravies",
     name: "Dal Bafla",
     description: "The pride of Malwa—steamed and then baked wheat dumplings served with a spiced dal and lots of ghee.",
     type: "Vegetarian",
@@ -448,6 +465,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "sev-bhaji",
+    menuCategory: "Snacks & Street Food",
     name: "Sev Bhaji",
     description: "Crunchy sev simmered in a fiery tomato-onion gravy, a popular spicy vegetarian meal in Central India.",
     type: "Vegetarian",
@@ -474,6 +492,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "palak-vadi-curry",
+    menuCategory: "Curries & Gravies",
     name: "Palak Vadi Curry",
     description: "Spinach and gram flour dumplings (vadi) cooked in a light, spiced gravy.",
     type: "Vegetarian",
@@ -500,6 +519,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "indori-poha",
+    menuCategory: "Curries & Gravies",
     name: "Indori Poha",
     description: "The iconic breakfast of Indore—steamed flattened rice topped with spicy sev, pomegranate, and onions.",
     type: "Vegetarian",
@@ -526,6 +546,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "chana-dal-sabzi-mp",
+    menuCategory: "Curries & Gravies",
     name: "Chana Dal Sabzi",
     description: "Split chickpea curry tempered with cumin and whole red chilies, a protein-packed staple.",
     type: "Vegetarian",
@@ -550,6 +571,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "malpua-mp",
+    menuCategory: "Desserts & Sweets",
     name: "Madhya Pradesh Malpua",
     description: "Sweet fried wheat pancakes soaked in sugar syrup, a festive specialty of Central India.",
     type: "Vegetarian",
@@ -574,6 +596,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "kadhi-bhopali",
+    menuCategory: "Curries & Gravies",
     name: "Kadhi Bhopali",
     description: "A tangy and mildly spiced yogurt-based curry with gram flour, simple yet comforting.",
     type: "Vegetarian",
@@ -598,6 +621,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "bhindi-malwa",
+    menuCategory: "Dry & Stir-Fried",
     name: "Bhindi Malwa Style",
     description: "Dry okra stir-fry with a coarse peanut-garlic seasoning, typical of the Malwa plateau.",
     type: "Vegetarian",
@@ -622,6 +646,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "lapsi-mp",
+    menuCategory: "Curries & Gravies",
     name: "Lapsi",
     description: "A traditional Central Indian sweet dish made with cracked wheat and jaggery.",
     type: "Vegetarian",
@@ -648,6 +673,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "indori-bhutte-ki-kees-chaat",
+    menuCategory: "Snacks & Street Food",
     name: "Bhutte Ki Kees Chaat",
     description: "A snack version of the corn dish, served with extra lime, spicy sev, and coriander.",
     type: "Vegetarian",
@@ -672,6 +698,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "poha-jalebi-indore",
+    menuCategory: "Desserts & Sweets",
     name: "Poha Jalebi",
     description: "The quintessential Indore breakfast—salty, spicy poha paired with hot, crispy, syrupy jalebi.",
     type: "Vegetarian",
@@ -695,6 +722,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "mawa-bati-mp",
+    menuCategory: "Snacks & Street Food",
     name: "Mawa Bati",
     description: "Fried milk-solid dumplings stuffed with nuts and soaked in sugar syrup, similar to Gulab Jamun but richer.",
     type: "Vegetarian",
@@ -718,6 +746,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "bhopali-samosa",
+    menuCategory: "Snacks & Street Food",
     name: "Bhopali Samosa",
     description: "Crispy fried pastry with a spicy potato-pea filling, a favorite tea-time snack in Central India.",
     type: "Vegetarian",
@@ -742,6 +771,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-cutlet-bhopali",
+    menuCategory: "Snacks & Street Food",
     name: "Chicken Cutlet Bhopali",
     description: "Spiced minced chicken patties, breaded and fried, a common non-veg snack in Bhopal.",
     type: "Non-Vegetarian",

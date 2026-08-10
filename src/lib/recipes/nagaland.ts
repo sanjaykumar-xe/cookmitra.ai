@@ -4,6 +4,7 @@ export const nagalandRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "smoked-pork-axone-naga",
+    menuCategory: "Curries & Gravies",
     name: "Smoked Pork with Axone",
     description: "The most iconic Naga dish—smoked pork slow-cooked with pungent fermented soybean (axone) and fiery chilies.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "naga-pork-bamboo-shoot",
+    menuCategory: "Curries & Gravies",
     name: "Naga Pork with Bamboo Shoot",
     description: "A fiery pork curry simmered with fresh or fermented bamboo shoots and the legendary Bhut Jolokia.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "bhut-jolokia-chicken",
+    menuCategory: "Curries & Gravies",
     name: "Bhut Jolokia Chicken Curry",
     description: "A simple but exceptionally spicy chicken curry using the famous ghost pepper of Nagaland.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "akhuni-pork-naga",
+    menuCategory: "Curries & Gravies",
     name: "Akhuni Pork",
     description: "Pork pieces slow-roasted with fermented soybean paste (akhuni), a savory and pungent tribal specialty.",
     type: "Non-Vegetarian",
@@ -108,6 +112,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "naga-fish-bamboo",
+    menuCategory: "Curries & Gravies",
     name: "Naga Fish Curry with Bamboo Shoot",
     description: "River fish simmered with fresh bamboo shoot slices and a sharp kick of Naga mountain chilies.",
     type: "Non-Vegetarian",
@@ -134,6 +139,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "smoked-pork-bamboo-dry",
+    menuCategory: "Dry & Stir-Fried",
     name: "Smoked Pork with Bamboo Shoot (Dry)",
     description: "A dry-style smoked pork preparation where the meat is roasted with bamboo shoot to intensify the flavors.",
     type: "Non-Vegetarian",
@@ -160,6 +166,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "chicken-axone-naga",
+    menuCategory: "Curries & Gravies",
     name: "Chicken with Axone",
     description: "Chicken pieces simmered in a savory gravy flavored with fermented soybean paste.",
     type: "Non-Vegetarian",
@@ -185,6 +192,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "naga-pork-chutney",
+    menuCategory: "Sides & Accompaniments",
     name: "Naga Pork Chutney Curry",
     description: "A thick, chutney-like pork curry made by mashing the meat with fermented ingredients and lots of chili.",
     type: "Non-Vegetarian",
@@ -211,6 +219,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-naga",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Naga Style",
     description: "Boiled eggs simmered in a light, fiery gravy flavored with ghost pepper and local herbs.",
     type: "Non-Vegetarian",
@@ -237,6 +246,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "dried-fish-chutney-naga",
+    menuCategory: "Sides & Accompaniments",
     name: "Dried Fish Chutney Curry Naga",
     description: "Pungent dried fish cooked with ghost pepper and local herbs into a spicy accompaniment.",
     type: "Non-Vegetarian",
@@ -264,6 +274,7 @@ export const nagalandRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "bamboo-shoot-curry-naga",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry Naga",
     description: "A tangy and fiery vegetarian curry made with fermented bamboo shoots and mountain chilies.",
     type: "Vegetarian",
@@ -289,6 +300,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "axone-curry-veg",
+    menuCategory: "Curries & Gravies",
     name: "Axone Curry",
     description: "Pungent fermented soybean curry with seasonal mountain vegetables.",
     type: "Vegetarian",
@@ -313,6 +325,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "naga-chili-chutney-veg",
+    menuCategory: "Sides & Accompaniments",
     name: "Naga Chili Chutney with Vegetables",
     description: "Fiery chili chutney served with simple boiled seasonal vegetables, a hallmark of Naga diet.",
     type: "Vegetarian",
@@ -337,6 +350,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "greens-axone-naga",
+    menuCategory: "Curries & Gravies",
     name: "Local Greens with Fermented Soybean",
     description: "Seasonal leafy greens cooked with the savory punch of axone paste.",
     type: "Vegetarian",
@@ -361,6 +375,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "boiled-veg-naga",
+    menuCategory: "Curries & Gravies",
     name: "Boiled Vegetable Platter Naga",
     description: "Simple and nutritious boiled seasonal vegetables, reflecting the healthy mountain diet.",
     type: "Vegetarian",
@@ -384,6 +399,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "dal-naga",
+    menuCategory: "Curries & Gravies",
     name: "Dal Naga Style",
     description: "Simple lentil curry with a touch of ghost pepper for a warming heat.",
     type: "Vegetarian",
@@ -408,6 +424,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "fiddlehead-fern-naga",
+    menuCategory: "Curries & Gravies",
     name: "Fiddlehead Fern Curry Naga",
     description: "Wild-harvested fiddlehead ferns stir-fried with local hill chilies.",
     type: "Vegetarian",
@@ -432,6 +449,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-curry-naga",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin Curry Naga Style",
     description: "Yellow pumpkin cooked with the savory punch of fermented soybean.",
     type: "Vegetarian",
@@ -456,6 +474,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "bean-curry-naga",
+    menuCategory: "Curries & Gravies",
     name: "Bean Curry Naga Style",
     description: "Local beans cooked with fermented bamboo shoot for a tangy and savory meal.",
     type: "Vegetarian",
@@ -480,6 +499,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "mustard-greens-chili-naga",
+    menuCategory: "Dry & Stir-Fried",
     name: "Mustard Greens with Chili",
     description: "Fresh mustard greens stir-fried with a touch of ghost pepper, healthy and fiery.",
     type: "Vegetarian",
@@ -506,6 +526,7 @@ export const nagalandRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "naga-rice-cake",
+    menuCategory: "Snacks & Street Food",
     name: "Naga Rice Cake",
     description: "Traditional steamed sticky rice cakes, a favorite tea-time sweet in the hills.",
     type: "Vegetarian",
@@ -529,6 +550,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "akhuni-chutney-bites",
+    menuCategory: "Sides & Accompaniments",
     name: "Akhuni Chutney Bites",
     description: "Fermented soybean chutney served with small crispy rice bites for a pungent flavor burst.",
     type: "Vegetarian",
@@ -552,6 +574,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "bhut-jolokia-pickle-plate",
+    menuCategory: "Sides & Accompaniments",
     name: "Bhut Jolokia Pickle Snack Plate",
     description: "Fiery ghost pepper pickle served with a side of simple boiled snacks like roots and tubers.",
     type: "Vegetarian",
@@ -574,6 +597,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "puffed-rice-chili-naga",
+    menuCategory: "Snacks & Street Food",
     name: "Puffed Rice with Chili",
     description: "Crunchy puffed rice tossed with ghost pepper flakes and local mountain herbs.",
     type: "Vegetarian",
@@ -598,6 +622,7 @@ export const nagalandRecipes: Recipe[] = [
   },
   {
     id: "smoked-pork-bites-naga",
+    menuCategory: "Snacks & Street Food",
     name: "Smoked Pork Bites",
     description: "Snack-sized pieces of smoked pork stir-fried with garlic and local chilies.",
     type: "Non-Vegetarian",

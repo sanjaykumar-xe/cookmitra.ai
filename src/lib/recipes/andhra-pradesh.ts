@@ -4,6 +4,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "kodi-kura-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Andhra Chicken Curry (Kodi Kura)",
     description: "A fiery, red-colored chicken curry made with a unique blend of roasted spices and Guntur chilies.",
     type: "Non-Vegetarian",
@@ -30,6 +31,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "gongura-chicken-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Gongura Chicken",
     description: "A signature Andhra dish featuring tender chicken cooked with tangy sorrel leaves (Gongura) and spicy masalas.",
     type: "Non-Vegetarian",
@@ -56,6 +58,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "andhra-mutton-curry-rich",
+    menuCategory: "Curries & Gravies",
     name: "Andhra Mutton Curry",
     description: "Intensely flavorful mutton curry made with a rich roasted coconut base and a heavy dose of black pepper.",
     type: "Non-Vegetarian",
@@ -82,6 +85,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "chepa-pulusu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Chepa Pulusu",
     description: "The ultimate coastal Andhra fish curry, characterized by its sharp tamarind tang and fiery chili heat.",
     type: "Non-Vegetarian",
@@ -108,6 +112,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "royyala-iguru-andhra",
+    menuCategory: "Dry & Stir-Fried",
     name: "Royyala Iguru",
     description: "A thick, semi-dry prawn preparation with a potent onion-tomato masala base.",
     type: "Non-Vegetarian",
@@ -134,6 +139,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "kodi-vepudu-andhra",
+    menuCategory: "Protein Specialties",
     name: "Kodi Vepudu",
     description: "A dry-roasted Andhra chicken fry featuring a coarse masala of cashews, pepper, and coconut.",
     type: "Non-Vegetarian",
@@ -160,6 +166,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "natu-kodi-pulusu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Natu Kodi Pulusu",
     description: "Rustic country chicken curry with a thin, spicy gravy, a village specialty across Andhra Pradesh.",
     type: "Non-Vegetarian",
@@ -186,6 +193,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "guntur-chicken-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Guntur Chicken",
     description: "Famous for its extreme heat, this curry uses the legendary Guntur chilies for a deep red, spicy punch.",
     type: "Non-Vegetarian",
@@ -212,6 +220,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "andhra-chicken-biryani-spicy",
+    menuCategory: "Rice & Biryani",
     name: "Andhra Chicken Biryani",
     description: "A spicy, layered biryani from coastal Andhra, often served with a fiery 'Khatta' (tangy gravy).",
     type: "Non-Vegetarian",
@@ -238,6 +247,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "kodi-kura-pulao-andhra",
+    menuCategory: "Rice & Biryani",
     name: "Kodi Kura Pulao",
     description: "A rustic, one-pot chicken and rice dish, highly seasoned and easier to prepare than biryani.",
     type: "Non-Vegetarian",
@@ -264,6 +274,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "chicken-65-andhra",
+    menuCategory: "Starters & Appetizers",
     name: "Chicken 65 (Andhra Style)",
     description: "Deep-fried, crispy chicken bites tossed in a spicy curd-based sauce with lots of curry leaves.",
     type: "Non-Vegetarian",
@@ -290,6 +301,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Andhra Style",
     description: "Boiled eggs simmered in a tangy and spicy onion-tomato gravy, a common breakfast side for appam or dosa.",
     type: "Non-Vegetarian",
@@ -316,6 +328,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "prawn-pulusu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Prawn Pulusu",
     description: "Coastal style tangy prawn stew made with tamarind and fresh ground masalas.",
     type: "Non-Vegetarian",
@@ -342,6 +355,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "mutton-chukka-andhra",
+    menuCategory: "Protein Specialties",
     name: "Mutton Chukka",
     description: "Dry, spicy mutton preparation where the meat is slow-cooked until it's perfectly roasted with spices.",
     type: "Non-Vegetarian",
@@ -368,6 +382,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "bommidi-fish-fry-andhra",
+    menuCategory: "Protein Specialties",
     name: "Bommidi Fish Fry",
     description: "Crispy marinated fish fry using local Andhra spices, a popular street-side delicacy.",
     type: "Non-Vegetarian",
@@ -396,6 +411,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   // --- VEGETARIAN (10) ---
   {
     id: "gongura-pappu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Gongura Pappu",
     description: "Hearty toor dal cooked with tangy sorrel leaves (Gongura), a staple in every Andhra household.",
     type: "Vegetarian",
@@ -422,6 +438,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "pesarattu-andhra",
+    menuCategory: "Breads",
     name: "Pesarattu",
     description: "Nutritious and fiber-rich green moong dal crepes, traditionally served with Ginger Chutney (Allam Pachadi).",
     type: "Vegetarian",
@@ -448,6 +465,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "tomato-pappu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Andhra Tomato Pappu",
     description: "Classic toor dal cooked with ripe tomatoes and a generous tempering of garlic and spices.",
     type: "Vegetarian",
@@ -474,6 +492,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "gutti-vankaya-kura-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Gutti Vankaya Kura",
     description: "Famous Andhra style stuffed brinjal curry made with a rich peanut and sesame based masala.",
     type: "Vegetarian",
@@ -500,6 +519,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "bendakaya-pulusu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Bendakaya Pulusu",
     description: "Okra simmered in a tangy and sweet tamarind gravy, a popular Andhra side dish for rice.",
     type: "Vegetarian",
@@ -526,6 +546,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "andhra-veg-biryani-spicy",
+    menuCategory: "Rice & Biryani",
     name: "Andhra Vegetable Biryani",
     description: "A spicy and aromatic mixed vegetable biryani with traditional coastal Andhra flavors.",
     type: "Vegetarian",
@@ -552,6 +573,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "pappu-charu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Pappu Charu",
     description: "A classic Andhra style lentil rasam made with toor dal and flavored with pepper and cumin.",
     type: "Vegetarian",
@@ -578,6 +600,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "beerakaya-pappu-andhra",
+    menuCategory: "Curries & Gravies",
     name: "Beerakaya Pappu",
     description: "Soothing and nutritious ridge gourd cooked with toor dal, a perfect healthy lunch option.",
     type: "Vegetarian",
@@ -604,6 +627,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "vankaya-pachadi-andhra",
+    menuCategory: "Sides & Accompaniments",
     name: "Vankaya Pachadi",
     description: "Roasted brinjal chutney with a smoky flavor, traditionally made in a mortar and pestle.",
     type: "Vegetarian",
@@ -630,6 +654,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "ulavacharu-andhra",
+    menuCategory: "Sides & Accompaniments",
     name: "Ulavacharu",
     description: "A unique and nutritious horse gram soup-like curry from the Rayalaseema region of Andhra.",
     type: "Vegetarian",
@@ -658,6 +683,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "mirchi-bajji-andhra",
+    menuCategory: "Snacks & Street Food",
     name: "Mirchi Bajji (Andhra Style)",
     description: "Iconic street snack—large green chilies stuffed with tamarind-cumin paste and deep-fried in gram flour batter.",
     type: "Vegetarian",
@@ -684,6 +710,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "punugulu-andhra",
+    menuCategory: "Snacks & Street Food",
     name: "Punugulu",
     description: "Crispy fried fritters made from fermented idli/dosa batter, a popular coastal Andhra snack.",
     type: "Vegetarian",
@@ -710,6 +737,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "andhra-garelu",
+    menuCategory: "Snacks & Street Food",
     name: "Andhra Garelu",
     description: "Classic crispy and fluffy deep-fried urad dal vadas, a festive staple across the state.",
     type: "Vegetarian",
@@ -736,6 +764,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "andhra-chicken-pakoda",
+    menuCategory: "Snacks & Street Food",
     name: "Andhra Chicken Pakoda",
     description: "Street-style spicy fried chicken pieces coated in a flavorful gram flour and corn flour batter.",
     type: "Non-Vegetarian",
@@ -762,6 +791,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "prawn-bajji-andhra",
+    menuCategory: "Snacks & Street Food",
     name: "Prawn Bajji (Andhra Style)",
     description: "Juicy prawns dipped in a spicy, seasoned gram flour batter and fried until crunchy.",
     type: "Non-Vegetarian",

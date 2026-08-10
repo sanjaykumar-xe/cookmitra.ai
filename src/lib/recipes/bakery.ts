@@ -4,6 +4,7 @@ export const bakeryRecipes: Recipe[] = [
   // --- BREADS (10) ---
   {
     id: "bakery-whole-wheat-bread",
+    menuCategory: "Desserts & Sweets",
     name: "Whole Wheat Sandwich Bread",
     description: "A soft, healthy everyday loaf made with 100% whole wheat flour, perfect for sandwiches and toast.",
     type: "Vegetarian",
@@ -31,6 +32,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-garlic-rolls",
+    menuCategory: "Desserts & Sweets",
     name: "Garlic Butter Dinner Rolls",
     description: "Soft, pull-apart dinner rolls brushed with a rich garlic and herb butter finish.",
     type: "Vegetarian",
@@ -58,6 +60,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-multigrain-bread",
+    menuCategory: "Desserts & Sweets",
     name: "Multigrain Seeded Bread",
     description: "A hearty and nutritious loaf packed with oats, flax seeds, and sunflower seeds for a rich texture.",
     type: "Vegetarian",
@@ -85,6 +88,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-focaccia",
+    menuCategory: "Desserts & Sweets",
     name: "Rosemary and Sea Salt Focaccia",
     description: "Classic Italian flatbread with a golden olive oil crust, topped with fresh rosemary and flaky sea salt.",
     type: "Vegetarian",
@@ -112,6 +116,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-cheese-herb-bread",
+    menuCategory: "Desserts & Sweets",
     name: "Cheese and Herb Pull-Apart Bread",
     description: "A savory, buttery loaf layered with cheddar cheese and Italian herbs.",
     type: "Vegetarian",
@@ -139,6 +144,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-banana-bread",
+    menuCategory: "Desserts & Sweets",
     name: "Moist Walnut Banana Bread",
     description: "A quick and easy sweet loaf made with overripe bananas and crunchy walnuts.",
     type: "Vegetarian",
@@ -166,6 +172,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-brown-bread",
+    menuCategory: "Desserts & Sweets",
     name: "Classic Brown Bread",
     description: "Simple, honest whole wheat bread with a soft crumb and a traditional taste.",
     type: "Vegetarian",
@@ -193,6 +200,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-pav",
+    menuCategory: "Desserts & Sweets",
     name: "Ladi Pav (Soft Dinner Buns)",
     description: "Pillowy soft Indian buns used for Pav Bhaji, Vada Pav, and Misal, known for their incredible fluffiness.",
     type: "Vegetarian",
@@ -220,6 +228,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-cinnamon-raisin-bread",
+    menuCategory: "Desserts & Sweets",
     name: "Cinnamon Raisin Bread",
     description: "A sweet breakfast loaf swirled with aromatic cinnamon sugar and juicy raisins.",
     type: "Vegetarian",
@@ -247,6 +256,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-sourdough",
+    menuCategory: "Desserts & Sweets",
     name: "Artisan Sourdough Bread",
     description: "Naturally leavened bread with a crispy crust, an open crumb, and a characteristic tangy flavor.",
     type: "Vegetarian",
@@ -275,6 +285,7 @@ export const bakeryRecipes: Recipe[] = [
   // --- CAKES (10) ---
   {
     id: "bakery-vanilla-sponge",
+    menuCategory: "Desserts & Sweets",
     name: "Classic Vanilla Sponge Cake",
     description: "The perfect base for any celebration—a light, airy, and moist vanilla sponge.",
     type: "Vegetarian",
@@ -302,6 +313,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-chocolate-truffle",
+    menuCategory: "Desserts & Sweets",
     name: "Rich Chocolate Truffle Cake",
     description: "A chocolate lover's dream—moist chocolate layers filled and coated with silky ganache.",
     type: "Vegetarian",
@@ -328,6 +340,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-red-velvet",
+    menuCategory: "Desserts & Sweets",
     name: "Red Velvet Cake",
     description: "Elegant and velvety cocoa-flavored cake with its signature crimson hue and cream cheese frosting.",
     type: "Vegetarian",
@@ -355,6 +368,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-carrot-cake",
+    menuCategory: "Desserts & Sweets",
     name: "Spiced Carrot Walnut Cake",
     description: "Moist and dense cake packed with fresh carrots, crunchy walnuts, and warm cinnamon notes.",
     type: "Vegetarian",
@@ -382,6 +396,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-black-forest",
+    menuCategory: "Desserts & Sweets",
     name: "Black Forest Gateau",
     description: "Classic German-style chocolate sponge layered with whipped cream and tart cherry compote.",
     type: "Vegetarian",
@@ -408,6 +423,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-lemon-drizzle",
+    menuCategory: "Desserts & Sweets",
     name: "Lemon Drizzle Loaf Cake",
     description: "A zesty and moist loaf cake soaked in a crunchy lemon sugar syrup.",
     type: "Vegetarian",
@@ -434,6 +450,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-pineapple-cake",
+    menuCategory: "Desserts & Sweets",
     name: "Fresh Pineapple Cream Cake",
     description: "Light vanilla sponge layered with juicy pineapple pieces and fresh whipped cream.",
     type: "Vegetarian",
@@ -460,6 +477,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-coffee-walnut-cake",
+    menuCategory: "Desserts & Sweets",
     name: "Coffee Walnut Sponge Cake",
     description: "A sophisticated coffee-infused sponge cake loaded with toasted walnut pieces.",
     type: "Vegetarian",
@@ -486,6 +504,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-marble-cake",
+    menuCategory: "Desserts & Sweets",
     name: "Chocolate and Vanilla Marble Cake",
     description: "Beautifully swirled loaf cake that combines the best of both worlds—vanilla and chocolate.",
     type: "Vegetarian",
@@ -512,6 +531,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-butterscotch-cake",
+    menuCategory: "Desserts & Sweets",
     name: "Butterscotch Praline Cake",
     description: "Soft butterscotch-flavored sponge topped with crunchy brown sugar praline and caramel sauce.",
     type: "Vegetarian",
@@ -540,6 +560,7 @@ export const bakeryRecipes: Recipe[] = [
   // --- COOKIES (10) ---
   {
     id: "bakery-butter-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Classic Butter Cookies",
     description: "Simple, crisp, and melt-in-the-mouth buttery biscuits that go perfectly with evening tea.",
     type: "Vegetarian",
@@ -567,6 +588,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-choco-chip-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Classic Chocolate Chip Cookies",
     description: "Perfectly chewy cookies with golden edges and a generous amount of dark chocolate chips.",
     type: "Vegetarian",
@@ -593,6 +615,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-oatmeal-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Chewy Oatmeal Raisin Cookies",
     description: "Hearty and chewy cookies made with whole oats, sweet raisins, and a touch of cinnamon.",
     type: "Vegetarian",
@@ -619,6 +642,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-jeera-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Jeera (Cumin) Salty Biscuits",
     description: "Crispy, savory Indian-style biscuits flavored with roasted cumin seeds.",
     type: "Vegetarian",
@@ -645,6 +669,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-nankhatai",
+    menuCategory: "Desserts & Sweets",
     name: "Traditional Nankhatai",
     description: "Indian-style shortbread cookies flavored with cardamom and made with a blend of semolina and flour.",
     type: "Vegetarian",
@@ -671,6 +696,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-coconut-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Crispy Coconut Biscuits",
     description: "Crumbly and golden cookies packed with desiccated coconut flavor.",
     type: "Vegetarian",
@@ -696,6 +722,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-peanut-butter-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Soft Peanut Butter Cookies",
     description: "Tender cookies with a rich peanut butter flavor and classic fork criss-cross pattern.",
     type: "Vegetarian",
@@ -722,6 +749,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-almond-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Delicate Almond Biscuits",
     description: "Thin and crispy cookies topped with sliced almonds and a hint of almond essence.",
     type: "Vegetarian",
@@ -747,6 +775,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-double-chocolate-cookies",
+    menuCategory: "Desserts & Sweets",
     name: "Double Chocolate Fudgy Cookies",
     description: "Deeply chocolatey cookies with a fudgy center and chocolate chunks.",
     type: "Vegetarian",
@@ -772,6 +801,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-cardamom-shortbread",
+    menuCategory: "Desserts & Sweets",
     name: "Cardamom Shortbread Cookies",
     description: "Fragrant and buttery three-ingredient shortbread with a spicy cardamom twist.",
     type: "Vegetarian",
@@ -799,6 +829,7 @@ export const bakeryRecipes: Recipe[] = [
   // --- PASTRIES (10) ---
   {
     id: "bakery-chocolate-pastry",
+    menuCategory: "Desserts & Sweets",
     name: "Belgian Chocolate Pastry",
     description: "Individual servings of dark chocolate sponge layered with rich chocolate truffle cream.",
     type: "Vegetarian",
@@ -822,6 +853,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-pineapple-pastry",
+    menuCategory: "Desserts & Sweets",
     name: "Classic Pineapple Pastry",
     description: "Light-as-air vanilla sponge slices filled with chopped pineapples and fresh whipped cream.",
     type: "Vegetarian",
@@ -845,6 +877,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-black-forest-pastry",
+    menuCategory: "Desserts & Sweets",
     name: "Black Forest Pastry Slice",
     description: "Single-serving black forest pastry with layers of chocolate, cream, and cherry compote.",
     type: "Vegetarian",
@@ -867,6 +900,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-veg-puff",
+    menuCategory: "Desserts & Sweets",
     name: "Spicy Vegetable Puff",
     description: "Crispy and flaky puff pastry stuffed with a savory, spicy mixed vegetable filling.",
     type: "Vegetarian",
@@ -890,6 +924,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-cheese-puff",
+    menuCategory: "Desserts & Sweets",
     name: "Cheesy Herb Puff",
     description: "Flaky golden pastry filled with a gooey blend of cheese and herbs.",
     type: "Vegetarian",
@@ -912,6 +947,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-danish-pastry",
+    menuCategory: "Desserts & Sweets",
     name: "Fruit Danish Pastry",
     description: "Buttery, laminated sweet pastry topped with creamy custard and seasonal fruits.",
     type: "Vegetarian",
@@ -936,6 +972,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-cream-roll",
+    menuCategory: "Desserts & Sweets",
     name: "Crispy Cream Roll",
     description: "A nostalgic bakery classic—crispy, light puff pastry rolls filled with sweet vanilla whipped cream.",
     type: "Vegetarian",
@@ -959,6 +996,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-eclairs",
+    menuCategory: "Desserts & Sweets",
     name: "Chocolate Eclairs",
     description: "Light choux pastry fingers filled with vanilla cream and dipped in dark chocolate.",
     type: "Vegetarian",
@@ -982,6 +1020,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-fruit-tart",
+    menuCategory: "Desserts & Sweets",
     name: "Fresh Fruit Tart",
     description: "A crisp shortcrust pastry shell filled with silky pastry cream and topped with glazed fresh fruit.",
     type: "Vegetarian",
@@ -1005,6 +1044,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-croissant",
+    menuCategory: "Desserts & Sweets",
     name: "Butter Croissant",
     description: "Flaky, multi-layered French pastry made with laminated dough and plenty of butter.",
     type: "Vegetarian",
@@ -1032,6 +1072,7 @@ export const bakeryRecipes: Recipe[] = [
   // --- OTHER BAKERY / DESSERTS (10) ---
   {
     id: "bakery-rusk",
+    menuCategory: "Desserts & Sweets",
     name: "Crispy Tea Rusk",
     description: "Twice-baked hard biscuits that are the perfect companion for dipping into hot Indian tea.",
     type: "Vegetarian",
@@ -1055,6 +1096,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-bread-pudding",
+    menuCategory: "Desserts & Sweets",
     name: "Old-Fashioned Bread Pudding",
     description: "A comforting baked dessert made with bread cubes soaked in a spiced egg-milk custard.",
     type: "Vegetarian",
@@ -1080,6 +1122,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-choco-muffins",
+    menuCategory: "Desserts & Sweets",
     name: "Chocolate Chip Muffins",
     description: "Soft and fluffy individual cakes bursting with dark chocolate chips, perfect for a quick snack.",
     type: "Vegetarian",
@@ -1106,6 +1149,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-brownies",
+    menuCategory: "Desserts & Sweets",
     name: "Fudgy Chocolate Brownies",
     description: "Dense, intensely chocolatey squares with a crinkle top and a fudgy center.",
     type: "Vegetarian",
@@ -1130,6 +1174,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-doughnuts",
+    menuCategory: "Desserts & Sweets",
     name: "Glazed Yeast Doughnuts",
     description: "Soft and airy fried doughnuts dipped in a classic sweet sugar glaze.",
     type: "Vegetarian",
@@ -1153,6 +1198,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-cinnamon-rolls",
+    menuCategory: "Desserts & Sweets",
     name: "Soft Cinnamon Rolls",
     description: "Swirled sweet rolls filled with cinnamon-brown sugar and topped with cream cheese frosting.",
     type: "Vegetarian",
@@ -1177,6 +1223,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-plum-cake",
+    menuCategory: "Desserts & Sweets",
     name: "Rich Holiday Plum Cake",
     description: "A dark, dense, and boozy fruit cake loaded with soaked dry fruits and festive spices.",
     type: "Vegetarian",
@@ -1202,6 +1249,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-cheesecake",
+    menuCategory: "Desserts & Sweets",
     name: "Classic Baked Cheesecake",
     description: "Velvety smooth baked cheesecake with a crunchy graham cracker base.",
     type: "Vegetarian",
@@ -1227,6 +1275,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-apple-pie",
+    menuCategory: "Desserts & Sweets",
     name: "Cinnamon Apple Pie",
     description: "Flaky buttery pastry filled with spiced apples, a timeless comfort dessert.",
     type: "Vegetarian",
@@ -1251,6 +1300,7 @@ export const bakeryRecipes: Recipe[] = [
   },
   {
     id: "bakery-custard-tart",
+    menuCategory: "Desserts & Sweets",
     name: "Baked Custard Tart",
     description: "A silky, nutmeg-dusted egg custard baked in a crisp pastry shell.",
     type: "Vegetarian",

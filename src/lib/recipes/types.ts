@@ -10,6 +10,20 @@ export interface Ingredient {
   available: boolean;
 }
 
+export type MenuCategory =
+  | "Starters & Appetizers"
+  | "Soups"
+  | "Salads"
+  | "Curries & Gravies"
+  | "Dry & Stir-Fried"
+  | "Protein Specialties"
+  | "Rice & Biryani"
+  | "Breads"
+  | "Snacks & Street Food"
+  | "Desserts & Sweets"
+  | "Beverages"
+  | "Sides & Accompaniments";
+
 export interface Recipe {
   id: string;
   name: string;
@@ -20,6 +34,7 @@ export interface Recipe {
   difficulty: "Easy" | "Medium" | "Hard";
   cost: number; // in INR
   popularity: number;
+  menuCategory?: MenuCategory;
   ingredients: Ingredient[];
   steps: string[];
   tags?: string[];
@@ -28,3 +43,4 @@ export interface Recipe {
   reheatingInstructions?: string[];
   imageUrl?: string; // URL for the recipe photo
 }
+
