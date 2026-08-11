@@ -152,7 +152,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "masala-dosa",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Masala Dosa",
     description: "Crispy crepe made from fermented rice and lentils, filled with a spiced potato filling.",
     type: "Vegetarian",

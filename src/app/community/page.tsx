@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useFirestore, useCollection, useMemoFirebase } from '@/lib/firebase';
 import { collectionGroup, query, limit } from 'firebase/firestore';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { StarRating } from '@/components/ui/star-rating';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ import { Loader2, MessageSquare } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
+import { motion } from 'framer-motion';
 
 type CommunityNote = {
   id: string;
@@ -137,23 +138,45 @@ export default function CommunityPage() {
       
       {!isLoading && processedNotes.length > 0 && (
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-fluid-grid">
-            {processedNotes.map(note => (
-              <ReviewCard key={note.id} review={note} />
+            {processedNotes.map((note, idx) => (
+              <motion.div
+                key={note.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.6, delay: (idx % 12) * 0.08, ease: "easeOut" }}
+              >
+                <ReviewCard review={note} />
+              </motion.div>
             ))}
         </div>
       )}
 
       {!isLoading && processedNotes.length === 0 && (
-        <Card className="text-center py-24 border-dashed border-2 bg-card/30 rounded-[3rem]">
-            <div className="p-8">
-                <div className="mx-auto bg-primary/10 rounded-[2rem] h-20 w-20 flex items-center justify-center mb-6">
-                    <MessageSquare className="h-10 w-10 text-primary opacity-40" />
-                </div>
-                <h2 className="font-headline text-3xl font-medium">No Community Activity Yet</h2>
-                <p className="text-fluid-body text-muted-foreground opacity-70">Be the first to review a recipe and see your note appear here!</p>
-            </div>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Card className="text-center py-20 border-dashed border-2 bg-card/40 backdrop-blur-md border-purple-500/20 rounded-[3rem] max-w-3xl mx-auto shadow-xl">
+            <CardHeader className="p-8 pb-4">
+              <div className="mx-auto bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
+                <MessageSquare className="h-12 w-12 stroke-[1.75]" />
+              </div>
+              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">No Community Reviews Yet</CardTitle>
+              <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
+                Be the first to share your cooking experience, rating, or notes on any of our 934+ recipes!
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-4 pb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild className="rounded-full px-8 h-12 text-sm font-bold shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0">
+                <Link href="/recipes">Explore & Review Recipes</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
       )}
     </div>
   );
 }
+

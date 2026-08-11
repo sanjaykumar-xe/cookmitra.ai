@@ -287,7 +287,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "rajasthani-besan-chilla",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Breakfast & Tiffin",
     name: "Rajasthani Besan Chilla",
     description: "A savory gram flour pancake spiced with Rajasthani seasonings, a quick breakfast dish.",
     type: "Vegetarian",

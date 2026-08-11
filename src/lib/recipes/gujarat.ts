@@ -596,7 +596,7 @@ export const gujaratRecipes: Recipe[] = [
   },
   {
     id: "handvo",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Breakfast & Tiffin",
     name: "Handvo",
     description: "A savory, protein-packed baked cake made with fermented rice-lentil batter and various vegetables like bottle gourd.",
     type: "Vegetarian",
@@ -810,5 +810,94 @@ export const gujaratRecipes: Recipe[] = [
       "Coat chicken in batter and deep fry until very crispy.",
       "Serve as a spicy appetizer with lemon."
     ]
-  }
+  },
+  {
+    "id": "gj-salad-sprouted-moong",
+    "menuCategory": "Salads",
+    "name": "Sprouted Moong Salad",
+    "description": "A protein-rich Gujarati everyday salad of sprouted moong beans tossed with crunchy vegetables and a tangy lime dressing.",
+    "type": "Vegetarian",
+    "time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 50,
+    "popularity": 0.88,
+    "tags": [
+      "Gujarat",
+      "West Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "High Protein"
+    ],
+    "healthTags": [
+      "high-protein",
+      "weight-management",
+      "heart-healthy"
+    ],
+    "ingredients": [
+      {
+        "id": "moong_sprouts",
+        "name": "Sprouted Moong Beans",
+        "qty": "2 cups",
+        "price": 25,
+        "available": true
+      },
+      {
+        "id": "tomato",
+        "name": "Diced Tomato",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Diced Onion",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "cucumber",
+        "name": "Diced Cucumber",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "pomegranate",
+        "name": "Pomegranate Seeds",
+        "qty": "1/4 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "chaat_masala",
+        "name": "Chaat Masala",
+        "qty": "1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Steam sprouted moong lightly for 3-4 minutes (optional, can be served raw).",
+      "Combine with tomato, onion, cucumber, and pomegranate.",
+      "Add lime juice, chaat masala, and salt.",
+      "Toss and garnish with coriander."
+    ]
+  },
 ];

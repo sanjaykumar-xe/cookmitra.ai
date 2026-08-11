@@ -305,7 +305,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "siddu-authentic",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Breakfast & Tiffin",
     name: "Siddu",
     description: "Hearty steamed stuffed wheat buns, a traditional winter staple often eaten with ghee or dal.",
     type: "Vegetarian",
@@ -559,7 +559,7 @@ export const himachalPradeshRecipes: Recipe[] = [
   },
   {
     id: "patande-himachali",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Patande",
     description: "A thin and sweet wheat pancake, often enjoyed for breakfast in the Sirmaur district.",
     type: "Vegetarian",

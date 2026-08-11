@@ -678,5 +678,483 @@ export const punjabRecipes: Recipe[] = [
       "Dip chicken in batter and deep fry until dark golden.",
       "Serve as a spicy appetizer with onion rings."
     ]
+  },
+  {
+    "id": "pb-salad-kachumber",
+    "menuCategory": "Salads",
+    "name": "Kachumber",
+    "description": "A classic North Indian side salad of finely diced cucumber, tomato, and onion, sharpened with lime and roasted cumin.",
+    "type": "Vegetarian",
+    "time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 40,
+    "popularity": 0.92,
+    "tags": [
+      "Punjab",
+      "North Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "Quick"
+    ],
+    "healthTags": [
+      "low-calorie",
+      "digestive-friendly",
+      "raw-vegan"
+    ],
+    "ingredients": [
+      {
+        "id": "cucumber",
+        "name": "Diced Cucumber",
+        "qty": "1 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "tomato",
+        "name": "Diced Tomato",
+        "qty": "1 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Diced Onion",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Minced Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "cumin_powder",
+        "name": "Roasted Cumin Powder",
+        "qty": "1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "black_salt",
+        "name": "Black Salt",
+        "qty": "1/4 tsp",
+        "price": 3,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Combine cucumber, tomato, onion, and green chili in a bowl.",
+      "Add lime juice, roasted cumin, black salt, and regular salt.",
+      "Toss well and garnish with coriander. Serve immediately."
+    ]
+  },
+  {
+    "id": "pb-salad-laccha-pyaaz",
+    "menuCategory": "Salads",
+    "name": "Laccha Pyaaz",
+    "description": "Thinly sliced onion rings tossed with lime, chaat masala, and mint — the classic tandoori-side salad found at every Punjabi dhaba.",
+    "type": "Vegetarian",
+    "time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 30,
+    "popularity": 0.95,
+    "tags": [
+      "Punjab",
+      "North Indian",
+      "Vegetarian",
+      "Salads",
+      "Quick",
+      "Dhaba Style"
+    ],
+    "healthTags": [
+      "digestive-friendly",
+      "low-calorie"
+    ],
+    "ingredients": [
+      {
+        "id": "red_onion",
+        "name": "Thinly Sliced Red Onion",
+        "qty": "2 cups",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "chaat_masala",
+        "name": "Chaat Masala",
+        "qty": "1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "mint_leaves",
+        "name": "Chopped Mint Leaves",
+        "qty": "1 tbsp",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "red_chili_powder",
+        "name": "Red Chili Powder",
+        "qty": "1 pinch",
+        "price": 2,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Soak sliced onions in cold water for 10 minutes to reduce sharpness, then drain well.",
+      "Toss with lime juice, chaat masala, mint, chili powder, and salt. Serve immediately alongside grilled/tandoori dishes."
+    ]
+  },
+  {
+    "id": "pb-salad-mooli",
+    "menuCategory": "Salads",
+    "name": "Mooli Salad",
+    "description": "A peppery grated radish salad brightened with lime and roasted cumin — a simple winter staple across North India.",
+    "type": "Vegetarian",
+    "time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 30,
+    "popularity": 0.86,
+    "tags": [
+      "Punjab",
+      "North Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "Winter Special"
+    ],
+    "healthTags": [
+      "low-calorie",
+      "digestive-friendly",
+      "detox-friendly"
+    ],
+    "ingredients": [
+      {
+        "id": "mooli",
+        "name": "Grated White Radish (Mooli)",
+        "qty": "2 cups",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Minced Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "cumin_powder",
+        "name": "Roasted Cumin Powder",
+        "qty": "1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "black_salt",
+        "name": "Black Salt",
+        "qty": "1/4 tsp",
+        "price": 3,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Squeeze grated radish gently to remove excess water.",
+      "Combine with green chili and coriander.",
+      "Add lime juice, cumin powder, black salt, and salt.",
+      "Toss and serve fresh."
+    ]
+  },
+
+  {
+    "id": "pb-soup-dal-shorba",
+    "menuCategory": "Soups",
+    "name": "Dal Shorba",
+    "description": "A silky, thin lentil broth from North Indian dining traditions, lightly spiced and finished with a swirl of cream.",
+    "type": "Vegetarian",
+    "time": 25,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 45,
+    "popularity": 0.91,
+    "tags": [
+      "Punjab",
+      "North Indian",
+      "Vegetarian",
+      "Soups",
+      "Lentils",
+      "Comfort Food"
+    ],
+    "healthTags": [
+      "high-protein",
+      "digestive-friendly"
+    ],
+    "ingredients": [
+      {
+        "id": "moong_dal",
+        "name": "Cooked & Blended Moong Dal",
+        "qty": "1/2 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "cumin_seeds",
+        "name": "Cumin Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "garlic",
+        "name": "Minced Garlic",
+        "qty": "2 cloves",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "ginger",
+        "name": "Minced Ginger",
+        "qty": "1 tsp",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "tomato",
+        "name": "Chopped Tomato",
+        "qty": "1",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "turmeric",
+        "name": "Turmeric Powder",
+        "qty": "1/4 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "cream",
+        "name": "Fresh Cream",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "ghee",
+        "name": "Ghee",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Heat ghee, temper cumin seeds.",
+      "Add garlic, ginger, and tomato; sauté until soft.",
+      "Add turmeric and blended dal along with water.",
+      "Simmer 10 minutes, strain if a smoother texture is desired.",
+      "Swirl in cream, garnish with coriander. Serve hot."
+    ]
+  }
+,
+  {
+    "id": "sd-soup-kadhi-shorba",
+    "menuCategory": "Soups",
+    "name": "Sindhi Kadhi Shorba",
+    "description": "A thinned, tangy gram-flour broth infused with vegetables, inspired by Sindhi kadhi but served light as a soup.",
+    "type": "Vegetarian",
+    "time": 25,
+    "servings": 4,
+    "difficulty": "Medium",
+    "cost": 40,
+    "popularity": 0.86,
+    "tags": [
+      "Sindhi",
+      "North Indian",
+      "Vegetarian",
+      "Soups",
+      "Tangy",
+      "Gram Flour"
+    ],
+    "healthTags": [
+      "digestive-friendly",
+      "low-calorie"
+    ],
+    "ingredients": [
+      {
+        "id": "besan",
+        "name": "Gram Flour (Besan)",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "tamarind",
+        "name": "Tamarind Pulp",
+        "qty": "1 tsp",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "cumin_seeds",
+        "name": "Cumin Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "mustard_seeds",
+        "name": "Mustard Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "curry_leaves",
+        "name": "Curry Leaves",
+        "qty": "6-8",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Slit Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "oil",
+        "name": "Oil",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Whisk gram flour with 1 cup water until lump-free.",
+      "Heat oil, temper cumin and mustard seeds, curry leaves, and green chili.",
+      "Add turmeric, then the gram flour mixture, stirring continuously.",
+      "Add tamarind pulp and remaining water; simmer 15 minutes, stirring occasionally.",
+      "Season with salt, garnish with coriander. Serve hot."
+    ]
+  }
+,
+  {
+    "id": "pb-soup-palak-shorba",
+    "menuCategory": "Soups",
+    "name": "Palak Shorba",
+    "description": "A silky spinach soup finished with garlic and a touch of cream, popular as a light starter in North Indian meals.",
+    "type": "Vegetarian",
+    "time": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 45,
+    "popularity": 0.9,
+    "tags": [
+      "Punjab",
+      "North Indian",
+      "Vegetarian",
+      "Soups",
+      "Spinach",
+      "Healthy"
+    ],
+    "healthTags": [
+      "iron-rich",
+      "antioxidant-rich",
+      "low-calorie"
+    ],
+    "ingredients": [
+      {
+        "id": "spinach",
+        "name": "Blanched Spinach",
+        "qty": "2 cups",
+        "price": 20,
+        "available": true
+      },
+      {
+        "id": "garlic",
+        "name": "Minced Garlic",
+        "qty": "2 cloves",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Chopped Onion",
+        "qty": "1/4 cup",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "cumin_seeds",
+        "name": "Cumin Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "cream",
+        "name": "Fresh Cream",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "butter",
+        "name": "Butter",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Blend blanched spinach with a little water into a smooth puree.",
+      "Heat butter, temper cumin seeds, sauté garlic and onion until soft.",
+      "Add spinach puree and remaining stock; simmer 8-10 minutes.",
+      "Season with black pepper and salt.",
+      "Swirl in cream before serving. Serve hot."
+    ]
   }
 ];

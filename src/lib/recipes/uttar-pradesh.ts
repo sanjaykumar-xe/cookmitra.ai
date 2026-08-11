@@ -452,7 +452,7 @@ export const uttarPradeshRecipes: Recipe[] = [
   },
   {
     id: "bedmi-puri-sabzi",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Bedmi Puri with Aloo Sabzi",
     description: "Deep-fried, lentil-stuffed whole wheat puris served with a spicy and thin potato curry, a classic UP breakfast.",
     type: "Vegetarian",
@@ -828,6 +828,76 @@ export const uttarPradeshRecipes: Recipe[] = [
       "Grill or pan-fry with a little ghee until charred and cooked through.",
       "Baste with butter once while cooking.",
       "Serve as a regal non-veg appetizer."
+    ]
+  }
+,
+  {
+    "id": "up-soup-paya",
+    "menuCategory": "Soups",
+    "name": "Paya Soup",
+    "description": "A rich, slow-simmered Awadhi trotter broth, deeply spiced and traditionally sipped as a warming winter soup.",
+    "type": "Non-Vegetarian",
+    "time": 45,
+    "servings": 4,
+    "difficulty": "Hard",
+    "cost": 150,
+    "popularity": 0.92,
+    "tags": [
+      "Uttar Pradesh",
+      "North Indian",
+      "Non-Vegetarian",
+      "Soups",
+      "Awadhi",
+      "Rich Broth"
+    ],
+    "healthTags": [
+      "collagen-rich",
+      "joint-health",
+      "immunity-boosting"
+    ],
+    "ingredients": [
+      {
+        "id": "mutton_trotters",
+        "name": "Cleaned Mutton Trotters",
+        "qty": "4",
+        "price": 120,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Sliced Onion",
+        "qty": "1",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "ginger_garlic",
+        "name": "Ginger-Garlic Paste",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "whole_spices",
+        "name": "Bay Leaf, Cardamom, Cloves, Cinnamon",
+        "qty": "1 set",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "chili_powder",
+        "name": "Red Chili Powder",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Heat oil, sauté onion until golden.",
+      "Add ginger-garlic paste, whole spices, and chili powder; cook 2 minutes.",
+      "Add trotters and water.",
+      "Pressure cook or simmer 40-45 minutes until trotters are tender and broth is flavorful.",
+      "Skim excess fat, season with salt. Garnish with coriander. Serve hot."
     ]
   }
 ];

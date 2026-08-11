@@ -519,7 +519,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "indori-poha",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Breakfast & Tiffin",
     name: "Indori Poha",
     description: "The iconic breakfast of Indore—steamed flattened rice topped with spicy sev, pomegranate, and onions.",
     type: "Vegetarian",
@@ -698,7 +698,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "poha-jalebi-indore",
-    menuCategory: "Desserts & Sweets",
+    menuCategory: "Breakfast & Tiffin",
     name: "Poha Jalebi",
     description: "The quintessential Indore breakfast—salty, spicy poha paired with hot, crispy, syrupy jalebi.",
     type: "Vegetarian",

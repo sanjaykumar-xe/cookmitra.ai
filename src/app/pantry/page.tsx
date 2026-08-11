@@ -141,6 +141,7 @@ export default function PantryPage() {
           <div className="flex-1 w-full space-y-2">
             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80 px-1">Ingredient Name</label>
             <Input 
+              id="pantry-item-input"
               placeholder="e.g., Paneer, Basmati Rice..." 
               value={newItemName} 
               onChange={(e) => setNewItemName(e.target.value)}
@@ -251,17 +252,34 @@ export default function PantryPage() {
           })}
         </div>
       ) : (
-        <Card className="text-center py-24 border-dashed border-2 bg-card/30 rounded-[3rem] max-w-4xl mx-auto stagger-item">
-          <CardHeader>
-            <div className="mx-auto bg-primary/10 rounded-[2.5rem] h-24 w-24 flex items-center justify-center mb-6">
-              <ShoppingBasket className="h-12 w-12 text-primary opacity-40" />
-            </div>
-            <CardTitle className="font-headline text-3xl font-medium tracking-tight">Your pantry is empty</CardTitle>
-            <CardDescription className="text-fluid-body mt-2 max-w-xs mx-auto">
-              Add ingredients you have at home to keep track of your kitchen inventory.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Card className="text-center py-20 border-dashed border-2 bg-card/40 backdrop-blur-md border-teal-500/20 rounded-[3rem] max-w-3xl mx-auto shadow-xl">
+            <CardHeader className="p-8 pb-4">
+              <div className="mx-auto bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
+                <ShoppingBasket className="h-12 w-12 stroke-[1.75]" />
+              </div>
+              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Your Kitchen Pantry is Empty</CardTitle>
+              <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
+                Keep track of ingredients you have at home so CookMitra AI can suggest personalized recipes tailored to your available stock!
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-4 pb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button 
+                onClick={() => {
+                  const inputEl = document.getElementById('pantry-item-input');
+                  if (inputEl) inputEl.focus();
+                }}
+                className="rounded-full px-8 h-12 text-sm font-bold shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0"
+              >
+                <Plus className="mr-2 h-4 w-4" /> Add Ingredients Above
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
       )}
     </div>
   );

@@ -438,7 +438,7 @@ export const andhraPradeshRecipes: Recipe[] = [
   },
   {
     id: "pesarattu-andhra",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Pesarattu",
     description: "Nutritious and fiber-rich green moong dal crepes, traditionally served with Ginger Chutney (Allam Pachadi).",
     type: "Vegetarian",

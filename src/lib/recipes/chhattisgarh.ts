@@ -470,7 +470,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "chousela-roti-sabzi",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Chousela Roti with Sabzi",
     description: "Deep-fried rice flour flatbread (Chousela) served with a simple mixed vegetable curry.",
     type: "Vegetarian",
@@ -680,7 +680,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "chila-chhattisgarhi",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Chila",
     description: "Savory and crispy rice pancakes, a daily breakfast staple in Chhattisgarh.",
     type: "Vegetarian",

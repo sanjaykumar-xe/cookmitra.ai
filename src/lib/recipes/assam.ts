@@ -586,7 +586,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "doi-chira-assam",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Doi Chira",
     description: "A simple and nutritious Assamese snack or breakfast of flattened rice soaked in creamy yogurt and sweetened with jaggery.",
     type: "Vegetarian",

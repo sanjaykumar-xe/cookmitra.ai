@@ -70,3 +70,16 @@ export const recipes: Recipe[] = [
   ...snacksRecipes,
   ...drinksRecipes,
 ];
+
+/**
+ * Computes live recipe counts per MenuCategory dynamically across all recipe data files.
+ */
+export function getRecipeCountByCourse(): Record<string, number> {
+  const counts: Record<string, number> = {};
+  recipes.forEach(r => {
+    if (r.menuCategory) {
+      counts[r.menuCategory] = (counts[r.menuCategory] || 0) + 1;
+    }
+  });
+  return counts;
+}

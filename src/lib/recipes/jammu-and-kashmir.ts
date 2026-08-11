@@ -672,5 +672,164 @@ export const jammuAndKashmirRecipes: Recipe[] = [
       "Baste with oil/ghee while cooking.",
       "Serve with raw onions and lemon."
     ]
+  },
+  {
+    "id": "kj-salad-kamal-kakdi",
+    "menuCategory": "Salads",
+    "name": "Kamal Kakdi Salad",
+    "description": "A crisp Kashmiri lotus stem salad, thinly sliced and lightly dressed with lime, mint, and toasted cumin.",
+    "type": "Vegetarian",
+    "time": 20,
+    "servings": 4,
+    "difficulty": "Medium",
+    "cost": 70,
+    "popularity": 0.85,
+    "tags": [
+      "Jammu & Kashmir",
+      "North Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "Exotic"
+    ],
+    "healthTags": [
+      "high-fiber",
+      "low-calorie",
+      "antioxidant-rich"
+    ],
+    "ingredients": [
+      {
+        "id": "lotus_stem",
+        "name": "Thinly Sliced Lotus Stem",
+        "qty": "2 cups",
+        "price": 40,
+        "available": true
+      },
+      {
+        "id": "mint_leaves",
+        "name": "Chopped Mint Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "cumin_powder",
+        "name": "Roasted Cumin Powder",
+        "qty": "1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "chili_powder",
+        "name": "Red Chili Powder",
+        "qty": "1/4 tsp",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "pomegranate",
+        "name": "Pomegranate Seeds",
+        "qty": "2 tbsp",
+        "price": 10,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Blanch lotus stem slices in salted boiling water for 4-5 minutes until just tender-crisp.",
+      "Drain and cool completely.",
+      "Toss with mint, lime juice, cumin powder, chili powder, and salt.",
+      "Garnish with pomegranate seeds. Serve chilled."
+    ]
+  },
+
+  {
+    "id": "kj-soup-nadru-yakhni",
+    "menuCategory": "Soups",
+    "name": "Nadru Yakhni",
+    "description": "A delicate Kashmiri yogurt-based broth simmered with tender lotus stem, fragrant with fennel and dry ginger.",
+    "type": "Vegetarian",
+    "time": 30,
+    "servings": 4,
+    "difficulty": "Medium",
+    "cost": 75,
+    "popularity": 0.87,
+    "tags": [
+      "Jammu & Kashmir",
+      "North Indian",
+      "Vegetarian",
+      "Soups",
+      "Exotic",
+      "Yogurt Broth"
+    ],
+    "healthTags": [
+      "digestive-friendly",
+      "high-fiber",
+      "low-calorie"
+    ],
+    "ingredients": [
+      {
+        "id": "lotus_stem",
+        "name": "Sliced Lotus Stem (Nadru)",
+        "qty": "1 cup",
+        "price": 35,
+        "available": true
+      },
+      {
+        "id": "yogurt",
+        "name": "Whisked Yogurt",
+        "qty": "1/2 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "fennel_powder",
+        "name": "Fennel Powder",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "dry_ginger",
+        "name": "Dry Ginger Powder (Saunth)",
+        "qty": "1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "cardamom",
+        "name": "Green Cardamom",
+        "qty": "2",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "bay_leaf",
+        "name": "Bay Leaf",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "ghee",
+        "name": "Ghee",
+        "qty": "1 tbsp",
+        "price": 10,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Heat ghee, add bay leaf and cardamom, sauté briefly.",
+      "Add lotus stem and cook 3-4 minutes.",
+      "Add fennel powder, dry ginger powder, and water; simmer until lotus stem is tender (15-18 minutes).",
+      "Lower heat, slowly stir in whisked yogurt to avoid curdling.",
+      "Simmer gently 5 more minutes, season with salt. Serve hot."
+    ]
   }
 ];

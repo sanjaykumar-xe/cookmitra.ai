@@ -535,7 +535,7 @@ export const meghalayaRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "putharo-steamed-rice-cake",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Putharo",
     description: "A traditional Khasi steamed rice flour cake, often enjoyed for breakfast with tea or Jadoh.",
     type: "Vegetarian",

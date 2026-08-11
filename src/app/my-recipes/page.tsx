@@ -6,9 +6,10 @@ import { useRouter } from 'next/navigation';
 import { collection, query, orderBy } from 'firebase/firestore';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, ChefHat, Trash2 } from 'lucide-react';
+import { Loader2, ChefHat, Trash2, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { RecipeCard } from '@/components/recipe/recipe-card';
+import { motion } from 'framer-motion';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,6 +26,7 @@ import { deleteRecipe } from '@/lib/firebase/firestore/recipes';
 export default function MyRecipesPage() {
   const { user, isUserLoading } = useUser();
   const [mounted, setMounted] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const firestore = useFirestore();
   const router = useRouter();
   const { toast } = useToast();
@@ -53,6 +55,7 @@ export default function MyRecipesPage() {
 
   const handleDeleteRecipe = async () => {
     if (!recipeToDelete || !user || !firestore) return;
+    setIsDeleting(true);
     try {
       await deleteRecipe(firestore, user.uid, recipeToDelete.id);
       toast({
@@ -66,6 +69,7 @@ export default function MyRecipesPage() {
         description: "Failed to delete recipe. Please try again."
       });
     } finally {
+      setIsDeleting(false);
       setRecipeToDelete(null);
     }
   };
@@ -84,13 +88,20 @@ export default function MyRecipesPage() {
 
       {recipes && recipes.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-fluid-grid">
-          {recipes.map((recipe: any) => {
+          {recipes.map((recipe: any, idx: number) => {
             return (
-              <div key={recipe.id} className="relative group/card">
+              <motion.div
+                key={recipe.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.6, delay: (idx % 12) * 0.08, ease: "easeOut" }}
+                className="relative group/card"
+              >
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  className="absolute top-4 right-4 z-30 h-9 w-9 rounded-full bg-background/80 backdrop-blur-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-border/40 shadow-sm"
+                  className="absolute top-4 right-4 z-30 h-9 w-9 rounded-full bg-background/80 backdrop-blur-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-border/40 shadow-sm transition-all"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -101,25 +112,39 @@ export default function MyRecipesPage() {
                   <Trash2 className="h-4 w-4" />
                 </Button>
                 <RecipeCard recipe={recipe} />
-              </div>
+              </motion.div>
             );
           })}
         </div>
       ) : (
-        <Card className="text-center py-24 border-dashed border-2 bg-card/30 rounded-[3rem] max-w-4xl mx-auto">
-          <CardHeader>
-            <div className="mx-auto bg-primary/10 rounded-[2.5rem] h-24 w-24 flex items-center justify-center mb-6">
-              <ChefHat className="h-12 w-12 text-primary opacity-40" />
-            </div>
-            <CardTitle className="font-headline text-3xl font-medium tracking-tight">No Recipes Saved Yet</CardTitle>
-            <CardDescription className="text-fluid-body mt-2 max-w-xs mx-auto">Start by generating an AI recipe or browsing our library!</CardDescription>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <Button asChild className="rounded-full px-8 py-3 text-base font-medium shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0">
-              <Link href="/recipes">Browse Library</Link>
-            </Button>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <Card className="text-center py-20 border-dashed border-2 bg-card/40 backdrop-blur-md border-amber-500/20 rounded-[3rem] max-w-3xl mx-auto shadow-xl">
+            <CardHeader className="p-8 pb-4">
+              <div className="mx-auto bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
+                <ChefHat className="h-12 w-12 stroke-[1.75]" />
+              </div>
+              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Your Recipe Collection is Empty</CardTitle>
+              <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
+                You haven't saved any recipes yet. Browse our catalog of 934+ authentic regional dishes or generate a custom meal with AI!
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-4 pb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild className="rounded-full px-8 h-12 text-sm font-bold shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0">
+                <Link href="/recipes">Browse 934+ Recipes</Link>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full px-8 h-12 text-sm font-bold border-stone-300 dark:border-stone-700 hover:bg-amber-500/10 text-stone-800 dark:text-stone-200">
+                <Link href="/ai-recipes">
+                  <Sparkles className="mr-2 h-4 w-4 text-amber-500" />
+                  Generate with AI
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
       )}
 
       <AlertDialog open={!!recipeToDelete} onOpenChange={(open) => !open && setRecipeToDelete(null)}>
@@ -142,3 +167,4 @@ export default function MyRecipesPage() {
     </div>
   );
 }
+

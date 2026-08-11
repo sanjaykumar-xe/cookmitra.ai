@@ -3,6 +3,34 @@ import { Recipe } from './types';
 export const tamilNaduRecipes: Recipe[] = [
   // --- VEGETARIAN (20) ---
   {
+    id: "idli-sambar",
+    menuCategory: "Breakfast & Tiffin",
+    name: "Soft Idli Sambar",
+    description: "Puffy, pillow-soft steamed rice and urad dal cakes served with hot vegetable sambar and spicy gunpowder podi.",
+    type: "Vegetarian",
+    time: 20,
+    servings: 4,
+    difficulty: "Easy",
+    cost: 80,
+    popularity: 0.96,
+    tags: ["Tamil Nadu", "South Indian", "Vegetarian", "Breakfast", "Popular", "Comfort Food"],
+    healthTags: ["digestive-friendly", "heart-healthy", "weight-management"],
+    ingredients: [
+      { id: "idli_rice", name: "Idli Rice", qty: "2 cups", price: 30, available: true },
+      { id: "urad_dal", name: "Whole Skinless Urad Dal", qty: "1/2 cup", price: 25, available: true },
+      { id: "sambar", name: "Toor Dal Sambar", qty: "2 cups", price: 20, available: true },
+      { id: "idli_podi", name: "Gunpowder (Idli Podi)", qty: "2 tbsp", price: 10, available: true },
+      { id: "gingelly_oil", name: "Sesame Oil / Ghee", qty: "1 tbsp", price: 15, available: true }
+    ],
+    steps: [
+      "Soak idli rice and urad dal separately for 5 hours, then grind to a smooth, fluffy batter.",
+      "Ferment the batter overnight in a warm place until doubled in volume.",
+      "Pour batter into greased idli molds and steam in an idli cooker for 10-12 minutes.",
+      "Allow to cool slightly, then scoop out the soft, fluffy white idlis.",
+      "Serve piping hot with fragrant vegetable sambar, coconut chutney, and podi mixed with sesame oil."
+    ]
+  },
+  {
     id: "vatha-kuzhambu",
     menuCategory: "Curries & Gravies",
     name: "Vatha Kuzhambu",
@@ -149,7 +177,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "idiyappam",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Idiyappam",
     description: "Traditional steamed rice noodles, a light and healthy breakfast staple often served with coconut milk.",
     type: "Vegetarian",
@@ -1018,7 +1046,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kari-dosai-tn",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Kari Dosai",
     description: "A Madurai specialty—a fluffy dosa topped with a spicy, flavorful layer of minced mutton and egg.",
     type: "Non-Vegetarian",
@@ -1223,7 +1251,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "ulundu-vadai-snack",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Ulundu Vadai",
     description: "Crispy fried lentil doughnuts made from fluffy black gram batter, a favorite tea-time snack.",
     type: "Vegetarian",
@@ -1252,7 +1280,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "vazhaipoo-vadai-snack",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Vazhaipoo Vadai",
     description: "Unique and crispy fritters made from finely chopped banana flower and spiced lentils.",
     type: "Vegetarian",
@@ -1450,6 +1478,374 @@ export const tamilNaduRecipes: Recipe[] = [
       "Add the chicken and Chettinad roasted spice powder.",
       "Cook on medium heat without adding water until the chicken is tender and the spices form a dry coating.",
       "Add extra black pepper at the end for a spicy punch."
+    ]
+  },
+  {
+    "id": "tn-salad-beetroot-sundal",
+    "menuCategory": "Salads",
+    "name": "Beetroot Sundal Salad",
+    "description": "A vibrant Tamil Nadu-style salad combining boiled beetroot with tempered black chickpeas and fresh coconut.",
+    "type": "Vegetarian",
+    "time": 15,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 50,
+    "popularity": 0.89,
+    "tags": [
+      "Tamil Nadu",
+      "South Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "Fiber Rich"
+    ],
+    "healthTags": [
+      "iron-rich",
+      "high-fiber",
+      "heart-healthy"
+    ],
+    "ingredients": [
+      {
+        "id": "beetroot",
+        "name": "Boiled and Diced Beetroot",
+        "qty": "1 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "black_chickpeas",
+        "name": "Boiled Black Chickpeas",
+        "qty": "1 cup",
+        "price": 20,
+        "available": true
+      },
+      {
+        "id": "coconut",
+        "name": "Grated Fresh Coconut",
+        "qty": "1/4 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "mustard_seeds",
+        "name": "Mustard Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "urad_dal",
+        "name": "Urad Dal",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "curry_leaves",
+        "name": "Curry Leaves",
+        "qty": "6-8",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Minced Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "oil",
+        "name": "Oil",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tsp",
+        "price": 3,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Combine boiled beetroot and chickpeas in a bowl.",
+      "Heat oil, temper mustard seeds, urad dal, curry leaves, and green chili.",
+      "Pour over the beetroot mixture.",
+      "Add coconut, lime juice, and salt. Toss gently and serve."
+    ]
+  },
+
+  {
+    "id": "tn-soup-milagu-rasam",
+    "menuCategory": "Soups",
+    "name": "Milagu Rasam",
+    "description": "A fiery, thin Tamil Nadu pepper-cumin rasam, traditionally sipped as a warming soup before or with the main meal.",
+    "type": "Vegetarian",
+    "time": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 40,
+    "popularity": 0.94,
+    "tags": [
+      "Tamil Nadu",
+      "South Indian",
+      "Vegetarian",
+      "Soups",
+      "Spicy",
+      "Cold & Cough Remedy"
+    ],
+    "healthTags": [
+      "cold-cough-friendly",
+      "digestive-friendly",
+      "immunity-boosting"
+    ],
+    "ingredients": [
+      {
+        "id": "tamarind",
+        "name": "Tamarind Pulp",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "tomato",
+        "name": "Chopped Tomato",
+        "qty": "1",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "black_pepper",
+        "name": "Crushed Black Pepper",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "cumin",
+        "name": "Crushed Cumin Seeds",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "garlic",
+        "name": "Crushed Garlic",
+        "qty": "3 cloves",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "curry_leaves",
+        "name": "Curry Leaves",
+        "qty": "8-10",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "mustard_seeds",
+        "name": "Mustard Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "red_chili",
+        "name": "Dried Red Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "ghee",
+        "name": "Ghee",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Simmer tamarind pulp, tomato, turmeric, and 2 cups water for 8 minutes.",
+      "Add crushed pepper, cumin, and garlic; simmer 5 more minutes.",
+      "In a small pan, heat ghee and temper mustard seeds, dried chili, and curry leaves.",
+      "Pour tempering into the rasam, add remaining water to thin as needed.",
+      "Garnish with coriander. Serve hot."
+    ]
+  }
+,
+  {
+    "id": "tn-soup-mulligatawny",
+    "menuCategory": "Soups",
+    "name": "Mulligatawny Soup",
+    "description": "A mildly spiced, lentil-thinned soup with Anglo-Indian roots, brightened with lime and black pepper.",
+    "type": "Vegetarian",
+    "time": 25,
+    "servings": 4,
+    "difficulty": "Medium",
+    "cost": 50,
+    "popularity": 0.88,
+    "tags": [
+      "Tamil Nadu",
+      "South Indian",
+      "Vegetarian",
+      "Soups",
+      "Anglo Indian",
+      "Comfort Food"
+    ],
+    "healthTags": [
+      "high-protein",
+      "digestive-friendly"
+    ],
+    "ingredients": [
+      {
+        "id": "toor_dal",
+        "name": "Cooked & Blended Toor Dal",
+        "qty": "1/2 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "carrot",
+        "name": "Diced Carrot",
+        "qty": "1/4 cup",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Chopped Onion",
+        "qty": "1/4 cup",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "garlic",
+        "name": "Minced Garlic",
+        "qty": "2 cloves",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "curry_powder",
+        "name": "Curry Powder",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "black_pepper",
+        "name": "Crushed Black Pepper",
+        "qty": "1/2 tsp",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Heat oil, sauté onion, garlic, and carrot until soft.",
+      "Add curry powder, cook 1 minute.",
+      "Pour in stock and blended dal, simmer 15 minutes.",
+      "Season with black pepper and salt.",
+      "Finish with lime juice and coriander. Serve hot."
+    ]
+  }
+,
+  {
+    "id": "tn-soup-jeera-rasam",
+    "menuCategory": "Soups",
+    "name": "Jeera Rasam",
+    "description": "A soothing cumin-forward rasam from Tamil Nadu, thinner and gentler than pepper rasam, often served to settle the stomach.",
+    "type": "Vegetarian",
+    "time": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 35,
+    "popularity": 0.93,
+    "tags": [
+      "Tamil Nadu",
+      "South Indian",
+      "Vegetarian",
+      "Soups",
+      "Cumin",
+      "Digestive"
+    ],
+    "healthTags": [
+      "digestive-friendly",
+      "soothing-stomach",
+      "low-calorie"
+    ],
+    "ingredients": [
+      {
+        "id": "tamarind",
+        "name": "Tamarind Pulp",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "tomato",
+        "name": "Chopped Tomato",
+        "qty": "1",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "cumin",
+        "name": "Crushed Cumin Seeds",
+        "qty": "1 1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "garlic",
+        "name": "Crushed Garlic",
+        "qty": "2 cloves",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "curry_leaves",
+        "name": "Curry Leaves",
+        "qty": "8-10",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "ghee",
+        "name": "Ghee",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Simmer tamarind pulp, tomato, and turmeric in 2 cups water for 8 minutes.",
+      "Add crushed cumin and garlic, simmer 5 more minutes.",
+      "Heat ghee, temper mustard seeds, dried chili, and curry leaves.",
+      "Pour tempering into the rasam, thin with remaining water as needed.",
+      "Garnish with coriander. Serve hot."
     ]
   }
 ];

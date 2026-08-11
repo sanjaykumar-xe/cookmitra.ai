@@ -649,5 +649,87 @@ export const biharRecipes: Recipe[] = [
       "Coat fish and deep fry until very crispy.",
       "Serve as a spicy appetizer."
     ]
-  }
+  },
+  {
+    "id": "br-salad-sattu",
+    "menuCategory": "Salads",
+    "name": "Sattu Salad",
+    "description": "A nutty, high-protein Bihari salad built around roasted gram flour tossed with onion, tomato, and mustard oil.",
+    "type": "Vegetarian",
+    "time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 40,
+    "popularity": 0.86,
+    "tags": [
+      "Bihar",
+      "East Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "High Protein"
+    ],
+    "healthTags": [
+      "high-protein",
+      "low-gi",
+      "energy-boosting"
+    ],
+    "ingredients": [
+      {
+        "id": "sattu",
+        "name": "Sattu (Roasted Gram Flour)",
+        "qty": "1/2 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Finely Chopped Onion",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "tomato",
+        "name": "Finely Chopped Tomato",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Minced Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "mustard_oil",
+        "name": "Raw Mustard Oil",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "In a bowl, combine onion, tomato, and green chili.",
+      "Sprinkle sattu evenly over the mixture.",
+      "Add mustard oil, lime juice, and salt.",
+      "Toss thoroughly until sattu coats the vegetables. Garnish with coriander."
+    ]
+  },
 ];

@@ -22,12 +22,15 @@ import {
     Flame,
     MapPin,
     Map as MapIcon,
-    CheckCircle2
+    CheckCircle2,
+    ChevronDown,
+    ChevronUp
 } from "lucide-react";
 import { 
     IconFlame, 
     IconSoup, 
     IconSalad, 
+    IconToolsKitchen,
     IconToolsKitchen2, 
     IconMeat,
     IconBowl, 
@@ -53,17 +56,23 @@ const moods = [
     { name: 'Spicy Mood', icon: <Flame className="h-8 w-8" /> },
 ];
 
-const courseCategories: { name: MenuCategory; icon: React.ReactNode }[] = [
+// Top 6 most-used priority categories (visible by default in a clean 6-column single row)
+const topCourseCategories: { name: MenuCategory; icon: React.ReactNode }[] = [
+    { name: 'Breakfast & Tiffin', icon: <IconToolsKitchen className="h-8 w-8" /> },
+    { name: 'Curries & Gravies', icon: <IconSoup className="h-8 w-8" /> },
+    { name: 'Breads', icon: <IconBread className="h-8 w-8" /> },
+    { name: 'Snacks & Street Food', icon: <IconCookie className="h-8 w-8" /> },
+    { name: 'Rice & Biryani', icon: <IconBowl className="h-8 w-8" /> },
+    { name: 'Desserts & Sweets', icon: <IconCake className="h-8 w-8" /> },
+];
+
+// Remaining 7 categories (revealed on toggle)
+const remainingCourseCategories: { name: MenuCategory; icon: React.ReactNode }[] = [
     { name: 'Starters & Appetizers', icon: <IconFlame className="h-8 w-8" /> },
     { name: 'Soups', icon: <IconSoup className="h-8 w-8" /> },
     { name: 'Salads', icon: <IconSalad className="h-8 w-8" /> },
-    { name: 'Curries & Gravies', icon: <IconSoup className="h-8 w-8" /> },
     { name: 'Dry & Stir-Fried', icon: <IconToolsKitchen2 className="h-8 w-8" /> },
     { name: 'Protein Specialties', icon: <IconMeat className="h-8 w-8" /> },
-    { name: 'Rice & Biryani', icon: <IconBowl className="h-8 w-8" /> },
-    { name: 'Breads', icon: <IconBread className="h-8 w-8" /> },
-    { name: 'Snacks & Street Food', icon: <IconCookie className="h-8 w-8" /> },
-    { name: 'Desserts & Sweets', icon: <IconCake className="h-8 w-8" /> },
     { name: 'Beverages', icon: <IconCup className="h-8 w-8" /> },
     { name: 'Sides & Accompaniments', icon: <IconPepper className="h-8 w-8" /> },
 ];
@@ -77,9 +86,21 @@ export default function RecipesExplorerPage() {
   const [searchIngredients, setSearchIngredients] = useState<string[]>([]);
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<MenuCategory | null>(null);
+  const [showMoreCategories, setShowMoreCategories] = useState(false);
   const [selectedRegionTag, setSelectedRegionTag] = useState<string | null>(null);
   const [selectedStateName, setSelectedStateName] = useState<string | null>(null);
   const [displayLimit, setDisplayLimit] = useState(24);
+
+  // Compute live recipe counts dynamically per MenuCategory
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    allRecipes.forEach(r => {
+      if (r.menuCategory) {
+        counts[r.menuCategory] = (counts[r.menuCategory] || 0) + 1;
+      }
+    });
+    return counts;
+  }, []);
 
   useEffect(() => {
     if (!isUserLoading && !user) { router.push('/login'); }
@@ -256,32 +277,117 @@ export default function RecipesExplorerPage() {
       {/* Browse by Course (Menu Category) */}
       <div className="text-center mb-16">
         <h2 className="font-headline text-2xl font-medium mb-8">Browse by Course</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-4">
-            {courseCategories.map((cat) => {
+        
+        {/* Top 6 Priority Categories (Single 6-column row on desktop) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {topCourseCategories.map((cat) => {
                 const isSelected = selectedCategory === cat.name;
+                const count = categoryCounts[cat.name] || 0;
                 return (
                     <Card
                         key={cat.name}
                         onClick={() => setSelectedCategory(isSelected ? null : cat.name)}
                         className={cn(
-                            "p-5 text-center cursor-pointer transition-all rounded-3xl border-2 flex flex-col items-center justify-center min-h-[140px]",
+                            "p-4 text-center cursor-pointer transition-all rounded-3xl border-2 flex flex-col items-center justify-center min-h-[148px] relative group",
                             isSelected 
                                 ? "border-primary bg-primary/10 shadow-inner scale-105" 
                                 : "border-border/40 hover:border-primary/40 bg-card/50"
                         )}
                     >
                         <div className={cn(
-                            "mb-3 h-12 w-12 mx-auto rounded-2xl flex items-center justify-center transition-colors shrink-0", 
+                            "mb-2.5 h-11 w-11 mx-auto rounded-2xl flex items-center justify-center transition-colors shrink-0", 
                             isSelected ? "bg-primary text-primary-foreground shadow-lg" : "bg-primary/10 text-primary"
                         )}>
                             {cat.icon}
                         </div>
-                        <p className={cn("font-bold text-xs leading-tight text-center", isSelected ? "text-primary" : "text-muted-foreground")}>
+                        <p className={cn("font-bold text-xs leading-tight text-center mb-1.5", isSelected ? "text-primary" : "text-foreground")}>
                             {cat.name}
                         </p>
+                        {count > 0 ? (
+                            <span className={cn(
+                                "inline-flex items-center justify-center px-2 py-0.5 text-[10px] font-bold rounded-full transition-colors",
+                                isSelected 
+                                    ? "bg-primary text-primary-foreground font-extrabold" 
+                                    : "bg-primary/15 text-primary group-hover:bg-primary group-hover:text-primary-foreground"
+                            )}>
+                                {count} {count === 1 ? 'recipe' : 'recipes'}
+                            </span>
+                        ) : (
+                            <span className="inline-flex items-center justify-center px-2 py-0.5 text-[10px] font-medium rounded-full bg-muted/50 text-muted-foreground/50">
+                                0 recipes
+                            </span>
+                        )}
                     </Card>
                 );
             })}
+        </div>
+
+        {/* Animated Expansion for Remaining 7 Categories */}
+        <AnimatePresence>
+            {showMoreCategories && (
+                <motion.div
+                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                    animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                >
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 pt-1">
+                        {remainingCourseCategories.map((cat) => {
+                            const isSelected = selectedCategory === cat.name;
+                            const count = categoryCounts[cat.name] || 0;
+                            return (
+                                <Card
+                                    key={cat.name}
+                                    onClick={() => setSelectedCategory(isSelected ? null : cat.name)}
+                                    className={cn(
+                                        "p-4 text-center cursor-pointer transition-all rounded-3xl border-2 flex flex-col items-center justify-center min-h-[148px] relative group",
+                                        isSelected 
+                                            ? "border-primary bg-primary/10 shadow-inner scale-105" 
+                                            : "border-border/40 hover:border-primary/40 bg-card/50"
+                                    )}
+                                >
+                                    <div className={cn(
+                                        "mb-2.5 h-11 w-11 mx-auto rounded-2xl flex items-center justify-center transition-colors shrink-0", 
+                                        isSelected ? "bg-primary text-primary-foreground shadow-lg" : "bg-primary/10 text-primary"
+                                    )}>
+                                        {cat.icon}
+                                    </div>
+                                    <p className={cn("font-bold text-xs leading-tight text-center mb-1.5", isSelected ? "text-primary" : "text-foreground")}>
+                                        {cat.name}
+                                    </p>
+                                    {count > 0 ? (
+                                        <span className={cn(
+                                            "inline-flex items-center justify-center px-2 py-0.5 text-[10px] font-bold rounded-full transition-colors",
+                                            isSelected 
+                                                ? "bg-primary text-primary-foreground font-extrabold" 
+                                                : "bg-primary/15 text-primary group-hover:bg-primary group-hover:text-primary-foreground"
+                                        )}>
+                                            {count} {count === 1 ? 'recipe' : 'recipes'}
+                                        </span>
+                                    ) : (
+                                        <span className="inline-flex items-center justify-center px-2 py-0.5 text-[10px] font-medium rounded-full bg-muted/50 text-muted-foreground/50">
+                                            0 recipes
+                                        </span>
+                                    )}
+                                </Card>
+                            );
+                        })}
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+
+        {/* Show More / Show Less Toggle Button */}
+        <div className="mt-6 flex justify-center">
+            <Button
+                variant="outline"
+                onClick={() => setShowMoreCategories(prev => !prev)}
+                className="rounded-full px-6 py-2.5 h-11 border-2 border-primary/20 text-primary hover:bg-primary/10 shadow-sm transition-all font-bold text-sm flex items-center gap-2"
+            >
+                <span>{showMoreCategories ? "Show Less" : "Show 7 More Categories"}</span>
+                {showMoreCategories ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </Button>
         </div>
       </div>
 
@@ -353,16 +459,25 @@ export default function RecipesExplorerPage() {
       </div>
 
       {allFilteredRecipes.length === 0 && (
-          <div className="text-center py-32 border-4 border-dashed rounded-[3rem] border-border/20">
-            <div className="bg-muted/10 h-24 w-24 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="h-12 w-12 text-muted-foreground opacity-30" />
-            </div>
-            <h3 className="text-2xl font-headline font-medium text-muted-foreground">No matching recipes found</h3>
-            <p className="text-muted-foreground mt-2">Try different ingredients or clear your filters.</p>
-            {(selectedMood || selectedCategory || searchIngredients.length > 0 || selectedRegionTag) && (
-                <Button 
-                    variant="link" 
-                    className="mt-4 text-primary font-bold"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Card className="text-center py-20 border-dashed border-2 bg-card/40 backdrop-blur-md border-amber-500/20 rounded-[3rem] max-w-3xl mx-auto shadow-xl my-12">
+              <CardHeader className="p-8 pb-4">
+                <div className="mx-auto bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
+                  <Search className="h-12 w-12 stroke-[1.75]" />
+                </div>
+                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">No Matching Recipes Found</CardTitle>
+                <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
+                  We couldn't find any dish matching your current filters or ingredient search. Try adjusting your selections!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pt-4 pb-8 flex justify-center">
+                {(selectedMood || selectedCategory || searchIngredients.length > 0 || selectedRegionTag) && (
+                  <Button 
+                    className="rounded-full px-8 h-12 text-sm font-bold shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0"
                     onClick={() => { 
                         setSelectedMood(null); 
                         setSelectedCategory(null);
@@ -371,11 +486,13 @@ export default function RecipesExplorerPage() {
                         setSelectedRegionTag(null);
                         setSelectedStateName(null);
                     }}
-                >
-                    Clear All Filters
-                </Button>
-            )}
-          </div>
+                  >
+                    Reset All Filters
+                  </Button>
+                )}
+              </CardContent>
+            </Card>
+          </motion.div>
       )}
 
       {allFilteredRecipes.length > displayLimit && (

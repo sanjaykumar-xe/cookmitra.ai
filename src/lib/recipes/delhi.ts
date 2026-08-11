@@ -626,7 +626,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "bedmi-puri-delhi",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Bedmi Puri Delhi Style",
     description: "Spiced lentil-stuffed fried bread served with a tangy potato curry, a classic Delhi morning snack.",
     type: "Vegetarian",

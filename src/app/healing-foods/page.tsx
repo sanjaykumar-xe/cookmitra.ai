@@ -319,14 +319,20 @@ export default function HealingFoodsPage() {
                 ) : (
                     <motion.div 
                         key="placeholder"
-                        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                        className="text-center py-40 border-4 border-dashed rounded-[4rem] border-border/20 max-w-5xl mx-auto"
+                        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                     >
-                        <div className="bg-primary/5 h-24 w-24 rounded-full flex items-center justify-center mx-auto mb-8">
-                            <HeartPulse className="h-12 w-12 text-primary/40" />
-                        </div>
-                        <h2 className="font-headline text-3xl font-medium text-muted-foreground">Select a condition to see guidance</h2>
-                        <p className="text-muted-foreground mt-2 max-w-sm mx-auto opacity-70">Our AI-enhanced knowledge base covers everything from common colds to metabolic management.</p>
+                        <Card className="text-center py-20 border-dashed border-2 bg-card/40 backdrop-blur-md border-pink-500/20 rounded-[3rem] max-w-3xl mx-auto shadow-xl">
+                            <CardHeader className="p-8 pb-4">
+                                <div className="mx-auto bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
+                                    <HeartPulse className="h-12 w-12 stroke-[1.75]" />
+                                </div>
+                                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Explore Healing Foods Guidance</CardTitle>
+                                <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
+                                    Select a health condition above or search for wellness topics like 'acidity', 'immunity', 'diabetes', or 'cold' to get AI-crafted food recommendations!
+                                </CardDescription>
+                            </CardHeader>
+                        </Card>
                     </motion.div>
                 )}
             </AnimatePresence>

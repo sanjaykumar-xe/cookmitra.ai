@@ -33,7 +33,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "appam-veg-stew",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Appam with Vegetable Stew",
     description: "Lacy, fermented rice pancakes with a soft center and crispy edges, served with a mild, aromatic coconut milk vegetable stew.",
     type: "Vegetarian",
@@ -62,7 +62,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "puttu-kadala-curry",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Puttu with Kadala Curry",
     description: "Steamed cylinders of ground rice and coconut served with a spicy, black chickpea curry flavored with roasted coconut.",
     type: "Vegetarian",
@@ -758,7 +758,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "parippu-vada-kerala",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Kerala Parippu Vada",
     description: "Crispy, crunchy chana dal fritters with onions and curry leaves, a popular tea-time snack across Kerala.",
     type: "Vegetarian",
@@ -866,6 +866,171 @@ export const keralaRecipes: Recipe[] = [
       "Heat oil in a kadai.",
       "Dip each plantain slice in the batter and deep fry until golden brown.",
       "Drain and serve hot with tea."
+    ]
+  },
+  {
+    "id": "kl-salad-nariyal",
+    "menuCategory": "Salads",
+    "name": "Nariyal Salad",
+    "description": "A light Kerala-style salad of fresh grated coconut, cucumber, and shallots, tempered with curry leaves and mustard seeds.",
+    "type": "Vegetarian",
+    "time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 45,
+    "popularity": 0.88,
+    "tags": [
+      "Kerala",
+      "South Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "Coconut"
+    ],
+    "healthTags": [
+      "healthy-fats",
+      "hydration",
+      "gluten-free"
+    ],
+    "ingredients": [
+      {
+        "id": "coconut",
+        "name": "Grated Fresh Coconut",
+        "qty": "1 cup",
+        "price": 20,
+        "available": true
+      },
+      {
+        "id": "cucumber",
+        "name": "Diced Cucumber",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "shallots",
+        "name": "Thinly Sliced Shallots",
+        "qty": "1/4 cup",
+        "price": 8,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Minced Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "mustard_seeds",
+        "name": "Mustard Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "curry_leaves",
+        "name": "Curry Leaves",
+        "qty": "6-8",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "coconut_oil",
+        "name": "Coconut Oil",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tsp",
+        "price": 3,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Combine coconut, cucumber, and shallots in a bowl.",
+      "Heat coconut oil, temper mustard seeds and curry leaves.",
+      "Pour over the salad.",
+      "Add green chili, lime juice, and salt. Toss and serve."
+    ]
+  },
+
+  {
+    "id": "kl-soup-ash-gourd",
+    "menuCategory": "Soups",
+    "name": "Ash Gourd Soup",
+    "description": "A gentle, coconut-milk based Kerala soup made from ash gourd, lightly spiced and finished with curry leaves.",
+    "type": "Vegetarian",
+    "time": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 50,
+    "popularity": 0.89,
+    "tags": [
+      "Kerala",
+      "South Indian",
+      "Vegetarian",
+      "Soups",
+      "Healthy",
+      "Cooling"
+    ],
+    "healthTags": [
+      "cooling-digestive",
+      "low-calorie",
+      "weight-management"
+    ],
+    "ingredients": [
+      {
+        "id": "ash_gourd",
+        "name": "Peeled & Cubed Ash Gourd",
+        "qty": "2 cups",
+        "price": 20,
+        "available": true
+      },
+      {
+        "id": "coconut_milk",
+        "name": "Coconut Milk",
+        "qty": "1/2 cup",
+        "price": 20,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Slit Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "cumin_seeds",
+        "name": "Cumin Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "curry_leaves",
+        "name": "Curry Leaves",
+        "qty": "6-8",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "coconut_oil",
+        "name": "Coconut Oil",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Boil ash gourd in water with green chili and salt until soft (10-12 minutes).",
+      "Blend lightly for a chunky-smooth texture, or leave as is.",
+      "Stir in coconut milk, simmer 3-4 minutes without boiling hard.",
+      "Heat coconut oil, temper cumin seeds and curry leaves, pour over soup. Serve hot."
     ]
   }
 ];

@@ -488,7 +488,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "sabudana-khichdi",
-    menuCategory: "Rice & Biryani",
+    menuCategory: "Breakfast & Tiffin",
     name: "Sabudana Khichdi",
     description: "A light and nutty dish made with sago pearls, roasted peanuts, and potatoes, traditionally eaten during fasts.",
     type: "Vegetarian",
@@ -760,7 +760,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "maharashtrian-poha",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Kanda Poha",
     description: "Flattened rice tempered with onions, peanuts, and potatoes—the breakfast staple of Maharashtra.",
     type: "Vegetarian",
@@ -809,6 +809,155 @@ export const maharashtraRecipes: Recipe[] = [
       "Mix in besan and ajwain with a little water to form a coating.",
       "Deep fry until golden brown and cooked through.",
       "Garnish with chat masala and serve with onion rings."
+    ]
+  },
+  {
+    "id": "mh-salad-ananas-chana-chaat",
+    "menuCategory": "Salads",
+    "name": "Ananas Chana Chaat",
+    "description": "A sweet-tangy salad of pineapple chunks and boiled chickpeas, tossed with chaat masala and fresh herbs.",
+    "type": "Vegetarian",
+    "time": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 60,
+    "popularity": 0.87,
+    "tags": [
+      "Maharashtra",
+      "West Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "Tangy"
+    ],
+    "healthTags": [
+      "vitamin-c-rich",
+      "high-fiber",
+      "digestive-friendly"
+    ],
+    "ingredients": [
+      {
+        "id": "pineapple",
+        "name": "Diced Pineapple",
+        "qty": "1 cup",
+        "price": 30,
+        "available": true
+      },
+      {
+        "id": "chickpeas",
+        "name": "Boiled Chickpeas",
+        "qty": "1 cup",
+        "price": 20,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Finely Chopped Onion",
+        "qty": "1/4 cup",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Minced Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "chaat_masala",
+        "name": "Chaat Masala",
+        "qty": "1/2 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tsp",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Combine pineapple, chickpeas, and onion in a bowl.",
+      "Add chaat masala, lime juice, green chili, and salt.",
+      "Toss gently and garnish with coriander. Serve chilled."
+    ]
+  },
+
+  {
+    "id": "mh-soup-corn-shorba",
+    "menuCategory": "Soups",
+    "name": "Corn Shorba",
+    "description": "A comforting, lightly sweet sweet-corn soup thickened naturally with blended kernels, a common starter across Indian restaurants.",
+    "type": "Vegetarian",
+    "time": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 50,
+    "popularity": 0.91,
+    "tags": [
+      "Maharashtra",
+      "West Indian",
+      "Vegetarian",
+      "Soups",
+      "Sweet Corn",
+      "Popular"
+    ],
+    "healthTags": [
+      "high-fiber",
+      "energy-boosting"
+    ],
+    "ingredients": [
+      {
+        "id": "sweet_corn",
+        "name": "Sweet Corn Kernels",
+        "qty": "1 1/2 cups",
+        "price": 30,
+        "available": true
+      },
+      {
+        "id": "onion",
+        "name": "Chopped Onion",
+        "qty": "1/4 cup",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "garlic",
+        "name": "Minced Garlic",
+        "qty": "2 cloves",
+        "price": 3,
+        "available": true
+      },
+      {
+        "id": "butter",
+        "name": "Butter",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "black_pepper",
+        "name": "Black Pepper",
+        "qty": "1/4 tsp",
+        "price": 3,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Heat butter, sauté onion and garlic until soft.",
+      "Add corn kernels and stock, simmer 10 minutes.",
+      "Blend two-thirds of the mixture smooth, return to pot with remaining whole kernels for texture.",
+      "Season with black pepper and salt, simmer 3 more minutes. Garnish with coriander. Serve hot."
     ]
   }
 ];

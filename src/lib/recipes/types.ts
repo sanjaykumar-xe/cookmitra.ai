@@ -14,6 +14,7 @@ export type MenuCategory =
   | "Starters & Appetizers"
   | "Soups"
   | "Salads"
+  | "Breakfast & Tiffin"
   | "Curries & Gravies"
   | "Dry & Stir-Fried"
   | "Protein Specialties"

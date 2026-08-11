@@ -817,7 +817,7 @@ export const karnatakaRecipes: Recipe[] = [
   // --- SNACKS (10) ---
   {
     id: "mysore-masala-dosa",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Mysore Masala Dosa",
     description: "Famous crispy dosa with a signature spicy red garlic-chili chutney spread inside and a potato filling.",
     type: "Vegetarian",
@@ -844,7 +844,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "maddur-vada",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Maddur Vada",
     description: "The legendary railway snack—crisp, flat onion fritters from the town of Maddur, flavored with curry leaves.",
     type: "Vegetarian",
@@ -898,7 +898,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "benne-dosa",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Davangere Benne Dosa",
     description: "Famous buttery dosa from Davangere, served with a specific potato mash and spicy coconut chutney.",
     type: "Vegetarian",
@@ -951,7 +951,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "ambode",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Ambode (Masala Vada)",
     description: "Crispy and spicy deep-fried chana dal fritters flavored with dill leaves and ginger.",
     type: "Vegetarian",
@@ -1058,7 +1058,7 @@ export const karnatakaRecipes: Recipe[] = [
   },
   {
     id: "mangalore-buns",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Breakfast & Tiffin",
     name: "Mangalore Buns",
     description: "Soft, sweet, and fluffy banana-based fried bread, a coastal Karnataka breakfast specialty.",
     type: "Vegetarian",
@@ -1082,5 +1082,109 @@ export const karnatakaRecipes: Recipe[] = [
       "Roll into thick small circles.",
       "Deep fry in hot oil until they puff up into golden balloons."
     ]
-  }
+  },
+  {
+    "id": "ka-salad-kosambari",
+    "menuCategory": "Salads",
+    "name": "Kosambari",
+    "description": "A refreshing Karnataka festival salad of soaked moong dal and grated carrot, tempered with mustard seeds and finished with fresh coconut and lime.",
+    "type": "Vegetarian",
+    "time": 15,
+    "servings": 4,
+    "difficulty": "Easy",
+    "cost": 60,
+    "popularity": 0.9,
+    "tags": [
+      "Karnataka",
+      "South Indian",
+      "Vegetarian",
+      "Salads",
+      "Healthy",
+      "Festival"
+    ],
+    "healthTags": [
+      "low-calorie",
+      "high-protein",
+      "digestive-friendly"
+    ],
+    "ingredients": [
+      {
+        "id": "moong_dal",
+        "name": "Yellow Moong Dal (Soaked)",
+        "qty": "1 cup",
+        "price": 20,
+        "available": true
+      },
+      {
+        "id": "carrot",
+        "name": "Grated Carrot",
+        "qty": "1 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "cucumber",
+        "name": "Finely Chopped Cucumber",
+        "qty": "1/2 cup",
+        "price": 10,
+        "available": true
+      },
+      {
+        "id": "coconut",
+        "name": "Grated Fresh Coconut",
+        "qty": "1/4 cup",
+        "price": 15,
+        "available": true
+      },
+      {
+        "id": "green_chili",
+        "name": "Green Chili",
+        "qty": "1",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "coriander",
+        "name": "Chopped Coriander Leaves",
+        "qty": "2 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "lime_juice",
+        "name": "Lime Juice",
+        "qty": "1 tbsp",
+        "price": 5,
+        "available": true
+      },
+      {
+        "id": "mustard_seeds",
+        "name": "Mustard Seeds",
+        "qty": "1/2 tsp",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "curry_leaves",
+        "name": "Curry Leaves",
+        "qty": "6-8",
+        "price": 2,
+        "available": true
+      },
+      {
+        "id": "oil",
+        "name": "Oil",
+        "qty": "1 tsp",
+        "price": 5,
+        "available": true
+      }
+    ],
+    "steps": [
+      "Drain soaked moong dal well.",
+      "Combine dal, carrot, cucumber, coconut, green chili, and coriander in a bowl.",
+      "Heat oil, add mustard seeds and curry leaves, let them splutter.",
+      "Pour tempering over the salad.",
+      "Add lime juice and salt, toss well. Serve chilled."
+    ]
+  },
 ];
