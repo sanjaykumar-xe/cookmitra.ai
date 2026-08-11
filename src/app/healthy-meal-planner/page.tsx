@@ -46,28 +46,86 @@ type MealPlanState = {
 };
 
 function MealCard({ meal }: { meal: any }) {
+    const [isFlipped, setIsFlipped] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+    useEffect(() => {
+        setIsTouchDevice(window.matchMedia('(hover: none)').matches);
+    }, []);
+
+    const handleFlip = () => {
+        if (isTouchDevice) {
+            setIsFlipped(!isFlipped);
+        }
+    };
+
+    const handleMouseEnter = () => {
+        if (!isTouchDevice) setIsFlipped(true);
+    };
+
+    const handleMouseLeave = () => {
+        if (!isTouchDevice) setIsFlipped(false);
+    };
+
     return (
-        <Card className="p-fluid-card bg-card/50 backdrop-blur-sm border-blue-500/10 hover:border-blue-500/30 transition-all">
-            <CardHeader className="p-0 mb-4">
-                <CardTitle className="font-headline text-xl">{meal.food}</CardTitle>
-                <Badge variant="outline" className="mt-2 bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">{meal.type}</Badge>
-            </CardHeader>
-            <CardContent className="p-0 space-y-4">
-                <div>
-                    <h4 className="font-semibold text-[10px] uppercase tracking-widest mb-2 text-muted-foreground">Nutrition</h4>
-                    <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="flex items-center gap-2"><Flame className="h-4 w-4 text-blue-500" /><span>{meal.calories} kcal</span></div>
-                        <div className="flex items-center gap-2"><Beef className="h-4 w-4 text-blue-500" /><span>{meal.protein} g</span></div>
-                        <div className="flex items-center gap-2"><Wheat className="h-4 w-4 text-blue-500" /><span>{meal.carbs} g</span></div>
-                        <div className="flex items-center gap-2"><Droplets className="h-4 w-4 text-blue-500" /><span>{meal.fats} g</span></div>
-                    </div>
+        <div 
+            className="flip-card-container h-[260px] w-full cursor-pointer"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleFlip}
+            role="button"
+            tabIndex={0}
+            aria-label={`View macros & benefits for ${meal.food}`}
+        >
+            <div className={cn("flip-card-inner h-full w-full", isFlipped && "is-flipped")}>
+                {/* FRONT FACE */}
+                <div className="flip-card-front h-full w-full">
+                    <Card className="flex flex-col justify-between h-full p-6 bg-card/60 backdrop-blur-md border border-blue-500/10 hover:border-blue-500/40 shadow-lg group rounded-[2rem] overflow-hidden">
+                        <div className="space-y-3">
+                            <div className="flex items-center justify-between gap-2">
+                                <Badge variant="outline" className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20 font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-lg">
+                                    {meal.type}
+                                </Badge>
+                                <div className="flex items-center gap-1.5 text-xs font-bold text-orange-500 bg-orange-500/10 px-2.5 py-1 rounded-full">
+                                    <Flame className="h-3.5 w-3.5" />
+                                    <span>{meal.calories} kcal</span>
+                                </div>
+                            </div>
+                            <CardTitle className="font-headline text-xl font-bold line-clamp-2 pt-1">{meal.food}</CardTitle>
+                        </div>
+                        <div className="pt-4 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground font-medium">
+                            <span className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-bold">
+                                <Sparkles className="h-3.5 w-3.5" /> Quick Overview
+                            </span>
+                            <span className="text-[10px] font-black uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">
+                                {isTouchDevice ? "Tap to Flip 🔄" : "Hover to Flip 🔄"}
+                            </span>
+                        </div>
+                    </Card>
                 </div>
-                <div>
-                    <h4 className="font-semibold text-[10px] uppercase tracking-widest mb-1 text-muted-foreground">Benefits</h4>
-                    <p className="text-sm leading-relaxed italic opacity-80">{meal.benefits}</p>
+
+                {/* BACK FACE */}
+                <div className="flip-card-back h-full w-full">
+                    <Card className="flex flex-col justify-between h-full p-6 bg-stone-900 text-white dark:bg-stone-950 border border-blue-500/30 shadow-2xl rounded-[2rem] overflow-hidden">
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-2 text-blue-400">Nutritional Breakdown</h4>
+                                <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
+                                    <div className="flex items-center gap-2 p-2 rounded-xl bg-white/5"><Flame className="h-3.5 w-3.5 text-orange-400" /><span>{meal.calories} kcal</span></div>
+                                    <div className="flex items-center gap-2 p-2 rounded-xl bg-white/5"><Beef className="h-3.5 w-3.5 text-sky-400" /><span>{meal.protein}g Protein</span></div>
+                                    <div className="flex items-center gap-2 p-2 rounded-xl bg-white/5"><Wheat className="h-3.5 w-3.5 text-amber-400" /><span>{meal.carbs}g Carbs</span></div>
+                                    <div className="flex items-center gap-2 p-2 rounded-xl bg-white/5"><Droplets className="h-3.5 w-3.5 text-pink-400" /><span>{meal.fats}g Fats</span></div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-1 text-blue-400">Health Benefits</h4>
+                                <p className="text-xs leading-relaxed italic opacity-90 line-clamp-3">{meal.benefits}</p>
+                            </div>
+                        </div>
+                    </Card>
                 </div>
-            </CardContent>
-        </Card>
+            </div>
+        </div>
     );
 }
 
