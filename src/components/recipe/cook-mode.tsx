@@ -19,6 +19,7 @@ import {
     X, 
     Keyboard, 
     Volume2,
+    VolumeX,
     Mic,
     MicOff,
     AlertCircle,
@@ -100,6 +101,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
 
     // Voice & Hands-Free States
     const [isVoiceOn, setIsVoiceOn] = useState(true);
+    const [isSpeakingStep, setIsSpeakingStep] = useState(false);
     const [isHandsFreeOn, setIsHandsFreeOn] = useState(false);
     const [hfError, setHfError] = useState<string | null>(null);
     
@@ -216,6 +218,14 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
         }
     }, []);
 
+    const stopSpeaking = useCallback(() => {
+        if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+        isNarratingRef.current = false;
+        setIsSpeakingStep(false);
+    }, []);
+
     const speak = useCallback((text: string) => {
         if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
         
@@ -231,11 +241,15 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
         
         const endNarration = () => {
             isNarratingRef.current = false;
+            setIsSpeakingStep(false);
             if (isHandsFreeOnRef.current) {
                 startRecognition();
             }
         };
 
+        utterance.onstart = () => {
+            setIsSpeakingStep(true);
+        };
         utterance.onend = endNarration;
         utterance.onerror = (e) => {
             endNarration();
@@ -243,6 +257,16 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
         
         window.speechSynthesis.speak(utterance);
     }, [language, stopRecognition, startRecognition]);
+
+    const toggleSpeakingStep = useCallback((text: string) => {
+        if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+        if (isSpeakingStep) {
+            stopSpeaking();
+            toast({ title: "Muted", description: "Step narration stopped." });
+        } else {
+            speak(text);
+        }
+    }, [isSpeakingStep, speak, stopSpeaking, toast]);
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -600,11 +624,14 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                         <Button 
                             variant="ghost" 
                             size="icon" 
-                            className="h-8 w-8 rounded-full text-muted-foreground hover:text-primary transition-colors" 
-                            onClick={() => speak(steps[currentStep])}
-                            title="Read step aloud"
+                            className={cn(
+                              "h-8 w-8 rounded-full transition-colors",
+                              isSpeakingStep ? "text-red-500 hover:text-red-600 bg-red-500/10" : "text-muted-foreground hover:text-primary"
+                            )} 
+                            onClick={() => toggleSpeakingStep(steps[currentStep])}
+                            title={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
                         >
-                            <Volume2 className="h-4 w-4" />
+                            {isSpeakingStep ? <VolumeX className="h-4 w-4 text-red-500 animate-pulse" /> : <Volume2 className="h-4 w-4" />}
                         </Button>
                     </div>
 

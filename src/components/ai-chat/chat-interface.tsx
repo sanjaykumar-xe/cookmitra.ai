@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Mic, Volume2, Sparkles, UtensilsCrossed, Salad, Zap, Clock, Flame, Loader2 } from 'lucide-react';
+import { Send, Mic, Volume2, VolumeX, Sparkles, UtensilsCrossed, Salad, Zap, Clock, Flame, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { sendMessageToAI, type ChatMessage } from '@/app/ai-chat/actions';
 import { useToast } from '@/hooks/use-toast';
@@ -79,6 +79,7 @@ export default function ChatInterface() {
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<any>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speakingMessageIndex, setSpeakingMessageIndex] = useState<number | null>(null);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
 
   useEffect(() => {
@@ -120,10 +121,25 @@ export default function ChatInterface() {
     }
   }, [messages, isLoading]);
 
-  const playResponse = useCallback((text: string) => {
+  const stopSpeech = useCallback(() => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    setIsSpeaking(false);
+    setSpeakingMessageIndex(null);
+  }, []);
+
+  const toggleSpeech = useCallback((index: number, text: string) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window) || !text) return;
     
-    window.speechSynthesis.cancel();
+    // If currently speaking this message, stop/mute it immediately!
+    if (isSpeaking && speakingMessageIndex === index) {
+      stopSpeech();
+      toast({ title: "Muted", description: "Audio response stopped." });
+      return;
+    }
+
+    stopSpeech();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language === 'en' ? 'en-IN' : language === 'ta' ? 'ta-IN' : 'hi-IN';
     
@@ -133,10 +149,21 @@ export default function ChatInterface() {
     
     if (selectedVoice) utterance.voice = selectedVoice;
     
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
+    utterance.onstart = () => {
+      setIsSpeaking(true);
+      setSpeakingMessageIndex(index);
+    };
+    utterance.onend = () => {
+      setIsSpeaking(false);
+      setSpeakingMessageIndex(null);
+    };
+    utterance.onerror = () => {
+      setIsSpeaking(false);
+      setSpeakingMessageIndex(null);
+    };
+
     window.speechSynthesis.speak(utterance);
-  }, [voices, language]);
+  }, [isSpeaking, speakingMessageIndex, voices, language, stopSpeech, toast]);
 
   const handleSendMessage = async (messageContent: string) => {
     const trimmedContent = messageContent.trim();
@@ -150,8 +177,12 @@ export default function ChatInterface() {
     try {
         const result = await sendMessageToAI(newMessages, language);
         if (result.success && result.data) {
-          setMessages(prev => [...prev, { role: 'assistant', content: result.data as string }]);
-          playResponse(result.data as string);
+          const aiResponseText = result.data as string;
+          setMessages(prev => {
+            const nextMsgs = [...prev, { role: 'assistant', content: aiResponseText }];
+            toggleSpeech(nextMsgs.length - 1, aiResponseText);
+            return nextMsgs;
+          });
         } else {
           toast({ variant: 'destructive', title: 'AI Error', description: result.error || 'Failed to connect to Chef Momo.' });
         }
@@ -211,8 +242,23 @@ export default function ChatInterface() {
                 <div className={cn('max-w-md rounded-2xl p-3 text-sm transition-all', message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none shadow-md' : 'bg-muted dark:bg-card border rounded-bl-none shadow-sm')}>
                     {message.role === 'assistant' ? <StructuredResponse text={message.content} /> : message.content}
                     {message.role === 'assistant' && (
-                        <Button variant="ghost" size="icon" className="h-7 w-7 mt-2 -ml-1 text-muted-foreground hover:text-primary" onClick={() => playResponse(message.content)}>
-                            <Volume2 className={cn("h-4 w-4", isSpeaking && "text-primary animate-pulse")} />
+                        <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className={cn(
+                              "h-7 w-7 mt-2 -ml-1 transition-all rounded-full",
+                              isSpeaking && speakingMessageIndex === index 
+                                ? "text-red-500 hover:text-red-600 bg-red-500/10 hover:bg-red-500/20" 
+                                : "text-muted-foreground hover:text-primary"
+                            )} 
+                            onClick={() => toggleSpeech(index, message.content)}
+                            title={isSpeaking && speakingMessageIndex === index ? "Mute audio response" : "Read aloud response"}
+                        >
+                            {isSpeaking && speakingMessageIndex === index ? (
+                                <VolumeX className="h-4 w-4 text-red-500 animate-pulse" />
+                            ) : (
+                                <Volume2 className="h-4 w-4" />
+                            )}
                         </Button>
                     )}
                 </div>
