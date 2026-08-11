@@ -182,12 +182,21 @@ export default function ChatInterface() {
                     <div className="h-20 w-20 mb-4"><ChutkiIcon /></div>
                     <h2 className="font-headline text-2xl md:text-3xl">{t('chat.title')}</h2>
                     <p className="text-muted-foreground mt-2 mb-8 max-w-xs">{t('chat.subtitle')}</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl px-2">
                         {QUICK_SUGGESTIONS.map((suggestion, i) => (
-                        <Button key={i} variant="outline" className="h-auto text-left justify-start p-3 rounded-2xl hover:scale-105 transition-transform border-border/60" onClick={() => handleSendMessage(suggestion.text)}>
-                            <div className="flex items-center gap-3">
-                                <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 shrink-0">{suggestion.icon}</div>
-                                <span className="text-sm font-medium leading-tight">{suggestion.text}</span>
+                        <Button 
+                            key={i} 
+                            variant="outline" 
+                            className="h-auto min-h-[64px] text-left justify-start p-4 rounded-2xl whitespace-normal hover:scale-[1.02] hover:border-amber-500/40 transition-all border-border/60 shadow-sm bg-card/60" 
+                            onClick={() => handleSendMessage(suggestion.text)}
+                        >
+                            <div className="flex items-center gap-3.5 w-full">
+                                <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 shrink-0">
+                                    {suggestion.icon}
+                                </div>
+                                <span className="text-sm font-medium leading-normal text-foreground/90 whitespace-normal break-words flex-1">
+                                    {suggestion.text}
+                                </span>
                             </div>
                         </Button>
                         ))}
