@@ -230,10 +230,45 @@ export default function HealingFoodsPage() {
                     <motion.div 
                         key="loading"
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                        className="flex flex-col items-center justify-center py-32 space-y-4"
+                        className="space-y-16"
                     >
-                        <Loader2 className="h-16 w-16 animate-spin text-primary" />
-                        <p className="font-headline text-2xl text-primary animate-pulse">Consulting AI Nutritionist...</p>
+                        <Card className="max-w-4xl mx-auto p-10 rounded-[3rem] border-primary/10 bg-card/60 backdrop-blur-xl shadow-2xl animate-pulse">
+                            <div className="h-10 w-64 bg-muted/80 rounded-2xl mx-auto mb-4" />
+                            <div className="h-5 w-3/4 bg-muted/60 rounded-lg mx-auto" />
+                        </Card>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                            <div className="space-y-6">
+                                <div className="h-8 w-48 bg-muted/80 rounded-xl animate-pulse" />
+                                {Array.from({ length: 3 }).map((_, i) => (
+                                    <Card key={i} className="p-6 rounded-[2rem] border border-pink-500/10 bg-card/50 animate-pulse flex items-start gap-4">
+                                        <div className="h-12 w-12 rounded-2xl bg-pink-500/10 shrink-0" />
+                                        <div className="space-y-2 flex-1">
+                                            <div className="h-5 w-40 bg-muted/80 rounded" />
+                                            <div className="h-4 w-full bg-muted/60 rounded" />
+                                        </div>
+                                    </Card>
+                                ))}
+                            </div>
+
+                            <div className="space-y-6">
+                                <div className="h-8 w-48 bg-muted/80 rounded-xl animate-pulse" />
+                                {Array.from({ length: 3 }).map((_, i) => (
+                                    <Card key={i} className="p-6 rounded-[2rem] border border-red-500/10 bg-card/50 animate-pulse flex items-start gap-4">
+                                        <div className="h-12 w-12 rounded-2xl bg-red-500/10 shrink-0" />
+                                        <div className="space-y-2 flex-1">
+                                            <div className="h-5 w-40 bg-muted/80 rounded" />
+                                            <div className="h-4 w-full bg-muted/60 rounded" />
+                                        </div>
+                                    </Card>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center items-center gap-3">
+                            <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                            <p className="font-headline text-2xl text-primary animate-pulse">Consulting AI Nutritionist...</p>
+                        </div>
                     </motion.div>
                 ) : activeCondition ? (
                     <motion.div 

@@ -173,7 +173,38 @@ export default function RecipesExplorerPage() {
   const recipesToDisplay = useMemo(() => allFilteredRecipes.slice(0, displayLimit), [allFilteredRecipes, displayLimit]);
 
   if (isUserLoading || !user) {
-    return <div className="flex h-screen items-center justify-center"><Loader2 className="h-12 w-12 animate-spin text-primary" /></div>;
+    return (
+      <div className="content-container py-8 md:py-12 px-4">
+        {/* Header Skeleton */}
+        <div className="text-center mb-16 space-y-4">
+          <div className="h-12 w-72 bg-muted/80 rounded-2xl mx-auto animate-pulse" />
+          <div className="h-5 w-96 max-w-full bg-muted/60 rounded-xl mx-auto animate-pulse" />
+        </div>
+        {/* 4-Column Skeleton Card Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {Array.from({ length: 8 }).map((_, idx) => (
+            <Card key={idx} className="h-[520px] rounded-[2.5rem] bg-card/60 border border-stone-200/80 dark:border-stone-800/80 p-5 flex flex-col justify-between animate-pulse">
+              <div className="space-y-4">
+                <div className="h-48 w-full rounded-2xl bg-muted/80" />
+                <div className="flex gap-2">
+                  <div className="h-5 w-20 rounded-md bg-muted/80" />
+                  <div className="h-5 w-16 rounded-md bg-muted/60" />
+                </div>
+                <div className="h-7 w-3/4 rounded-xl bg-muted/80" />
+                <div className="space-y-2 pt-2">
+                  <div className="h-4 w-full rounded-md bg-muted/60" />
+                  <div className="h-4 w-4/5 rounded-md bg-muted/50" />
+                </div>
+              </div>
+              <div className="flex justify-between items-center pt-4 border-t border-stone-200/60 dark:border-stone-800/60">
+                <div className="h-4 w-20 rounded bg-muted/70" />
+                <div className="h-4 w-20 rounded bg-muted/70" />
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (

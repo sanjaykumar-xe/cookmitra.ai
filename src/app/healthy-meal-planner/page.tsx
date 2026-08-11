@@ -507,22 +507,56 @@ export default function HealthyMealPlannerPage() {
 
                 <div className="lg:col-span-2">
                     {mealPlanState.loading && (
-                        <Card className="flex items-center justify-center min-h-[600px] h-full bg-card/60 backdrop-blur-md border-primary/10 rounded-[3rem] shadow-2xl overflow-hidden relative">
+                        <Card className="min-h-[600px] h-full bg-card/60 backdrop-blur-md border-primary/10 rounded-[3rem] p-8 shadow-2xl overflow-hidden relative space-y-8">
                             <div className="absolute top-0 left-0 w-full h-1.5 bg-muted overflow-hidden">
                                 <div className="h-full bg-primary animate-progress origin-left" style={{ width: '100%', animation: 'shimmer 2s infinite linear' }} />
                             </div>
-                            <CardContent className="flex flex-col items-center justify-center gap-8 text-center p-fluid-card h-full">
-                                <div className="relative">
-                                    <div className="absolute inset-0 animate-ping rounded-full bg-primary/20 scale-150" />
-                                    <div className="bg-primary/10 h-28 w-28 rounded-full flex items-center justify-center border border-primary/20 relative shadow-inner">
-                                        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-                                    </div>
+                            <div className="flex items-center justify-between animate-pulse">
+                                <div className="space-y-2">
+                                    <div className="h-8 w-48 rounded-xl bg-muted/80" />
+                                    <div className="h-4 w-64 rounded-lg bg-muted/60" />
                                 </div>
-                                <div className="space-y-3">
-                                    <p className="font-headline text-4xl font-medium text-primary tracking-tight">Building your plan...</p>
-                                    <p className="text-lg text-muted-foreground font-medium max-w-sm mx-auto leading-relaxed opacity-80">Our AI nutritionist is curating the best meals for you.</p>
+                                <div className="h-8 w-24 rounded-full bg-primary/10" />
+                            </div>
+
+                            <div className="grid grid-cols-7 gap-2 animate-pulse">
+                                {Array.from({ length: 7 }).map((_, i) => (
+                                    <div key={i} className="h-9 rounded-xl bg-muted/60" />
+                                ))}
+                            </div>
+
+                            <div className="grid md:grid-cols-3 gap-fluid-grid">
+                                {Array.from({ length: 3 }).map((_, i) => (
+                                    <Card key={i} className="p-fluid-card bg-card/50 backdrop-blur-sm border-blue-500/10 space-y-4 animate-pulse rounded-2xl">
+                                        <div className="space-y-2">
+                                            <div className="h-6 w-3/4 rounded-lg bg-muted/80" />
+                                            <div className="h-5 w-16 rounded-md bg-blue-500/10" />
+                                        </div>
+                                        <div className="space-y-3 pt-2">
+                                            <div className="h-3 w-16 rounded bg-muted/60" />
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <div className="h-4 w-full rounded bg-muted/60" />
+                                                <div className="h-4 w-full rounded bg-muted/60" />
+                                                <div className="h-4 w-full rounded bg-muted/60" />
+                                                <div className="h-4 w-full rounded bg-muted/60" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2 pt-2">
+                                            <div className="h-3 w-16 rounded bg-muted/60" />
+                                            <div className="h-4 w-full rounded bg-muted/50" />
+                                            <div className="h-4 w-4/5 rounded bg-muted/40" />
+                                        </div>
+                                    </Card>
+                                ))}
+                            </div>
+
+                            <div className="flex flex-col items-center justify-center pt-4 text-center">
+                                <div className="flex items-center gap-3">
+                                    <Loader2 className="h-6 w-6 animate-spin text-primary" />
+                                    <p className="font-headline text-2xl font-medium text-primary tracking-tight animate-pulse">Building your 7-day meal plan...</p>
                                 </div>
-                            </CardContent>
+                                <p className="text-sm text-muted-foreground font-medium mt-1">Our AI nutritionist is balancing macros, calories, and regional recipes.</p>
+                            </div>
                         </Card>
                     )}
                     {mealPlanState.data && !mealPlanState.loading && (

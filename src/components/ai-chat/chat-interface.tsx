@@ -215,11 +215,16 @@ export default function ChatInterface() {
                 </div>
             ))}
             {isLoading && (
-                <div className="flex items-start gap-3 justify-start">
-                    <Avatar className="h-8 w-8 animate-bounce"><ChutkiIcon className="h-full w-full" /></Avatar>
-                    <div className="rounded-2xl p-3 text-sm bg-muted dark:bg-card border rounded-bl-none flex items-center gap-2">
-                        <Loader2 className="h-4 w-4 animate-spin text-primary" />
-                        <span className="animate-pulse">{t('chat.thinking')}</span>
+                <div className="flex items-start gap-3 justify-start animate-in fade-in duration-300">
+                    <Avatar className="h-8 w-8 animate-pulse shrink-0"><ChutkiIcon className="h-full w-full" /></Avatar>
+                    <div className="rounded-2xl p-4 text-sm bg-muted/80 dark:bg-card border border-stone-200/80 dark:border-stone-800/80 rounded-bl-none shadow-sm space-y-2.5 max-w-sm w-full">
+                        <div className="flex items-center gap-2 mb-1">
+                            <Loader2 className="h-4 w-4 animate-spin text-primary shrink-0" />
+                            <span className="text-xs font-bold text-primary animate-pulse">{t('chat.thinking')}</span>
+                        </div>
+                        <div className="h-3 w-4/5 rounded bg-muted/70 animate-pulse" />
+                        <div className="h-3 w-full rounded bg-muted/50 animate-pulse" />
+                        <div className="h-3 w-3/5 rounded bg-muted/40 animate-pulse" />
                     </div>
                 </div>
             )}
