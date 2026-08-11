@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Copy, Search, Check, Info } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Select,
   SelectContent,
@@ -146,19 +147,41 @@ export function MissingIngredients({
               </p>
             </div>
             
-            <Button 
-                className={cn(
-                  "w-full font-bold h-12 rounded-xl shadow-lg transition-all active:scale-95",
-                  isCopied ? "bg-green-600 hover:bg-green-700 text-white" : "btn-primary-gradient"
-                )} 
-                onClick={handleShopAll}
-            >
-                {isCopied ? (
-                  <><Check className="mr-2 h-4 w-4" /> List Copied!</>
-                ) : (
-                  <><ShoppingCart className="mr-2 h-4 w-4" /> Shop All Missing</>
-                )}
-            </Button>
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <Button 
+                  className={cn(
+                    "w-full font-bold h-12 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2",
+                    isCopied ? "bg-green-600 hover:bg-green-700 text-white shadow-green-500/20" : "btn-primary-gradient"
+                  )} 
+                  onClick={handleShopAll}
+              >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {isCopied ? (
+                      <motion.span
+                        key="copied"
+                        initial={{ opacity: 0, y: 8, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.9 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex items-center gap-2"
+                      >
+                        <Check className="h-4 w-4 text-white" /> List Copied!
+                      </motion.span>
+                    ) : (
+                      <motion.span
+                        key="shop"
+                        initial={{ opacity: 0, y: 8, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.9 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex items-center gap-2"
+                      >
+                        <ShoppingCart className="h-4 w-4" /> Shop All Missing
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+              </Button>
+            </motion.div>
         </div>
     </div>
   );

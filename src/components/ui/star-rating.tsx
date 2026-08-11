@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 interface StarRatingProps {
   rating: number;
@@ -44,20 +45,28 @@ export function StarRating({
     <div className="flex items-center gap-1">
       {Array.from({ length: totalStars }, (_, i) => {
         const starValue = i + 1;
+        const isFilled = starValue <= (hoverRating || rating);
         return (
-          <Star
+          <motion.div
             key={starValue}
-            size={size}
-            className={cn(
-              'transition-colors',
-              starValue <= (hoverRating || rating) ? fillColor : emptyColor,
-              !readOnly && 'cursor-pointer'
-            )}
-            onMouseEnter={() => handleMouseEnter(starValue)}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick(starValue)}
-            fill={starValue <= (hoverRating || rating) ? 'currentColor' : 'none'}
-          />
+            whileHover={!readOnly ? { scale: 1.3, rotate: 6 } : {}}
+            whileTap={!readOnly ? { scale: 0.85 } : {}}
+            transition={{ type: "spring", stiffness: 450, damping: 15 }}
+            className="inline-block"
+          >
+            <Star
+              size={size}
+              className={cn(
+                'transition-colors duration-200',
+                isFilled ? fillColor : emptyColor,
+                !readOnly && 'cursor-pointer'
+              )}
+              onMouseEnter={() => handleMouseEnter(starValue)}
+              onMouseLeave={handleMouseLeave}
+              onClick={() => handleClick(starValue)}
+              fill={isFilled ? 'currentColor' : 'none'}
+            />
+          </motion.div>
         );
       })}
     </div>

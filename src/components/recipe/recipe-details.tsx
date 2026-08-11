@@ -147,10 +147,16 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                     </motion.p>
                 </div>
                 <div className="flex gap-2 ml-auto">
-                    <Button variant="outline" className="rounded-full h-11 px-6 font-bold" onClick={handleSaveToggle} disabled={isSaving || isCheckLoading}>
-                        {isSaved ? <Bookmark className="h-4 w-4 mr-2 fill-current" /> : <Bookmark className="h-4 w-4 mr-2" />}
-                        {isSaved ? t('recipe.saved') : t('recipe.save')}
-                    </Button>
+                    <motion.div 
+                        whileTap={{ scale: 0.88 }} 
+                        animate={{ scale: isSaved ? [1, 1.25, 1] : 1 }} 
+                        transition={{ duration: 0.35, type: "spring", stiffness: 400, damping: 15 }}
+                    >
+                        <Button variant="outline" className="rounded-full h-11 px-6 font-bold transition-all" onClick={handleSaveToggle} disabled={isSaving || isCheckLoading}>
+                            {isSaved ? <Bookmark className="h-4 w-4 mr-2 fill-current text-amber-500" /> : <Bookmark className="h-4 w-4 mr-2" />}
+                            {isSaved ? t('recipe.saved') : t('recipe.save')}
+                        </Button>
+                    </motion.div>
                     <Button className="rounded-full h-11 px-6 font-bold shadow-xl shadow-primary/20" onClick={onStartCooking}>
                         <ChefHat className="mr-2 h-4 w-4" /> {t('recipe.startCooking')}
                     </Button>

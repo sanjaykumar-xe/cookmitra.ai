@@ -203,9 +203,11 @@ export default function PantryPage() {
                     {items.map(item => (
                       <motion.div 
                         key={item.id}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.75, y: 15 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.5, y: -10 }}
+                        transition={{ type: "spring", stiffness: 450, damping: 22 }}
+                        whileHover={{ scale: 1.02 }}
                         layout
                       >
                         <Card className="group hover:border-primary/50 transition-all duration-300 bg-card/60 overflow-hidden rounded-2xl relative">
