@@ -47,11 +47,11 @@ export async function generateRecipeAction(formData: FormData) {
     const recipe = await generateIndianRecipe(inputData as any);
     return { success: true, data: recipe };
   } catch (error: any) {
-    console.error(error);
+    console.error("AI Generation Error:", error);
     if (error instanceof z.ZodError) {
       return { success: false, error: "Invalid form data provided." };
     }
-    return { success: false, error: error.message || "Failed to generate recipe. The AI chef might be busy. Please try again later." };
+    return { success: false, error: error.message || "Failed to generate recipe. Please try again." };
   }
 }
 

@@ -4,12 +4,12 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Sparkles } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const ChatInterface = dynamic(() => import('@/components/ai-chat/chat-interface'), { 
     ssr: false,
-    loading: () => <div className="flex items-center justify-center h-full"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>
+    loading: () => <div className="flex items-center justify-center h-full"><Loader2 className="h-8 w-8 animate-spin text-[#F4A21A]" /></div>
 });
 
 export default function AiChatPage() {
@@ -34,7 +34,7 @@ export default function AiChatPage() {
   if (!mounted || (!isIframe && (isUserLoading || !user))) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <Loader2 className="h-12 w-12 animate-spin text-[#F4A21A]" />
       </div>
     );
   }
@@ -49,8 +49,22 @@ export default function AiChatPage() {
   }
 
   return (
-    <div className="container max-w-7xl mx-auto pt-4 pb-16 h-[calc(100vh-8rem)]">
+    <div className="content-container pt-4 pb-12 px-4 h-[calc(100vh-5rem)] flex flex-col">
+      <div className="text-center mb-6 space-y-2 shrink-0">
+        <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-700 dark:text-amber-300 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+            <Sparkles className="h-4 w-4 text-[#F4A21A]" />
+            AI Culinary Companion
+        </div>
+        <h1 className="font-headline text-3xl sm:text-4xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">
+            Chef Momo AI
+        </h1>
+        <p className="text-stone-500 text-sm sm:text-base max-w-md mx-auto font-normal">
+            Ask any cooking question, recipe modification, or ingredient substitute!
+        </p>
+      </div>
+      <div className="flex-1 min-h-0">
         <ChatInterface />
+      </div>
     </div>
   );
 }

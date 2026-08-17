@@ -116,9 +116,9 @@ export function Header() {
         {/* Left Side: Brand Identity */}
         <div className="flex items-center">
             <Link href={homeHref} className="flex items-center space-x-3 group shrink-0">
-                <CookMitraLogo width={22} height={22} />
-                <span className="font-headline text-2xl font-bold tracking-tight hidden xs:inline-block">
-                    CookMitra<span className="text-xl font-normal text-muted-foreground ml-1.5">AI</span>
+                <CookMitraLogo width={38} height={38} className="w-9.5 h-9.5" />
+                <span className="font-headline text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center">
+                    CookMitra<span className="text-lg font-normal text-muted-foreground ml-1.5">AI</span>
                 </span>
             </Link>
         </div>

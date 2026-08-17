@@ -141,32 +141,43 @@ export function CommunitySection({ recipeId, recipeName }: CommunitySectionProps
   const ratingCount = recipeMeta?.ratingCount ?? 0;
 
   return (
-    <Card className="mt-12 rounded-[2rem] border-border/60 overflow-hidden">
-        <CardHeader className="text-center p-8 md:p-12 pb-0">
-            <CardTitle className="font-headline text-3xl">Community Ratings & Notes</CardTitle>
-            <CardDescription className="text-base">See what others think about {recipeName}.</CardDescription>
-        </CardHeader>
-        <CardContent className="p-8 md:p-12 space-y-12">
-            
-            <div className="flex flex-col items-center text-center space-y-4">
-                <p className="font-headline text-7xl font-bold text-primary">{averageRating.toFixed(1)}</p>
-                <div className="scale-150 py-2">
-                    <StarRating rating={averageRating} readOnly size={24} />
-                </div>
-                <p className="text-sm font-medium text-muted-foreground">({ratingCount} {ratingCount === 1 ? 'rating' : 'ratings'})</p>
+    <div className="mt-16 space-y-10">
+        {/* SECTION HEADER & AVERAGE RATING BANNER */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-b border-stone-200 dark:border-stone-800 pb-8">
+            <div>
+                <h2 className="font-headline text-3xl font-semibold text-stone-900 dark:text-stone-100">
+                    Community Reviews & Ratings
+                </h2>
+                <p className="text-sm text-stone-500 mt-1">
+                    See what home cooks think about {recipeName}
+                </p>
             </div>
 
-            <Separator className="max-w-4xl mx-auto opacity-50" />
+            <div className="flex items-center gap-4 bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/20 px-6 py-3 rounded-full shrink-0">
+                <span className="font-headline text-3xl font-bold text-[#F4A21A]">
+                    {averageRating.toFixed(1)}
+                </span>
+                <div className="flex flex-col">
+                    <StarRating rating={averageRating} readOnly size={18} />
+                    <span className="text-[11px] font-semibold text-stone-500 mt-0.5">
+                        {ratingCount} {ratingCount === 1 ? 'review' : 'reviews'}
+                    </span>
+                </div>
+            </div>
+        </div>
 
-            <div className="max-w-[600px] mx-auto w-full">
+        {/* REVIEW FORM & COMMUNITY NOTES GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* REVIEW SUBMISSION FORM */}
+            <div className="lg:col-span-5">
                 {user ? (
-                    <form onSubmit={handleSubmit} className="space-y-8 bg-muted/30 p-8 rounded-3xl border border-border/40">
-                        <div className="space-y-4 text-center">
-                            <h4 className="font-headline text-2xl font-medium">Your Review</h4>
-                            <div className="flex justify-center py-2">
-                                <StarRating rating={userRating} onRatingChange={setUserRating} size={32} />
+                    <form onSubmit={handleSubmit} className="space-y-5 bg-card/80 backdrop-blur-sm p-6 sm:p-8 rounded-[2.5rem] border border-stone-200/80 dark:border-stone-800/80 shadow-xs">
+                        <div className="space-y-2 text-center">
+                            <h3 className="font-headline text-xl font-medium text-stone-900 dark:text-stone-100">Your Review</h3>
+                            <div className="flex justify-center py-1">
+                                <StarRating rating={userRating} onRatingChange={setUserRating} size={30} />
                             </div>
-                            <p className="text-[12px] font-medium text-muted-foreground">Rate this recipe</p>
+                            <p className="text-xs text-stone-400">Click stars to rate this recipe</p>
                         </div>
                         
                         <Textarea
@@ -174,54 +185,57 @@ export function CommunitySection({ recipeId, recipeName }: CommunitySectionProps
                             value={noteText}
                             onChange={(e) => setNoteText(e.target.value)}
                             rows={4}
-                            className="bg-background rounded-2xl text-base p-4"
+                            className="bg-background border-stone-200 dark:border-stone-800 rounded-2xl text-sm p-4 focus:border-[#F4A21A] focus:ring-amber-500/20 resize-none"
                         />
                         
-                        <Button type="submit" size="lg" className="w-full rounded-full h-14 text-lg font-bold" disabled={isSubmitting || userRating === 0}>
+                        <Button 
+                            type="submit" 
+                            variant="secondary"
+                            className="w-full rounded-full h-12 text-xs sm:text-sm font-semibold uppercase tracking-wider bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-md shadow-amber-500/20 border-0 transition-all active:scale-[0.99]" 
+                            disabled={isSubmitting}
+                        >
                             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             {previousRatingDoc ? 'Update Review' : 'Submit Review'}
                         </Button>
                     </form>
                 ) : (
-                    <div className="text-center p-12 border-2 border-dashed border-border/60 rounded-3xl bg-muted/10">
-                        <p className="text-muted-foreground font-medium">You must be logged in to leave a review.</p>
+                    <div className="text-center p-8 border border-dashed border-stone-300 dark:border-stone-800 rounded-[2.5rem] bg-stone-50/50 dark:bg-stone-900/30">
+                        <p className="text-stone-500 text-sm font-medium">Log in to share your review & tips!</p>
                     </div>
                 )}
             </div>
 
-            <div className="space-y-8 max-w-4xl mx-auto w-full">
-                <div className="flex items-center gap-4">
-                    <h3 className="font-headline text-2xl font-medium shrink-0">Notes from the Community</h3>
-                    <Separator className="flex-1 opacity-50" />
-                </div>
+            {/* COMMUNITY REVIEWS LIST STREAM */}
+            <div className="lg:col-span-7 space-y-4">
+                <h3 className="font-headline text-xl font-medium text-stone-900 dark:text-stone-100">Notes from the Community</h3>
                 
                 {areNotesLoading ? (
-                    <div className="flex justify-center py-12"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>
+                    <div className="flex justify-center py-12"><Loader2 className="h-8 w-8 animate-spin text-[#F4A21A]" /></div>
                 ) : uniqueNotes.length > 0 ? (
-                    <div className="grid gap-6">
+                    <div className="space-y-4">
                         {uniqueNotes.map(note => (
-                            <div key={note.id} className="flex items-start gap-4 p-6 rounded-2xl bg-muted/20 border border-border/40 transition-all hover:bg-muted/30 group">
-                                <Avatar className="h-12 w-12 border-2 border-background shadow-sm">
+                            <div key={note.id} className="flex items-start gap-4 p-5 rounded-[2rem] bg-card/80 border border-stone-200/80 dark:border-stone-800/80 shadow-xs hover:border-amber-500/30 transition-all group">
+                                <Avatar className="h-11 w-11 border-2 border-background shadow-xs shrink-0">
                                     <AvatarImage src={note.userPhotoURL ?? undefined} />
-                                    <AvatarFallback className="bg-primary/10 text-primary font-bold">{note.userName?.[0].toUpperCase()}</AvatarFallback>
+                                    <AvatarFallback className="bg-amber-500/10 text-[#F4A21A] font-bold">{note.userName?.[0].toUpperCase()}</AvatarFallback>
                                 </Avatar>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-4">
                                         <div>
-                                            <p className="font-bold text-lg leading-none mb-2">{note.userName}</p>
-                                             <div className="flex items-center gap-3 text-xs text-muted-foreground font-medium">
+                                            <p className="font-semibold text-base leading-none mb-1.5 text-stone-900 dark:text-stone-100">{note.userName}</p>
+                                             <div className="flex items-center gap-2 text-xs text-stone-400">
                                                  {note.rating && <StarRating rating={note.rating} readOnly size={14} />}
-                                                 {note.rating && <span className="opacity-40">/</span>}
+                                                 {note.rating && <span className="opacity-40">•</span>}
                                                  <p>
                                                    {note.createdAt ? formatDistanceToNow(note.createdAt.toDate(), { addSuffix: true }) : ''}
                                                  </p>
-                                            </div>
+                                             </div>
                                         </div>
                                         {user && user.uid === note.userId && (
                                             <Button 
                                                 variant="ghost" 
                                                 size="icon" 
-                                                className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                                                className="h-8 w-8 text-stone-400 hover:text-rose-600 hover:bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
                                                 onClick={(e) => {
                                                     e.preventDefault();
                                                     e.stopPropagation();
@@ -232,38 +246,38 @@ export function CommunitySection({ recipeId, recipeName }: CommunitySectionProps
                                             </Button>
                                         )}
                                     </div>
-                                    <p className="mt-4 text-base leading-relaxed text-foreground/80">{note.note}</p>
+                                    <p className="mt-3 text-sm leading-relaxed text-stone-700 dark:text-stone-300">{note.note}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <div className="text-center py-16 text-muted-foreground bg-muted/5 rounded-3xl border border-dashed border-border/40">
-                        <MessageSquare className="mx-auto h-12 w-12 mb-4 opacity-20" />
-                        <p className="text-lg font-medium">No notes yet. Be the first to share your thoughts!</p>
+                    <div className="text-center p-10 rounded-[2.5rem] border border-dashed border-stone-200/80 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-900/30 space-y-2">
+                        <MessageSquare className="mx-auto h-8 w-8 text-amber-500/50" />
+                        <p className="text-sm font-semibold text-stone-800 dark:text-stone-200">No notes shared yet</p>
+                        <p className="text-xs text-stone-400">Be the first to rate & share your cooking experience!</p>
                     </div>
                 )}
             </div>
+        </div>
 
-            <AlertDialog open={!!reviewToDelete} onOpenChange={(open) => !open && setReviewToDelete(null)}>
-                <AlertDialogContent className="rounded-3xl p-8">
-                    <AlertDialogHeader>
-                        <AlertDialogTitle className="text-2xl font-headline">Delete Review?</AlertDialogTitle>
-                        <AlertDialogDescription className="text-base">
-                            This action cannot be undone. This will permanently remove your feedback and rating for this recipe.
-                        </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter className="mt-6 gap-3">
-                        <AlertDialogCancel className="rounded-full h-12 px-6" onClick={() => setReviewToDelete(null)}>Cancel</AlertDialogCancel>
-                        <AlertDialogAction className="rounded-full h-12 px-6 bg-destructive text-destructive-foreground hover:bg-destructive/90" onClick={handleConfirmDelete} disabled={isDeleting}>
-                            {isDeleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            Delete Review
-                        </AlertDialogAction>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
-            </AlertDialog>
-
-        </CardContent>
-    </Card>
-  )
+        <AlertDialog open={!!reviewToDelete} onOpenChange={(open) => !open && setReviewToDelete(null)}>
+            <AlertDialogContent className="rounded-3xl p-8">
+                <AlertDialogHeader>
+                    <AlertDialogTitle className="text-2xl font-headline">Delete Review?</AlertDialogTitle>
+                    <AlertDialogDescription className="text-base">
+                        This action cannot be undone. This will permanently remove your feedback and rating for this recipe.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter className="mt-6 gap-3">
+                    <AlertDialogCancel className="rounded-full h-12 px-6" onClick={() => setReviewToDelete(null)}>Cancel</AlertDialogCancel>
+                    <AlertDialogAction className="rounded-full h-12 px-6 bg-destructive text-destructive-foreground hover:bg-destructive/90" onClick={handleConfirmDelete} disabled={isDeleting}>
+                        {isDeleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        Delete Review
+                    </AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+    </div>
+  );
 }

@@ -19,7 +19,7 @@ const db = getFirestore(firebaseApp);
 // Initialize Genkit for translations
 const ai = genkit({
     plugins: [googleAI()],
-    model: 'googleai/gemini-2.5-flash',
+    model: 'googleai/gemini-1.5-flash',
 });
 
 const TranslationSchema = z.object({

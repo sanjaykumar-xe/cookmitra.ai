@@ -42,7 +42,7 @@ export const translations = {
     'home.recentSaved': 'Recent Saved Recipes',
     'home.viewAll': 'View All',
     'home.noSaved': 'No saved recipes yet',
-    'home.exploreLibrary': 'Explore our 1000+ hand-curated authentic Indian recipes.',
+    'home.exploreLibrary': 'Explore our 934 hand-curated authentic Indian recipes.',
     'home.openExplorer': 'Open Explorer',
 
     // Recipes Explorer
@@ -152,7 +152,7 @@ export const translations = {
     'home.recentSaved': 'சமீபத்தில் சேமித்த சமையல்',
     'home.viewAll': 'அனைத்தையும் பார்',
     'home.noSaved': 'இன்னும் சமையல் குறிப்புகள் சேமிக்கப்படவில்லை',
-    'home.exploreLibrary': 'எங்கள் 1000+ கையால் தேர்ந்தெடுக்கப்பட்ட இந்திய சமையல் குறிப்புகளை ஆராயுங்கள்.',
+    'home.exploreLibrary': 'எங்கள் 934 கையால் தேர்ந்தெடுக்கப்பட்ட இந்திய சமையல் குறிப்புகளை ஆராயுங்கள்.',
     'home.openExplorer': 'ஆராயத் தொடங்கு',
 
     // Recipes Explorer
@@ -262,7 +262,7 @@ export const translations = {
     'home.recentSaved': 'हाल ही में सहेजी गई रेसिपी',
     'home.viewAll': 'सभी देखें',
     'home.noSaved': 'अभी तक कोई रेसिपी नहीं सहेजी गई',
-    'home.exploreLibrary': 'हमारी 1000+ चुनिंदा भारतीय रेसिपी देखें।',
+    'home.exploreLibrary': 'हमारी 934 चुनिंदा भारतीय रेसिपी देखें।',
     'home.openExplorer': 'एक्सप्लोरर खोलें',
 
     // Recipes Explorer

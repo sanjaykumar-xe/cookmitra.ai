@@ -27,6 +27,11 @@ export const metadata: Metadata = {
     images: ["/og-banner.png"],
   },
   manifest: '/manifest.json',
+  icons: {
+    icon: '/chef-momo-logo.png',
+    shortcut: '/chef-momo-logo.png',
+    apple: '/chef-momo-logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +42,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/chef-momo-logo.png" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="/chef-momo-logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/chef-momo-logo.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet" />

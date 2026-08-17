@@ -100,19 +100,19 @@ export function MissingIngredients({
   }
 
   return (
-    <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 h-full flex flex-col gap-5 overflow-hidden">
+    <div className="rounded-[2.5rem] border border-amber-500/20 bg-amber-500/5 p-6 h-full flex flex-col gap-5 overflow-hidden shadow-xs">
         <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <h3 className="font-headline text-xl font-medium">Missing Ingredients</h3>
+                <h3 className="font-headline text-xl font-medium text-stone-900 dark:text-stone-100">Missing Ingredients</h3>
                 <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground whitespace-nowrap">Shop on:</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 whitespace-nowrap">Shop on:</span>
                     <Select value={selectedPlatformId} onValueChange={handlePlatformChange}>
-                        <SelectTrigger className="h-7 w-[140px] text-[11px] font-bold bg-background border-primary/10 rounded-lg focus:ring-0 focus:ring-offset-0">
+                        <SelectTrigger className="h-8 w-[140px] text-xs font-semibold bg-background border-stone-200 dark:border-stone-700 rounded-full focus:ring-0 focus:ring-offset-0">
                             <SelectValue />
                         </SelectTrigger>
-                        <SelectContent className="rounded-xl border-primary/10">
+                        <SelectContent className="rounded-2xl border-stone-200 dark:border-stone-800">
                             {PLATFORMS.map(p => (
-                                <SelectItem key={p.id} value={p.id} className="text-[11px] font-medium focus:bg-primary focus:text-primary-foreground">
+                                <SelectItem key={p.id} value={p.id} className="text-xs font-medium focus:bg-amber-500/10 focus:text-[#F4A21A]">
                                   {p.name}
                                 </SelectItem>
                             ))}
@@ -123,12 +123,12 @@ export function MissingIngredients({
 
             <div className="space-y-1.5">
                 {missingIngredients.map((ing, index) => (
-                <div key={index} className="flex items-center justify-between gap-3 p-2.5 px-3 rounded-xl bg-background/40 border border-primary/5 group hover:border-primary/20 hover:bg-background/60 transition-all">
-                    <span className="text-xs font-medium truncate flex-1">{ing}</span>
+                <div key={index} className="flex items-center justify-between gap-3 p-3 px-3.5 rounded-2xl bg-background/60 border border-amber-500/10 group hover:border-amber-500/30 transition-all">
+                    <span className="text-xs font-medium text-stone-800 dark:text-stone-200 truncate flex-1">{ing}</span>
                     <Button 
                         variant="ghost" 
                         size="icon" 
-                        className="h-7 w-7 rounded-lg text-primary hover:bg-primary hover:text-primary-foreground transition-all shrink-0"
+                        className="h-7 w-7 rounded-xl text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10 transition-all shrink-0"
                         onClick={() => handleShopSingle(ing)}
                         title={`Shop ${cleanName(ing)} on ${selectedPlatform.name}`}
                     >
@@ -140,18 +140,18 @@ export function MissingIngredients({
         </div>
 
         <div className="mt-auto space-y-4">
-            <div className="flex items-start gap-2.5 p-3 rounded-xl bg-background/40 border border-primary/10">
-              <Info className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-              <p className="text-[10px] text-muted-foreground font-medium leading-relaxed">
+            <div className="flex items-start gap-2.5 p-3 rounded-2xl bg-background/60 border border-amber-500/10">
+              <Info className="h-4 w-4 text-[#F4A21A] shrink-0 mt-0.5" />
+              <p className="text-[10px] text-stone-500 font-medium leading-relaxed">
                 We'll copy all missing ingredients and open <strong>{selectedPlatform.name}</strong> — paste the list to search for the rest after the first item.
               </p>
             </div>
             
-            <motion.div whileTap={{ scale: 0.95 }}>
+            <motion.div whileTap={{ scale: 0.97 }}>
               <Button 
                   className={cn(
-                    "w-full font-bold h-12 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2",
-                    isCopied ? "bg-green-600 hover:bg-green-700 text-white shadow-green-500/20" : "btn-primary-gradient"
+                    "w-full font-semibold text-xs uppercase tracking-wider h-12 rounded-full shadow-md transition-all flex items-center justify-center gap-2 border-0",
+                    isCopied ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/20" : "bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-amber-500/25"
                   )} 
                   onClick={handleShopAll}
               >

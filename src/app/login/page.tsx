@@ -30,9 +30,9 @@ export default function LoginPage() {
         {/* Top Left Logo Lockup */}
         <div className="absolute left-10 top-10 z-20">
           <Link href="/" className="flex items-center space-x-3 group">
-            <CookMitraLogo width={24} height={24} stroke="white" />
-            <span className="font-headline text-[20px] font-bold text-[#FAEEDA] leading-none">
-              CookMitra<span className="ml-1 text-[15px] font-normal opacity-70 text-white/70">AI</span>
+            <CookMitraLogo width={40} height={40} className="w-10 h-10" />
+            <span className="font-headline text-[22px] font-bold text-[#FAEEDA] leading-none flex items-center">
+              CookMitra<span className="ml-1 text-[16px] font-normal opacity-70 text-white/70">AI</span>
             </span>
           </Link>
         </div>

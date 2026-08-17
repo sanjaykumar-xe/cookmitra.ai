@@ -81,42 +81,60 @@ export default function DashboardPage() {
             desc: t('home.generate.desc'),
             icon: <Sparkles className="h-6 w-6 text-current" />,
             href: '/ai-recipes',
-            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400'
+            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400',
+            hoverBorder: 'hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:shadow-amber-500/10 hover:bg-amber-500/5',
+            hoverIconBg: 'group-hover:bg-amber-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-amber-600 dark:group-hover:text-amber-400'
         },
         {
             title: t('home.plan.title'),
             desc: t('home.plan.desc'),
             icon: <CalendarDays className="h-6 w-6 text-current" />,
             href: '/healthy-meal-planner',
-            color: 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400'
+            color: 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400',
+            hoverBorder: 'hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-blue-500/10 hover:bg-blue-500/5',
+            hoverIconBg: 'group-hover:bg-blue-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-blue-600 dark:group-hover:text-blue-400'
         },
         {
             title: t('home.healing.title'),
             desc: t('home.healing.desc'),
             icon: <HeartPulse className="h-6 w-6 text-current" />,
             href: '/healing-foods',
-            color: 'bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400'
+            color: 'bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400',
+            hoverBorder: 'hover:border-pink-500/50 dark:hover:border-pink-500/50 hover:shadow-pink-500/10 hover:bg-pink-500/5',
+            hoverIconBg: 'group-hover:bg-pink-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-pink-600 dark:group-hover:text-pink-400'
         },
         {
             title: t('home.encyclopedia.title'),
             desc: t('home.encyclopedia.desc'),
             icon: <BookOpen className="h-6 w-6 text-current" />,
             href: '/encyclopedia',
-            color: 'bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400'
+            color: 'bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400',
+            hoverBorder: 'hover:border-teal-500/50 dark:hover:border-teal-500/50 hover:shadow-teal-500/10 hover:bg-teal-500/5',
+            hoverIconBg: 'group-hover:bg-teal-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-teal-600 dark:group-hover:text-teal-400'
         },
         {
             title: t('home.chat.title'),
             desc: t('home.chat.desc'),
             icon: <MessageSquare className="h-6 w-6 text-current" />,
             href: '/ai-chat',
-            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400'
+            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400',
+            hoverBorder: 'hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:shadow-amber-500/10 hover:bg-amber-500/5',
+            hoverIconBg: 'group-hover:bg-amber-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-amber-600 dark:group-hover:text-amber-400'
         },
         {
             title: t('home.saved.title'),
             desc: t('home.saved.desc'),
             icon: <Library className="h-6 w-6 text-current" />,
             href: '/my-recipes',
-            color: 'bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400'
+            color: 'bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400',
+            hoverBorder: 'hover:border-purple-500/50 dark:hover:border-purple-500/50 hover:shadow-purple-500/10 hover:bg-purple-500/5',
+            hoverIconBg: 'group-hover:bg-purple-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-purple-600 dark:group-hover:text-purple-400'
         }
     ];
 
@@ -140,13 +158,13 @@ export default function DashboardPage() {
                             onSentenceComplete={() => setTypingDone(true)}
                             hideCursorWhileTyping={false}
                             cursorCharacter="|"
-                            className="font-headline text-fluid-h1 font-medium tracking-tight"
+                            className="font-headline text-fluid-h1 font-medium tracking-tight text-stone-900 dark:text-stone-100"
                         />
                         <motion.p 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                            className="text-fluid-subtitle text-muted-foreground font-medium"
+                            className="text-fluid-subtitle text-stone-600 dark:text-stone-300 font-medium"
                         >
                             {t('home.subtitle')}
                         </motion.p>
@@ -163,9 +181,10 @@ export default function DashboardPage() {
 
                 <motion.div 
                     initial="hidden"
-                    animate="visible"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
                     variants={{
-                        visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } }
+                        visible: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } }
                     }}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-fluid-grid"
                 >
@@ -184,11 +203,11 @@ export default function DashboardPage() {
                                     animate="rest"
                                     className="h-full"
                                 >
-                                    <Card className="h-full border-primary/5 hover:border-primary/50 transition-all duration-300 relative group overflow-hidden">
+                                    <Card className={`h-full bg-card/80 backdrop-blur-sm border-stone-200/80 dark:border-stone-800/80 ${action.hoverBorder} transition-all duration-300 relative group overflow-hidden shadow-sm hover:shadow-lg`}>
                                         <motion.div
                                             variants={{
-                                                rest: { y: 0, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" },
-                                                hover: { y: -4, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }
+                                                rest: { y: 0 },
+                                                hover: { y: -4 }
                                             }}
                                             transition={interactionSpring}
                                             className="p-5 md:p-6 h-full flex flex-col xl:flex-row xl:items-center xl:gap-4"
@@ -196,16 +215,16 @@ export default function DashboardPage() {
                                             <motion.div 
                                                 variants={{
                                                     rest: { scale: 1, rotate: 0 },
-                                                    hover: { scale: 1.05, rotate: 3 }
+                                                    hover: { scale: 1.1, rotate: 4 }
                                                 }}
                                                 transition={interactionSpring}
-                                                className={`h-11 w-11 shrink-0 flex items-center justify-center rounded-xl mb-4 xl:mb-0 ${action.color} group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300`}
+                                                className={`h-12 w-12 shrink-0 flex items-center justify-center rounded-2xl mb-4 xl:mb-0 ${action.color} ${action.hoverIconBg} transition-colors duration-300 shadow-sm`}
                                             >
                                                 {action.icon}
                                             </motion.div>
                                             <div className="flex flex-col">
-                                                <CardTitle className="text-xl font-headline font-medium group-hover:text-primary transition-colors">{action.title}</CardTitle>
-                                                <CardDescription className="text-sm font-medium leading-relaxed mt-1">{action.desc}</CardDescription>
+                                                <CardTitle className={`text-xl font-headline font-medium text-stone-900 dark:text-stone-100 ${action.hoverTitle} transition-colors`}>{action.title}</CardTitle>
+                                                <CardDescription className="text-sm font-medium leading-relaxed mt-1 text-stone-600 dark:text-stone-300">{action.desc}</CardDescription>
                                             </div>
                                         </motion.div>
                                     </Card>
@@ -219,11 +238,11 @@ export default function DashboardPage() {
             <div className="space-y-6">
                 <div className="flex items-center justify-between">
                     <motion.h2 
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                        className="font-headline text-fluid-h2 font-medium tracking-tight"
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="font-headline text-fluid-h2 font-medium tracking-tight text-stone-900 dark:text-stone-100"
                     >
                         {t('home.recentSaved')}
                     </motion.h2>
@@ -231,10 +250,10 @@ export default function DashboardPage() {
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
+                            viewport={{ once: true, amount: 0.1 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            <Button variant="ghost" asChild className="group text-fluid-body">
+                            <Button variant="ghost" asChild className="group text-fluid-body rounded-full hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400">
                                 <Link href="/my-recipes">
                                     {t('home.viewAll')}
                                     <motion.span
@@ -252,15 +271,15 @@ export default function DashboardPage() {
 
                 {recipesLoading ? (
                     <div className="flex justify-center py-12">
-                        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                        <Loader2 className="h-8 w-8 animate-spin text-[#F4A21A]" />
                     </div>
                 ) : savedRecipes && savedRecipes.length > 0 ? (
                     <motion.div 
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true }}
+                        viewport={{ once: true, amount: 0.1 }}
                         variants={{
-                            visible: { transition: { staggerChildren: 0.06, delayChildren: 0.6 } }
+                            visible: { transition: { staggerChildren: 0.06, delayChildren: 0.3 } }
                         }}
                         className="grid grid-cols-1 md:grid-cols-2 gap-fluid-grid"
                     >
@@ -285,34 +304,34 @@ export default function DashboardPage() {
                                             initial="rest"
                                             animate="rest"
                                         >
-                                            <Card className="hover:border-primary/50 transition-all duration-300 bg-card/60 group overflow-hidden">
+                                            <Card className="hover:border-amber-500/40 transition-all duration-300 bg-card/80 backdrop-blur-sm border-stone-200/80 dark:border-stone-800/80 group overflow-hidden shadow-sm hover:shadow-md">
                                                 <motion.div
                                                     variants={{
-                                                        rest: { y: 0, boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" },
-                                                        hover: { y: -2, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)" }
+                                                        rest: { y: 0 },
+                                                        hover: { y: -3 }
                                                     }}
                                                     transition={interactionSpring}
                                                     className="p-fluid-card flex items-center gap-4"
                                                 >
-                                                    <div className="h-11 w-11 shrink-0 flex items-center justify-center bg-primary/10 rounded-xl group-hover:bg-primary transition-colors duration-300 group-hover:text-primary-foreground">
-                                                        <ChefHat className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                                                    <div className="h-12 w-12 shrink-0 flex items-center justify-center bg-amber-500/10 dark:bg-amber-500/20 rounded-2xl group-hover:bg-[#F4A21A] transition-colors duration-300 group-hover:text-white">
+                                                        <ChefHat className="h-6 w-6 text-[#F4A21A] group-hover:text-white transition-colors" />
                                                     </div>
                                                     <div className="flex-1 min-w-0">
-                                                        <h3 className="font-bold text-base leading-tight group-hover:text-primary transition-colors truncate">{displayName}</h3>
-                                                        <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-muted-foreground mt-2 opacity-70">
-                                                            <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {displayTime}m</span>
-                                                            <span className="flex items-center gap-1"><BarChart2 className="h-3 w-3" /> {displayLevel}</span>
-                                                            <span className="flex items-center gap-1 text-primary"><RupeeIcon className="h-3 w-3" /> {displayCost}</span>
+                                                        <h3 className="font-headline font-medium text-lg leading-tight text-stone-900 dark:text-stone-100 group-hover:text-[#F4A21A] transition-colors truncate">{displayName}</h3>
+                                                        <div className="flex items-center gap-3 text-xs font-semibold text-stone-500 dark:text-stone-400 mt-1.5">
+                                                            <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {displayTime}m</span>
+                                                            <span className="flex items-center gap-1"><BarChart2 className="h-3.5 w-3.5" /> {displayLevel}</span>
+                                                            <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400 font-bold"><RupeeIcon className="h-3.5 w-3.5" /> {displayCost}</span>
                                                         </div>
                                                     </div>
                                                     <motion.div
                                                         variants={{
-                                                            rest: { x: 0, opacity: 0.3 },
+                                                            rest: { x: 0, opacity: 0.4 },
                                                             hover: { x: 4, opacity: 1 }
                                                         }}
                                                         transition={interactionSpring}
                                                     >
-                                                        <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                                                        <ChevronRight className="h-5 w-5 text-stone-400 group-hover:text-[#F4A21A] transition-colors" />
                                                     </motion.div>
                                                 </motion.div>
                                             </Card>
@@ -324,21 +343,21 @@ export default function DashboardPage() {
                     </motion.div>
                 ) : (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.96 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                        <Card className="border-dashed py-12 md:py-20 bg-card/10 border-2">
+                        <Card className="border-dashed py-12 md:py-16 bg-stone-50/50 dark:bg-stone-900/30 border-2 border-stone-300/80 dark:border-stone-800 rounded-3xl">
                             <CardContent className="flex flex-col items-center text-center space-y-4">
-                                <div className="bg-muted rounded-full p-4 text-muted-foreground">
-                                    <Library className="h-8 w-8 opacity-40" />
+                                <div className="bg-amber-500/10 text-[#F4A21A] rounded-2xl p-4">
+                                    <Library className="h-8 w-8" />
                                 </div>
                                 <div className="space-y-1">
-                                    <p className="font-bold text-lg">{t('home.noSaved')}</p>
-                                    <p className="text-sm text-muted-foreground">{t('home.generate.desc')}</p>
+                                    <p className="font-headline text-xl font-medium text-stone-900 dark:text-stone-100">{t('home.noSaved')}</p>
+                                    <p className="text-sm text-stone-600 dark:text-stone-300">{t('home.generate.desc')}</p>
                                 </div>
-                                <Button asChild size="lg" className="rounded-full px-8 h-12 text-base font-bold shadow-lg shadow-primary/20">
+                                <Button asChild size="lg" className="rounded-full px-8 h-12 text-base font-medium bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/20">
                                     <Link href="/ai-recipes">{t('home.generate.title')}</Link>
                                 </Button>
                             </CardContent>
@@ -348,10 +367,10 @@ export default function DashboardPage() {
             </div>
 
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             >
                 <Link href="/recipes">
                     <motion.div
@@ -360,23 +379,23 @@ export default function DashboardPage() {
                         animate="rest"
                         className="block h-full"
                     >
-                        <Card className="bg-primary/5 border-primary/20 hover:bg-primary/10 transition-all duration-500 group relative overflow-hidden p-fluid-card rounded-[3rem]">
+                        <Card className="bg-gradient-to-r from-amber-500/15 via-amber-500/5 to-transparent border-amber-500/25 hover:border-amber-500/50 transition-all duration-500 group relative overflow-hidden p-8 md:p-12 rounded-[2.5rem] shadow-sm hover:shadow-xl">
                             <div 
-                                className="absolute -bottom-16 -right-16 w-[160px] h-[160px] md:w-[260px] md:h-[260px] border-2 border-primary/15 rounded-full pointer-events-none flex items-center justify-center transition-transform duration-700 group-hover:scale-110" 
+                                className="absolute -bottom-16 -right-16 w-[180px] h-[180px] md:w-[280px] md:h-[280px] border-2 border-amber-500/20 rounded-full pointer-events-none flex items-center justify-center transition-transform duration-700 group-hover:scale-110" 
                                 aria-hidden="true"
                             >
-                                <ChefHat className="w-16 h-16 md:w-28 md:h-28 text-primary opacity-20" strokeWidth={1} />
+                                <ChefHat className="w-20 h-20 md:w-32 md:h-32 text-[#F4A21A] opacity-25" strokeWidth={1.25} />
                             </div>
                             
                             <div className="relative z-10 max-w-4xl space-y-4 md:space-y-6">
-                                <h2 className="font-headline text-fluid-h2 font-medium tracking-tight">{t('nav.recipes')}</h2>
-                                <p className="text-fluid-body text-muted-foreground font-medium leading-relaxed opacity-90">{t('home.exploreLibrary')}</p>
+                                <h2 className="font-headline text-fluid-h2 font-medium tracking-tight text-stone-900 dark:text-stone-100">{t('nav.recipes')}</h2>
+                                <p className="text-fluid-body text-stone-700 dark:text-stone-300 font-medium leading-relaxed max-w-2xl">{t('home.exploreLibrary')}</p>
                                 <motion.div
-                                    variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
+                                    variants={{ rest: { scale: 1 }, hover: { scale: 1.03 } }}
                                     transition={interactionSpring}
                                     className="w-fit"
                                 >
-                                    <Button className="rounded-full px-10 h-14 text-fluid-body shadow-xl shadow-primary/20 font-black uppercase tracking-widest pointer-events-none text-[#412402]">
+                                    <Button className="rounded-full px-9 h-13 text-base bg-[#F4A21A] hover:bg-[#E09015] text-white font-medium shadow-lg shadow-amber-500/20 pointer-events-none">
                                         {t('home.openExplorer')}
                                         <motion.span
                                             variants={{ rest: { x: 0 }, hover: { x: 4 } }}

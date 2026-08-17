@@ -247,21 +247,21 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
     : (hasGenerated ? "Generate New Recipe" : "Generate Recipe");
 
   return (
-    <Card className="shadow-2xl rounded-3xl glass-card border-primary/10">
-      <CardHeader className="p-8">
-        <div className="flex items-center gap-4 mb-2">
-            <div className="bg-primary/10 p-3 rounded-2xl">
-                <ChefHat className="h-8 w-8 text-primary" />
+    <Card className="rounded-[2.5rem] bg-card/80 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 shadow-xs overflow-hidden">
+      <CardHeader className="p-6 sm:p-8">
+        <div className="flex items-center gap-4 mb-1">
+            <div className="bg-amber-500/10 p-2.5 rounded-2xl">
+                <ChefHat className="h-6 w-6 text-[#F4A21A]" />
             </div>
             <div>
-                <CardTitle className="font-headline text-2xl font-bold tracking-tight">
+                <CardTitle className="font-headline text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-100">
                     Create Your Recipe
                 </CardTitle>
-                <CardDescription className="text-sm font-medium opacity-80">Refine your vision</CardDescription>
+                <CardDescription className="text-xs sm:text-sm font-normal text-stone-500">Refine your vision</CardDescription>
             </div>
         </div>
       </CardHeader>
-      <CardContent className="p-8 pt-0">
+      <CardContent className="p-6 sm:p-8 pt-0">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
             
@@ -522,7 +522,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                           <RadioGroupItem value="Veg" id="diet-veg" className="peer sr-only" />
                           <Label
                             htmlFor="diet-veg"
-                            className="flex items-center justify-center h-10 w-full rounded-xl cursor-pointer peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground font-black text-xs uppercase tracking-widest transition-all whitespace-nowrap"
+                            className="flex items-center justify-center h-10 w-full rounded-xl cursor-pointer peer-data-[state=checked]:bg-[#F4A21A] peer-data-[state=checked]:text-white font-semibold text-xs uppercase tracking-wider transition-all whitespace-nowrap"
                           >
                             Veg
                           </Label>
@@ -531,7 +531,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                           <RadioGroupItem value="Non-Veg" id="diet-non-veg" className="peer sr-only" />
                           <Label
                             htmlFor="diet-non-veg"
-                            className="flex items-center justify-center h-10 w-full rounded-xl cursor-pointer peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground font-black text-xs uppercase tracking-widest transition-all whitespace-nowrap"
+                            className="flex items-center justify-center h-10 w-full rounded-xl cursor-pointer peer-data-[state=checked]:bg-[#F4A21A] peer-data-[state=checked]:text-white font-semibold text-xs uppercase tracking-wider transition-all whitespace-nowrap"
                           >
                             Non-Veg
                           </Label>
@@ -546,14 +546,14 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                 name="numberOfPersons"
                 render={({ field }) => (
                   <FormItem className="w-32">
-                    <FormLabel className="font-black uppercase tracking-widest text-[10px] text-muted-foreground mb-2 block">Servings</FormLabel>
+                    <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400 mb-2 block">Servings</FormLabel>
                     <FormControl>
-                       <div className="flex items-center justify-between rounded-2xl border border-border dark:border-white/5 h-[52px] bg-muted/50 dark:bg-white/5 px-2">
-                          <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-zinc-200 dark:hover:bg-white/10" onClick={() => field.onChange(Math.max(1, field.value - 1))}>
+                       <div className="flex items-center justify-between rounded-2xl border border-stone-200 dark:border-stone-800 h-[52px] bg-stone-50/50 dark:bg-stone-900/40 px-2">
+                          <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-800" onClick={() => field.onChange(Math.max(1, field.value - 1))}>
                               <Minus className="h-4 w-4" />
                           </Button>
-                          <span className="font-black text-xl">{field.value}</span>
-                          <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-zinc-200 dark:hover:bg-white/10" onClick={() => field.onChange(Math.min(12, field.value + 1))}>
+                          <span className="font-headline font-bold text-xl text-stone-900 dark:text-stone-100">{field.value}</span>
+                          <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-800" onClick={() => field.onChange(Math.min(12, field.value + 1))}>
                               <Plus className="h-4 w-4" />
                           </Button>
                       </div>
@@ -563,15 +563,15 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
               />
             </div>
 
-            <div className="space-y-4 pt-4 border-t border-border dark:border-white/5">
+            <div className="space-y-4 pt-4 border-t border-stone-200 dark:border-stone-800">
                 <FormField
                     control={form.control}
                     name="isBatchMode"
                     render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-2xl border p-4 bg-muted/30 dark:bg-white/5">
+                    <FormItem className="flex flex-row items-center justify-between rounded-2xl border border-stone-200 dark:border-stone-800 p-4 bg-stone-50/50 dark:bg-stone-900/40">
                         <div className="space-y-0.5">
-                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-muted-foreground">Batch Cooking</FormLabel>
-                            <FormDescription className="text-xs text-muted-foreground/60">Cook for the whole week</FormDescription>
+                            <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400">Batch Cooking</FormLabel>
+                            <FormDescription className="text-xs text-stone-500">Cook for the whole week</FormDescription>
                         </div>
                         <FormControl>
                             <Switch
@@ -589,16 +589,16 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                         name="batchDays"
                         render={({ field }) => (
                         <FormItem className="animate-in fade-in slide-in-from-top-2 duration-300">
-                            <FormLabel className="font-black uppercase tracking-widest text-[10px] text-muted-foreground mb-2 block">
+                            <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400 mb-2 block">
                                 Number of Days
                             </FormLabel>
                             <FormControl>
-                                <div className="flex items-center justify-between rounded-2xl border border-border dark:border-white/5 h-[52px] bg-muted/50 dark:bg-white/5 px-2">
-                                    <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-zinc-200 dark:hover:bg-white/10" onClick={() => field.onChange(Math.max(2, field.value - 1))}>
+                                <div className="flex items-center justify-between rounded-2xl border border-stone-200 dark:border-stone-800 h-[52px] bg-stone-50/50 dark:bg-stone-900/40 px-2">
+                                    <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-800" onClick={() => field.onChange(Math.max(2, field.value - 1))}>
                                         <Minus className="h-4 w-4" />
                                     </Button>
-                                    <span className="font-black text-xl">{field.value} Days</span>
-                                    <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-zinc-200 dark:hover:bg-white/10" onClick={() => field.onChange(Math.min(7, field.value + 1))}>
+                                    <span className="font-headline font-bold text-xl text-stone-900 dark:text-stone-100">{field.value} Days</span>
+                                    <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-800" onClick={() => field.onChange(Math.min(7, field.value + 1))}>
                                         <Plus className="h-4 w-4" />
                                     </Button>
                                 </div>
@@ -611,18 +611,18 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
 
             <Button 
                 type="submit" 
-                size="lg" 
-                className="w-full rounded-full bg-[#F4A21A] hover:bg-[#E0940F] hover:scale-105 text-white text-[15px] font-bold py-3 px-6 shadow-lg !mt-12 transition-all duration-300 border-0" 
+                variant="secondary"
+                className="w-full rounded-full h-14 text-xs sm:text-sm font-semibold uppercase tracking-wider bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 border-0 transition-all active:scale-[0.99] flex items-center justify-center gap-2 !mt-10" 
                 disabled={isGenerating}
             >
               {isGenerating ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="h-4 w-4 animate-spin" />
                   Generating...
                 </>
               ) : (
                 <>
-                    <CookMitraLogo width={18} height={18} stroke="white" className="mr-2" />
+                    <Sparkles className="h-4 w-4" />
                     {submitButtonLabel}
                 </>
               )}

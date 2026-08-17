@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+import { IconSoup } from '@tabler/icons-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import type { Recipe } from '@/lib/recipes';
@@ -24,7 +26,9 @@ import {
     MicOff,
     AlertCircle,
     Bookmark,
-    RefreshCw
+    RefreshCw,
+    UtensilsCrossed,
+    CookingPot
 } from 'lucide-react';
 import Link from 'next/link';
 import { Switch } from '@/components/ui/switch';
@@ -35,6 +39,44 @@ import { useUser, useFirestore, useDoc, useMemoFirebase } from '@/lib/firebase';
 import { doc } from 'firebase/firestore';
 import { saveRecipe, submitReview } from '@/lib/firebase/firestore/recipes';
 import { useToast } from '@/hooks/use-toast';
+
+function HotSteamingMealIcon() {
+  return (
+    <div className="relative flex flex-col items-center justify-center mb-3">
+      {/* Animated Rising Steam Lines */}
+      <div className="relative w-16 h-6 mb-1 overflow-visible">
+        {[0, 1, 2].map((i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 4, scaleY: 0.6 }}
+            animate={{
+              opacity: [0, 0.9, 0],
+              y: [4, -12],
+              scaleY: [0.6, 1.2, 0.8],
+            }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              delay: i * 0.4,
+              ease: "easeOut",
+            }}
+            className="absolute w-1.5 h-5 rounded-full bg-gradient-to-t from-[#F4A21A] via-amber-400/50 to-transparent blur-[0.5px]"
+            style={{ left: `${12 + i * 16}px` }}
+          />
+        ))}
+      </div>
+
+      {/* Styled Glassmorphic Cooking Pot Badge */}
+      <motion.div
+        animate={{ scale: [1, 1.04, 1] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        className="bg-amber-500/10 h-20 w-20 rounded-[2rem] border border-amber-500/20 flex items-center justify-center shadow-md shadow-amber-500/10"
+      >
+        <CookingPot className="h-10 w-10 text-[#F4A21A]" />
+      </motion.div>
+    </div>
+  );
+}
 
 // --- Utilities for Timers ---
 const TIMER_DONE_SOUND_URL = 'https://cdn.freesound.org/previews/215/215658_4032334-lq.mp3';
@@ -540,47 +582,45 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
 
     if (isComplete && mounted) {
         return createPortal(
-            <div className="fixed inset-0 bg-background z-[9999] flex flex-col items-center justify-center text-center p-6 pb-12 animate-in fade-in duration-700">
-                <div className="space-y-4 mb-8">
-                    <div className="bg-primary/10 h-24 w-24 rounded-[2rem] flex items-center justify-center mx-auto mb-6">
-                        <CheckCircle2 className="h-12 w-12 text-primary" />
-                    </div>
-                    <h2 className="font-headline text-5xl font-bold text-foreground tracking-tight">Delicious!</h2>
-                    <p className="text-muted-foreground text-lg font-medium">Your <span className="text-primary font-bold">{recipe.name}</span> is Ready to Serve</p>
+            <div className="fixed inset-0 bg-background z-[9999] flex flex-col items-center justify-center text-center p-6 pb-12 animate-in fade-in duration-500">
+                <div className="space-y-3 mb-6 flex flex-col items-center">
+                    <HotSteamingMealIcon />
+                    <h2 className="font-headline text-4xl sm:text-5xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">Delicious!</h2>
+                    <p className="text-stone-500 text-base font-medium">Your <span className="text-[#F4A21A] font-semibold">{recipe.name}</span> is Ready to Serve</p>
                 </div>
 
                 {/* Star Rating Section */}
-                <div className="mb-10 space-y-4 bg-muted/30 p-8 rounded-[2.5rem] border border-primary/10 max-w-sm w-full">
-                    <p className="font-black uppercase tracking-[0.2em] text-[10px] text-muted-foreground">How did it turn out?</p>
-                    <div className="flex justify-center">
+                <div className="mb-8 space-y-3 bg-stone-50 dark:bg-stone-900/60 p-6 sm:p-8 rounded-[2.5rem] border border-stone-200 dark:border-stone-800 max-w-sm w-full">
+                    <p className="font-bold uppercase tracking-wider text-[11px] text-stone-400">How did it turn out?</p>
+                    <div className="flex justify-center py-1">
                         <StarRating 
                             rating={userRating} 
                             onRatingChange={handleRate} 
                             size={32} 
                         />
                     </div>
-                    {isRated && <p className="text-primary text-sm font-bold animate-in fade-in slide-in-from-bottom-1">Thanks for rating!</p>}
+                    {isRated && <p className="text-[#F4A21A] text-xs font-semibold animate-in fade-in">Thanks for rating!</p>}
                 </div>
 
                 {/* Button Group */}
-                <div className="flex flex-col gap-4 w-full max-w-sm">
-                    <Button asChild size="lg" className="w-full rounded-full h-14 text-lg font-bold shadow-xl shadow-primary/20">
+                <div className="flex flex-col gap-3.5 w-full max-w-sm">
+                    <Button asChild size="lg" className="w-full rounded-full h-14 text-sm font-semibold uppercase tracking-wider bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 border-0">
                         <Link href="/recipes">Return to Explorer</Link>
                     </Button>
                     
                     <div className="grid grid-cols-2 gap-3">
                         <Button 
                             variant="outline" 
-                            className="rounded-full h-12 font-bold border-primary/20 hover:bg-primary/5"
+                            className="rounded-full h-12 font-semibold text-xs uppercase tracking-wider border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800"
                             onClick={handleSave}
                             disabled={isSaved || isSaving}
                         >
-                            <Bookmark className={cn("h-4 w-4 mr-2", isSaved && "fill-current")} />
-                            {isSaved ? "Saved ✓" : "Save to Favorites"}
+                            <Bookmark className={cn("h-4 w-4 mr-2", isSaved && "fill-[#F4A21A] text-[#F4A21A]")} />
+                            {isSaved ? "Saved ✓" : "Save Recipe"}
                         </Button>
                         <Button 
                             variant="outline" 
-                            className="rounded-full h-12 font-bold border-primary/20 hover:bg-primary/5"
+                            className="rounded-full h-12 font-semibold text-xs uppercase tracking-wider border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800"
                             onClick={handleCookAgain}
                         >
                             <RefreshCw className="h-4 w-4 mr-2" />
@@ -596,29 +636,32 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
     if (stepCount === 0) {
         return (
             <div className="flex flex-col items-center justify-center min-h-[400px] text-center p-6 pb-24">
-                <div className="bg-muted rounded-full p-6 mb-4">
-                    <X className="h-10 w-10 text-muted-foreground opacity-40" />
+                <div className="bg-stone-100 dark:bg-stone-800 rounded-full p-6 mb-4">
+                    <X className="h-10 w-10 text-stone-400 opacity-40" />
                 </div>
-                <h3 className="font-headline text-2xl font-medium">No Steps Available</h3>
-                <p className="text-muted-foreground max-w-xs mx-auto mt-2 mb-8">This recipe doesn&apos;t have any step-by-step instructions yet.</p>
-                <Button asChild variant="outline" className="rounded-full px-8"><Link href={`/recipes/${recipe.id}`}>Go Back</Link></Button>
+                <h3 className="font-headline text-2xl font-medium text-stone-900 dark:text-stone-100">No Steps Available</h3>
+                <p className="text-stone-500 max-w-xs mx-auto mt-2 mb-8">This recipe doesn&apos;t have any step-by-step instructions yet.</p>
+                <Button asChild variant="outline" className="rounded-full px-8 h-12 text-xs uppercase font-semibold"><Link href={`/recipes/${recipe.id}`}>Go Back</Link></Button>
             </div>
-        )
+        );
     }
 
     return (
         <div className="max-w-4xl mx-auto pb-32">
-            <Card className="mb-6 p-4 rounded-2xl border-primary/10 bg-card/40 backdrop-blur-sm">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-3 relative">
-                    <span className="font-black uppercase tracking-[0.2em] text-[10px] text-muted-foreground">Progress: Step {currentStep + 1} of {stepCount}</span>
+            {/* TOP HEADER & PROGRESS CARD */}
+            <Card className="mb-6 p-5 rounded-[2rem] border border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm shadow-xs">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative">
+                    <span className="font-bold uppercase tracking-wider text-[11px] text-stone-500 dark:text-stone-400">
+                        Progress: Step {currentStep + 1} of {stepCount}
+                    </span>
                     
                     <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
-                            <Label htmlFor="voice-toggle" className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/70">Voice</Label>
+                            <Label htmlFor="voice-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Voice</Label>
                             <Switch id="voice-toggle" checked={isVoiceOn} onCheckedChange={setIsVoiceOn} className="scale-75" />
                         </div>
                         <div className="flex items-center gap-2">
-                            <Label htmlFor="hf-toggle" className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/70">Hands-Free</Label>
+                            <Label htmlFor="hf-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Hands-Free</Label>
                             <Switch id="hf-toggle" checked={isHandsFreeOn} onCheckedChange={setIsHandsFreeOn} className="scale-75" />
                         </div>
                         <Button 
@@ -626,38 +669,39 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                             size="icon" 
                             className={cn(
                               "h-8 w-8 rounded-full transition-colors",
-                              isSpeakingStep ? "text-red-500 hover:text-red-600 bg-red-500/10" : "text-muted-foreground hover:text-primary"
+                              isSpeakingStep ? "text-rose-500 hover:text-rose-600 bg-rose-500/10" : "text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10"
                             )} 
                             onClick={() => toggleSpeakingStep(steps[currentStep])}
                             title={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
                         >
-                            {isSpeakingStep ? <VolumeX className="h-4 w-4 text-red-500 animate-pulse" /> : <Volume2 className="h-4 w-4" />}
+                            {isSpeakingStep ? <VolumeX className="h-4 w-4 text-rose-500 animate-pulse" /> : <Volume2 className="h-4 w-4" />}
                         </Button>
                     </div>
 
-                    <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                        <div className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-primary" /> {recipe.time} min</div>
-                        <div className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5 text-primary" /> {recipe.servings} Serves</div>
+                    <div className="flex items-center gap-4 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+                        <div className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-amber-500" /> {recipe.time} min</div>
+                        <div className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5 text-sky-500" /> {recipe.servings} Serves</div>
                     </div>
 
                     {hfError && (
-                        <div className="absolute -bottom-6 left-0 flex items-center gap-1.5 text-[9px] font-bold text-destructive animate-in fade-in slide-in-from-top-1">
+                        <div className="absolute -bottom-6 left-0 flex items-center gap-1.5 text-[10px] font-medium text-rose-500 animate-in fade-in">
                             <AlertCircle className="h-3 w-3" />
                             {hfError}
                         </div>
                     )}
                 </div>
-                <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden mt-2">
-                    <div className="h-full bg-primary transition-all duration-700 ease-out shadow-[0_0_10px_rgba(244,162,26,0.4)]" style={{ width: `${progressPercent}%` }} />
+                <div className="w-full h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden mt-3">
+                    <div className="h-full bg-[#F4A21A] transition-all duration-700 ease-out shadow-xs" style={{ width: `${progressPercent}%` }} />
                 </div>
             </Card>
 
-            <Card className="mb-8 border-primary border-2 shadow-2xl shadow-primary/10 rounded-3xl overflow-hidden">
+            {/* ACTIVE STEP CARD */}
+            <Card className="mb-8 border-2 border-[#F4A21A]/30 bg-card/80 backdrop-blur-sm shadow-md shadow-amber-500/10 rounded-[2.5rem] overflow-hidden">
                  <CardContent className="p-6 md:p-10">
                     <div className="flex items-start gap-6">
-                        <div className="flex-shrink-0 h-11 w-11 bg-primary text-primary-foreground rounded-xl flex items-center justify-center font-black text-lg shadow-lg">{currentStep + 1}</div>
+                        <div className="flex-shrink-0 h-12 w-12 bg-[#F4A21A] text-white rounded-2xl flex items-center justify-center font-bold text-xl shadow-md shadow-amber-500/20">{currentStep + 1}</div>
                         <div className="flex-1">
-                            <p className="text-xl md:text-2xl font-medium leading-relaxed text-foreground">
+                            <p className="text-xl md:text-2xl font-medium leading-relaxed text-stone-900 dark:text-stone-100">
                                 {steps[currentStep]}
                             </p>
                             {renderTimer(currentStep, steps[currentStep])}
@@ -666,49 +710,64 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                  </CardContent>
             </Card>
 
+            {/* ACTION BUTTON CONTROLS */}
             <div className="grid grid-cols-1 gap-3 mb-10">
-                <Button size="lg" className="w-full font-black uppercase tracking-[0.15em] h-16 text-base rounded-2xl shadow-xl shadow-primary/20 transition-all active:scale-95" onClick={handleMarkAndGoToNext}>
+                <Button size="lg" className="w-full font-semibold uppercase tracking-wider h-14 text-sm sm:text-base rounded-full bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 border-0 transition-all active:scale-[0.99] flex items-center justify-center gap-2" onClick={handleMarkAndGoToNext}>
                     {completedSteps.has(currentStep) ? "Step Completed" : "Mark Step as Complete"}
-                    <Check className="ml-3 h-5 w-5" />
+                    <Check className="h-5 w-5" />
                 </Button>
                 <div className="grid grid-cols-2 gap-3">
-                     <Button variant="outline" size="lg" className={cn("font-bold h-12 rounded-xl", currentStep === 0 && "opacity-30 pointer-events-none")} onClick={handleGoToPrevious}>
+                     <Button 
+                        variant="outline" 
+                        size="lg" 
+                        className={cn("font-semibold text-xs uppercase tracking-wider h-12 rounded-full border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all", currentStep === 0 && "opacity-30 pointer-events-none")} 
+                        onClick={handleGoToPrevious}
+                     >
                         <ArrowLeft className="h-4 w-4 mr-2" /> Previous
                      </Button>
-                     <Button variant="outline" size="lg" className={cn("font-bold h-12 rounded-xl", currentStep === stepCount - 1 && "opacity-30 pointer-events-none")} onClick={() => setCurrentStep(prev => Math.min(prev + 1, stepCount - 1))}>
+                     <Button 
+                        variant="outline" 
+                        size="lg" 
+                        className={cn("font-semibold text-xs uppercase tracking-wider h-12 rounded-full border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all", currentStep === stepCount - 1 && "opacity-30 pointer-events-none")} 
+                        onClick={() => setCurrentStep(prev => Math.min(prev + 1, stepCount - 1))}
+                     >
                         Next <ArrowRight className="h-4 w-4 ml-2" />
                      </Button>
                 </div>
 
-                <div className="flex items-center justify-center gap-2 mt-2 text-[9px] font-black uppercase tracking-widest text-muted-foreground opacity-60 select-none">
+                <div className="flex items-center justify-center gap-2 mt-2 text-[10px] font-semibold uppercase tracking-wider text-stone-400 select-none">
                     <Keyboard className="h-3.5 w-3.5" />
                     <span>Space: Next &bull; Left Arrow: Back &bull; T: Timer &bull; Esc: Exit</span>
                 </div>
             </div>
 
+            {/* FULL RECIPE GUIDE CHECKLIST */}
             <div className="space-y-4 pb-24">
-                <h3 className="font-headline text-2xl font-medium tracking-tight">Full Recipe Guide</h3>
+                <h3 className="font-headline text-2xl font-medium tracking-tight text-stone-900 dark:text-stone-100">Full Recipe Guide</h3>
                 <div className="space-y-3">
                     {steps.map((step, index) => (
                         <button 
                             key={index} 
                             onClick={() => setCurrentStep(index)} 
                             className={cn(
-                                "w-full text-left p-4 rounded-2xl transition-all flex items-start gap-4 border-2 group",
-                                index === currentStep ? "border-primary bg-primary/5 shadow-md" : "border-transparent hover:bg-muted/50",
-                                completedSteps.has(index) ? "opacity-50" : ""
+                                "w-full text-left p-4 rounded-2xl transition-all flex items-start gap-4 border group",
+                                index === currentStep 
+                                    ? "border-[#F4A21A] bg-amber-500/10 text-stone-900 dark:text-stone-100 font-semibold shadow-xs" 
+                                    : completedSteps.has(index)
+                                        ? "border-emerald-500/20 bg-emerald-500/5 text-stone-400 dark:text-stone-500"
+                                        : "border-stone-200 dark:border-stone-800 bg-card/60 hover:bg-stone-100 dark:hover:bg-stone-800/60 text-stone-700 dark:text-stone-300"
                             )}
                         >
                             <div className={cn(
                                 "h-6 w-6 rounded-full border-2 shrink-0 mt-0.5 flex items-center justify-center transition-all",
-                                completedSteps.has(index) ? "bg-green-500 border-green-500" : index === currentStep ? "border-primary scale-110 shadow-[0_0_10px_rgba(244,162,26,0.3)]" : "border-muted-foreground/30 group-hover:border-primary/50"
+                                completedSteps.has(index) ? "bg-emerald-500 border-emerald-500" : index === currentStep ? "border-[#F4A21A] bg-[#F4A21A] text-white" : "border-stone-300 dark:border-stone-700 group-hover:border-amber-500/50"
                             )}>
-                                {completedSteps.has(index) ? <Check className="h-3 w-3 text-white" /> : <span className="text-[9px] font-black">{index + 1}</span>}
+                                {completedSteps.has(index) ? <Check className="h-3.5 w-3.5 text-white" /> : <span className="text-[10px] font-bold">{index + 1}</span>}
                             </div>
                             <span className={cn(
-                                "text-base transition-all", 
-                                index === currentStep ? "text-foreground font-bold" : "text-muted-foreground",
-                                completedSteps.has(index) && "line-through"
+                                "text-sm sm:text-base leading-relaxed transition-all", 
+                                index === currentStep ? "text-stone-900 dark:text-stone-100 font-semibold" : "text-stone-700 dark:text-stone-300",
+                                completedSteps.has(index) && "line-through text-stone-400 dark:text-stone-500"
                             )}>
                                 {step}
                             </span>

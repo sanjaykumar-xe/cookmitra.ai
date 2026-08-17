@@ -129,10 +129,10 @@ export function IconSidebar() {
                <SheetClose asChild>
                   <Link
                   href={homeHref}
-                  className="flex items-center gap-2 font-medium hover:opacity-80 transition-opacity"
+                  className="flex items-center gap-3 font-medium hover:opacity-80 transition-opacity"
                   >
-                  <CookMitraLogo className="h-6 w-6 text-primary" />
-                  <span className="font-headline text-xl font-medium">
+                  <CookMitraLogo width={36} height={36} className="w-9 h-9" />
+                  <span className="font-headline text-xl font-bold">
                       CookMitra
                       <span className="text-base font-normal text-muted-foreground ml-1">
                       AI

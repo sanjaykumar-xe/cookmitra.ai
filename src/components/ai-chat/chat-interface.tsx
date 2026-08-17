@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import { sendMessageToAI, type ChatMessage } from '@/app/ai-chat/actions';
 import { useToast } from '@/hooks/use-toast';
 import { ChutkiIcon } from '@/components/icons/chutki-icon';
+import { CookMitraLogo } from '@/components/icons/cook-mitra-logo';
 import { useLanguage } from '@/context/language-context';
 
 const QUICK_SUGGESTIONS = [
@@ -205,27 +206,30 @@ export default function ChatInterface() {
   const userInitial = user?.displayName?.[0] || user?.email?.[0] || 'U';
 
   return (
-    <Card className="h-full w-full flex flex-col bg-card/30 dark:bg-card/50 overflow-hidden border-0 rounded-none transition-all duration-500">
+    <Card className="h-full w-full flex flex-col bg-card/80 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 shadow-xs overflow-hidden rounded-[2.5rem] transition-all duration-500">
         <ScrollArea className="flex-grow p-4 md:p-6" ref={chatContainerRef}>
             <div className="space-y-6 pb-12">
             {messages.length === 0 && !isLoading && (
-                <div className="text-center py-12 flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-2 duration-700">
-                    <div className="h-20 w-20 mb-4"><ChutkiIcon /></div>
-                    <h2 className="font-headline text-2xl md:text-3xl">{t('chat.title')}</h2>
-                    <p className="text-muted-foreground mt-2 mb-8 max-w-xs">{t('chat.subtitle')}</p>
+                <div className="text-center py-10 flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-2 duration-700">
+                    <div className="mb-4 relative">
+                        <CookMitraLogo width={88} height={88} className="w-22 h-22 transition-transform duration-500 hover:scale-105" />
+                        <Sparkles className="h-6 w-6 text-[#F4A21A] absolute -top-1 -right-1 animate-pulse" />
+                    </div>
+                    <h2 className="font-headline text-2xl md:text-3xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">{t('chat.title')}</h2>
+                    <p className="text-stone-500 text-sm mt-1.5 mb-8 max-w-xs font-normal">{t('chat.subtitle')}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl px-2">
                         {QUICK_SUGGESTIONS.map((suggestion, i) => (
                         <Button 
                             key={i} 
                             variant="outline" 
-                            className="h-auto min-h-[64px] text-left justify-start p-4 rounded-2xl whitespace-normal hover:scale-[1.02] hover:border-amber-500/40 transition-all border-border/60 shadow-sm bg-card/60" 
+                            className="h-auto min-h-[64px] text-left justify-start p-4 rounded-2xl whitespace-normal hover:scale-[1.02] hover:border-[#F4A21A]/50 transition-all border-stone-200/80 dark:border-stone-800/80 shadow-xs bg-stone-50/50 dark:bg-stone-900/30" 
                             onClick={() => handleSendMessage(suggestion.text)}
                         >
                             <div className="flex items-center gap-3.5 w-full">
-                                <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 shrink-0">
+                                <div className="p-2.5 rounded-xl bg-amber-500/10 text-[#F4A21A] shrink-0">
                                     {suggestion.icon}
                                 </div>
-                                <span className="text-sm font-medium leading-normal text-foreground/90 whitespace-normal break-words flex-1">
+                                <span className="text-sm font-medium leading-normal text-stone-800 dark:text-stone-200 whitespace-normal break-words flex-1">
                                     {suggestion.text}
                                 </span>
                             </div>
@@ -237,9 +241,9 @@ export default function ChatInterface() {
             {messages.map((message, index) => (
                 <div key={index} className={cn('flex items-start gap-3', message.role === 'user' ? 'justify-end' : 'justify-start')}>
                 {message.role === 'assistant' && (
-                    <Avatar className="h-8 w-8 hover:scale-110 transition-transform"><ChutkiIcon className="h-full w-full" /></Avatar>
+                    <CookMitraLogo width={32} height={32} className="w-8 h-8 rounded-full shrink-0" />
                 )}
-                <div className={cn('max-w-md rounded-2xl p-3 text-sm transition-all', message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none shadow-md' : 'bg-muted dark:bg-card border rounded-bl-none shadow-sm')}>
+                <div className={cn('max-w-md rounded-2xl p-4 text-sm transition-all', message.role === 'user' ? 'bg-[#F4A21A] text-white font-medium shadow-md shadow-amber-500/20 rounded-br-none' : 'bg-stone-100/80 dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800/80 rounded-bl-none shadow-xs text-stone-900 dark:text-stone-100')}>
                     {message.role === 'assistant' ? <StructuredResponse text={message.content} /> : message.content}
                     {message.role === 'assistant' && (
                         <Button 
@@ -249,7 +253,7 @@ export default function ChatInterface() {
                               "h-7 w-7 mt-2 -ml-1 transition-all rounded-full",
                               isSpeaking && speakingMessageIndex === index 
                                 ? "text-red-500 hover:text-red-600 bg-red-500/10 hover:bg-red-500/20" 
-                                : "text-muted-foreground hover:text-primary"
+                                : "text-stone-400 hover:text-[#F4A21A]"
                             )} 
                             onClick={() => toggleSpeech(index, message.content)}
                             title={isSpeaking && speakingMessageIndex === index ? "Mute audio response" : "Read aloud response"}
@@ -264,42 +268,42 @@ export default function ChatInterface() {
                 </div>
                 {message.role === 'user' && (
                     <Avatar className="h-8 w-8 hover:scale-110 transition-transform">
-                        <AvatarFallback className="bg-zinc-200 dark:bg-zinc-800">{userInitial.toUpperCase()}</AvatarFallback>
+                        <AvatarFallback className="bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 font-bold">{userInitial.toUpperCase()}</AvatarFallback>
                     </Avatar>
                 )}
                 </div>
             ))}
             {isLoading && (
                 <div className="flex items-start gap-3 justify-start animate-in fade-in duration-300">
-                    <Avatar className="h-8 w-8 animate-pulse shrink-0"><ChutkiIcon className="h-full w-full" /></Avatar>
-                    <div className="rounded-2xl p-4 text-sm bg-muted/80 dark:bg-card border border-stone-200/80 dark:border-stone-800/80 rounded-bl-none shadow-sm space-y-2.5 max-w-sm w-full">
+                    <CookMitraLogo width={32} height={32} className="w-8 h-8 rounded-full shrink-0 animate-pulse" />
+                    <div className="rounded-2xl p-4 text-sm bg-stone-100/80 dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800/80 rounded-bl-none shadow-xs space-y-2.5 max-w-sm w-full">
                         <div className="flex items-center gap-2 mb-1">
-                            <Loader2 className="h-4 w-4 animate-spin text-primary shrink-0" />
-                            <span className="text-xs font-bold text-primary animate-pulse">{t('chat.thinking')}</span>
+                            <Loader2 className="h-4 w-4 animate-spin text-[#F4A21A] shrink-0" />
+                            <span className="text-xs font-bold text-[#F4A21A] animate-pulse">{t('chat.thinking')}</span>
                         </div>
-                        <div className="h-3 w-4/5 rounded bg-muted/70 animate-pulse" />
-                        <div className="h-3 w-full rounded bg-muted/50 animate-pulse" />
-                        <div className="h-3 w-3/5 rounded bg-muted/40 animate-pulse" />
+                        <div className="h-3 w-4/5 rounded bg-stone-200/70 dark:bg-stone-800/70 animate-pulse" />
+                        <div className="h-3 w-full rounded bg-stone-200/50 dark:bg-stone-800/50 animate-pulse" />
+                        <div className="h-3 w-3/5 rounded bg-stone-200/40 dark:bg-stone-800/40 animate-pulse" />
                     </div>
                 </div>
             )}
             </div>
         </ScrollArea>
-        <div className="p-4 border-t bg-background/50 backdrop-blur-sm">
-            <div className="relative max-w-5xl mx-auto">
+        <div className="p-4 border-t border-stone-200/80 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-900/40 backdrop-blur-sm">
+            <div className="relative max-w-4xl mx-auto flex items-center">
                 <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(input)}
                     placeholder={isListening ? "Listening..." : t('chat.placeholder')}
-                    className="h-12 pr-24 rounded-xl"
+                    className="h-14 pr-28 rounded-full bg-card border border-stone-200/80 dark:border-stone-800/80 shadow-xs pl-6 text-sm focus-visible:ring-2 focus-visible:ring-[#F4A21A]"
                 />
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                    <Button type="button" size="icon" variant={isListening ? "destructive" : "ghost"} onClick={handleVoiceInput} className="hover:scale-110 transition-transform">
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
+                    <Button type="button" size="icon" variant={isListening ? "destructive" : "ghost"} onClick={handleVoiceInput} className="h-10 w-10 rounded-full hover:scale-105 transition-transform">
                         <Mic className="h-5 w-5" />
                     </Button>
-                    <Button type="submit" size="icon" onClick={() => handleSendMessage(input)} disabled={isLoading || !input.trim()} className="hover:scale-110 transition-transform">
-                        <Send className="h-5 w-5" />
+                    <Button type="submit" size="icon" onClick={() => handleSendMessage(input)} disabled={isLoading || !input.trim()} className="h-10 w-10 rounded-full bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-md shadow-amber-500/25 border-0 transition-transform active:scale-95 flex items-center justify-center">
+                        <Send className="h-4 w-4" />
                     </Button>
                 </div>
             </div>

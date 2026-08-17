@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ChefHat, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { RecipeDnaLoader } from "@/components/recipes/recipe-dna-loader";
+import { CookMitraLogo } from "@/components/icons/cook-mitra-logo";
 
 const SUCCESS_SOUND_URL = 'https://cdn.pixabay.com/audio/2021/08/04/audio_0625c1539c.mp3';
 
@@ -121,19 +122,19 @@ export default function RecipeGenerator() {
         )}
         
         {!recipeState.data && !recipeState.loading && (
-          <div className="flex flex-col items-center h-full min-h-[400px] pb-24">
-            <Card className="flex items-center justify-center w-full max-w-3xl py-20 border-dashed border-2 bg-card/30 border-border/60 rounded-[3rem]">
+          <div className="flex flex-col items-center h-full min-h-[460px] pb-24">
+            <Card className="flex items-center justify-center w-full py-16 sm:py-24 border-dashed border-2 border-stone-200 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-900/30 rounded-[2.5rem] shadow-xs">
               <CardContent className="p-0">
-                <div className="text-center text-muted-foreground space-y-6">
+                <div className="text-center space-y-6 px-6">
                     <div className="flex justify-center">
-                        <div className="bg-muted/50 rounded-[2.5rem] p-8 relative">
-                           <ChefHat className="h-20 w-20 text-muted-foreground opacity-40" />
-                           <Sparkles className="h-8 w-8 text-primary absolute -top-2 -right-2 animate-pulse" />
+                        <div className="relative">
+                           <CookMitraLogo width={110} height={110} className="w-28 h-28" />
+                           <Sparkles className="h-7 w-7 text-[#F4A21A] absolute -top-2 -right-2 animate-pulse" />
                         </div>
                     </div>
                   <div className="space-y-2">
-                    <h3 className="font-headline text-3xl font-medium text-foreground/80">Your recipe will appear here</h3>
-                    <p className="text-lg max-w-xs mx-auto font-medium">Fill out the form to get started!</p>
+                    <h3 className="font-headline text-2xl sm:text-3xl font-semibold text-stone-900 dark:text-stone-100">Your AI Recipe Will Appear Here</h3>
+                    <p className="text-stone-500 text-sm sm:text-base max-w-sm mx-auto font-normal">Select your ingredients or budget on the left to generate an AI-crafted recipe!</p>
                   </div>
                 </div>
               </CardContent>

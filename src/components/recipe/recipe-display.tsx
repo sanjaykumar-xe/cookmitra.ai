@@ -45,30 +45,30 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
   const steps = recipe.steps || [];
 
   return (
-    <Card className="w-full shadow-2xl rounded-[3rem] glass-card overflow-hidden relative border-primary/20">
-      <div className="h-2.5 bg-primary w-full shadow-[0_0_15px_rgba(244,162,26,0.3)]" />
-      <CardHeader className="px-8 md:px-12 pt-10">
+    <Card className="w-full rounded-[2.5rem] bg-card/80 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 shadow-xs overflow-hidden relative">
+      <div className="h-2 bg-[#F4A21A] w-full" />
+      <CardHeader className="px-6 sm:px-10 pt-8">
         <div className="flex flex-col md:flex-row justify-between items-start gap-6">
-          <div className="space-y-4 flex-1">
-            <div className="flex items-center gap-2 text-primary uppercase tracking-[0.2em] text-[10px] font-black">
+          <div className="space-y-3 flex-1">
+            <div className="flex items-center gap-2 text-[#F4A21A] uppercase tracking-wider text-[11px] font-bold">
                 <BadgeCheck className="h-4 w-4" /> 
                 AI Crafted Recipe
             </div>
-            <CardTitle className="font-headline text-4xl md:text-6xl tracking-tight">{displayName}</CardTitle>
-            <div className="flex flex-wrap gap-6 text-sm font-bold text-muted-foreground">
+            <CardTitle className="font-headline text-3xl sm:text-5xl font-semibold tracking-tight text-stone-900 dark:text-stone-100">{displayName}</CardTitle>
+            <div className="flex flex-wrap gap-6 text-sm font-semibold text-stone-500">
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-primary" /> 
+                <Clock className="h-4 w-4 text-[#F4A21A]" /> 
                 {displayTime}m
               </div>
               <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-primary" /> 
+                <Star className="h-4 w-4 text-[#F4A21A]" /> 
                 {displayLevel}
               </div>
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-primary" /> 
+                <Users className="h-4 w-4 text-[#F4A21A]" /> 
                 {displayServings}
               </div>
-              <div className="flex items-center gap-2 text-primary font-black">
+              <div className="flex items-center gap-2 text-[#F4A21A] font-bold">
                 <RupeeIcon className="h-4 w-4" /> 
                 ₹{displayCost}
               </div>
