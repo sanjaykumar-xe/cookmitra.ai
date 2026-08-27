@@ -54,7 +54,7 @@ export default function HealthyFoodsPage() {
     <div className="container max-w-7xl mx-auto py-8 md:py-12 px-4 md:px-6">
       <div className="w-full">
         <div className="text-center mb-8 md:mb-12">
-          <h1 className="font-headline text-4xl md:text-5xl font-bold flex items-center justify-center gap-3 text-primary"><Leaf className="h-10 w-10"/>Healthy Foods</h1>
+          <h1 className="font-headline text-4xl md:text-5xl font-bold flex items-center justify-center gap-3 text-stone-900 dark:text-stone-100"><Leaf className="h-10 w-10 text-primary"/>Healthy Foods</h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore a catalog of nutritious foods to incorporate into your diet.
           </p>

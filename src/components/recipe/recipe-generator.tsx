@@ -127,14 +127,13 @@ export default function RecipeGenerator() {
               <CardContent className="p-0">
                 <div className="text-center space-y-6 px-6">
                     <div className="flex justify-center">
-                        <div className="relative">
-                           <CookMitraLogo width={110} height={110} className="w-28 h-28" />
-                           <Sparkles className="h-7 w-7 text-[#F4A21A] absolute -top-2 -right-2 animate-pulse" />
+                        <div className="bg-[#F4A21A]/10 p-5 rounded-2xl text-primary flex items-center justify-center">
+                           <ChefHat className="w-16 h-16 text-[#F4A21A]" />
                         </div>
                     </div>
                   <div className="space-y-2">
-                    <h3 className="font-headline text-2xl sm:text-3xl font-semibold text-stone-900 dark:text-stone-100">Your AI Recipe Will Appear Here</h3>
-                    <p className="text-stone-500 text-sm sm:text-base max-w-sm mx-auto font-normal">Select your ingredients or budget on the left to generate an AI-crafted recipe!</p>
+                    <h3 className="font-headline text-2xl sm:text-3xl font-semibold text-stone-900 dark:text-stone-100">Your Recipe Will Appear Here</h3>
+                    <p className="text-stone-500 text-sm sm:text-base max-w-sm mx-auto font-normal">Select your ingredients or budget on the left to generate an instant recipe!</p>
                   </div>
                 </div>
               </CardContent>

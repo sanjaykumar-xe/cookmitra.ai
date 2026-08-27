@@ -95,7 +95,7 @@ export default function IngredientsPage() {
     <div className="content-container py-8 md:py-12 px-4">
       <div className="w-full pb-32">
         <div className="text-center mb-10">
-          <h1 className="font-headline text-fluid-h1 font-medium text-primary tracking-tight">Ingredient Catalog</h1>
+          <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100">Ingredient Catalog</h1>
           <p className="mt-4 text-fluid-subtitle font-medium text-muted-foreground max-w-2xl mx-auto opacity-80">
             Browse our complete collection of ingredients with prices. Use recipe details to buy anything you need!
           </p>

@@ -84,7 +84,7 @@ export default function MyRecipesPage() {
 
   return (
     <div className="content-container py-8 md:py-12 px-4">
-      <h1 className="font-headline text-fluid-h1 mb-10 text-primary font-medium tracking-tight">My Saved Recipes</h1>
+      <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100 mb-10">My Saved Recipes</h1>
 
       {recipes && recipes.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-fluid-grid">

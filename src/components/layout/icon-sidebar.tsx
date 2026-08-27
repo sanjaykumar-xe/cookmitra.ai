@@ -96,8 +96,8 @@ export function IconSidebar() {
   const mainNavLinks = [
       { href: homeHref, label: 'Home', icon: Home },
       { href: "/recipes", label: 'Recipes Explorer', icon: Utensils },
-      { href: "/ai-recipes", label: 'Generate a Recipe', icon: Plus },
-      { href: "/ai-chat", label: 'Chef Momo AI', icon: MessageSquare },
+      { href: "/ai-recipes", label: 'Recipe Generator', icon: Plus },
+      { href: "/ai-chat", label: 'Chef Momo', icon: MessageSquare },
       { href: "/healthy-meal-planner", label: 'Plan My Week', icon: CalendarDays },
       { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
       { href: "/pantry", label: "My Pantry", icon: ShoppingBasket },
@@ -107,7 +107,7 @@ export function IconSidebar() {
   ];
 
   return (
-    <aside className="fixed top-0 left-0 h-full w-16 bg-background flex flex-col items-center justify-between py-3 border-r z-[60] animate-in fade-in slide-in-from-left duration-500">
+    <aside className="fixed top-0 left-0 h-full w-16 bg-background flex flex-col items-center justify-between py-3 border-r z-30 animate-in fade-in slide-in-from-left duration-500">
       <div className="flex flex-col items-center gap-y-4">
         <Sheet>
           <Tooltip>

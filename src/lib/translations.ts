@@ -8,10 +8,10 @@ export const translations = {
     // Navigation
     'nav.home': 'Home',
     'nav.recipes': 'Recipes',
-    'nav.aiRecipes': 'AI Recipes',
+    'nav.aiRecipes': 'Recipe Generator',
     'nav.mealPlanner': 'Meal Planner',
     'nav.pantry': 'My Pantry',
-    'nav.aiAssistant': 'AI Assistant',
+    'nav.aiAssistant': 'Chef Momo',
     'nav.community': 'Community',
     'nav.saved': 'Saved Recipes',
     'nav.settings': 'Settings',
@@ -78,8 +78,8 @@ export const translations = {
     'recipe.next': 'Next',
     'recipe.done': 'Delicious! Your meal is ready.',
 
-    // AI Generator
-    'generator.title': 'AI Recipe Generator',
+    // Recipe Generator
+    'generator.title': 'Recipe Generator',
     'generator.formTitle': 'Create Your Recipe',
     'generator.ingredientsLabel': 'Available Ingredients',
     'generator.budgetLabel': 'Budget (INR)',
@@ -92,7 +92,7 @@ export const translations = {
     'generator.loading': 'Crafting your recipe...',
 
     // Meal Planner
-    'planner.title': 'Healthy Meal Planner',
+    'planner.title': 'Meal Planner',
     'planner.subtitle': 'Plan your weekly nutrition with AI-crafted Indian meals.',
     'planner.age': 'Age Range',
     'planner.activity': 'Activity',

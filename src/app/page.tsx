@@ -5,14 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { 
     ArrowRight, 
     HeartPulse, 
     MessageSquare, 
     UtensilsCrossed, 
     Library,
-    Sparkles,
     ShoppingCart,
     Loader2,
     Check,
@@ -98,19 +96,21 @@ function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-
     >
       <div className={cn("flip-card-inner h-full w-full", isFlipped && "is-flipped")}>
         <div className="flip-card-front h-full w-full">
-          <Card className="h-full flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-card border-[#F0E8D8] dark:border-primary/15 shadow-sm">
-            <div className={cn("p-2.5 rounded-xl w-fit mb-4 shadow-inner", iconTint)}>
-              {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
+          <Card className="h-full p-6 flex flex-col items-center justify-center text-center border-border hover:border-primary/45 transition-all shadow-xs group cursor-pointer bg-card/60 backdrop-blur-xs">
+            <div className="flex flex-col items-center">
+              <div className={cn("p-3 rounded-2xl w-fit mb-3 transition-transform group-hover:scale-110 duration-300", iconTint)}>
+                {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
+              </div>
+              <CardTitle className="font-headline text-lg font-bold tracking-tight mb-2 group-hover:text-primary transition-colors">{title}</CardTitle>
+              <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">{description}</p>
             </div>
-            <CardTitle className="font-headline text-xl font-bold tracking-tight">{title}</CardTitle>
           </Card>
         </div>
         <div className="flip-card-back h-full w-full">
-          <Card className="h-full flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-[#FEF3DC] dark:bg-[#2D1F08] border-primary/20 shadow-xl">
-            <div className="text-[#854F0B] dark:text-[#FAC775] mb-4">
-              {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-8 w-8" })}
-            </div>
-            <p className="text-[#854F0B] dark:text-[#FAC775] text-fluid-subtitle font-medium leading-relaxed px-4">{benefit}</p>
+          <Card className="h-full p-6 flex flex-col items-center justify-center text-center border-primary/40 bg-gradient-to-br from-primary/10 via-card to-card shadow-md">
+            <p className="text-xs sm:text-sm font-medium text-foreground/90 leading-relaxed max-w-[240px] mx-auto">
+              {benefit}
+            </p>
           </Card>
         </div>
       </div>
@@ -118,26 +118,28 @@ function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-
   );
 }
 
-function PersonaCard({ title, description, icon }: { title: string, description: string, icon: React.ReactElement }) {
+function PersonaCard({ title, icon, description }: { title: string; icon: React.ReactElement; description: string }) {
     return (
-        <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } }} className="h-full">
-            <Card className="h-full flex flex-col p-8 rounded-3xl bg-card border border-border/80 hover:border-primary/40 transition-all duration-300 hover:shadow-xl shadow-sm">
-                <div className="bg-primary/10 text-primary p-3 rounded-2xl w-fit mb-6 shadow-inner">
-                    {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
+        <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
+            <Card className="h-full p-6 text-center border-primary/10 hover:border-primary/30 transition-all hover:shadow-lg glass-card flex flex-col items-center justify-start group">
+                <div className="bg-primary/10 text-primary p-4 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {React.cloneElement(icon, { className: "h-7 w-7" })}
                 </div>
-                <CardTitle className="font-headline text-2xl font-bold tracking-tight mb-4">{title}</CardTitle>
-                <p className="text-muted-foreground text-fluid-subtitle font-medium leading-relaxed">{description}</p>
+                <h3 className="font-headline text-lg font-bold mb-2 text-foreground">{title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
             </Card>
         </motion.div>
-    );
+    )
 }
 
 function ComparisonSection() {
     const comparisonRows = [
-        { label: "Personalized to YOUR pantry", generic: false, blogs: false, cookmitra: true },
-        { label: "Authentic Indian regional depth", generic: "Limited", blogs: "Varies", cookmitra: "Yes (934 recipes)" },
-        { label: "Hands-free voice cooking guidance", generic: false, blogs: false, cookmitra: true },
-        { label: "AI recipe generation from ingredients", generic: "Rare", blogs: false, cookmitra: true },
+        { label: "Generates recipes strictly from what's in your pantry", generic: false, blogs: false, cookmitra: true },
+        { label: "Authentic regional Indian cuisines (Tamil, Bengali, etc.)", generic: "Limited", blogs: "Varies", cookmitra: true },
+        { label: "Estimated costs & single-click missing ingredient links", generic: false, blogs: false, cookmitra: true },
+        { label: "Hands-free voice Cook Mode with built-in timers", generic: false, blogs: false, cookmitra: true },
+        { label: "Personalized 7-day meal planning with budget caps", generic: false, blogs: false, cookmitra: true },
+        { label: "Recipe generation from pantry ingredients", generic: "Rare", blogs: false, cookmitra: true },
         { label: "Health-condition based food guidance", generic: false, blogs: false, cookmitra: true },
         { label: "Instant grocery links for missing items", generic: false, blogs: false, cookmitra: true },
     ];
@@ -150,27 +152,31 @@ function ComparisonSection() {
     return (
         <section className="py-20 md:py-28 bg-background relative overflow-hidden">
             <div className="container max-w-6xl mx-auto px-6">
-                <div className="text-center mb-12 md:mb-16 space-y-4">
+                <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 space-y-4">
                     <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight">Why CookMitra?</h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">Not just another recipe app.</p>
                 </div>
-                <div className="overflow-x-auto pb-4 custom-scrollbar">
-                    <table className="w-full min-w-[700px] border-separate border-spacing-0 rounded-2xl overflow-hidden shadow-sm border border-border/60">
+                <div className="overflow-x-auto pt-4 pb-4 custom-scrollbar">
+                    <table className="w-full min-w-[700px] border-separate border-spacing-0 rounded-2xl shadow-sm border border-border/60">
                         <thead>
                             <tr className="bg-muted/40">
                                 <th className="p-6 text-left border-b border-border/60"></th>
                                 <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">Generic Recipe Apps</th>
                                 <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">Cooking Blogs</th>
-                                <th className="p-6 text-center relative border-x border-t border-primary/30 bg-primary/10 rounded-t-[2rem]">
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"><Badge className="bg-primary text-[#412402] font-black uppercase tracking-widest text-[10px] py-1 px-3 shadow-md whitespace-nowrap">That's Us</Badge></div>
-                                    <span className="font-headline text-2xl font-bold text-primary">CookMitra AI</span>
+                                <th className="pt-6 pb-5 px-6 text-center relative border-x border-t border-primary/30 bg-primary/10 rounded-t-[2rem]">
+                                    <div className="flex flex-col items-center justify-center mb-1.5">
+                                        <Badge className="bg-primary text-[#412402] font-black uppercase tracking-widest text-[10px] py-1 px-3 shadow-md whitespace-nowrap border-0">
+                                            That&apos;s Us
+                                        </Badge>
+                                    </div>
+                                    <span className="font-headline text-2xl font-bold text-primary block">CookMitra</span>
                                 </th>
                             </tr>
                         </thead>
                         <motion.tbody initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.1 } } }}>
                             {comparisonRows.map((row, i) => (
                                 <motion.tr key={i} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="group">
-                                    <td className={cn("p-6 text-left border-b border-border/60 font-bold text-base transition-colors group-hover:text-primary", i === comparisonRows.length - 1 && "border-b-0")}>{row.label}</td>
+                                    <td className={cn("p-6 text-left border-b border-border/60 font-semibold text-base text-foreground transition-colors group-hover:text-primary", i === comparisonRows.length - 1 && "border-b-0")}>{row.label}</td>
                                     <td className={cn("p-6 text-center border-b border-border/60", i === comparisonRows.length - 1 && "border-b-0")}>{renderCell(row.generic)}</td>
                                     <td className={cn("p-6 text-center border-b border-border/60", i === comparisonRows.length - 1 && "border-b-0")}>{renderCell(row.blogs)}</td>
                                     <td className={cn("p-6 text-center border-x bg-primary/5 border-primary/20", i === comparisonRows.length - 1 ? "border-b rounded-b-[2rem]" : "border-b border-primary/10")}>{renderCell(row.cookmitra, true)}</td>
@@ -187,21 +193,19 @@ function ComparisonSection() {
 export default function Home() {
   const { user, isUserLoading } = useUser();
   const router = useRouter();
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero');
 
   useEffect(() => {
     if (!isUserLoading && user) { router.push('/home'); }
   }, [user, isUserLoading, router]);
 
-  const headline = "Turn Your Ingredients Into Delicious Recipes";
-  const words = headline.split(" ");
+  const words = ["Turn", "Your", "Ingredients", "Into", "Delicious", "Recipes"];
 
   const services = [
-    { icon: <Sparkles />, title: "AI Recommendation", description: "Advanced AI analyzes your ingredients instantly.", benefit: "Get recipe suggestions tailored to exactly what's in your pantry right now", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
+    { icon: <ChefHat />, title: "Recipe Generator", description: "Advanced algorithm analyzes your ingredients instantly.", benefit: "Get recipe suggestions tailored to exactly what's in your pantry right now", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
     { icon: <UtensilsCrossed />, title: "Ingredient Mapping", description: "Smart mapping system for authentic taste.", benefit: "Understands ingredient relationships so your dish tastes authentically Indian", iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
     { icon: <ShoppingCart />, title: "Grocery Integration", description: "One-click links to major retailers.", benefit: "Buy missing ingredients from Zepto, Swiggy, Blinkit etc... directly through the app", iconTint: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400" },
     { id: 'healing', icon: <HeartPulse />, title: "Healing Foods", description: "Food as medicine approach for specific conditions.", benefit: "Discover ingredients and meals tailored to support specific health conditions based on traditional wisdom", iconTint: "bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400" },
-    { icon: <MessageSquare />, title: "Chef Momo AI", description: "Interactive real-time cooking guidance.", benefit: "Ask Chef Momo anything — substitutions, timers, tips — hands-free while you cook", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
+    { icon: <MessageSquare />, title: "Chef Momo", description: "Interactive real-time cooking guidance.", benefit: "Ask Chef Momo anything — substitutions, timers, tips — hands-free while you cook", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
     { icon: <Library />, title: "Curated Library", description: "Hundreds of authentic regional recipes.", benefit: "Hundreds of authentic regional Indian recipes, hand-curated and ready to cook", iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
   ];
 
@@ -216,25 +220,31 @@ export default function Home() {
   return (
     <div className="bg-background overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative w-full h-[85vh] max-h-[750px] min-h-[550px] flex items-center justify-center overflow-hidden bg-zinc-950 p-0 m-0">
-          <div className="absolute inset-0 z-10 bg-black/60" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%)' }} />
-          <motion.div initial={{ scale: 1 }} animate={{ scale: 1.08 }} transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            {heroImage && (
-                <Image src={heroImage.imageUrl} alt={heroImage.description} fill sizes="100vw" className="object-cover object-center w-full h-full" priority={true} data-ai-hint={heroImage.imageHint} />
-            )}
+        <section className="relative w-full h-[85vh] max-h-[750px] min-h-[550px] flex items-center justify-start overflow-hidden bg-zinc-950 p-0 m-0">
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-stone-950/90 via-stone-950/65 to-transparent" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-950/40 via-transparent to-stone-950/30" />
+          <motion.div initial={{ scale: 1 }} animate={{ scale: 1.05 }} transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <Image 
+              src="/chef_momo_hero_bg.jpg" 
+              alt="Indian Culinary Spices & Ingredients" 
+              fill 
+              sizes="100vw" 
+              className="object-cover object-left md:object-center w-full h-full" 
+              priority={true} 
+            />
           </motion.div>
-          <div className="container mx-auto relative flex flex-col items-center justify-center text-center px-6 z-20 space-y-8">
-            <div className="space-y-6 max-w-4xl">
-                <h1 className="font-headline text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white drop-shadow-2xl leading-[1.1] flex flex-wrap justify-center">
+          <div className="container max-w-7xl mx-auto relative flex flex-col items-start justify-center text-left px-6 md:px-12 z-20 space-y-8">
+            <div className="space-y-6 max-w-2xl">
+                <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white drop-shadow-2xl leading-[1.15] flex flex-wrap justify-start text-left">
                     {words.map((word, i) => (
                         <motion.span key={i} initial={{ opacity: 0, y: 20, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }} className="inline-block mr-[0.25em] last:mr-0">{word}</motion.span>
                     ))}
                 </h1>
-                <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }} className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto text-white/80 font-medium leading-relaxed px-4">
-                  Stop wondering what to cook! Enter the ingredients you have, and let our AI suggest perfect Indian recipes with instant grocery links for anything you're missing.
+                <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }} className="text-base sm:text-lg md:text-xl text-white/90 font-medium leading-relaxed drop-shadow-md text-left">
+                  Stop wondering what to cook! Enter the ingredients you have, and let our AI suggest perfect Indian recipes with instant grocery links for anything you&apos;re missing.
                 </motion.p>
             </div>
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="flex flex-col sm:flex-row items-center gap-5 pt-4 w-full sm:w-auto">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-2 w-full sm:w-auto">
               {isUserLoading ? (
                   <Button disabled size="lg" className="h-14 px-10 rounded-full w-full sm:w-auto"><Loader2 className="mr-2 h-4 w-4 animate-spin" /></Button>
               ) : (
@@ -242,7 +252,7 @@ export default function Home() {
                       <Link href={user ? "/home" : "/signup"}>Let&apos;s Cook <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
                   </Button>
               )}
-              <Link href="/pricing" className="text-white text-sm font-medium hover:text-primary transition-all underline-offset-8 hover:underline">View Pricing</Link>
+              <Link href="/pricing" className="text-white text-sm font-medium hover:text-primary transition-all underline-offset-8 hover:underline text-center sm:text-left">View Pricing</Link>
             </motion.div>
           </div>
         </section>
@@ -289,7 +299,7 @@ export default function Home() {
                           <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl font-medium leading-tight tracking-tight">Ready to Transform Your Cooking?</h2>
                           <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }} className="absolute -bottom-2 left-0 h-[2px] bg-primary rounded-full" />
                         </div>
-                        <h3 className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed">Join thousands of home cooks who've discovered the joy of effortless meal planning.</h3>
+                        <h3 className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed">Join thousands of home cooks who&apos;ve discovered the joy of effortless meal planning.</h3>
                     </div>
                     <div className="pt-4 relative z-10 flex flex-col items-center gap-3">
                         <Button size="lg" className="h-16 px-12 text-lg font-medium rounded-full shadow-2xl shadow-primary/30 transition-all btn-primary-gradient border-0 w-full sm:w-auto" asChild>

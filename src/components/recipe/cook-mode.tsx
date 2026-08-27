@@ -28,7 +28,8 @@ import {
     Bookmark,
     RefreshCw,
     UtensilsCrossed,
-    CookingPot
+    CookingPot,
+    Printer
 } from 'lucide-react';
 import Link from 'next/link';
 import { Switch } from '@/components/ui/switch';
@@ -647,36 +648,101 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
     }
 
     return (
-        <div className="max-w-4xl mx-auto pb-32">
-            {/* TOP HEADER & PROGRESS CARD */}
-            <Card className="mb-6 p-5 rounded-[2rem] border border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm shadow-xs">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative">
-                    <span className="font-bold uppercase tracking-wider text-[11px] text-stone-500 dark:text-stone-400">
-                        Progress: Step {currentStep + 1} of {stepCount}
-                    </span>
-                    
-                    <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2">
-                            <Label htmlFor="voice-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Voice</Label>
-                            <Switch id="voice-toggle" checked={isVoiceOn} onCheckedChange={setIsVoiceOn} className="scale-75" />
+        <>
+            {/* PRINT-ONLY RECIPE VIEW */}
+            <div className="hidden print:block print:w-full print:p-0 print:m-0 font-sans text-black bg-white">
+                <div className="space-y-6 max-w-3xl mx-auto py-2">
+                    <div className="border-b border-stone-300 pb-3">
+                        <h1 className="text-3xl font-bold text-black tracking-tight mb-2">
+                            {recipe.name}
+                        </h1>
+                        <div className="flex items-center gap-4 text-sm text-stone-700 font-medium">
+                            <span><strong>Total Time:</strong> {recipe.time} mins</span>
+                            <span>&bull;</span>
+                            <span><strong>Servings:</strong> {recipe.servings} Serves</span>
+                            {recipe.type && (
+                                <>
+                                    <span>&bull;</span>
+                                    <span><strong>Diet:</strong> {recipe.type}</span>
+                                </>
+                            )}
                         </div>
-                        <div className="flex items-center gap-2">
-                            <Label htmlFor="hf-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Hands-Free</Label>
-                            <Switch id="hf-toggle" checked={isHandsFreeOn} onCheckedChange={setIsHandsFreeOn} className="scale-75" />
-                        </div>
-                        <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            className={cn(
-                              "h-8 w-8 rounded-full transition-colors",
-                              isSpeakingStep ? "text-rose-500 hover:text-rose-600 bg-rose-500/10" : "text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10"
-                            )} 
-                            onClick={() => toggleSpeakingStep(steps[currentStep])}
-                            title={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
-                        >
-                            {isSpeakingStep ? <VolumeX className="h-4 w-4 text-rose-500 animate-pulse" /> : <Volume2 className="h-4 w-4" />}
-                        </Button>
                     </div>
+
+                    {recipe.ingredients && recipe.ingredients.length > 0 && (
+                        <div className="space-y-2">
+                            <h2 className="text-base font-bold text-black border-b border-stone-300 pb-1 uppercase tracking-wider">
+                                Ingredients ({recipe.ingredients.length})
+                            </h2>
+                            <ul className="grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-black list-disc pl-5">
+                                {recipe.ingredients.map((ing, idx) => (
+                                    <li key={idx} className="text-black">
+                                        <span className="font-semibold">{ing.name}</span>
+                                        {ing.qty ? <span className="text-stone-600"> — {ing.qty}</span> : ''}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {steps && steps.length > 0 && (
+                        <div className="space-y-3 pt-2">
+                            <h2 className="text-base font-bold text-black border-b border-stone-300 pb-1 uppercase tracking-wider">
+                                Instructions ({steps.length} Steps)
+                            </h2>
+                            <ol className="space-y-3 text-sm text-black list-decimal pl-5">
+                                {steps.map((step, idx) => (
+                                    <li key={idx} className="text-black leading-relaxed pl-1">
+                                        {step}
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* SCREEN-ONLY INTERACTIVE COOK MODE */}
+            <div className="max-w-4xl mx-auto pb-32 print:hidden">
+                {/* TOP HEADER & PROGRESS CARD */}
+                <Card className="mb-6 p-5 rounded-[2rem] border border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm shadow-xs">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative">
+                        <span className="font-bold uppercase tracking-wider text-[11px] text-stone-500 dark:text-stone-400">
+                            Progress: Step {currentStep + 1} of {stepCount}
+                        </span>
+                        
+                        <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2">
+                                <Label htmlFor="voice-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Voice</Label>
+                                <Switch id="voice-toggle" checked={isVoiceOn} onCheckedChange={setIsVoiceOn} className="scale-75" />
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Label htmlFor="hf-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Hands-Free</Label>
+                                <Switch id="hf-toggle" checked={isHandsFreeOn} onCheckedChange={setIsHandsFreeOn} className="scale-75" />
+                            </div>
+                            <Button 
+                                variant="ghost" 
+                                size="icon" 
+                                className={cn(
+                                  "h-8 w-8 rounded-full transition-colors",
+                                  isSpeakingStep ? "text-rose-500 hover:text-rose-600 bg-rose-500/10" : "text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10"
+                                )} 
+                                onClick={() => toggleSpeakingStep(steps[currentStep])}
+                                title={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
+                            >
+                                {isSpeakingStep ? <VolumeX className="h-4 w-4 text-rose-500 animate-pulse" /> : <Volume2 className="h-4 w-4" />}
+                            </Button>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8 rounded-full text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10 transition-colors"
+                                onClick={() => window.print()}
+                                title="Print Recipe"
+                                aria-label="Print Recipe"
+                            >
+                                <Printer className="h-4 w-4" strokeWidth={1.75} />
+                            </Button>
+                        </div>
 
                     <div className="flex items-center gap-4 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
                         <div className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-amber-500" /> {recipe.time} min</div>
@@ -776,5 +842,6 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                 </div>
             </div>
         </div>
-    );
+    </>
+);
 }

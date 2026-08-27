@@ -31,6 +31,67 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
+/**
+ * Extracts clean English display name by removing parenthetical vernacular text.
+ * e.g., "Turmeric (Haldi)" -> "Turmeric", "Chicken (Murgh)" -> "Chicken"
+ */
+function getDisplayName(fullName: string): string {
+  return fullName.replace(/\s*\([^)]*\)/, '').trim();
+}
+
+/**
+ * Extracts searchable name tokens from an ingredient profile (English name, Hindi name, ID).
+ * Keeps underlying vernacular parenthetical data intact for recipe matching.
+ */
+function getSearchTerms(item: IngredientProfile): string[] {
+  const terms = new Set<string>();
+  
+  // 1. item.id normalized (replace _ with space)
+  terms.add(item.id.replace(/_/g, ' ').toLowerCase());
+  
+  // 2. item.name full
+  const nameLower = item.name.toLowerCase();
+  terms.add(nameLower);
+  
+  // 3. Extract main English & Hindi names from parenthetical e.g. "Turmeric (Haldi)" -> "turmeric", "haldi"
+  const match = nameLower.match(/^([^(]+)(?:\(([^)]+)\))?/);
+  if (match) {
+    const mainName = match[1].trim();
+    if (mainName) terms.add(mainName);
+    
+    if (match[2]) {
+      const parenParts = match[2].split(/[\/,]/);
+      parenParts.forEach(p => {
+        const trimmed = p.trim();
+        if (trimmed) terms.add(trimmed);
+      });
+    }
+  }
+  
+  return Array.from(terms).filter(t => t.length > 2);
+}
+
+/**
+ * Computes matching recipes for a given encyclopedia ingredient using canonical IDs & alias search terms.
+ */
+function getMatchingRecipes(item: IngredientProfile) {
+  const searchTerms = getSearchTerms(item);
+  return allRecipes.filter(r => {
+    return r.ingredients.some(ing => {
+      const ingName = (ing.name || '').toLowerCase();
+      const ingId = (ing.id || '').toLowerCase();
+      
+      // Match canonical ID or ID without underscores
+      if (ingId && (ingId === item.id.toLowerCase() || ingId === item.id.replace(/_/g, '').toLowerCase())) {
+        return true;
+      }
+      
+      // Match any alias search term against recipe ingredient name
+      return searchTerms.some(term => ingName.includes(term));
+    });
+  });
+}
+
 export default function EncyclopediaPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeBenefit, setActiveBenefit] = useState<string>('All');
@@ -44,17 +105,11 @@ export default function EncyclopediaPage() {
     });
   }, [searchTerm, activeBenefit]);
 
-  const getRecipeUsage = (ingredientId: string) => {
-    return allRecipes.filter(r => 
-        r.ingredients.some(ing => ing.id === ingredientId || ing.name.toLowerCase().includes(ingredientId))
-    );
-  };
-
   return (
     <div className="content-container py-12 px-4 md:px-8">
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
-        <div className="inline-flex items-center gap-2 bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 bg-primary/10 text-primary dark:bg-amber-500/20 dark:text-amber-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
             <BookOpen className="h-4 w-4" />
             Culinary Knowledge Base
         </div>
@@ -123,10 +178,8 @@ export default function EncyclopediaPage() {
                 <IngredientCard 
                     key={item.id} 
                     item={item} 
-                    usageCount={getRecipeUsage(item.id).length}
                     isExpanded={expandedId === item.id}
                     onToggle={() => setExpandedId(expandedId === item.id ? null : item.id)}
-                    matchingRecipes={getRecipeUsage(item.id)}
                 />
             ))}
         </AnimatePresence>
@@ -147,17 +200,17 @@ export default function EncyclopediaPage() {
 
 function IngredientCard({ 
     item, 
-    usageCount, 
     isExpanded, 
-    onToggle,
-    matchingRecipes
+    onToggle
 }: { 
     item: IngredientProfile, 
-    usageCount: number, 
     isExpanded: boolean, 
-    onToggle: () => void,
-    matchingRecipes: any[]
+    onToggle: () => void
 }) {
+    const matchingRecipes = useMemo(() => getMatchingRecipes(item), [item]);
+    const usageCount = matchingRecipes.length;
+    const displayName = getDisplayName(item.name);
+
     return (
         <motion.div
             layout
@@ -176,12 +229,12 @@ function IngredientCard({
                     </Badge>
                     <div className="flex items-center gap-1.5 text-muted-foreground/60 text-[10px] font-black uppercase tracking-widest">
                         <History className="h-3.5 w-3.5" />
-                        Used in {usageCount} recipes
+                        Used in {usageCount} {usageCount === 1 ? 'recipe' : 'recipes'}
                     </div>
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-headline text-3xl font-bold tracking-tight leading-none">{item.name}</h3>
+                    <h3 className="font-headline text-3xl font-bold tracking-tight leading-none">{displayName}</h3>
                     <p className={cn(
                         "text-muted-foreground font-medium leading-relaxed",
                         !isExpanded && "line-clamp-2"

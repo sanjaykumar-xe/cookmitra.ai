@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Mic, Volume2, VolumeX, Sparkles, UtensilsCrossed, Salad, Zap, Clock, Flame, Loader2 } from 'lucide-react';
+import { Send, Mic, Volume2, VolumeX, Sparkles, UtensilsCrossed, Salad, Zap, Clock, Flame, Loader2, Lightbulb } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { sendMessageToAI, type ChatMessage } from '@/app/ai-chat/actions';
 import { useToast } from '@/hooks/use-toast';
@@ -19,7 +19,7 @@ const QUICK_SUGGESTIONS = [
   { icon: <UtensilsCrossed className="h-5 w-5" />, text: 'Suggest a recipe with chicken and rice' },
   { icon: <Salad className="h-5 w-5" />, text: 'What are some healthy breakfast ideas?' },
   { icon: <Zap className="h-5 w-5" />, text: 'Give me a recipe that takes less than 20 minutes' },
-  { icon: <Sparkles className="h-5 w-5" />, text: 'How do I make my curry less spicy?' },
+  { icon: <Lightbulb className="h-5 w-5 text-[#F4A21A]" />, text: 'How do I make my curry less spicy?' },
 ];
 
 const StructuredResponse = ({ text }: { text: string }) => {

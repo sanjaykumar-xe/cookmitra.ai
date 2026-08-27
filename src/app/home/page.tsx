@@ -25,6 +25,7 @@ import TextType from '@/components/ui/text-type';
 import { SurpriseRecipeDialog } from '@/components/home/surprise-recipe-dialog';
 import { RupeeIcon } from '@/components/icons/rupee-icon';
 import { useLanguage } from '@/context/language-context';
+import { RegionalCuisineExplorer } from '@/components/home/regional-cuisine-explorer';
 
 export default function DashboardPage() {
     const { user, isUserLoading } = useUser();
@@ -233,7 +234,66 @@ export default function DashboardPage() {
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {/* Quick Dinner Tonight Shortcut Card */}
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                >
+                    <Link href="/recipes?maxTime=30&difficulty=easy">
+                        <motion.div
+                            whileHover="hover"
+                            initial="rest"
+                            animate="rest"
+                        >
+                            <Card className="bg-card/80 backdrop-blur-sm border-emerald-500/30 dark:border-emerald-800/40 hover:border-emerald-500/60 hover:shadow-emerald-500/10 hover:bg-emerald-500/5 transition-all duration-300 relative group overflow-hidden shadow-sm hover:shadow-md p-5 md:p-6 rounded-3xl">
+                                <motion.div
+                                    variants={{
+                                        rest: { y: 0 },
+                                        hover: { y: -2 }
+                                    }}
+                                    transition={interactionSpring}
+                                    className="flex items-center justify-between gap-4"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <motion.div 
+                                            variants={{
+                                                rest: { scale: 1, rotate: 0 },
+                                                hover: { scale: 1.1, rotate: 4 }
+                                            }}
+                                            transition={interactionSpring}
+                                            className="h-12 w-12 shrink-0 flex items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300 shadow-sm"
+                                        >
+                                            <Clock className="h-6 w-6 text-current" strokeWidth={1.75} />
+                                        </motion.div>
+                                        <div className="flex flex-col">
+                                            <CardTitle className="text-xl font-headline font-medium text-stone-900 dark:text-stone-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                                Quick Dinner Tonight
+                                            </CardTitle>
+                                            <CardDescription className="text-sm font-medium leading-relaxed mt-0.5 text-stone-600 dark:text-stone-300">
+                                                Ready in under 30 minutes
+                                            </CardDescription>
+                                        </div>
+                                    </div>
+                                    <motion.div
+                                        variants={{
+                                            rest: { x: 0, opacity: 0.5 },
+                                            hover: { x: 4, opacity: 1 }
+                                        }}
+                                        transition={interactionSpring}
+                                    >
+                                        <ChevronRight className="h-5 w-5 text-stone-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
+                                    </motion.div>
+                                </motion.div>
+                            </Card>
+                        </motion.div>
+                    </Link>
+                </motion.div>
             </motion.div>
+
+            <RegionalCuisineExplorer />
 
             <div className="space-y-6">
                 <div className="flex items-center justify-between">

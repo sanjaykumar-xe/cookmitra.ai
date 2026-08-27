@@ -25,8 +25,8 @@ Your task is to provide dietary guidance for the following health condition: {{{
 
 IMPORTANT RULES:
 1. Provide a short, empathetic summary of the condition and the primary dietary goal.
-2. Suggest 6-8 foods that are commonly found in an Indian kitchen that help manage or heal this condition.
-3. Suggest 4-6 foods to limit or avoid.
+2. Suggest EXACTLY 4 foods that are commonly found in an Indian kitchen that help manage or heal this condition.
+3. Suggest EXACTLY 4 foods to limit or avoid (maintaining a balanced 4:4 parity with helpful foods).
 4. Select 1-3 relevant tags from the following FIXED VOCABULARY for recipe filtering:
    - "diabetes-friendly"
    - "pcos-friendly"

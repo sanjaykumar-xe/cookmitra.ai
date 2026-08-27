@@ -1,10 +1,9 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
 import { useUser } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
-import { Loader2, Sparkles } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const ChatInterface = dynamic(() => import('@/components/ai-chat/chat-interface'), { 
@@ -51,12 +50,8 @@ export default function AiChatPage() {
   return (
     <div className="content-container pt-4 pb-12 px-4 h-[calc(100vh-5rem)] flex flex-col">
       <div className="text-center mb-6 space-y-2 shrink-0">
-        <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-700 dark:text-amber-300 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="h-4 w-4 text-[#F4A21A]" />
-            AI Culinary Companion
-        </div>
         <h1 className="font-headline text-3xl sm:text-4xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">
-            Chef Momo AI
+            Chef Momo
         </h1>
         <p className="text-stone-500 text-sm sm:text-base max-w-md mx-auto font-normal">
             Ask any cooking question, recipe modification, or ingredient substitute!

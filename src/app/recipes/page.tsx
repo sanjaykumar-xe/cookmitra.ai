@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, Suspense } from "react";
 import { useUser } from '@/lib/firebase';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { recipes as allRecipes } from "@/lib/recipes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,7 +30,8 @@ import {
     RotateCcw,
     Clock,
     Banknote,
-    ArrowDownAZ
+    ArrowDownAZ,
+    BarChart2
 } from "lucide-react";
 import { 
     IconFlame, 
@@ -49,7 +50,7 @@ import {
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { RecipeCard } from "@/components/recipe/recipe-card";
-import { IndiaRegionMap } from "@/components/recipes/india-region-map";
+import { SLUG_TO_STATE_MAP } from "@/components/recipes/india-region-map";
 import type { MenuCategory } from "@/lib/recipes/types";
 
 const moods = [
@@ -90,9 +91,10 @@ const sortOptions: { value: string; label: string; icon: React.ReactNode }[] = [
   { value: 'name_asc', label: 'Name (A to Z)', icon: <ArrowDownAZ className="h-4 w-4 text-stone-500 shrink-0" /> },
 ];
 
-export default function RecipesExplorerPage() {
+function RecipesExplorerContent() {
   const { user, isUserLoading } = useUser();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [ingredientInput, setIngredientInput] = useState("");
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
@@ -111,6 +113,40 @@ export default function RecipesExplorerPage() {
   const [sortBy, setSortBy] = useState<string>('popularity');
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
+
+  // Sync state & quick filters from URL query params (?state=, ?maxTime=, ?difficulty=)
+  const stateSlug = searchParams.get('state');
+  const maxTimeParam = searchParams.get('maxTime');
+  const difficultyParam = searchParams.get('difficulty');
+
+  useEffect(() => {
+    if (stateSlug) {
+      const slug = stateSlug.toLowerCase().trim();
+      const cfg = SLUG_TO_STATE_MAP[slug];
+      if (cfg) {
+        setSelectedRegionTag(cfg.tag);
+        setSelectedStateName(cfg.name);
+      } else {
+        const formatted = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        setSelectedRegionTag(formatted);
+        setSelectedStateName(formatted);
+      }
+    }
+
+    if (maxTimeParam) {
+      const parsedTime = parseInt(maxTimeParam, 10);
+      if (!isNaN(parsedTime)) {
+        setSelectedMaxTime(parsedTime);
+      }
+    }
+
+    if (difficultyParam) {
+      const diff = difficultyParam.toLowerCase().trim();
+      if (diff === 'easy') setSelectedDifficulty('Easy');
+      else if (diff === 'medium') setSelectedDifficulty('Medium');
+      else if (diff === 'hard') setSelectedDifficulty('Hard');
+    }
+  }, [stateSlug, maxTimeParam, difficultyParam]);
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -304,69 +340,6 @@ export default function RecipesExplorerPage() {
         <p className="text-fluid-subtitle text-stone-600 dark:text-stone-300 font-medium max-w-2xl mx-auto leading-relaxed">
           Discover authentic Indian recipes with detailed instructions, pricing, and 3D card previews.
         </p>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="space-y-6"
-      >
-        <div className="text-center">
-            <h2 className="font-headline text-2xl font-medium mb-1 flex items-center justify-center gap-2 text-stone-900 dark:text-stone-100">
-                <MapIcon className="h-6 w-6 text-[#F4A21A]" />
-                Explore by Region
-            </h2>
-            <p className="text-sm text-stone-500 dark:text-stone-400">Click a state to see regional specialties</p>
-        </div>
-        
-        <IndiaRegionMap 
-            onRegionSelect={(tag, state) => {
-                if (selectedStateName === state) {
-                    setSelectedRegionTag(null);
-                    setSelectedStateName(null);
-                } else {
-                    setSelectedRegionTag(tag);
-                    setSelectedStateName(state);
-                    scrollToResults();
-                }
-            }} 
-            selectedStateName={selectedStateName}
-        />
-
-        <AnimatePresence>
-            {selectedStateName && (
-                <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="flex justify-center"
-                >
-                    <Card className="bg-amber-500/10 border-amber-500/30 rounded-full px-6 py-3 flex items-center gap-4 shadow-sm">
-                        <div className="bg-[#F4A21A] text-white p-2 rounded-full">
-                            <MapPin className="h-4 w-4" />
-                        </div>
-                        <div>
-                            <p className="text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">Selected Region</p>
-                            <p className="font-headline font-medium text-base leading-none text-stone-900 dark:text-stone-100">{selectedStateName}</p>
-                        </div>
-                        <div className="h-8 w-px bg-amber-500/20 mx-1" />
-                        <div className="text-center">
-                            <p className="font-bold text-base text-[#F4A21A] leading-none">{allFilteredRecipes.length} recipes</p>
-                        </div>
-                        <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            className="h-7 w-7 rounded-full hover:bg-amber-500/20 text-stone-500 hover:text-stone-900 transition-colors"
-                            onClick={() => { setSelectedRegionTag(null); setSelectedStateName(null); }}
-                        >
-                            <X className="h-4 w-4" />
-                        </Button>
-                    </Card>
-                </motion.div>
-            )}
-        </AnimatePresence>
       </motion.div>
 
       <motion.div 
@@ -608,6 +581,64 @@ export default function RecipesExplorerPage() {
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
+          {selectedStateName && (
+            <Button 
+              variant="outline"
+              onClick={() => {
+                setSelectedRegionTag(null);
+                setSelectedStateName(null);
+                const params = new URLSearchParams(window.location.search);
+                params.delete('state');
+                const newUrl = params.toString() ? `/recipes?${params.toString()}` : '/recipes';
+                router.push(newUrl);
+              }}
+              className="rounded-full h-11 px-4 text-xs font-semibold border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20 gap-1.5 transition-all shadow-xs"
+            >
+              <MapPin className="h-3.5 w-3.5 text-[#F4A21A]" />
+              <span>{selectedStateName}</span>
+              <X className="h-3.5 w-3.5 ml-1 text-amber-600 dark:text-amber-400" />
+              <span className="sr-only">Clear region filter</span>
+            </Button>
+          )}
+
+          {selectedMaxTime !== null && (
+            <Button 
+              variant="outline"
+              onClick={() => {
+                setSelectedMaxTime(null);
+                const params = new URLSearchParams(window.location.search);
+                params.delete('maxTime');
+                const newUrl = params.toString() ? `/recipes?${params.toString()}` : '/recipes';
+                router.push(newUrl);
+              }}
+              className="rounded-full h-11 px-4 text-xs font-semibold border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 gap-1.5 transition-all shadow-xs"
+            >
+              <Clock className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Under {selectedMaxTime} mins</span>
+              <X className="h-3.5 w-3.5 ml-1 text-emerald-600 dark:text-emerald-400" />
+              <span className="sr-only">Clear max time filter</span>
+            </Button>
+          )}
+
+          {selectedDifficulty !== 'All' && (
+            <Button 
+              variant="outline"
+              onClick={() => {
+                setSelectedDifficulty('All');
+                const params = new URLSearchParams(window.location.search);
+                params.delete('difficulty');
+                const newUrl = params.toString() ? `/recipes?${params.toString()}` : '/recipes';
+                router.push(newUrl);
+              }}
+              className="rounded-full h-11 px-4 text-xs font-semibold border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 gap-1.5 transition-all shadow-xs"
+            >
+              <BarChart2 className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>{selectedDifficulty}</span>
+              <X className="h-3.5 w-3.5 ml-1 text-emerald-600 dark:text-emerald-400" />
+              <span className="sr-only">Clear difficulty filter</span>
+            </Button>
+          )}
+
           {/* FILTER BUTTON */}
           <Button 
             variant="outline" 
@@ -896,5 +927,17 @@ export default function RecipesExplorerPage() {
           </div>
       )}
     </div>
+  );
+}
+
+export default function RecipesExplorerPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <Loader2 className="h-8 w-8 animate-spin text-[#F4A21A]" />
+      </div>
+    }>
+      <RecipesExplorerContent />
+    </Suspense>
   );
 }

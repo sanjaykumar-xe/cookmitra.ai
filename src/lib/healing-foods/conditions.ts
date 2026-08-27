@@ -27,13 +27,13 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
       { name: "Bitter Gourd (Karela)", reason: "Contains charantin which helps lower blood glucose levels.", icon: "Leaf" },
       { name: "Fenugreek Seeds (Methi)", reason: "High in soluble fiber, which slows down carbohydrate absorption.", icon: "Zap" },
       { name: "Cinnamon", reason: "May improve insulin sensitivity and lower blood sugar.", icon: "Sparkles" },
-      { name: "Leafy Greens", reason: "Low in calories and high in nutrients like Vitamin C.", icon: "Salad" },
-      { name: "Whole Grains (Oats, Dalia)", reason: "Provide sustained energy without spiking sugar.", icon: "Wheat" }
+      { name: "Leafy Greens", reason: "Low in calories and high in nutrients like Vitamin C.", icon: "Salad" }
     ],
     foodsToAvoid: [
       { name: "Refined Sugars", reason: "Causes rapid, dangerous spikes in blood glucose." },
       { name: "White Rice & Maida", reason: "High glycemic index and very low fiber content." },
-      { name: "Sweetened Beverages", reason: "Full of empty calories and quick-acting sugars." }
+      { name: "Sweetened Beverages", reason: "Full of empty calories and quick-acting sugars." },
+      { name: "Deep Fried Snacks", reason: "High in trans fats that worsen insulin resistance." }
     ],
     healthTags: ["diabetes-friendly"]
   },
@@ -50,7 +50,8 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
     foodsToAvoid: [
       { name: "Processed Snacks", reason: "Trigger inflammation and insulin spikes." },
       { name: "Sugary Desserts", reason: "Worsen insulin resistance common in PCOS." },
-      { name: "Excessive Caffeine", reason: "Can disrupt sleep and hormonal cycles." }
+      { name: "Excessive Caffeine", reason: "Can disrupt sleep and hormonal cycles." },
+      { name: "Refined Carbohydrates", reason: "Rapidly convert to sugar, destabilizing blood glucose." }
     ],
     healthTags: ["pcos-friendly"]
   },
@@ -67,7 +68,8 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
     foodsToAvoid: [
       { name: "Pickles & Pappads", reason: "Extremely high in hidden sodium/salt." },
       { name: "Fried Foods", reason: "High in trans fats that affect cardiovascular health." },
-      { name: "Canned Soups", reason: "Often contain high levels of sodium as a preservative." }
+      { name: "Canned Soups", reason: "Often contain high levels of sodium as a preservative." },
+      { name: "Salted Processed Snacks", reason: "Strains arterial walls and increases blood pressure." }
     ],
     healthTags: ["high-bp-friendly"]
   },
@@ -83,7 +85,9 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
     ],
     foodsToAvoid: [
       { name: "Excess Tea/Coffee", reason: "Tannins can block iron absorption if taken with meals." },
-      { name: "Calcium Supplements with Meals", reason: "Calcium can compete with iron for absorption." }
+      { name: "Calcium Supplements with Meals", reason: "Calcium can compete with iron for absorption." },
+      { name: "Soda & Carbonated Drinks", reason: "Phosphates interfere with essential mineral absorption." },
+      { name: "Highly Processed Foods", reason: "Depleted of natural micronutrients and iron." }
     ],
     healthTags: ["anemia-friendly"]
   },
@@ -100,7 +104,8 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
     foodsToAvoid: [
       { name: "Trans Fats", reason: "Found in many commercial baked goods and vanaspati." },
       { name: "Excessive Red Meat", reason: "High in saturated fats that can clog arteries." },
-      { name: "Highly Salted Snacks", reason: "Strains the heart by increasing blood pressure." }
+      { name: "Highly Salted Snacks", reason: "Strains the heart by increasing blood pressure." },
+      { name: "Deep Fried Foods", reason: "Increase systemic inflammation and LDL cholesterol." }
     ],
     healthTags: ["heart-healthy"]
   },
@@ -115,9 +120,10 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
       { name: "Buttermilk (Chaas)", reason: "A cooling probiotic drink that's easy on the gut.", icon: "Droplets" }
     ],
     foodsToAvoid: [
-      { name: "Heavy Fried Foods", reason: "Difficult to break down and slow digestion.", icon: "AlertTriangle" },
-      { name: "Extremely Spicy Food", reason: "Can irritate the stomach lining.", icon: "Flame" },
-      { name: "Dairy (if lactose intolerant)", reason: "Causes bloating and discomfort for many." }
+      { name: "Heavy Fried Foods", reason: "Difficult to break down and slow digestion." },
+      { name: "Extremely Spicy Food", reason: "Can irritate the stomach lining." },
+      { name: "Dairy (if lactose intolerant)", reason: "Causes bloating and discomfort for many." },
+      { name: "Carbonated Sodas", reason: "Introduce excess gas and irritate the gut lining." }
     ],
     healthTags: ["digestive-friendly"]
   },
@@ -134,7 +140,8 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
     foodsToAvoid: [
       { name: "Sugary Drinks", reason: "Full of hidden calories and spike hunger." },
       { name: "Deep Fried Snacks", reason: "High calorie density with low nutritional value." },
-      { name: "Refined White Flour", reason: "Lacks fiber and leads to quick hunger return." }
+      { name: "Refined White Flour", reason: "Lacks fiber and leads to quick hunger return." },
+      { name: "High-Calorie Creamy Sauces", reason: "Add dense empty calories without satiety." }
     ],
     healthTags: ["weight-management"]
   },
@@ -149,8 +156,10 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
       { name: "Giloy", reason: "Renowned in Ayurveda for boosting white blood cell count.", icon: "Zap" }
     ],
     foodsToAvoid: [
-      { name: "Excess Sugar", reason: "Can suppress immune system function for hours.", icon: "AlertTriangle" },
-      { name: "Highly Processed Food", reason: "Lacks the micronutrients needed for immunity." }
+      { name: "Excess Sugar", reason: "Can suppress immune system function for hours." },
+      { name: "Highly Processed Food", reason: "Lacks the micronutrients needed for immunity." },
+      { name: "Alcohol & Smoking", reason: "Depletes vital antioxidants and weakens immune defense." },
+      { name: "Cold Sugary Drinks", reason: "Irritate upper respiratory mucosa." }
     ],
     healthTags: ["immunity-boosting"]
   },
@@ -167,7 +176,8 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
     foodsToAvoid: [
       { name: "Cold Beverages", reason: "Can worsen throat irritation and congestion." },
       { name: "Excessive Dairy", reason: "Some find it increases mucus production during colds." },
-      { name: "Fried Foods", reason: "Heavy and can irritate a sore throat." }
+      { name: "Fried Foods", reason: "Heavy and can irritate a sore throat." },
+      { name: "Refined Sugars", reason: "Increase systemic inflammation during active infection." }
     ],
     healthTags: ["cold-cough-friendly"]
   },
@@ -184,7 +194,8 @@ export const CURATED_CONDITIONS: HealthCondition[] = [
     foodsToAvoid: [
       { name: "Raw/Undercooked Eggs", reason: "Risk of Salmonella infection." },
       { name: "Unpasteurized Dairy", reason: "May contain Listeria bacteria." },
-      { name: "High-Mercury Fish", reason: "Can affect baby's developing nervous system." }
+      { name: "High-Mercury Fish", reason: "Can affect baby's developing nervous system." },
+      { name: "Excess Caffeine", reason: "Crosses the placenta and can impact fetal heart rate." }
     ],
     healthTags: ["pregnancy-friendly"]
   }
