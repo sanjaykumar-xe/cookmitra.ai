@@ -114,10 +114,21 @@ function RecipesExplorerContent() {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
 
-  // Sync state & quick filters from URL query params (?state=, ?maxTime=, ?difficulty=)
+  // Sync state & quick filters from URL query params (?state=, ?maxTime=, ?difficulty=, ?search=)
   const stateSlug = searchParams.get('state');
   const maxTimeParam = searchParams.get('maxTime');
   const difficultyParam = searchParams.get('difficulty');
+  const searchQueryParam = searchParams.get('q') || searchParams.get('search') || searchParams.get('query');
+
+  useEffect(() => {
+    if (searchQueryParam) {
+      const q = searchQueryParam.toLowerCase().trim();
+      if (q && !searchIngredients.includes(q)) {
+        setSearchIngredients([q]);
+        setSelectedIngredients([q]);
+      }
+    }
+  }, [searchQueryParam]);
 
   useEffect(() => {
     if (stateSlug) {
@@ -259,9 +270,15 @@ function RecipesExplorerContent() {
 
     if (searchIngredients.length > 0) {
       recipes = recipes.filter(recipe =>
-        searchIngredients.every(selIng =>
-          recipe.ingredients.some(recIng => recIng.name.toLowerCase().includes(selIng))
-        )
+        searchIngredients.every(term => {
+          const t = term.toLowerCase().trim();
+          if (!t) return true;
+          const matchName = recipe.name.toLowerCase().includes(t);
+          const matchIng = recipe.ingredients.some(recIng => recIng.name.toLowerCase().includes(t));
+          const matchDesc = recipe.description ? recipe.description.toLowerCase().includes(t) : false;
+          const matchTags = recipe.tags ? recipe.tags.some(tag => tag.toLowerCase().includes(t)) : false;
+          return matchName || matchIng || matchDesc || matchTags;
+        })
       );
     }
 
