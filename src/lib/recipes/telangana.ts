@@ -616,7 +616,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "bagara-rice",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Bagara Rice",
     description: "A fragrant and mildly spiced rice dish, the standard accompaniment for non-veg curries in Telangana.",
     type: "Vegetarian",
@@ -754,7 +754,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "double-ka-meetha",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Double Ka Meetha",
     description: "Iconic Hyderabadi bread pudding made with fried bread slices soaked in thickened saffron milk.",
     type: "Vegetarian",
@@ -782,7 +782,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "qubani-ka-meetha",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Qubani Ka Meetha",
     description: "A royal Hyderabadi dessert made from stewed dried apricots, traditionally served with malai.",
     type: "Vegetarian",

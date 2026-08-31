@@ -577,7 +577,7 @@ export const biharRecipes: Recipe[] = [
   },
   {
     id: "thekua",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Thekua",
     description: "Sturdy and sweet fried wheat-jaggery cookies, the signature prasad of Chhath Puja.",
     type: "Vegetarian",

@@ -574,7 +574,7 @@ export const jammuAndKashmirRecipes: Recipe[] = [
   },
   {
     id: "shufta-dessert-snack",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Shufta",
     description: "A rich mixture of mixed dry fruits, paneer, and coconut soaked in a heavy saffron and cardamom syrup.",
     type: "Vegetarian",

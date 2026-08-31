@@ -561,7 +561,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "pitha-jharkhand",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Pitha Jharkhandi",
     description: "Steamed rice flour dumplings with a sweet jaggery or savory lentil filling.",
     type: "Vegetarian",
@@ -586,7 +586,7 @@ export const jharkhandRecipes: Recipe[] = [
   },
   {
     id: "thekua-jharkhand",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Thekua Jharkhandi",
     description: "Crunchy fried wheat flour cookies made with jaggery and dried fruits, a durable travel snack.",
     type: "Vegetarian",

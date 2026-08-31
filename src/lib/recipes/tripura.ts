@@ -617,7 +617,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "muya-pitha",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Muya Pitha",
     description: "Steamed rice flour dumplings with a savory bamboo shoot and ginger filling.",
     type: "Vegetarian",

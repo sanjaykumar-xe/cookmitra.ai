@@ -339,7 +339,7 @@ export const rajasthanRecipes: Recipe[] = [
   },
   {
     id: "ghevar",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Desserts & Sweets",
     name: "Ghevar",
     description: "A disc-shaped, honeycomb-textured sweet soaked in sugar syrup, a signature Rajasthani festival dessert.",
     type: "Vegetarian",

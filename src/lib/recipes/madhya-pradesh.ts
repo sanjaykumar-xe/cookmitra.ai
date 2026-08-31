@@ -698,7 +698,7 @@ export const madhyaPradeshRecipes: Recipe[] = [
   },
   {
     id: "poha-jalebi-indore",
-    menuCategory: "Breakfast & Tiffin",
+    menuCategory: "Desserts & Sweets",
     name: "Poha Jalebi",
     description: "The quintessential Indore breakfast—salty, spicy poha paired with hot, crispy, syrupy jalebi.",
     type: "Vegetarian",

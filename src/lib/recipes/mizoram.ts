@@ -32,7 +32,7 @@ export const mizoramRecipes: Recipe[] = [
   },
   {
     id: "sawhchiar-pork",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Sawhchiar",
     description: "A traditional Mizo rice and meat porridge, flavored with local herbs and slow-cooked to a creamy consistency.",
     type: "Non-Vegetarian",

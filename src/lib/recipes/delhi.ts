@@ -358,7 +358,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "kadhi-chawal-delhi",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Kadhi Chawal Delhi Style",
     description: "Tangy yogurt and gram flour curry with soft onion fritters, served over steaming basmati rice.",
     type: "Vegetarian",
@@ -492,7 +492,7 @@ export const delhiRecipes: Recipe[] = [
   },
   {
     id: "aloo-tikki-curry-delhi",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Curries & Gravies",
     name: "Aloo Tikki Curry",
     description: "Pan-fried potato patties simmered in a spiced tomato-onion gravy, a fusion of chaat and main course.",
     type: "Vegetarian",

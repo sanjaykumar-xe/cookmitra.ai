@@ -462,7 +462,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "varan-bhaat",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Varan Bhaat",
     description: "Simple and comforting Maharashtrian dal made with toor dal, served over steamed rice with a dollop of ghee.",
     type: "Vegetarian",
@@ -569,7 +569,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "masale-bhaat",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Masale Bhaat",
     description: "A traditional spiced mixed vegetable rice dish made with special 'Goda Masala'.",
     type: "Vegetarian",

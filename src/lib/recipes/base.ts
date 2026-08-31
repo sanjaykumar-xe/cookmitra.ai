@@ -214,7 +214,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "rajma-chawal",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Rajma Chawal",
     description: "A comforting North Indian dish of red kidney beans in a thick gravy served with rice.",
     type: "Vegetarian",

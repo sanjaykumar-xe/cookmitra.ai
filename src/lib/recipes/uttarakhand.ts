@@ -541,7 +541,7 @@ export const uttarakhandRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "bal-mithai-snack",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Bal Mithai",
     description: "The most famous sweet snack from Almora—roasted khoya fudge coated with small sugar balls.",
     type: "Vegetarian",
@@ -592,7 +592,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "arsa-snack",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Arsa",
     description: "Sweet fried cookies made from rice flour and jaggery, a must-have for Uttarakhand weddings and festivals.",
     type: "Vegetarian",

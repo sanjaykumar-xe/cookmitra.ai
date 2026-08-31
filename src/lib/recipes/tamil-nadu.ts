@@ -234,7 +234,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "ellu-sadam",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Ellu Sadam (Sesame Rice)",
     description: "A fragrant and nutty rice dish made with freshly roasted black sesame seeds and spices.",
     type: "Vegetarian",
@@ -582,7 +582,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "kadamba-sadam",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Kadamba Sadam",
     description: "A grand 'one-pot' festive rice featuring mixed vegetables, lentils, and a special spice blend.",
     type: "Vegetarian",
@@ -1424,7 +1424,7 @@ export const tamilNaduRecipes: Recipe[] = [
   },
   {
     id: "parotta-salna-street",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Parotta Salna",
     description: "Flaky, layered parottas served with a thin, spicy, watery gravy—the ultimate Tamil Nadu street food experience.",
     type: "Non-Vegetarian",

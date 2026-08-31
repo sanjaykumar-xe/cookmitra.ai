@@ -591,7 +591,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "kanika-odia",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Kanika",
     description: "A sweet and aromatic yellow rice dish (pulao) enriched with ghee, sugar, and dried fruits.",
     type: "Vegetarian",
@@ -704,7 +704,7 @@ export const odishaRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "pakhala-bhaja-odia",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Rice & Biryani",
     name: "Pakhala Bhaja",
     description: "Fermented rice served with a variety of crispy fried side dishes—the ultimate Odia summer comfort food.",
     type: "Vegetarian",
@@ -783,7 +783,7 @@ export const odishaRecipes: Recipe[] = [
   },
   {
     id: "chhena-jhili-odia",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Chhena Jhili",
     description: "Delicate and soft fried cottage cheese dumplings soaked in a light sugar syrup, a sweet specialty from Nimapada.",
     type: "Vegetarian",

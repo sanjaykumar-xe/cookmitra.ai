@@ -536,7 +536,7 @@ export const assamRecipes: Recipe[] = [
   // --- SNACKS (5) ---
   {
     id: "pitha-assamese-sweet",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Pitha",
     description: "Traditional steamed rice flour cakes stuffed with a sweet mixture of grated coconut and jaggery.",
     type: "Vegetarian",
@@ -561,7 +561,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "til-pitha-assam",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Til Pitha",
     description: "Famous Assamese rice flour rolls filled with a sweet roasted black sesame and jaggery center.",
     type: "Vegetarian",
@@ -610,7 +610,7 @@ export const assamRecipes: Recipe[] = [
   },
   {
     id: "ghila-pitha-assam",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Ghila Pitha",
     description: "Deep-fried sweet rice flour and mashed banana fritters, a popular Bihu festival treat.",
     type: "Vegetarian",

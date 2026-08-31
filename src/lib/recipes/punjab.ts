@@ -361,7 +361,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "punjabi-kadhi-chawal",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Punjabi Kadhi Chawal",
     description: "The classic Punjabi meal of tangy yogurt curry with fritters served over fluffy basmati rice.",
     type: "Vegetarian",
@@ -629,7 +629,7 @@ export const punjabRecipes: Recipe[] = [
   },
   {
     id: "gur-wale-chawal",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Rice & Biryani",
     name: "Gur Wale Chawal",
     description: "Sweet jaggery-flavored rice cooked with whole spices and garnished with dry fruits.",
     type: "Vegetarian",

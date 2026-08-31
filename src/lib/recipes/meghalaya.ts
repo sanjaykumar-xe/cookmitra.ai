@@ -4,7 +4,7 @@ export const meghalayaRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (10) ---
   {
     id: "jadoh-khasi-authentic",
-    menuCategory: "Curries & Gravies",
+    menuCategory: "Rice & Biryani",
     name: "Jadoh",
     description: "The most iconic Khasi dish—fragrant short-grain rice cooked with smoked pork, onions, and local spices.",
     type: "Non-Vegetarian",

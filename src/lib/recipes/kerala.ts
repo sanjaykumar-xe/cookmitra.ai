@@ -813,7 +813,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "ada-pradhaman",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Ada Pradhaman",
     description: "The king of Kerala payasams, made with rice ada flakes, molten jaggery, and creamy coconut milk.",
     type: "Vegetarian",

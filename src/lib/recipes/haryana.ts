@@ -567,7 +567,7 @@ export const haryanaRecipes: Recipe[] = [
   },
   {
     id: "ghevar-haryanvi",
-    menuCategory: "Snacks & Street Food",
+    menuCategory: "Desserts & Sweets",
     name: "Ghevar Haryanvi",
     description: "A disc-shaped fried sweet sweet made from flour and ghee, soaked in sugar syrup, iconic for festivals like Teej.",
     type: "Vegetarian",
