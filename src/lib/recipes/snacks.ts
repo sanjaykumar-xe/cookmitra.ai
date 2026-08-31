@@ -560,7 +560,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-sev-puri",
-    menuCategory: "Breads",
+    menuCategory: "Snacks & Street Food",
     name: "Sev Puri",
     description: "Mouth-sized puris loaded with potatoes, a trio of chutneys, and a mountain of crunchy sev.",
     type: "Vegetarian",
@@ -586,7 +586,7 @@ export const snacksRecipes: Recipe[] = [
   },
   {
     id: "snack-bhel-puri",
-    menuCategory: "Breads",
+    menuCategory: "Snacks & Street Food",
     name: "Bhel Puri",
     description: "The classic Mumbai beach snack—puffed rice tossed with savory snacks and tangy sauces.",
     type: "Vegetarian",

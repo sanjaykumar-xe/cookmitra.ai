@@ -249,7 +249,7 @@ export const uttarakhandRecipes: Recipe[] = [
   },
   {
     id: "mutton-mandua-combo",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Curry with Mandua Roti",
     description: "Rustic mutton curry paired with traditional finger millet flatbread (Mandua), the quintessential Pahari farmer's meal.",
     type: "Non-Vegetarian",
