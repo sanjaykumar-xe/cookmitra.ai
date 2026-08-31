@@ -17,6 +17,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
     const [isTouchDevice, setIsTouchDevice] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [candidateIndex, setCandidateIndex] = useState(0);
+    const [isImageLoading, setIsImageLoading] = useState(true);
 
     const candidates = recipe.imageUrl ? [recipe.imageUrl] : getRecipeImageCandidates(recipe.id);
 
@@ -24,6 +25,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
         setIsFlipped(false);
         setImageError(false);
         setCandidateIndex(0);
+        setIsImageLoading(true);
     }, [recipe.id, recipe.imageUrl]);
 
     useEffect(() => {
@@ -50,9 +52,15 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
     const handleImageError = () => {
         if (candidateIndex < candidates.length - 1) {
             setCandidateIndex(prev => prev + 1);
+            setIsImageLoading(true);
         } else {
             setImageError(true);
+            setIsImageLoading(false);
         }
+    };
+
+    const handleImageLoad = () => {
+        setIsImageLoading(false);
     };
 
     return (
@@ -72,15 +80,24 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
                         {/* Image Container */}
                         <div className="relative h-44 w-full bg-stone-100 dark:bg-stone-900 overflow-hidden shrink-0">
                             {showImage ? (
-                                <Image 
-                                    src={currentImageUrl}
-                                    alt={recipe.name}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    data-ai-hint="indian kitchen"
-                                    onError={handleImageError}
-                                />
+                                <>
+                                    {isImageLoading && (
+                                        <div className="absolute inset-0 bg-stone-200 dark:bg-stone-800 animate-pulse z-10" />
+                                    )}
+                                    <Image 
+                                        src={currentImageUrl}
+                                        alt={recipe.name}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                                        className={cn(
+                                            "object-cover transition-all duration-700 group-hover:scale-105",
+                                            isImageLoading ? "opacity-0" : "opacity-100"
+                                        )}
+                                        data-ai-hint="indian kitchen"
+                                        onLoad={handleImageLoad}
+                                        onError={handleImageError}
+                                    />
+                                </>
                             ) : (
                                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-100 dark:bg-stone-900/60">
                                     <div className="bg-amber-500/10 p-4 rounded-2xl transition-transform group-hover:scale-105 duration-500">
@@ -89,7 +106,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
                                     <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500 mt-2.5">Photo coming soon</span>
                                 </div>
                             )}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none z-20" />
                             
                             {/* Badges Overlay */}
                             <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-1.5 pointer-events-none">
