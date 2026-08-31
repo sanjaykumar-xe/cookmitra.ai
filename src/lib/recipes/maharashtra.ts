@@ -4,7 +4,7 @@ export const maharashtraRecipes: Recipe[] = [
   // --- NON-VEGETARIAN (15) ---
   {
     id: "kolhapuri-chicken",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Kolhapuri Chicken",
     description: "An intensely fiery chicken curry from Kolhapur, known as one of India's spiciest regional dishes featuring a dark red, roasted masala.",
     type: "Non-Vegetarian",
@@ -31,7 +31,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "mutton-kolhapuri",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Mutton Kolhapuri",
     description: "An extremely spicy Kolhapuri-style mutton curry made with a potent blend of roasted spices and dry coconut.",
     type: "Non-Vegetarian",
@@ -326,7 +326,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "chicken-kolhapuri-sukka",
-    menuCategory: "Breads",
+    menuCategory: "Dry & Stir-Fried",
     name: "Chicken Kolhapuri Sukka",
     description: "Dry roasted spicy chicken with the signature Kolhapuri masala and dark coconut flakes.",
     type: "Non-Vegetarian",
@@ -650,7 +650,7 @@ export const maharashtraRecipes: Recipe[] = [
   },
   {
     id: "aluchi-vadi",
-    menuCategory: "Breads",
+    menuCategory: "Snacks & Street Food",
     name: "Aluchi Vadi",
     description: "Steamed and fried rolls made from colocasia leaves with a spicy and tangy gram flour spread.",
     type: "Vegetarian",

@@ -224,7 +224,7 @@ export const chhattisgarhRecipes: Recipe[] = [
   },
   {
     id: "kadai-chicken-chhattisgarhi",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Kadai Chicken Chhattisgarhi",
     description: "Chicken pieces stir-fried with capsicum and a coarse blend of spices in an iron wok (kadai).",
     type: "Non-Vegetarian",

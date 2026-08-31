@@ -87,7 +87,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-shoot-manipur",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Pork with Bamboo Shoot Manipuri",
     description: "Tender pork chunks slow-cooked with pungent fermented bamboo shoot and local Manipuri chilies.",
     type: "Non-Vegetarian",
@@ -114,7 +114,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "chicken-curry-manipur",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry Manipuri",
     description: "A light and healthy chicken preparation using local herbs like maroi nakupi and minimal oil.",
     type: "Non-Vegetarian",
@@ -222,7 +222,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-manipur",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Manipuri Style",
     description: "Boiled eggs in a light gravy flavored with Ngari and local chilies, a common side for lunch.",
     type: "Non-Vegetarian",
@@ -249,7 +249,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "pork-curry-manipur",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Pork Curry Manipuri",
     description: "A spicy and savory pork preparation from Manipur featuring local mountain chilies and bamboo shoot.",
     type: "Non-Vegetarian",
@@ -358,7 +358,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "bamboo-shoot-curry-manipur-veg",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Bamboo Shoot Curry Manipuri",
     description: "Tangy fermented bamboo shoots cooked with local mountain greens and mountain chilies.",
     type: "Vegetarian",
@@ -463,7 +463,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "dal-manipur-style-veg",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Dal Manipuri Style",
     description: "Simple and comforting lentil curry tempered with cumin and local Manipuri herbs.",
     type: "Vegetarian",
@@ -488,7 +488,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-curry-manipur-veg",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin Curry Manipuri",
     description: "Simple mountain-style pumpkin curry cooked with minimal oil and mountain spices.",
     type: "Vegetarian",
@@ -632,7 +632,7 @@ export const manipurRecipes: Recipe[] = [
   },
   {
     id: "fish-cake-manipur-snack",
-    menuCategory: "Breads",
+    menuCategory: "Snacks & Street Food",
     name: "Fish Cake Manipuri Style",
     description: "Steamed spiced fish cakes made with river fish and fermented fish (ngari) for a deep flavor.",
     type: "Non-Vegetarian",

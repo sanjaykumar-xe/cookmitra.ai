@@ -92,7 +92,7 @@ export const baseRecipes: Recipe[] = [
   },
   {
     id: "chole-bhature",
-    menuCategory: "Breads",
+    menuCategory: "Breakfast & Tiffin",
     name: "Chole Bhature",
     description: "Deep-fried fluffy bread served with spiced chickpea curry. A North Indian street food favorite.",
     type: "Vegetarian",

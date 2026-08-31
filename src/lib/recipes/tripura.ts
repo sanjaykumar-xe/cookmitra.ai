@@ -60,7 +60,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "pork-bamboo-shoot-tripuri",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Pork with Bamboo Shoot Tripuri",
     description: "A spicy Tripuri pork curry where the pungent flavor of fermented bamboo shoot complements the rich fat of the pork.",
     type: "Non-Vegetarian",
@@ -143,7 +143,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "fish-curry-tripuri",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Fish Curry Tripuri Style",
     description: "A light and refreshing freshwater fish curry prepared with minimal oil and local mountain herbs.",
     type: "Non-Vegetarian",
@@ -199,7 +199,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "chicken-bamboo-shoot-tripuri",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Chicken Curry with Bamboo Shoot Tripuri",
     description: "A zesty chicken curry from the hills of Tripura, using fresh bamboo shoots and birds eye chilies.",
     type: "Non-Vegetarian",
@@ -253,7 +253,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "egg-curry-tripuri",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Egg Curry Tripuri Style",
     description: "Boiled eggs in a light, fermented fish-tinged gravy, a common comfort meal in rural Tripura.",
     type: "Non-Vegetarian",
@@ -441,7 +441,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "pumpkin-leaf-tripuri",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Pumpkin Leaf Curry Tripuri",
     description: "Stir-fried tender pumpkin leaves with garlic and green chilies, a simple and nutritious forest dish.",
     type: "Vegetarian",
@@ -466,7 +466,7 @@ export const tripuraRecipes: Recipe[] = [
   },
   {
     id: "dal-tripuri",
-    menuCategory: "Breads",
+    menuCategory: "Curries & Gravies",
     name: "Dal Tripuri Style",
     description: "Simple and comforting lentil soup prepared with local hill herbs and ginger.",
     type: "Vegetarian",

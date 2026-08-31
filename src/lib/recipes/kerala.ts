@@ -323,7 +323,7 @@ export const keralaRecipes: Recipe[] = [
   },
   {
     id: "kerala-kanji",
-    menuCategory: "Beverages",
+    menuCategory: "Rice & Biryani",
     name: "Kerala Rice Kanji",
     description: "Light and soothing red rice porridge, traditionally served for dinner with simple sides like pickle and roasted papadam.",
     type: "Vegetarian",

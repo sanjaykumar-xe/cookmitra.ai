@@ -172,7 +172,7 @@ export const telanganaRecipes: Recipe[] = [
   },
   {
     id: "shikampuri-kebab",
-    menuCategory: "Breads",
+    menuCategory: "Starters & Appetizers",
     name: "Shikampuri Kebab",
     description: "Melt-in-the-mouth minced mutton patties stuffed with a core of tangy yogurt and onions.",
     type: "Non-Vegetarian",
