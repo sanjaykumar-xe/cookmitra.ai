@@ -11,24 +11,26 @@ export function RegionalCuisineExplorer() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="space-y-6 w-full"
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="space-y-4 w-full"
     >
-      <div className="text-center space-y-2">
+      <div className="text-center space-y-1 max-w-lg mx-auto">
         <div className="flex items-center justify-center gap-2">
-          <MapIcon className="h-6 w-6 text-[#F4A21A]" />
-          <h2 className="font-headline text-fluid-h2 font-medium tracking-tight text-stone-900 dark:text-stone-100">
+          <MapIcon className="h-5 w-5 text-[#F4A21A]" />
+          <h2 className="font-headline text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
             Explore Recipes by Region
           </h2>
         </div>
-        <p className="font-sans text-fluid-subtitle text-stone-600 dark:text-stone-300 font-medium">
-          Discover authentic dishes from every corner of India.
+        <p className="font-sans text-xs sm:text-sm text-stone-600 dark:text-stone-400 font-medium">
+          Discover authentic dishes from every corner of India. Click any state to explore.
         </p>
       </div>
 
-      <Card className="p-6 md:p-8 bg-card/80 backdrop-blur-sm border-stone-200/80 dark:border-stone-800/80 shadow-md rounded-3xl overflow-hidden">
-        <IndiaRegionMap />
-      </Card>
+      <div className="w-full flex justify-center">
+        <Card className="w-full max-w-[540px] p-4 sm:p-6 bg-card/90 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 shadow-xs rounded-2xl relative">
+          <IndiaRegionMap />
+        </Card>
+      </div>
     </motion.section>
   );
 }

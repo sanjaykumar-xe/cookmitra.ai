@@ -26,11 +26,18 @@ export const metadata: Metadata = {
     description: "AI-Powered Indian Recipes & Meal Planning",
     images: ["/og-banner.png"],
   },
-  manifest: '/manifest.json',
+  manifest: '/site.webmanifest',
   icons: {
-    icon: '/chef-momo-logo.png',
-    shortcut: '/chef-momo-logo.png',
-    apple: '/chef-momo-logo.png',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
@@ -42,13 +49,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/chef-momo-logo.png" type="image/png" sizes="any" />
-        <link rel="shortcut icon" href="/chef-momo-logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/chef-momo-logo.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#F2860A" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet" />
-        <meta name="theme-color" content="#1a1a1a" />
       </head>
       <body className="font-body antialiased">
         <ThemeProvider

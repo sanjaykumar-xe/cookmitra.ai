@@ -55,28 +55,18 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     '/verify-email'
   ];
 
-  // Pages where the footer should be hidden to reduce distraction
-  const noFooterRoutes = [
-    ...authRoutes,
-    '/ai-recipes',
-    '/ai-chat',
-    '/healthy-meal-planner',
-    '/settings'
-  ];
-
   const normalizedPath = pathname || '';
   const isLandingPage = normalizedPath === '/';
   const isAuthPage = authRoutes.includes(normalizedPath);
   
   /**
    * Hydration-safe logic: 
-   * We MUST NOT render different structural tags (like div vs main) between server and client.
-   * Instead, we keep the main wrapper stable and only toggle visibility of shell elements 
+   * We keep the main wrapper stable and only toggle visibility of shell elements 
    * based on the 'mounted' state.
    */
   const showSidebar = mounted && !isLandingPage && !isAuthPage && !isIframe;
   const showHeader = mounted && !isIframe && !isAuthPage;
-  const showFooter = mounted && !noFooterRoutes.includes(normalizedPath) && !isIframe;
+  const showFooter = mounted && !isIframe;
 
   return (
     <div className="relative flex min-h-screen w-full overflow-x-hidden">

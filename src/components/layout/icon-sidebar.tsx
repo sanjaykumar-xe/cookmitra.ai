@@ -4,18 +4,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Menu,
-  Plus,
   Settings,
   Home,
   Utensils,
-  HeartPulse,
+  Plus,
   MessageSquare,
+  Calendar,
+  HeartPulse,
   ShoppingBasket,
-  Users,
-  Library,
   BookOpen,
-  CalendarDays,
-  LifeBuoy,
+  Users,
 } from 'lucide-react';
 import {
   Tooltip,
@@ -37,11 +35,30 @@ import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 
-const iconClasses = "h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors duration-200";
+const iconClasses = "h-5 w-5 transition-colors duration-200";
 
-const TooltipLink = ({ href, tooltip, children, ...props }: { href: string, tooltip: string, children: React.ReactNode, [key: string]: any }) => {
+interface NavItem {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+}
+
+const TooltipLink = ({ 
+  href, 
+  tooltip, 
+  children, 
+  ...props 
+}: { 
+  href: string; 
+  tooltip: string; 
+  children: React.ReactNode; 
+  [key: string]: any;
+}) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = href === "/home" || href === "/" 
+    ? pathname === "/home" || pathname === "/" 
+    : pathname.startsWith(href);
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -49,160 +66,165 @@ const TooltipLink = ({ href, tooltip, children, ...props }: { href: string, tool
           href={href} 
           {...props} 
           className={cn(
-            "group p-3 rounded-lg hover:bg-muted transition-all active:scale-95 relative", 
-            isActive ? "bg-muted/80 shadow-sm" : ""
+            "group p-2.5 rounded-2xl transition-all duration-200 active:scale-95 flex items-center justify-center", 
+            isActive 
+              ? "bg-[#FFF6ED] dark:bg-[#2A1D15] text-[#F2860A] border border-[#F2860A]/30 shadow-xs" 
+              : "text-stone-700 dark:text-stone-300 hover:text-[#F2860A] hover:bg-muted/60"
           )}
         >
-          {isActive && (
-            <div className="absolute left-[-12px] top-1/2 -translate-y-1/2 h-8 w-[3px] bg-primary rounded-r-full shadow-[0_0_8px_rgba(245,166,35,0.6)]" />
-          )}
-          <div className={cn(isActive && "active-icon-glow [&>svg]:text-primary")}>
+          <div className={cn("transition-colors flex items-center justify-center", isActive ? "text-[#F2860A]" : "text-stone-700 dark:text-stone-300 group-hover:text-[#F2860A]")}>
             {children}
           </div>
         </Link>
       </TooltipTrigger>
-      <TooltipContent side="right" className="animate-in fade-in slide-in-from-left-2 duration-300">
+      <TooltipContent side="right" className="animate-in fade-in slide-in-from-left-2 duration-200 font-medium text-xs">
         <p>{tooltip}</p>
       </TooltipContent>
     </Tooltip>
-  )
+  );
 };
 
-const NavLink = ({ href, children, icon: Icon, ...props }: { href: string, children: React.ReactNode, icon: React.ElementType, [key: string]: any }) => {
+const NavLink = ({ 
+  href, 
+  children, 
+  icon: Icon, 
+  ...props 
+}: { 
+  href: string; 
+  children: React.ReactNode; 
+  icon: React.ElementType; 
+  [key: string]: any;
+}) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = href === "/home" || href === "/" 
+    ? pathname === "/home" || pathname === "/" 
+    : pathname.startsWith(href);
+
   return (
     <Link 
       href={href} 
       {...props}
-      className={cn("flex items-center gap-4 px-3 py-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-all active:scale-[0.98]", isActive && "bg-muted text-foreground font-medium")}
+      className={cn(
+        "flex items-center gap-3.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all active:scale-[0.98]", 
+        isActive 
+          ? "bg-[#FFF6ED] dark:bg-[#2A1D15] text-[#F2860A] font-semibold border border-[#F2860A]/20" 
+          : "text-muted-foreground hover:text-foreground hover:bg-muted"
+      )}
     >
-      <Icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive && "text-primary")} />
-      <span className="font-medium">{children}</span>
+      <Icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-[#F2860A]" : "text-muted-foreground")} />
+      <span>{children}</span>
     </Link>
-  )
-}
+  );
+};
 
 /**
- * Persistent Icon Rail Sidebar.
- * Handles primary navigation via icons on the rail and detailed navigation via a drawer.
+ * Compact Icon Rail Sidebar (64px / w-16).
+ * Navigation sequence matching visual reference:
+ * 1. Home (Home)
+ * 2. Recipes (Utensils)
+ * 3. AI Recipes (Plus)
+ * 4. Chef Momo AI (MessageSquare)
+ * 5. Meal Planner (Calendar)
+ * 6. Healing Foods (HeartPulse)
+ * 7. Smart Pantry (ShoppingBasket)
+ * 8. Saved Recipes (BookOpen)
+ * 9. Community (Users)
+ * Bottom:
+ * 10. Settings (Settings)
  */
 export function IconSidebar() {
   const { user } = useUser();
-
   const homeHref = user ? "/home" : "/";
 
-  // Navigation order synchronized with user request: Core actions -> Planning/Health -> Reference -> Community
-  const mainNavLinks = [
-      { href: homeHref, label: 'Home', icon: Home },
-      { href: "/recipes", label: 'Recipes Explorer', icon: Utensils },
-      { href: "/ai-recipes", label: 'Recipe Generator', icon: Plus },
-      { href: "/ai-chat", label: 'Chef Momo', icon: MessageSquare },
-      { href: "/healthy-meal-planner", label: 'Plan My Week', icon: CalendarDays },
-      { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
-      { href: "/pantry", label: "My Pantry", icon: ShoppingBasket },
-      { href: "/encyclopedia", label: 'Encyclopedia', icon: BookOpen },
-      { href: "/community", label: 'Community', icon: Users },
-      { href: "/my-recipes", label: 'Saved Recipes', icon: Library },
+  const mainNavLinks: NavItem[] = [
+    { href: homeHref, label: 'Home', icon: Home },
+    { href: "/recipes", label: 'Recipes', icon: Utensils },
+    { href: "/ai-recipes", label: 'AI Recipes', icon: Plus },
+    { href: "/ai-chat", label: 'Chef Momo AI', icon: MessageSquare },
+    { href: "/healthy-meal-planner", label: 'Meal Planner', icon: Calendar },
+    { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
+    { href: "/pantry", label: 'Smart Pantry', icon: ShoppingBasket },
+    { href: "/my-recipes", label: 'Saved Recipes', icon: BookOpen },
+    { href: "/community", label: 'Community', icon: Users },
   ];
 
   return (
-    <aside className="fixed top-0 left-0 h-full w-16 bg-background flex flex-col items-center justify-between py-3 border-r z-30 animate-in fade-in slide-in-from-left duration-500">
-      <div className="flex flex-col items-center gap-y-4">
+    <aside className="fixed top-0 left-0 h-full w-16 bg-background flex flex-col items-center justify-between py-3 border-r z-30 animate-in fade-in slide-in-from-left duration-300">
+      <div className="flex flex-col items-center gap-y-2.5 w-full">
+        {/* Drawer Trigger (mobile + desktop menu access) */}
         <Sheet>
           <Tooltip>
-              <TooltipTrigger asChild>
-                  <SheetTrigger asChild>
-                      <Button variant="ghost" size="icon" className="group h-12 w-12 hover:bg-muted transition-transform active:scale-95">
-                           <Menu className="h-6 w-6 text-muted-foreground group-hover:text-foreground" />
-                           <span className="sr-only">Open Menu</span>
-                      </Button>
-                  </SheetTrigger>
-              </TooltipTrigger>
-              <TooltipContent side="right">
-                  <p>Open Menu</p>
-              </TooltipContent>
+            <TooltipTrigger asChild>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="group h-10 w-10 rounded-xl hover:bg-muted transition-transform active:scale-95" aria-label="Open Navigation Menu">
+                  <Menu className="h-5 w-5 text-stone-700 dark:text-stone-300 group-hover:text-foreground" />
+                </Button>
+              </SheetTrigger>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="text-xs font-medium">
+              <p>Menu</p>
+            </TooltipContent>
           </Tooltip>
           <SheetContent side="left" className="w-[280px] p-0 bg-card/95 backdrop-blur-xl flex flex-col border-r-primary/10">
             <SheetHeader className="p-6 pb-2">
               <SheetTitle className="sr-only">Menu</SheetTitle>
-               <SheetClose asChild>
-                  <Link
-                  href={homeHref}
-                  className="flex items-center gap-3 font-medium hover:opacity-80 transition-opacity"
-                  >
-                  <CookMitraLogo width={36} height={36} className="w-9 h-9" />
-                  <span className="font-headline text-xl font-bold">
-                      CookMitra
-                      <span className="text-base font-normal text-muted-foreground ml-1">
-                      AI
-                      </span>
+              <SheetClose asChild>
+                <Link href={homeHref} className="flex items-center gap-3 font-medium hover:opacity-80 transition-opacity">
+                  <CookMitraLogo width={34} height={34} className="w-8 h-8" />
+                  <span className="font-sans text-xl font-bold text-foreground flex items-center">
+                    CookMitra
+                    <span className="text-base font-medium text-foreground/80 ml-1">AI</span>
                   </span>
-                  </Link>
-               </SheetClose>
+                </Link>
+              </SheetClose>
             </SheetHeader>
             <ScrollArea className="flex-grow">
               <nav className="flex flex-col gap-1 p-4">
-                  <div className="flex flex-col gap-1">
-                      {mainNavLinks.map(link => {
-                          const isRestricted = ["/ai-recipes", "/healthy-meal-planner", "/pantry", "/ai-chat", "/my-recipes", "/encyclopedia", "/healing-foods"].includes(link.href);
-                          if (!user && isRestricted) return null;
-                          return (
-                              <SheetClose asChild key={link.href}><NavLink href={link.href} icon={link.icon}>{link.label}</NavLink></SheetClose>
-                          );
-                      })}
-                  </div>
-                  
-                  <Separator className="my-4 opacity-50" />
-                  
-                  <div className="flex flex-col gap-1">
-                     <SheetClose asChild><NavLink href="/pricing" icon={Plus}>Pricing</NavLink></SheetClose>
-                     <SheetClose asChild><NavLink href="/faq" icon={LifeBuoy}>FAQs</NavLink></SheetClose>
-                     <SheetClose asChild><NavLink href="/settings" icon={Settings}>Settings</NavLink></SheetClose>
-                  </div>
+                <div className="flex flex-col gap-1">
+                  {mainNavLinks.map(link => (
+                    <SheetClose asChild key={link.href}>
+                      <NavLink href={link.href} icon={link.icon}>
+                        {link.label}
+                      </NavLink>
+                    </SheetClose>
+                  ))}
+                </div>
+                
+                <Separator className="my-3 opacity-50" />
+                
+                <div className="flex flex-col gap-1">
+                  <SheetClose asChild>
+                    <NavLink href="/settings" icon={Settings}>
+                      Settings
+                    </NavLink>
+                  </SheetClose>
+                </div>
               </nav>
             </ScrollArea>
           </SheetContent>
         </Sheet>
 
-        <div className="w-8 h-px bg-border my-2" />
+        {/* Divider line under hamburger menu */}
+        <div className="w-8 h-px bg-border/80 my-0.5" />
 
-        {/* Desktop-only vertical rail icons in sequential order */}
-        <div className="hidden md:flex flex-col items-center gap-y-4">
-          <TooltipLink href={homeHref} tooltip="Home">
-              <Home className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/recipes" tooltip="Recipes Explorer">
-              <Utensils className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/ai-recipes" tooltip="Generate a Recipe">
-              <Plus className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/ai-chat" tooltip="Chef Momo AI">
-              <MessageSquare className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/healthy-meal-planner" tooltip="Plan My Week">
-              <CalendarDays className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/healing-foods" tooltip="Healing Foods">
-              <HeartPulse className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/pantry" tooltip="My Pantry">
-              <ShoppingBasket className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/encyclopedia" tooltip="Encyclopedia">
-              <BookOpen className={iconClasses} />
-          </TooltipLink>
-          <TooltipLink href="/community" tooltip="Community">
-              <Users className={iconClasses} />
-          </TooltipLink>
+        {/* Desktop-only vertical rail icons in exact visual sequence */}
+        <div className="hidden md:flex flex-col items-center gap-y-2">
+          {mainNavLinks.map(link => {
+            const Icon = link.icon;
+            return (
+              <TooltipLink key={link.href} href={link.href} tooltip={link.label}>
+                <Icon className={iconClasses} />
+              </TooltipLink>
+            );
+          })}
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-y-4">
-           <TooltipLink href="/settings" tooltip="Settings">
-              <Settings className={iconClasses} />
-          </TooltipLink>
+      {/* Desktop bottom icon: Settings */}
+      <div className="hidden md:flex flex-col items-center pb-1">
+        <TooltipLink href="/settings" tooltip="Settings">
+          <Settings className={iconClasses} />
+        </TooltipLink>
       </div>
     </aside>
   );

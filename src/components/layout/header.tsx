@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
-import { CookMitraLogo } from "@/components/icons/cook-mitra-logo";
 import {
   Search as SearchIcon,
   X,
@@ -43,6 +43,7 @@ export function Header() {
   // Search States
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const [results, setResults] = useState<{
     recipes: typeof recipes,
     ingredients: typeof ingredientCatalog,
@@ -115,11 +116,41 @@ export function Header() {
         
         {/* Left Side: Brand Identity */}
         <div className="flex items-center">
-            <Link href={homeHref} className="flex items-center space-x-3 group shrink-0">
-                <CookMitraLogo width={38} height={38} className="w-9.5 h-9.5" />
-                <span className="font-headline text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center">
-                    CookMitra<span className="text-lg font-normal text-muted-foreground ml-1.5">AI</span>
-                </span>
+            <Link href={homeHref} className="flex items-center group shrink-0" aria-label="CookMitra AI Home">
+                {/* Light Mode: Horizontal Lockup Logo with automatic fallback to App Icon + Typography */}
+                {!logoError ? (
+                  <img
+                    src="/images/logo.png"
+                    alt="CookMitra AI"
+                    width={160}
+                    height={44}
+                    onError={() => setLogoError(true)}
+                    className="h-9 sm:h-10 w-auto object-contain dark:hidden transition-transform group-hover:scale-102"
+                  />
+                ) : (
+                  <div className="flex dark:hidden items-center space-x-2">
+                    <img
+                      src="/images/app-icon-transparent.png"
+                      alt="CookMitra"
+                      className="h-8.5 w-8.5 sm:h-9 sm:w-9 object-contain shrink-0 transition-transform group-hover:scale-105"
+                    />
+                    <span className="font-sans text-lg sm:text-[1.18rem] font-semibold tracking-tight text-foreground flex items-center">
+                      CookMitra<span className="text-xs sm:text-[13px] font-medium text-foreground/80 ml-1.5">AI</span>
+                    </span>
+                  </div>
+                )}
+
+                {/* Dark Mode: Standalone App Icon + Dark-mode Aware Text calibrated to match Day Mode logo scale */}
+                <div className="hidden dark:flex items-center space-x-2">
+                    <img
+                        src="/images/app-icon-transparent.png"
+                        alt="CookMitra"
+                        className="h-8.5 w-8.5 sm:h-9 sm:w-9 object-contain shrink-0 transition-transform group-hover:scale-105"
+                    />
+                    <span className="font-sans text-lg sm:text-[1.18rem] font-semibold tracking-tight text-foreground flex items-center">
+                        CookMitra<span className="text-xs sm:text-[13px] font-medium text-foreground/80 ml-1.5">AI</span>
+                    </span>
+                </div>
             </Link>
         </div>
 

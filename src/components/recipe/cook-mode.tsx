@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 import type { Recipe } from '@/lib/recipes';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { cn, cleanTextForSpeech } from '@/lib/utils';
 import { 
     Clock, 
     Users, 
@@ -279,7 +279,10 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
             stopRecognition();
         }
         
-        const utterance = new SpeechSynthesisUtterance(text);
+        const spokenText = cleanTextForSpeech(text);
+        if (!spokenText) return;
+
+        const utterance = new SpeechSynthesisUtterance(spokenText);
         utterance.lang = language === 'ta' ? 'ta-IN' : language === 'hi' ? 'hi-IN' : 'en-IN';
         
         const endNarration = () => {

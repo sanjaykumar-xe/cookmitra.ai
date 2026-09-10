@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Send, Mic, Volume2, VolumeX, Sparkles, UtensilsCrossed, Salad, Zap, Clock, Flame, Loader2, Lightbulb } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn, cleanTextForSpeech } from '@/lib/utils';
 import { sendMessageToAI, type ChatMessage } from '@/app/ai-chat/actions';
 import { useToast } from '@/hooks/use-toast';
 import { ChutkiIcon } from '@/components/icons/chutki-icon';
@@ -325,7 +325,10 @@ export default function ChatInterface() {
     }
 
     stopSpeech();
-    const utterance = new SpeechSynthesisUtterance(text);
+    const spokenText = cleanTextForSpeech(text);
+    if (!spokenText) return;
+
+    const utterance = new SpeechSynthesisUtterance(spokenText);
     utterance.lang = language === 'en' ? 'en-IN' : language === 'ta' ? 'ta-IN' : 'hi-IN';
     
     const selectedVoice = voices.find(v => v.lang.startsWith(language) && /female/i.test(v.name)) || 
