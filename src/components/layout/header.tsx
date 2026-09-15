@@ -134,7 +134,9 @@ export function Header() {
                     <img
                       src="/images/app-icon-transparent.png"
                       alt="CookMitra"
-                      className="h-8.5 w-8.5 sm:h-9 sm:w-9 object-contain shrink-0 transition-transform group-hover:scale-105"
+                      width={36}
+                      height={36}
+                      className="h-9 w-9 max-h-9 max-w-9 object-contain shrink-0 transition-transform group-hover:scale-105"
                     />
                     <span className="font-sans text-lg sm:text-[1.18rem] font-semibold tracking-tight text-foreground flex items-center">
                       CookMitra<span className="text-xs sm:text-[13px] font-medium text-foreground/80 ml-1.5">AI</span>
@@ -147,7 +149,9 @@ export function Header() {
                     <img
                         src="/images/app-icon-transparent.png"
                         alt="CookMitra"
-                        className="h-8.5 w-8.5 sm:h-9 sm:w-9 object-contain shrink-0 transition-transform group-hover:scale-105"
+                        width={36}
+                        height={36}
+                        className="h-9 w-9 max-h-9 max-w-9 object-contain shrink-0 transition-transform group-hover:scale-105"
                     />
                     <span className="font-sans text-lg sm:text-[1.18rem] font-semibold tracking-tight text-foreground flex items-center">
                         CookMitra<span className="text-xs sm:text-[13px] font-medium text-foreground/80 ml-1.5">AI</span>
