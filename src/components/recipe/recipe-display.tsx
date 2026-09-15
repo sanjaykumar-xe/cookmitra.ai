@@ -79,14 +79,14 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
                 <Bookmark className={cn("h-4 w-4 mr-2", isSaved && "fill-current")} /> 
                 {isSaved ? 'Saved' : 'Save'}
             </Button>
-            <Button variant="outline" size="icon" className="rounded-full h-11 w-11 border-primary/20" onClick={() => generateRecipePDF({
+            <Button variant="outline" size="icon" className="rounded-full h-11 w-11 border-primary/20" onClick={() => (generateRecipePDF as any)({
                 ...recipe,
                 dishName: displayName,
                 cookingTime: String(displayTime),
                 estimatedCost: displayCost,
                 ingredients: ingredients.map((i: any) => ({ name: i.name, quantity: i.qty || i.quantity || '' })),
                 instructions: steps
-            } as any, (k) => k)}>
+            }, (k: any) => k)}>
                 <Download className="h-4 w-4" />
             </Button>
           </div>

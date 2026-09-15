@@ -70,16 +70,16 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative flex min-h-screen w-full overflow-x-hidden">
-      {/* Sidebar Rail - Only shown post-mount and on non-auth/non-landing pages */}
+      {/* Sidebar Rail - Only shown post-mount and on desktop (>= md) */}
       {showSidebar && (
-        <div className="flex-none">
+        <div className="hidden md:block flex-none">
           <IconSidebar />
         </div>
       )}
 
       <div className={cn(
         "flex-1 flex flex-col min-h-screen w-full transition-all duration-300", 
-        showSidebar && "pl-16"
+        showSidebar && "md:pl-16"
       )}>
         {/* Header - Hidden on auth pages and in iframes */}
         {showHeader && <Header />}

@@ -134,7 +134,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="relative h-72 sm:h-96 md:h-[420px] w-full rounded-[2.5rem] overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800/80 shadow-lg"
+                className="relative h-56 sm:h-72 md:h-[420px] w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800/80 shadow-lg"
             >
                 {showImage ? (
                     <Image 
@@ -157,13 +157,13 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
                 
                 {/* Badges Overlay on Hero Banner */}
-                <div className="absolute top-5 left-5 right-5 flex items-center justify-between gap-2 pointer-events-none">
+                <div className="absolute top-3 left-3 right-3 sm:top-5 sm:left-5 sm:right-5 flex items-center justify-between gap-2 pointer-events-none">
                     <div className="flex items-center gap-2">
-                        <span className="bg-black/60 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider px-4 py-1.5 rounded-full border border-white/20">
+                        <span className="bg-black/60 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-white/20">
                             {recipe?.type || 'Vegetarian'}
                         </span>
                         {recipe?.menuCategory && (
-                            <span className="bg-black/60 backdrop-blur-md text-white text-xs font-medium uppercase tracking-wider px-4 py-1.5 rounded-full border border-white/20">
+                            <span className="bg-black/60 backdrop-blur-md text-white text-xs font-medium uppercase tracking-wider px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-white/20">
                                 {recipe.menuCategory}
                             </span>
                         )}
@@ -171,8 +171,8 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                 </div>
 
                 {/* Dish Name Overlay on Image Bottom */}
-                <div className="absolute bottom-6 left-6 right-6 text-white drop-shadow-md space-y-1">
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white drop-shadow-md space-y-1">
+                    <h1 className="font-headline text-2xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight line-clamp-2 sm:line-clamp-none">
                         {displayName}
                     </h1>
                 </div>
@@ -212,14 +212,14 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                         variant="outline" 
                         size="icon" 
                         className="rounded-full h-12 w-12 bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 hover:border-stone-300 dark:hover:border-stone-700 text-stone-800 dark:text-stone-200 transition-all" 
-                        onClick={() => generateRecipePDF({
+                        onClick={() => (generateRecipePDF as any)({
                             ...recipe,
                             dishName: displayName,
                             cookingTime: String(displayTime),
                             estimatedCost: displayCost,
                             ingredients: ingredients.map(i => ({ name: i.name, quantity: i.qty, cost: i.price })),
                             instructions: steps
-                        } as any, (k) => k)}
+                        }, (k: any) => k)}
                     >
                         <Download className="h-4 w-4 text-stone-700 dark:text-stone-300" />
                     </Button>
@@ -229,27 +229,29 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
             {/* METADATA CARDS GRID */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                 <MetadataCard icon={<Clock className="h-5 w-5 text-amber-500"/>} label={t('recipe.prepTime')} value={`${displayTime} min`} />
-                <div className="p-6 flex flex-col items-center justify-center bg-card/80 backdrop-blur-sm rounded-[2rem] border border-stone-200/80 dark:border-stone-800/80 shadow-xs hover:border-amber-500/30 transition-all group">
+                <div className="p-4 sm:p-6 flex flex-col items-center justify-center bg-card/80 backdrop-blur-sm rounded-2xl sm:rounded-[2rem] border border-stone-200/80 dark:border-stone-800/80 shadow-xs hover:border-amber-500/30 transition-all group">
                     <Users className="text-sky-500 mb-2 h-5 w-5 group-hover:scale-110 transition-transform"/>
                     <p className="font-headline text-2xl font-semibold text-stone-900 dark:text-stone-100">{servings} {t('recipe.servings')}</p>
                     <div className="flex items-center gap-2 mt-2">
                         <Button 
                             variant="outline" 
                             size="icon" 
-                            className="h-7 w-7 rounded-full border-stone-300 dark:border-stone-700" 
+                            className="h-11 w-11 min-h-[44px] min-w-[44px] rounded-full border-stone-300 dark:border-stone-700 active:scale-95 transition-transform" 
                             onClick={() => setServings(s => Math.max(1, s - 1))}
                             disabled={servings <= 1}
+                            aria-label="Decrease servings"
                         >
-                            <Minus className="h-3 w-3" />
+                            <Minus className="h-4 w-4" />
                         </Button>
                         <Button 
                             variant="outline" 
                             size="icon" 
-                            className="h-7 w-7 rounded-full border-stone-300 dark:border-stone-700" 
+                            className="h-11 w-11 min-h-[44px] min-w-[44px] rounded-full border-stone-300 dark:border-stone-700 active:scale-95 transition-transform" 
                             onClick={() => setServings(s => Math.min(12, s + 1))}
                             disabled={servings >= 12}
+                            aria-label="Increase servings"
                         >
-                            <Plus className="h-3 w-3" />
+                            <Plus className="h-4 w-4" />
                         </Button>
                     </div>
                 </div>

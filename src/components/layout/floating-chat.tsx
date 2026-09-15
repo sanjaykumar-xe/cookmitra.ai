@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { ChutkiIcon } from '../icons/chutki-icon';
+import Image from 'next/image';
 
 export function FloatingChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,8 +40,8 @@ export function FloatingChat() {
           <Card className="w-[calc(100vw-2.5rem)] sm:w-[380px] h-[70vh] max-h-[600px] shadow-2xl flex flex-col overflow-hidden bg-card/90 backdrop-blur-lg rounded-2xl border-primary/40">
             <CardHeader className="flex flex-row items-center justify-between p-3 border-b bg-background/80">
               <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full flex items-center justify-center overflow-hidden">
-                  <ChutkiIcon className="h-full w-full object-contain" />
+                <div className="h-8 w-8 rounded-full flex items-center justify-center overflow-hidden border border-amber-500/20 shadow-xs">
+                  <Image src="/chef-momo-logo.png" alt="Chef Momo" width={32} height={32} className="h-full w-full object-cover rounded-full" />
                 </div>
                 <h3 className="font-headline text-lg font-bold">Chef Momo</h3>
               </div>
@@ -68,17 +69,16 @@ export function FloatingChat() {
             <TooltipTrigger asChild>
               <Button
                 size="icon"
-                className="h-[60px] w-[60px] rounded-full bg-transparent p-0 shadow-none border-0 ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300 hover:scale-110 hover:rotate-12 flex items-center justify-center overflow-visible"
+                className="h-[60px] w-[60px] rounded-full bg-transparent p-0 shadow-none border-0 ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300 hover:scale-110 hover:rotate-6 flex items-center justify-center overflow-visible"
                 onClick={() => setIsOpen(true)}
                 aria-label="Ask Chef Momo"
               >
                 <div className="relative h-full w-full flex items-center justify-center">
-                    {/* Centering the 3D pizza mascot perfectly inside the 60px circular button */}
-                    <ChutkiIcon className="h-[54px] w-[54px] drop-shadow-2xl object-contain" />
+                    <Image src="/chef-momo-logo.png" alt="Chef Momo" width={56} height={56} className="h-[54px] w-[54px] rounded-full drop-shadow-2xl object-cover border-2 border-amber-500/30" priority />
                 </div>
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="left" className="animate-in fade-in slide-in-from-right-2">
+            <TooltipContent side="left" className="animate-in fade-in slide-in-from-right-2 hidden md:block">
               <p>Ask Chef Momo</p>
             </TooltipContent>
           </Tooltip>

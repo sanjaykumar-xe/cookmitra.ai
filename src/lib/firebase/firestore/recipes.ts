@@ -36,6 +36,8 @@ export async function saveRecipe(
     difficulty: recipe.difficulty || "Medium",
     cost: recipe.cost || recipe.estimatedCost || 0,
     menuCategory: recipe.menuCategory || null,
+    imageUrl: recipe.imageUrl || null,
+    originalId: recipe.id || recipe.recipeId || recipe.originalId || null,
     ingredients: recipe.ingredients || [],
     steps: recipe.steps || recipe.instructions || [],
     tags: recipe.tags || [],

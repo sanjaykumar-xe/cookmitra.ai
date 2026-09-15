@@ -235,12 +235,13 @@ export function CommunitySection({ recipeId, recipeName }: CommunitySectionProps
                                             <Button 
                                                 variant="ghost" 
                                                 size="icon" 
-                                                className="h-8 w-8 text-stone-400 hover:text-rose-600 hover:bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                                                className="h-10 w-10 min-h-[40px] min-w-[40px] rounded-full text-stone-400 hover:text-rose-600 hover:bg-rose-500/10 transition-all opacity-80 sm:opacity-0 sm:group-hover:opacity-100"
                                                 onClick={(e) => {
                                                     e.preventDefault();
                                                     e.stopPropagation();
                                                     setReviewToDelete(note);
                                                 }}
+                                                aria-label="Delete review"
                                             >
                                                 <Trash2 className="h-4 w-4" />
                                             </Button>

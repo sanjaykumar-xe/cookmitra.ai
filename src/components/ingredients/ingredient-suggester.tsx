@@ -18,7 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, ShoppingCart } from "lucide-react";
 import { suggestMissingIngredientsAction } from "@/app/actions";
-import type { SuggestMissingIngredientsOutput } from "@/ai/flows/suggest-missing-ingredients";
+import type { SuggestMissingIngredientsOutput } from "@/ai/schemas/ingredient-schemas";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -144,11 +144,11 @@ export default function IngredientSuggester() {
                             <CardContent>
                                 {result.missingIngredients.length > 0 ? (
                                      <div className="space-y-4">
-                                        {result.missingIngredients.map((item) => (
+                                         {result.missingIngredients.map((item: any) => (
                                             <div key={item.name} className="space-y-2 rounded-lg border p-4">
                                                 <h4 className="font-semibold">{item.name}</h4>
                                                 <div className="flex flex-col space-y-2">
-                                                    {item.purchaseLinks.map((link) => (
+                                                    {item.purchaseLinks.map((link: any) => (
                                                         <Button key={link.retailer} variant="link" asChild className="justify-start p-0 h-auto">
                                                             <a href={link.url} target="_blank" rel="noopener noreferrer">
                                                                 <ShoppingCart className="mr-2 h-4 w-4" />

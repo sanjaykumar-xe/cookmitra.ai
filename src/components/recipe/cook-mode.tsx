@@ -581,12 +581,12 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                 </div>
             );
         }
-        return <Button variant="outline" size="sm" className="mt-4 h-9 rounded-full border-primary/30 text-primary bg-primary/5 hover:bg-primary/10 transition-all font-bold group" onClick={() => startTimer(stepIdx, mention.seconds, mention.label)}><AlarmClock className="mr-2 h-4 w-4" />Start {mention.label} timer</Button>;
+        return <Button variant="outline" size="sm" className="mt-4 h-11 min-h-[44px] rounded-full border-primary/30 text-primary bg-primary/5 hover:bg-primary/10 transition-all font-bold group px-4 text-xs" onClick={() => startTimer(stepIdx, mention.seconds, mention.label)}><AlarmClock className="mr-2 h-4 w-4" />Start {mention.label} timer</Button>;
     };
 
     if (isComplete && mounted) {
         return createPortal(
-            <div className="fixed inset-0 bg-background z-[9999] flex flex-col items-center justify-center text-center p-6 pb-12 animate-in fade-in duration-500">
+            <div className="fixed inset-0 bg-background z-[9999] flex flex-col items-center justify-center text-center p-6 pb-[max(2rem,env(safe-area-inset-bottom))] animate-in fade-in duration-500 overflow-y-auto max-h-[100dvh]">
                 <div className="space-y-3 mb-6 flex flex-col items-center">
                     <HotSteamingMealIcon />
                     <h2 className="font-headline text-4xl sm:text-5xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">Delicious!</h2>
@@ -706,7 +706,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
             </div>
 
             {/* SCREEN-ONLY INTERACTIVE COOK MODE */}
-            <div className="max-w-4xl mx-auto pb-32 print:hidden">
+            <div className="max-w-4xl mx-auto pb-36 sm:pb-32 md:pb-24 print:hidden">
                 {/* TOP HEADER & PROGRESS CARD */}
                 <Card className="mb-6 p-5 rounded-[2rem] border border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm shadow-xs">
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative">
@@ -779,8 +779,8 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                  </CardContent>
             </Card>
 
-            {/* ACTION BUTTON CONTROLS */}
-            <div className="grid grid-cols-1 gap-3 mb-10">
+            {/* ACTION BUTTON CONTROLS (DESKTOP) */}
+            <div className="hidden md:grid grid-cols-1 gap-3 mb-10">
                 <Button size="lg" className="w-full font-semibold uppercase tracking-wider h-14 text-sm sm:text-base rounded-full bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 border-0 transition-all active:scale-[0.99] flex items-center justify-center gap-2" onClick={handleMarkAndGoToNext}>
                     {completedSteps.has(currentStep) ? "Step Completed" : "Mark Step as Complete"}
                     <Check className="h-5 w-5" />
@@ -807,6 +807,42 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                 <div className="flex items-center justify-center gap-2 mt-2 text-[10px] font-semibold uppercase tracking-wider text-stone-400 select-none">
                     <Keyboard className="h-3.5 w-3.5" />
                     <span>Space: Next &bull; Left Arrow: Back &bull; T: Timer &bull; Esc: Exit</span>
+                </div>
+            </div>
+
+            {/* MOBILE FIXED BOTTOM NAVIGATION BAR (Safe Area Padded) */}
+            <div className="fixed bottom-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-t border-stone-200/80 dark:border-stone-800/80 px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))] shadow-xl md:hidden">
+                <div className="flex items-center gap-2.5 max-w-lg mx-auto">
+                    <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="h-12 w-12 min-h-[44px] min-w-[44px] shrink-0 rounded-full border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 active:scale-95 disabled:opacity-30" 
+                        onClick={handleGoToPrevious}
+                        disabled={currentStep === 0}
+                        aria-label="Previous Step"
+                    >
+                        <ArrowLeft className="h-5 w-5" />
+                    </Button>
+                    <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className={cn(
+                            "h-12 w-12 min-h-[44px] min-w-[44px] shrink-0 rounded-full border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 active:scale-95 transition-colors",
+                            isSpeakingStep ? "text-rose-500 bg-rose-500/10 border-rose-500/30" : "text-stone-700 dark:text-stone-300 hover:text-[#F4A21A]"
+                        )}
+                        onClick={() => toggleSpeakingStep(steps[currentStep])}
+                        title={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
+                        aria-label={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
+                    >
+                        {isSpeakingStep ? <VolumeX className="h-5 w-5 text-rose-500 animate-pulse" /> : <Volume2 className="h-5 w-5" />}
+                    </Button>
+                    <Button 
+                        className="flex-1 h-12 min-h-[44px] rounded-full font-semibold uppercase tracking-wider text-xs bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-md shadow-amber-500/25 border-0 transition-all active:scale-[0.98] flex items-center justify-center gap-1.5"
+                        onClick={handleMarkAndGoToNext}
+                    >
+                        <span className="truncate">{completedSteps.has(currentStep) ? (currentStep === stepCount - 1 ? "Finish Cooking" : "Next Step") : (currentStep === stepCount - 1 ? "Finish Cooking" : "Complete & Next")}</span>
+                        <Check className="h-4 w-4 shrink-0" />
+                    </Button>
                 </div>
             </div>
 

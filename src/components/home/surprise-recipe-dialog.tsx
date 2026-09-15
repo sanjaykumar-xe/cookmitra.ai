@@ -17,6 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import type { GenerateIndianRecipeOutput } from '@/ai/schemas/recipe-schemas';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import ClickSpark from '@/components/effects/ClickSpark';
 
 const PANTRY_POOL = [
   "onion", "tomato", "potato", "rice", "dal (lentils)", "paneer", 
@@ -75,29 +76,38 @@ export function SurpriseRecipeDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button 
-          onClick={(e) => {
-            e.preventDefault();
-            generateSurprise();
-          }}
-          disabled={isLoading}
-          className={cn(
-            "rounded-full px-8 h-12 text-base font-bold shadow-lg transition-all hover:scale-105 active:scale-95 border-0",
-            "bg-gradient-to-r from-[#F4A21A] to-[#FFB02E] text-[#412402]"
-          )}
+        <ClickSpark
+          sparkColor="#F4A21A"
+          sparkSize={8}
+          sparkRadius={18}
+          sparkCount={6}
+          duration={350}
+          easing="ease-out"
         >
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-              Cooking up a surprise...
-            </>
-          ) : (
-            <>
-              <Sparkles className="mr-2 h-5 w-5" />
-              Surprise Me!
-            </>
-          )}
-        </Button>
+          <Button 
+            onClick={(e) => {
+              e.preventDefault();
+              generateSurprise();
+            }}
+            disabled={isLoading}
+            className={cn(
+              "rounded-full px-8 h-12 text-base font-bold shadow-lg transition-all hover:scale-105 active:scale-95 border-0",
+              "bg-gradient-to-r from-[#F4A21A] to-[#FFB02E] text-[#412402]"
+            )}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                Cooking up a surprise...
+              </>
+            ) : (
+              <>
+                <Sparkles className="mr-2 h-5 w-5" />
+                Surprise Me!
+              </>
+            )}
+          </Button>
+        </ClickSpark>
       </DialogTrigger>
       <DialogContent className="max-w-4xl h-[90vh] p-0 overflow-hidden rounded-[2rem] border-primary/20">
         <DialogHeader className="p-6 absolute top-0 left-0 right-0 z-50 pointer-events-none">

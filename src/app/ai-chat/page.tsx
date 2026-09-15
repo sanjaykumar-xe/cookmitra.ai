@@ -48,8 +48,8 @@ export default function AiChatPage() {
   }
 
   return (
-    <div className="content-container pt-4 pb-12 px-4 h-[calc(100vh-5rem)] flex flex-col">
-      <div className="text-center mb-6 space-y-2 shrink-0">
+    <div className="content-container pt-2 sm:pt-4 pb-3 sm:pb-8 px-2 sm:px-4 h-[calc(100dvh-4.25rem)] md:h-[calc(100vh-5rem)] flex flex-col min-h-0">
+      <div className="text-center mb-3 sm:mb-6 space-y-1 sm:space-y-2 shrink-0">
         <h1 className="font-headline text-3xl sm:text-4xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">
             Chef Momo
         </h1>

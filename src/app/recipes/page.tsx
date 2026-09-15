@@ -104,7 +104,8 @@ function RecipesExplorerContent() {
   const [showMoreCategories, setShowMoreCategories] = useState(false);
   const [selectedRegionTag, setSelectedRegionTag] = useState<string | null>(null);
   const [selectedStateName, setSelectedStateName] = useState<string | null>(null);
-  const [displayLimit, setDisplayLimit] = useState(24);
+  const [displayLimit, setDisplayLimit] = useState(12);
+  const [isIngredientsOpen, setIsIngredientsOpen] = useState(false);
 
   const [selectedDiet, setSelectedDiet] = useState<'All' | 'Vegetarian' | 'Non-Vegetarian'>('All');
   const [selectedMaxTime, setSelectedMaxTime] = useState<number | null>(null);
@@ -364,10 +365,10 @@ function RecipesExplorerContent() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-center space-y-6"
+        className="text-center space-y-4 sm:space-y-6"
       >
-        <h2 className="font-headline text-2xl font-medium text-stone-900 dark:text-stone-100">What&apos;s Your Mood Today?</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">What&apos;s Your Mood Today?</h2>
+        <div className="flex overflow-x-auto pb-2 -mx-4 px-4 snap-x snap-mandatory gap-2.5 no-scrollbar md:grid md:grid-cols-4 lg:grid-cols-7 md:gap-4 md:mx-0 md:px-0">
             {moods.map((mood) => {
                 const isSelected = selectedMood === mood.name;
                 return (
@@ -375,23 +376,24 @@ function RecipesExplorerContent() {
                       key={mood.name}
                       whileHover={{ y: -3, scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="snap-start shrink-0 min-w-[88px] sm:min-w-0 flex-1 md:flex-none"
                     >
                       <Card
                           onClick={() => handleMoodSelect(mood.name)}
                           className={cn(
-                              "p-5 text-center cursor-pointer transition-all rounded-2xl border-2 flex flex-col items-center justify-center h-full",
+                              "p-2.5 sm:p-5 text-center cursor-pointer transition-all rounded-2xl border-2 flex flex-col items-center justify-center min-h-[76px] sm:min-h-0 h-full",
                               isSelected 
                                   ? mood.active
                                   : `border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm ${mood.color}`
                           )}
                       >
                           <div className={cn(
-                              "mb-2.5 h-11 w-11 mx-auto rounded-xl flex items-center justify-center transition-colors", 
+                              "mb-1 sm:mb-2.5 h-8 w-8 sm:h-11 sm:w-11 mx-auto rounded-xl flex items-center justify-center transition-colors [&>svg]:h-4 [&>svg]:w-4 sm:[&>svg]:h-7 sm:[&>svg]:w-7", 
                               isSelected ? "bg-white/20 text-white" : "bg-amber-500/10 text-[#F4A21A]"
                           )}>
                               {mood.icon}
                           </div>
-                          <p className={cn("font-medium text-sm", isSelected ? "text-white" : "text-stone-800 dark:text-stone-200")}>{mood.name}</p>
+                          <p className={cn("font-medium text-xs sm:text-sm whitespace-nowrap sm:whitespace-normal", isSelected ? "text-white" : "text-stone-800 dark:text-stone-200")}>{mood.name}</p>
                       </Card>
                     </motion.div>
                 );
@@ -404,11 +406,58 @@ function RecipesExplorerContent() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-center space-y-6"
+        className="text-center space-y-4 sm:space-y-6"
       >
-        <h2 className="font-headline text-2xl font-medium text-stone-900 dark:text-stone-100">Browse by Course</h2>
+        <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">Browse by Course</h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {/* Mobile: Horizontally-scrollable single-row strip with all course categories */}
+        <div className="flex md:hidden overflow-x-auto pb-2 -mx-4 px-4 snap-x snap-mandatory gap-2.5 no-scrollbar">
+            {[...topCourseCategories, ...remainingCourseCategories].map((cat) => {
+                const isSelected = selectedCategory === cat.name;
+                const count = categoryCounts[cat.name] || 0;
+                return (
+                    <motion.div
+                      key={cat.name}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="snap-start shrink-0 min-w-[125px]"
+                    >
+                      <Card
+                          onClick={() => handleCategorySelect(cat.name)}
+                          className={cn(
+                              "p-2.5 text-center cursor-pointer transition-all rounded-2xl border-2 flex flex-col items-center justify-center min-h-[86px] relative group h-full",
+                              isSelected 
+                                  ? "border-[#F4A21A] bg-amber-500/10 shadow-sm" 
+                                  : "border-stone-200/80 dark:border-stone-800/80 hover:border-amber-500/40 bg-card/80 backdrop-blur-sm"
+                          )}
+                      >
+                          <div className={cn(
+                              "mb-1 h-7 w-7 mx-auto rounded-xl flex items-center justify-center transition-colors shrink-0 [&>svg]:h-4 [&>svg]:w-4", 
+                              isSelected ? "bg-[#F4A21A] text-white" : "bg-amber-500/10 text-[#F4A21A] group-hover:bg-[#F4A21A] group-hover:text-white"
+                          )}>
+                              {cat.icon}
+                          </div>
+                          <p className={cn("font-medium text-xs leading-tight text-center mb-1 line-clamp-1", isSelected ? "text-[#F4A21A]" : "text-stone-900 dark:text-stone-100")}>
+                              {cat.name}
+                          </p>
+                          {count > 0 && (
+                              <span className={cn(
+                                  "inline-flex items-center justify-center px-1.5 py-0.5 text-[9px] font-semibold rounded-full transition-colors",
+                                  isSelected 
+                                      ? "bg-[#F4A21A] text-white" 
+                                      : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 group-hover:bg-amber-500/10 group-hover:text-[#F4A21A]"
+                              )}>
+                                  {count} recipes
+                              </span>
+                          )}
+                      </Card>
+                    </motion.div>
+                );
+            })}
+        </div>
+
+        {/* Desktop: Grid layout with Show More toggle */}
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-6 gap-4">
             {topCourseCategories.map((cat) => {
                 const isSelected = selectedCategory === cat.name;
                 const count = categoryCounts[cat.name] || 0;
@@ -459,7 +508,7 @@ function RecipesExplorerContent() {
                     animate={{ opacity: 1, height: "auto", marginTop: 16 }}
                     exit={{ opacity: 0, height: 0, marginTop: 0 }}
                     transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className="overflow-hidden"
+                    className="overflow-hidden hidden md:block"
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 pt-1">
                         {remainingCourseCategories.map((cat) => {
@@ -508,7 +557,7 @@ function RecipesExplorerContent() {
             )}
         </AnimatePresence>
 
-        <div className="mt-4 flex justify-center">
+        <div className="mt-4 hidden md:flex justify-center">
             <Button
                 variant="outline"
                 onClick={() => setShowMoreCategories(prev => !prev)}
@@ -520,69 +569,93 @@ function RecipesExplorerContent() {
         </div>
       </motion.div>
 
-      <Card className="w-full mb-12 p-6 md:p-8 rounded-[2.5rem] bg-card/80 backdrop-blur-sm border-stone-200/80 dark:border-stone-800/80 shadow-sm">
-        <div className="space-y-1 mb-6">
-            <h2 className="font-headline text-2xl font-medium text-stone-900 dark:text-stone-100">Find Recipes by Ingredients</h2>
-            <p className="text-sm text-stone-600 dark:text-stone-300 font-medium">
-                Tell us what&apos;s in your kitchen — we&apos;ll find recipes that use it.
-            </p>
-        </div>
-
-        <div className="relative">
-          <Input 
-            placeholder="Add an ingredient (e.g. Tomato) and press Enter or +..."
-            className="pr-12 h-14 rounded-2xl text-base pl-5 border-stone-300 dark:border-stone-700 focus:border-[#F4A21A]" 
-            value={ingredientInput}
-            onChange={(e) => setIngredientInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleAddIngredient(ingredientInput)}
-          />
-          <Button 
-            variant="ghost"
-            size="icon" 
-            className="absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 text-[#F4A21A] hover:bg-amber-500/10 rounded-xl disabled:opacity-30" 
-            onClick={() => handleAddIngredient(ingredientInput)}
-            disabled={!ingredientInput.trim()}
-          >
-            <Plus className="h-5 w-5" />
-          </Button>
-        </div>
-
-        {selectedIngredients.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-4 min-h-[36px]">
-                {selectedIngredients.map(ing => (
-                    <Badge 
-                        key={ing} 
-                        variant="secondary" 
-                        className="pl-3 pr-1 py-1 h-8 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20 flex items-center gap-1.5"
-                    >
-                        <span className="font-medium text-xs uppercase tracking-wider">{ing}</span>
-                        <button 
-                            onClick={() => handleRemoveIngredient(ing)}
-                            className="p-0.5 rounded-full hover:bg-amber-500/20 transition-colors"
-                        >
-                            <X className="h-3 w-3" />
-                        </button>
-                    </Badge>
-                ))}
-            </div>
-        )}
-
-        <Button 
-            className="w-full h-14 rounded-full text-sm sm:text-base font-semibold uppercase tracking-wider bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 mt-6 border-0 active:scale-[0.99] transition-all flex items-center justify-center gap-2" 
-            onClick={() => {
-              let finalIngredients = [...selectedIngredients];
-              if (ingredientInput.trim() && !finalIngredients.includes(ingredientInput.trim().toLowerCase())) {
-                const newIng = ingredientInput.trim().toLowerCase();
-                finalIngredients.push(newIng);
-                setSelectedIngredients(finalIngredients);
-                setIngredientInput("");
-              }
-              setSearchIngredients(finalIngredients);
-              scrollToResults();
-            }}
+      {/* Find Recipes by Ingredients - Collapsible on Mobile */}
+      <Card className="w-full mb-8 md:mb-12 p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-[2.5rem] bg-card/80 backdrop-blur-sm border-stone-200/80 dark:border-stone-800/80 shadow-sm">
+        <div 
+            className="flex items-center justify-between cursor-pointer md:cursor-default"
+            onClick={() => setIsIngredientsOpen(prev => !prev)}
         >
-          <Search className="h-5 w-5" /> Search Recipes
-        </Button>
+            <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                    <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">Find Recipes by Ingredients</h2>
+                    {selectedIngredients.length > 0 && (
+                        <Badge variant="secondary" className="text-xs bg-amber-500/15 text-[#F4A21A] border-amber-500/30 font-semibold">
+                            {selectedIngredients.length} added
+                        </Badge>
+                    )}
+                </div>
+                <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-medium">
+                    Tell us what&apos;s in your kitchen — we&apos;ll find recipes that use it.
+                </p>
+            </div>
+            <Button 
+                variant="ghost" 
+                size="icon" 
+                className="md:hidden shrink-0 h-9 w-9 rounded-full text-stone-500 hover:bg-amber-500/10" 
+                aria-label={isIngredientsOpen ? "Collapse section" : "Expand section"}
+            >
+                <ChevronDown className={cn("h-5 w-5 transition-transform duration-200", (isIngredientsOpen || selectedIngredients.length > 0) && "rotate-180")} />
+            </Button>
+        </div>
+
+        <div className={cn("transition-all", !isIngredientsOpen && selectedIngredients.length === 0 && "hidden md:block")}>
+            <div className="relative mt-4 sm:mt-6">
+              <Input 
+                placeholder="Add an ingredient (e.g. Tomato) and press Enter or +..."
+                className="pr-12 h-12 sm:h-14 rounded-2xl text-sm sm:text-base pl-4 sm:pl-5 border-stone-300 dark:border-stone-700 focus:border-[#F4A21A]" 
+                value={ingredientInput}
+                onChange={(e) => setIngredientInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddIngredient(ingredientInput)}
+              />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 sm:h-10 sm:w-10 text-[#F4A21A] hover:bg-amber-500/10 rounded-xl disabled:opacity-30" 
+                onClick={() => handleAddIngredient(ingredientInput)}
+                disabled={!ingredientInput.trim()}
+              >
+                <Plus className="h-5 w-5" />
+              </Button>
+            </div>
+
+            {selectedIngredients.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4 min-h-[36px]">
+                    {selectedIngredients.map(ing => (
+                        <Badge 
+                            key={ing} 
+                            variant="secondary" 
+                            className="pl-3 pr-1 py-1 h-8 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20 flex items-center gap-1.5"
+                        >
+                            <span className="font-medium text-xs uppercase tracking-wider">{ing}</span>
+                            <button 
+                                onClick={() => handleRemoveIngredient(ing)}
+                                className="p-1 rounded-full hover:bg-amber-500/20 transition-colors min-h-[32px] min-w-[32px] inline-flex items-center justify-center"
+                                aria-label={`Remove ${ing}`}
+                            >
+                                <X className="h-3.5 w-3.5" />
+                            </button>
+                        </Badge>
+                    ))}
+                </div>
+            )}
+
+            <Button 
+                className="w-full h-12 sm:h-14 rounded-full text-xs sm:text-base font-semibold uppercase tracking-wider bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 mt-5 sm:mt-6 border-0 active:scale-[0.99] transition-all flex items-center justify-center gap-2" 
+                onClick={() => {
+                  let finalIngredients = [...selectedIngredients];
+                  if (ingredientInput.trim() && !finalIngredients.includes(ingredientInput.trim().toLowerCase())) {
+                    const newIng = ingredientInput.trim().toLowerCase();
+                    finalIngredients.push(newIng);
+                    setSelectedIngredients(finalIngredients);
+                    setIngredientInput("");
+                  }
+                  setSearchIngredients(finalIngredients);
+                  scrollToResults();
+                }}
+            >
+              <Search className="h-4 w-4 sm:h-5 sm:w-5" /> Search Recipes
+            </Button>
+        </div>
       </Card>
 
       <div id="recipe-results-grid" className="pt-4 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
@@ -894,7 +967,7 @@ function RecipesExplorerContent() {
         )}
       </AnimatePresence>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
         {recipesToDisplay.map((recipe, idx) => (
             <motion.div 
               key={recipe.id} 
@@ -936,9 +1009,9 @@ function RecipesExplorerContent() {
       )}
 
       {allFilteredRecipes.length > displayLimit && (
-          <div className="mt-16 flex flex-col items-center gap-4 pb-20">
-              <p className="text-sm font-medium text-stone-500 italic">Showing {displayLimit} of {allFilteredRecipes.length} recipes</p>
-              <Button size="lg" className="rounded-full px-10 h-14 font-medium bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/20 transition-all border-0" onClick={() => setDisplayLimit(prev => prev + 24)}>
+          <div className="mt-12 sm:mt-16 flex flex-col items-center gap-4 pb-16 sm:pb-20">
+              <p className="text-xs sm:text-sm font-medium text-stone-500 italic">Showing {displayLimit} of {allFilteredRecipes.length} recipes</p>
+              <Button size="lg" className="rounded-full px-8 sm:px-10 h-12 sm:h-14 text-sm sm:text-base font-medium bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/20 transition-all border-0" onClick={() => setDisplayLimit(prev => prev + 12)}>
                 Load More Recipes
               </Button>
           </div>

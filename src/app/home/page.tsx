@@ -15,14 +15,20 @@ import {
     Search,
     ArrowRight,
     Star,
-    Flame
+    Flame,
+    Sparkles,
+    CalendarDays,
+    HeartPulse,
+    Library,
+    MessageSquare
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { collection, query, orderBy, limit } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SurpriseRecipeDialog } from '@/components/home/surprise-recipe-dialog';
-import { IconHeartFilled } from '@tabler/icons-react';
+import ClickSpark from '@/components/effects/ClickSpark';
+import { IconHeartFilled, IconBook, IconClock } from '@tabler/icons-react';
 import { useLanguage } from '@/context/language-context';
 import { RegionalCuisineExplorer } from '@/components/home/regional-cuisine-explorer';
 import { recipes } from '@/lib/recipes';
@@ -63,7 +69,7 @@ function PopularRecipeCard({ recipe, isTrending = false }: { recipe: Recipe; isT
     return (
         <Card className="flex flex-col h-full rounded-2xl bg-card border border-stone-200/80 dark:border-stone-800/80 shadow-xs hover:shadow-lg hover:border-amber-500/40 hover:-translate-y-1 transition-all duration-200 ease-out group overflow-hidden">
             {/* Image Container */}
-            <div className="relative h-44 w-full bg-stone-100 dark:bg-stone-900 overflow-hidden shrink-0">
+            <div className="relative h-36 sm:h-44 w-full bg-stone-100 dark:bg-stone-900 overflow-hidden shrink-0">
                 {showImage ? (
                     <>
                         {isImageLoading && (
@@ -84,7 +90,7 @@ function PopularRecipeCard({ recipe, isTrending = false }: { recipe: Recipe; isT
                     </>
                 ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-stone-100 dark:bg-stone-900">
-                        <ChefHat className="h-9 w-9 text-amber-500/60" />
+                        <ChefHat className="h-8 w-8 sm:h-9 sm:w-9 text-amber-500/60" />
                         <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 mt-2">Photo coming soon</span>
                     </div>
                 )}
@@ -121,7 +127,7 @@ function PopularRecipeCard({ recipe, isTrending = false }: { recipe: Recipe; isT
                 </div>
 
                 {/* Bottom Overlay: Time (left) + Star Rating (right) */}
-                <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white text-[11px] font-medium z-20 pointer-events-none">
+                <div className="absolute bottom-2 sm:bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-white text-[10px] sm:text-[11px] font-medium z-20 pointer-events-none">
                     <span className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/15">
                         <Clock className="h-3 w-3 text-amber-400" />
                         {recipe.time}m
@@ -134,17 +140,17 @@ function PopularRecipeCard({ recipe, isTrending = false }: { recipe: Recipe; isT
             </div>
 
             {/* Card Body */}
-            <CardHeader className="p-4 pb-2 flex-1 flex flex-col justify-between">
+            <CardHeader className="p-3.5 sm:p-4 pb-1.5 sm:pb-2 flex-1 flex flex-col justify-between">
                 <div>
                     <CardTitle className="font-headline text-base font-semibold tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-[#F4A21A] transition-colors line-clamp-1">
                         {recipe.name}
                     </CardTitle>
-                    <CardDescription className="line-clamp-2 text-xs font-normal text-stone-600 dark:text-stone-400 mt-1 leading-relaxed">
+                    <CardDescription className="line-clamp-2 text-xs font-normal text-stone-600 dark:text-stone-400 mt-1 leading-snug sm:leading-relaxed">
                         {recipe.description}
                     </CardDescription>
                 </div>
 
-                <div className="pt-3 flex flex-wrap gap-1">
+                <div className="pt-2 sm:pt-3 flex flex-wrap gap-1">
                     {recipe.tags?.slice(0, 2).map(tag => (
                         <Badge key={tag} variant="outline" className="text-[10px] font-medium bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/20 rounded-full px-2 py-0.2">
                             {tag}
@@ -153,10 +159,10 @@ function PopularRecipeCard({ recipe, isTrending = false }: { recipe: Recipe; isT
                 </div>
             </CardHeader>
 
-            <CardFooter className="px-4 pb-3.5 pt-1 mt-auto border-t border-stone-100 dark:border-stone-800/70 flex justify-between items-center text-xs font-semibold text-stone-500 dark:text-stone-400 group-hover:text-[#F4A21A] transition-colors">
+            <CardFooter className="px-3.5 sm:px-4 py-2 sm:pb-3.5 sm:pt-1 min-h-[44px] mt-auto border-t border-stone-100 dark:border-stone-800/70 flex justify-between items-center text-xs font-semibold text-stone-500 dark:text-stone-400 group-hover:text-[#F4A21A] transition-colors">
                 <Link 
                     href={`/recipes/${recipe.id}`} 
-                    className="flex items-center justify-between w-full"
+                    className="flex items-center justify-between w-full min-h-[36px]"
                     aria-label={`View recipe details for ${recipe.name}`}
                 >
                     <span>View Recipe</span>
@@ -306,6 +312,13 @@ function SavedRecipeCard({ recipe }: { recipe: any }) {
     );
 }
 
+const SEARCH_PLACEHOLDERS = [
+    "Try 'biryani'...",
+    "Try 'paneer butter masala'...",
+    "Search 'quick breakfast'...",
+    "What would you like to cook today?"
+];
+
 export default function DashboardPage() {
     const { user, isUserLoading } = useUser();
     const { t } = useLanguage();
@@ -313,10 +326,25 @@ export default function DashboardPage() {
     const [searchQuery, setSearchQuery] = useState('');
     const [suggestions, setSuggestions] = useState<Recipe[]>([]);
     const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
+    const [placeholderIndex, setPlaceholderIndex] = useState(0);
+    const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [recipeFilter, setRecipeFilter] = useState<'all' | 'veg' | 'non-veg' | 'quick'>('all');
     const searchContainerRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
     const firestore = useFirestore();
+
+    // Rotate search placeholder every 3s only when input is empty and unfocused
+    useEffect(() => {
+        if (searchQuery.trim().length > 0 || isSearchFocused) {
+            return;
+        }
+
+        const interval = setInterval(() => {
+            setPlaceholderIndex((prev) => (prev + 1) % SEARCH_PLACEHOLDERS.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [searchQuery, isSearchFocused]);
 
     useEffect(() => {
         setMounted(true);
@@ -414,6 +442,70 @@ export default function DashboardPage() {
         { label: 'Quick & easy', href: '/recipes?maxTime=30&difficulty=easy' },
     ];
 
+    // Quick-Access Action Cards
+    const quickActions = [
+        {
+            title: t('home.generate.title') || 'AI Recipe Generator',
+            desc: t('home.generate.desc') || 'Cook with what you have',
+            icon: <Sparkles className="h-6 w-6 text-current" strokeWidth={1.75} />,
+            href: '/ai-recipes',
+            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400',
+            hoverBorder: 'hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:shadow-amber-500/10 hover:bg-amber-500/5',
+            hoverIconBg: 'group-hover:bg-amber-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-amber-600 dark:group-hover:text-amber-400'
+        },
+        {
+            title: t('home.plan.title') || 'Weekly Meal Plan',
+            desc: t('home.plan.desc') || 'Tailored Indian meal plan',
+            icon: <CalendarDays className="h-6 w-6 text-current" strokeWidth={1.75} />,
+            href: '/healthy-meal-planner',
+            color: 'bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400',
+            hoverBorder: 'hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-blue-500/10 hover:bg-blue-500/5',
+            hoverIconBg: 'group-hover:bg-blue-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-blue-600 dark:group-hover:text-blue-400'
+        },
+        {
+            title: t('home.healing.title') || 'Healing Foods',
+            desc: t('home.healing.desc') || 'Target health conditions',
+            icon: <HeartPulse className="h-6 w-6 text-current" strokeWidth={1.75} />,
+            href: '/healing-foods',
+            color: 'bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400',
+            hoverBorder: 'hover:border-pink-500/50 dark:hover:border-pink-500/50 hover:shadow-pink-500/10 hover:bg-pink-500/5',
+            hoverIconBg: 'group-hover:bg-pink-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-pink-600 dark:group-hover:text-pink-400'
+        },
+        {
+            title: t('home.saved.title') || 'My Saved Recipes',
+            desc: t('home.saved.desc') || 'Your saved favorites',
+            icon: <Library className="h-6 w-6 text-current" strokeWidth={1.75} />,
+            href: '/my-recipes',
+            color: 'bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400',
+            hoverBorder: 'hover:border-purple-500/50 dark:hover:border-purple-500/50 hover:shadow-purple-500/10 hover:bg-purple-500/5',
+            hoverIconBg: 'group-hover:bg-purple-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-purple-600 dark:group-hover:text-purple-400'
+        },
+        {
+            title: t('home.chat.title') || 'Chef Momo',
+            desc: t('home.chat.desc') || 'Chat with AI Chef Momo',
+            icon: <MessageSquare className="h-6 w-6 text-current" strokeWidth={1.75} />,
+            href: '/ai-chat',
+            color: 'bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400',
+            hoverBorder: 'hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:shadow-amber-500/10 hover:bg-amber-500/5',
+            hoverIconBg: 'group-hover:bg-amber-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-amber-600 dark:group-hover:text-amber-400'
+        },
+        {
+            title: 'Encyclopedia',
+            desc: 'Your cooking knowledge base',
+            icon: <IconBook className="h-6 w-6 text-current" strokeWidth={1.75} />,
+            href: '/encyclopedia',
+            color: 'bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400',
+            hoverBorder: 'hover:border-teal-500/50 dark:hover:border-teal-500/50 hover:shadow-teal-500/10 hover:bg-teal-500/5',
+            hoverIconBg: 'group-hover:bg-teal-500 group-hover:text-white',
+            hoverTitle: 'group-hover:text-teal-600 dark:group-hover:text-teal-400'
+        }
+    ];
+
     return (
         <div className="content-container py-6 md:py-10 space-y-10 md:space-y-14 px-4 max-w-7xl mx-auto">
             
@@ -445,7 +537,7 @@ export default function DashboardPage() {
                         <div ref={searchContainerRef} className="pt-2 max-w-xl relative">
                             <form onSubmit={handleSearchSubmit}>
                                 <div className="relative flex items-center">
-                                    <Search className="absolute left-4 h-5 w-5 text-stone-400 pointer-events-none" />
+                                    <Search className="absolute left-4 h-5 w-5 text-stone-400 pointer-events-none z-10" />
                                     <input
                                         type="text"
                                         id="home-recipe-search-input"
@@ -455,26 +547,48 @@ export default function DashboardPage() {
                                             setIsSuggestionsOpen(true);
                                         }}
                                         onFocus={() => {
+                                            setIsSearchFocused(true);
                                             if (searchQuery.trim().length > 0) {
                                                 setIsSuggestionsOpen(true);
                                             }
+                                        }}
+                                        onBlur={() => {
+                                            setIsSearchFocused(false);
                                         }}
                                         onKeyDown={(e) => {
                                             if (e.key === 'Escape') {
                                                 setIsSuggestionsOpen(false);
                                             }
                                         }}
-                                        placeholder="What would you like to cook today?"
                                         aria-label="What would you like to cook today? Search recipes or ingredients"
                                         aria-autocomplete="list"
                                         aria-controls="home-search-suggestions"
                                         aria-expanded={isSuggestionsOpen && suggestions.length > 0}
-                                        className="w-full bg-white dark:bg-stone-800/95 border border-stone-200 dark:border-stone-700 pl-11 pr-14 py-3.5 rounded-full text-stone-900 dark:text-stone-100 placeholder:text-stone-400 text-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-[#F4A21A]/50 transition-all"
+                                        className="w-full bg-white dark:bg-stone-800/95 border border-stone-200 dark:border-stone-700 pl-11 pr-14 py-3.5 rounded-full text-stone-900 dark:text-stone-100 text-sm shadow-xs focus:outline-none focus:ring-2 focus:ring-[#F4A21A]/50 transition-all"
                                     />
+
+                                    {/* Rotating placeholder with Framer Motion fade transition */}
+                                    {!searchQuery && (
+                                        <div className="absolute left-11 right-14 pointer-events-none flex items-center overflow-hidden h-5">
+                                            <AnimatePresence mode="wait">
+                                                <motion.span
+                                                    key={placeholderIndex}
+                                                    initial={{ opacity: 0, y: 4 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: -4 }}
+                                                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                                                    className="text-stone-400 dark:text-stone-500 text-sm truncate select-none"
+                                                >
+                                                    {SEARCH_PLACEHOLDERS[placeholderIndex]}
+                                                </motion.span>
+                                            </AnimatePresence>
+                                        </div>
+                                    )}
+
                                     <button
                                         type="submit"
                                         aria-label="Search recipes"
-                                        className="absolute right-2 h-9 w-9 bg-[#F4A21A] hover:bg-amber-500 text-white rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-105 active:scale-95"
+                                        className="absolute right-2 h-9 w-9 bg-[#F4A21A] hover:bg-amber-500 text-white rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-105 active:scale-95 z-10"
                                     >
                                         <ArrowRight className="h-4 w-4" />
                                     </button>
@@ -539,14 +653,14 @@ export default function DashboardPage() {
                         </div>
 
                         {/* Quick Suggestion Chips */}
-                        <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
                             <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 mr-1">Popular:</span>
                             {suggestionChips.map(chip => (
                                 <Link
                                     key={chip.label}
                                     href={chip.href}
                                     aria-label={`Search for ${chip.label}`}
-                                    className="text-xs font-medium px-3 py-1 rounded-full bg-white/90 dark:bg-stone-800/90 text-stone-700 dark:text-stone-300 hover:bg-amber-500/15 hover:text-amber-700 dark:hover:text-amber-300 border border-stone-200/80 dark:border-stone-700 transition-colors shadow-2xs"
+                                    className="text-xs font-medium px-3 py-1.5 sm:py-1 min-h-[36px] sm:min-h-0 inline-flex items-center rounded-full bg-white/90 dark:bg-stone-800/90 text-stone-700 dark:text-stone-300 hover:bg-amber-500/15 hover:text-amber-700 dark:hover:text-amber-300 border border-stone-200/80 dark:border-stone-700 transition-colors shadow-2xs"
                                 >
                                     {chip.label}
                                 </Link>
@@ -621,15 +735,82 @@ export default function DashboardPage() {
                                         <p className="text-[11px] text-stone-500 dark:text-stone-400 truncate">Ask for recipes & pantry tips</p>
                                     </div>
                                 </div>
-                                <Button asChild size="sm" className="h-8 px-3.5 rounded-full bg-[#F4A21A] hover:bg-amber-500 text-white text-xs font-semibold shrink-0 shadow-xs">
-                                    <Link href="/ai-chat" aria-label="Chat with Chef Momo AI assistant">
-                                        Chat now
-                                    </Link>
-                                </Button>
+                                <ClickSpark
+                                    sparkColor="#F4A21A"
+                                    sparkSize={8}
+                                    sparkRadius={18}
+                                    sparkCount={6}
+                                    duration={350}
+                                    easing="ease-out"
+                                    className="shrink-0"
+                                >
+                                    <Button asChild size="sm" className="h-8 px-3.5 rounded-full bg-[#F4A21A] hover:bg-amber-500 text-white text-xs font-semibold shadow-xs">
+                                        <Link href="/ai-chat" aria-label="Chat with Chef Momo AI assistant">
+                                            Chat now
+                                        </Link>
+                                    </Button>
+                                </ClickSpark>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
+
+            {/* 2. QUICK-ACCESS ACTIONS & QUICK DINNER TONIGHT */}
+            <section className="space-y-4">
+                {/* 6 Quick-Access Cards Grid (2-column on mobile for compact density) */}
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2.5 sm:gap-4">
+                    {quickActions.map((action) => (
+                        <Link 
+                            key={action.href} 
+                            href={action.href} 
+                            aria-label={action.title}
+                            className="block h-full"
+                        >
+                            <Card className={`h-full bg-card/80 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 ${action.hoverBorder} transition-all duration-300 relative group overflow-hidden shadow-xs hover:shadow-lg rounded-2xl`}>
+                                <div className="p-3 sm:p-5 xl:p-4 h-full flex flex-col justify-between space-y-2 sm:space-y-3">
+                                    <div className={`h-9 w-9 sm:h-12 sm:w-12 shrink-0 flex items-center justify-center rounded-xl sm:rounded-2xl ${action.color} ${action.hoverIconBg} transition-colors duration-300 shadow-xs [&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6`}>
+                                        {action.icon}
+                                    </div>
+                                    <div>
+                                        <CardTitle className={`text-xs sm:text-base xl:text-[0.9375rem] font-headline font-semibold text-stone-900 dark:text-stone-100 ${action.hoverTitle} transition-colors line-clamp-1`}>
+                                            {action.title}
+                                        </CardTitle>
+                                        <CardDescription className="text-[11px] sm:text-sm font-normal leading-snug sm:leading-relaxed mt-0.5 sm:mt-1 text-stone-600 dark:text-stone-300 line-clamp-2">
+                                            {action.desc}
+                                        </CardDescription>
+                                    </div>
+                                </div>
+                            </Card>
+                        </Link>
+                    ))}
+                </div>
+
+                {/* Quick Dinner Tonight Standalone Full-Width Card */}
+                <Link 
+                    href="/recipes?maxTime=30&difficulty=easy" 
+                    aria-label="Quick Dinner Tonight, ready in under 30 minutes" 
+                    className="block w-full"
+                >
+                    <Card className="bg-card/80 backdrop-blur-sm border border-emerald-500/30 dark:border-emerald-800/40 hover:border-emerald-500/60 hover:shadow-emerald-500/10 hover:bg-emerald-500/5 transition-all duration-300 relative group overflow-hidden shadow-xs hover:shadow-md p-3.5 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl">
+                        <div className="flex items-center justify-between gap-3 sm:gap-4">
+                            <div className="flex items-center gap-3 sm:gap-4">
+                                <div className="h-10 w-10 sm:h-12 sm:w-12 shrink-0 flex items-center justify-center rounded-xl sm:rounded-2xl bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300 shadow-xs [&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6">
+                                    <IconClock className="h-6 w-6 text-current" strokeWidth={1.75} />
+                                </div>
+                                <div className="flex flex-col">
+                                    <CardTitle className="text-base sm:text-xl font-headline font-semibold text-stone-900 dark:text-stone-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                        Quick Dinner Tonight
+                                    </CardTitle>
+                                    <CardDescription className="text-xs sm:text-sm font-normal leading-snug sm:leading-relaxed mt-0.5 text-stone-600 dark:text-stone-300">
+                                        Ready in under 30 minutes
+                                    </CardDescription>
+                                </div>
+                            </div>
+                            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 text-stone-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors shrink-0 group-hover:translate-x-1 duration-200" />
+                        </div>
+                    </Card>
+                </Link>
             </section>
 
             {/* 3. POPULAR RECIPES SECTION */}
@@ -650,7 +831,7 @@ export default function DashboardPage() {
                         <div 
                             role="tablist" 
                             aria-label="Filter popular recipes by diet or speed"
-                            className="flex flex-wrap items-center gap-1.5 bg-stone-100 dark:bg-stone-900/80 p-1 rounded-full border border-stone-200/80 dark:border-stone-800"
+                            className="flex flex-wrap items-center gap-1 sm:gap-1.5 bg-stone-100 dark:bg-stone-900/80 p-1 rounded-full border border-stone-200/80 dark:border-stone-800"
                         >
                             <button
                                 role="tab"
@@ -658,7 +839,7 @@ export default function DashboardPage() {
                                 aria-label="Show all popular recipes"
                                 onClick={() => setRecipeFilter('all')}
                                 className={cn(
-                                    "px-3.5 py-1 rounded-full text-xs font-semibold transition-all",
+                                    "px-3 sm:px-3.5 py-2 sm:py-1 min-h-[40px] sm:min-h-0 inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all",
                                     recipeFilter === 'all'
                                         ? "bg-[#F4A21A] text-white shadow-xs"
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
@@ -672,7 +853,7 @@ export default function DashboardPage() {
                                 aria-label="Show vegetarian popular recipes"
                                 onClick={() => setRecipeFilter('veg')}
                                 className={cn(
-                                    "px-3.5 py-1 rounded-full text-xs font-semibold transition-all",
+                                    "px-3 sm:px-3.5 py-2 sm:py-1 min-h-[40px] sm:min-h-0 inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all",
                                     recipeFilter === 'veg'
                                         ? "bg-[#F4A21A] text-white shadow-xs"
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
@@ -686,7 +867,7 @@ export default function DashboardPage() {
                                 aria-label="Show non-vegetarian popular recipes"
                                 onClick={() => setRecipeFilter('non-veg')}
                                 className={cn(
-                                    "px-3.5 py-1 rounded-full text-xs font-semibold transition-all",
+                                    "px-3 sm:px-3.5 py-2 sm:py-1 min-h-[40px] sm:min-h-0 inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all",
                                     recipeFilter === 'non-veg'
                                         ? "bg-[#F4A21A] text-white shadow-xs"
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
@@ -700,7 +881,7 @@ export default function DashboardPage() {
                                 aria-label="Show quick and easy popular recipes"
                                 onClick={() => setRecipeFilter('quick')}
                                 className={cn(
-                                    "px-3.5 py-1 rounded-full text-xs font-semibold transition-all",
+                                    "px-3 sm:px-3.5 py-2 sm:py-1 min-h-[40px] sm:min-h-0 inline-flex items-center justify-center rounded-full text-xs font-semibold transition-all",
                                     recipeFilter === 'quick'
                                         ? "bg-[#F4A21A] text-white shadow-xs"
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
@@ -727,7 +908,7 @@ export default function DashboardPage() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -6 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
                     >
                         {popularRecipes.map(recipe => (
                             <PopularRecipeCard 
@@ -763,12 +944,21 @@ export default function DashboardPage() {
                     </div>
 
                     <div className="pt-6 z-10">
-                        <Button asChild className="rounded-full bg-[#F4A21A] hover:bg-amber-500 text-white font-semibold text-xs px-6 py-2 shadow-sm">
-                            <Link href="/healthy-meal-planner" aria-label="Create your weekly healthy meal plan" className="flex items-center gap-1.5">
-                                Create Meal Plan
-                                <ArrowRight className="h-3.5 w-3.5" />
-                            </Link>
-                        </Button>
+                        <ClickSpark
+                            sparkColor="#F4A21A"
+                            sparkSize={8}
+                            sparkRadius={18}
+                            sparkCount={6}
+                            duration={350}
+                            easing="ease-out"
+                        >
+                            <Button asChild className="rounded-full bg-[#F4A21A] hover:bg-amber-500 text-white font-semibold text-xs px-6 py-2 shadow-sm">
+                                <Link href="/healthy-meal-planner" aria-label="Create your weekly healthy meal plan" className="flex items-center gap-1.5">
+                                    Create Meal Plan
+                                    <ArrowRight className="h-3.5 w-3.5" />
+                                </Link>
+                            </Button>
+                        </ClickSpark>
                     </div>
 
                     <div className="absolute right-[-20px] bottom-[-20px] w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden opacity-30 dark:opacity-20 pointer-events-none">
@@ -796,12 +986,21 @@ export default function DashboardPage() {
                     </div>
 
                     <div className="pt-6 z-10">
-                        <Button asChild className="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-6 py-2 shadow-sm">
-                            <Link href="/healing-foods" aria-label="Explore Ayurvedic healing foods and recipes" className="flex items-center gap-1.5">
-                                Explore Now
-                                <ArrowRight className="h-3.5 w-3.5" />
-                            </Link>
-                        </Button>
+                        <ClickSpark
+                            sparkColor="#F4A21A"
+                            sparkSize={8}
+                            sparkRadius={18}
+                            sparkCount={6}
+                            duration={350}
+                            easing="ease-out"
+                        >
+                            <Button asChild className="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-6 py-2 shadow-sm">
+                                <Link href="/healing-foods" aria-label="Explore Ayurvedic healing foods and recipes" className="flex items-center gap-1.5">
+                                    Explore Now
+                                    <ArrowRight className="h-3.5 w-3.5" />
+                                </Link>
+                            </Button>
+                        </ClickSpark>
                     </div>
 
                     <div className="absolute right-[-20px] bottom-[-20px] w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden opacity-30 dark:opacity-20 pointer-events-none">

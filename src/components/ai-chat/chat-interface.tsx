@@ -14,6 +14,7 @@ import { useToast } from '@/hooks/use-toast';
 import { ChutkiIcon } from '@/components/icons/chutki-icon';
 import { CookMitraLogo } from '@/components/icons/cook-mitra-logo';
 import { useLanguage } from '@/context/language-context';
+import Image from 'next/image';
 
 const QUICK_SUGGESTIONS = [
   { icon: <UtensilsCrossed className="h-5 w-5" />, text: 'Suggest a recipe with chicken and rice' },
@@ -243,6 +244,23 @@ const StructuredResponse = ({ text }: { text: string }) => {
 
             return <strong className="font-semibold text-stone-900 dark:text-stone-100">{children}</strong>;
           },
+          pre: ({ children }) => (
+            <pre className="p-3 my-2 bg-stone-900 dark:bg-stone-950 text-stone-100 rounded-xl overflow-x-auto text-xs font-mono max-w-full border border-stone-800">
+              {children}
+            </pre>
+          ),
+          code: ({ children, className }) => (
+            <code className={cn("px-1.5 py-0.5 rounded bg-muted font-mono text-xs break-words", className)}>
+              {children}
+            </code>
+          ),
+          table: ({ children }) => (
+            <div className="w-full overflow-x-auto my-2 rounded-xl border border-border/60">
+              <table className="min-w-full divide-y divide-border text-xs">
+                {children}
+              </table>
+            </div>
+          ),
         }}
       >
         {sanitizedText}
@@ -298,11 +316,23 @@ export default function ChatInterface() {
   }, [language]);
 
   useEffect(() => {
-    if (chatContainerRef.current) {
+    const scrollToBottom = () => {
+      if (chatContainerRef.current) {
         const scrollContainer = chatContainerRef.current.querySelector('[data-radix-scroll-area-viewport]');
         if (scrollContainer) {
-            scrollContainer.scrollTo({ top: scrollContainer.scrollHeight, behavior: 'smooth' });
+          scrollContainer.scrollTo({ top: scrollContainer.scrollHeight, behavior: 'smooth' });
         }
+      }
+    };
+
+    scrollToBottom();
+
+    if (typeof window !== 'undefined' && window.visualViewport) {
+      const handleViewportResize = () => {
+        setTimeout(scrollToBottom, 100);
+      };
+      window.visualViewport.addEventListener('resize', handleViewportResize);
+      return () => window.visualViewport?.removeEventListener('resize', handleViewportResize);
     }
   }, [messages, isLoading]);
 
@@ -399,7 +429,14 @@ export default function ChatInterface() {
             {messages.length === 0 && !isLoading && (
                 <div className="text-center py-10 flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-2 duration-700">
                     <div className="mb-4 relative">
-                        <CookMitraLogo width={88} height={88} className="w-22 h-22 transition-transform duration-500 hover:scale-105" />
+                        <Image
+                            src="/chef-momo-logo.png"
+                            alt="Chef Momo"
+                            width={96}
+                            height={96}
+                            className="w-24 h-24 rounded-full object-cover shadow-md border-2 border-amber-500/30 transition-transform duration-500 hover:scale-105"
+                            priority
+                        />
                         <Sparkles className="h-6 w-6 text-[#F4A21A] absolute -top-1 -right-1 animate-pulse" />
                     </div>
                     <h2 className="font-headline text-2xl md:text-3xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">{t('chat.title')}</h2>
@@ -428,9 +465,15 @@ export default function ChatInterface() {
             {messages.map((message, index) => (
                 <div key={index} className={cn('flex items-start gap-3', message.role === 'user' ? 'justify-end' : 'justify-start')}>
                 {message.role === 'assistant' && (
-                    <CookMitraLogo width={32} height={32} className="w-8 h-8 rounded-full shrink-0" />
+                    <Image
+                        src="/chef-momo-logo.png"
+                        alt="Chef Momo"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-full object-cover shrink-0 shadow-xs border border-amber-500/20"
+                    />
                 )}
-                <div className={cn('max-w-md rounded-2xl p-4 text-sm transition-all', message.role === 'user' ? 'bg-[#F4A21A] text-white font-medium shadow-md shadow-amber-500/20 rounded-br-none' : 'bg-stone-100/80 dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800/80 rounded-bl-none shadow-xs text-stone-900 dark:text-stone-100')}>
+                <div className={cn('max-w-[85vw] sm:max-w-md rounded-2xl p-4 text-sm transition-all break-words overflow-hidden', message.role === 'user' ? 'bg-[#F4A21A] text-white font-medium shadow-md shadow-amber-500/20 rounded-br-none' : 'bg-stone-100/80 dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800/80 rounded-bl-none shadow-xs text-stone-900 dark:text-stone-100')}>
                     {message.role === 'assistant' ? <StructuredResponse text={message.content} /> : message.content}
                     {message.role === 'assistant' && (
                         <Button 
@@ -462,7 +505,13 @@ export default function ChatInterface() {
             ))}
             {isLoading && (
                 <div className="flex items-start gap-3 justify-start animate-in fade-in duration-300">
-                    <CookMitraLogo width={32} height={32} className="w-8 h-8 rounded-full shrink-0 animate-pulse" />
+                    <Image
+                        src="/chef-momo-logo.png"
+                        alt="Chef Momo"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-full object-cover shrink-0 animate-pulse border border-amber-500/20"
+                    />
                     <div className="rounded-2xl p-4 text-sm bg-stone-100/80 dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800/80 rounded-bl-none shadow-xs space-y-2.5 max-w-sm w-full">
                         <div className="flex items-center gap-2 mb-1">
                             <Loader2 className="h-4 w-4 animate-spin text-[#F4A21A] shrink-0" />
@@ -476,20 +525,26 @@ export default function ChatInterface() {
             )}
             </div>
         </ScrollArea>
-        <div className="p-4 border-t border-stone-200/80 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-900/40 backdrop-blur-sm">
+        <div className="p-3 sm:p-4 border-t border-stone-200/80 dark:border-stone-800/80 bg-stone-50/50 dark:bg-stone-900/40 backdrop-blur-sm">
             <div className="relative max-w-4xl mx-auto flex items-center">
                 <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
+                    onFocus={() => {
+                      setTimeout(() => {
+                        const scrollContainer = chatContainerRef.current?.querySelector('[data-radix-scroll-area-viewport]');
+                        if (scrollContainer) scrollContainer.scrollTo({ top: scrollContainer.scrollHeight, behavior: 'smooth' });
+                      }, 250);
+                    }}
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage(input)}
                     placeholder={isListening ? "Listening..." : t('chat.placeholder')}
-                    className="h-14 pr-28 rounded-full bg-card border border-stone-200/80 dark:border-stone-800/80 shadow-xs pl-6 text-sm focus-visible:ring-2 focus-visible:ring-[#F4A21A]"
+                    className="h-12 sm:h-14 pr-24 sm:pr-28 rounded-full bg-card border border-stone-200/80 dark:border-stone-800/80 shadow-xs pl-5 sm:pl-6 text-sm focus-visible:ring-2 focus-visible:ring-[#F4A21A]"
                 />
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
-                    <Button type="button" size="icon" variant={isListening ? "destructive" : "ghost"} onClick={handleVoiceInput} className="h-10 w-10 rounded-full hover:scale-105 transition-transform">
-                        <Mic className="h-5 w-5" />
+                <div className="absolute right-1.5 sm:right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                    <Button type="button" size="icon" variant={isListening ? "destructive" : "ghost"} onClick={handleVoiceInput} className="h-9 w-9 sm:h-10 sm:w-10 rounded-full hover:scale-105 transition-transform">
+                        <Mic className="h-4 sm:h-5 w-4 sm:w-5" />
                     </Button>
-                    <Button type="submit" size="icon" onClick={() => handleSendMessage(input)} disabled={isLoading || !input.trim()} className="h-10 w-10 rounded-full bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-md shadow-amber-500/25 border-0 transition-transform active:scale-95 flex items-center justify-center">
+                    <Button type="submit" size="icon" onClick={() => handleSendMessage(input)} disabled={isLoading || !input.trim()} className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-md shadow-amber-500/25 border-0 transition-transform active:scale-95 flex items-center justify-center">
                         <Send className="h-4 w-4" />
                     </Button>
                 </div>

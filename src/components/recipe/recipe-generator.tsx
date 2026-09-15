@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { RecipeGeneratorForm } from "@/components/recipe/recipe-generator-form";
 import { RecipeDisplay } from "@/components/recipe/recipe-display";
-import type { GenerateIndianRecipeOutput } from "@/ai/flows/generate-indian-recipe";
+import type { GenerateIndianRecipeOutput } from "@/ai/schemas/recipe-schemas";
 import { generateRecipeAction, refineRecipeAction } from "@/app/actions";
 import { useToast } from "@/hooks/use-toast";
 import { ChefHat, Sparkles } from "lucide-react";

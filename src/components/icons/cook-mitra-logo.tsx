@@ -18,11 +18,11 @@ export const CookMitraLogo = ({
   const sizeNum = typeof width === 'number' ? width : 48;
   return (
     <img
-      src="/chef-momo-logo.png"
-      alt="CookMitra Chef Momo Logo"
+      src="/images/app-icon-transparent.png"
+      alt="CookMitra Brand Logo"
       width={sizeNum}
       height={sizeNum}
-      className={cn("object-contain rounded-full shrink-0 inline-block shadow-sm transition-transform group-hover:scale-105", className)}
+      className={cn("object-contain shrink-0 inline-block transition-transform group-hover:scale-105", className)}
       style={{ width: typeof width === 'number' ? `${width}px` : width, height: typeof height === 'number' ? `${height}px` : height }}
       {...props}
     />

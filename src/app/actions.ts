@@ -5,12 +5,12 @@ import {
 } from "@/ai/flows/generate-indian-recipe";
 import {
   refineIndianRecipe,
-  RefineIndianRecipeInput,
+  type RefineIndianRecipeInput,
 } from "@/ai/flows/refine-indian-recipe";
 import {
   suggestMissingIngredients,
-  SuggestMissingIngredientsInput,
 } from "@/ai/flows/suggest-missing-ingredients";
+import type { SuggestMissingIngredientsInput } from "@/ai/schemas/ingredient-schemas";
 import {
   generateHealthyMealPlan,
 } from "@/ai/flows/generate-healthy-meal-plan";

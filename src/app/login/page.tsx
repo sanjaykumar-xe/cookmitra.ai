@@ -29,10 +29,10 @@ export default function LoginPage() {
         
         {/* Top Left Logo Lockup */}
         <div className="absolute left-10 top-10 z-20">
-          <Link href="/" className="flex items-center space-x-3 group">
-            <CookMitraLogo width={40} height={40} className="w-10 h-10" />
-            <span className="font-headline text-[22px] font-bold text-[#FAEEDA] leading-none flex items-center">
-              CookMitra<span className="ml-1 text-[16px] font-normal opacity-70 text-white/70">AI</span>
+          <Link href="/" className="flex items-center space-x-2.5 group">
+            <CookMitraLogo width={40} height={40} className="w-10 h-10 object-contain drop-shadow-md" />
+            <span className="font-sans text-[22px] font-bold text-white tracking-tight leading-none flex items-center drop-shadow-sm">
+              CookMitra<span className="ml-1 text-[14px] font-medium text-white/80">AI</span>
             </span>
           </Link>
         </div>
@@ -55,10 +55,11 @@ export default function LoginPage() {
           <div className="mb-8">
             <Link 
               href="/" 
-              className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors group"
+              className="inline-flex items-center gap-1.5 py-2 px-2 -ml-2 rounded-lg text-muted-foreground hover:text-primary transition-colors group min-h-[44px]"
+              aria-label="Back to Home"
             >
               <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              <span className="text-[13px] font-normal">Back</span>
+              <span className="text-sm font-normal">Back</span>
             </Link>
           </div>
 

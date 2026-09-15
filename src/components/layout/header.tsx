@@ -23,6 +23,7 @@ import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { HeaderAuthActions } from './header-auth-actions';
 import { useUser } from '@/lib/firebase';
+import { MobileNavDrawer } from './icon-sidebar';
 
 /**
  * Header component.
@@ -116,6 +117,7 @@ export function Header() {
         
         {/* Left Side: Brand Identity */}
         <div className="flex items-center">
+            {!isLandingPage && !isAuthPage && <MobileNavDrawer />}
             <Link href={homeHref} className="flex items-center group shrink-0" aria-label="CookMitra AI Home">
                 {/* Light Mode: Horizontal Lockup Logo with automatic fallback to App Icon + Typography */}
                 {!logoError ? (

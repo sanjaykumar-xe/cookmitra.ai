@@ -56,11 +56,11 @@ export default function SavedRecipePage() {
           if (docSnap.exists()) {
             setRecipe({ id: docSnap.id, ...docSnap.data() } as SavedRecipe);
           } else {
-            setError(t('myRecipes.detail.notFound'));
+            setError((t as any)('myRecipes.detail.notFound') || 'Recipe not found');
           }
         } catch (err) {
           console.error(err);
-          setError(t('myRecipes.detail.fetchError'));
+          setError((t as any)('myRecipes.detail.fetchError') || 'Failed to fetch recipe');
         } finally {
           setLoading(false);
         }
@@ -85,7 +85,7 @@ export default function SavedRecipePage() {
             <div className="mx-auto bg-destructive/10 rounded-full h-16 w-16 flex items-center justify-center mb-4">
               <AlertTriangle className="h-8 w-8 text-destructive" />
             </div>
-            <CardTitle className="font-headline text-destructive">{t('myRecipes.detail.errorTitle')}</CardTitle>
+            <CardTitle className="font-headline text-destructive">{(t as any)('myRecipes.detail.errorTitle') || 'Error'}</CardTitle>
             <CardDescription>{error}</CardDescription>
           </CardHeader>
         </Card>

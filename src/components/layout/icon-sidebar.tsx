@@ -77,7 +77,7 @@ const TooltipLink = ({
           </div>
         </Link>
       </TooltipTrigger>
-      <TooltipContent side="right" className="animate-in fade-in slide-in-from-left-2 duration-200 font-medium text-xs">
+      <TooltipContent side="right" className="animate-in fade-in slide-in-from-left-2 duration-200 font-medium text-xs hidden md:block">
         <p>{tooltip}</p>
       </TooltipContent>
     </Tooltip>
@@ -132,6 +132,70 @@ const NavLink = ({
  * Bottom:
  * 10. Settings (Settings)
  */
+export function MobileNavDrawer() {
+  const { user } = useUser();
+  const homeHref = user ? "/home" : "/";
+
+  const mainNavLinks: NavItem[] = [
+    { href: homeHref, label: 'Home', icon: Home },
+    { href: "/recipes", label: 'Recipes', icon: Utensils },
+    { href: "/ai-recipes", label: 'AI Recipes', icon: Plus },
+    { href: "/ai-chat", label: 'Chef Momo AI', icon: MessageSquare },
+    { href: "/healthy-meal-planner", label: 'Meal Planner', icon: Calendar },
+    { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
+    { href: "/pantry", label: 'Smart Pantry', icon: ShoppingBasket },
+    { href: "/my-recipes", label: 'Saved Recipes', icon: BookOpen },
+    { href: "/community", label: 'Community', icon: Users },
+  ];
+
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="ghost" size="icon" className="md:hidden h-10 w-10 -ml-1 mr-1 rounded-xl hover:bg-muted text-stone-700 dark:text-stone-300 transition-transform active:scale-95 shrink-0" aria-label="Open Navigation Menu">
+          <Menu className="h-5 w-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-[280px] p-0 bg-card/95 backdrop-blur-xl flex flex-col border-r-primary/10">
+        <SheetHeader className="p-6 pb-2">
+          <SheetTitle className="sr-only">Menu</SheetTitle>
+          <SheetClose asChild>
+            <Link href={homeHref} className="flex items-center gap-3 font-medium hover:opacity-80 transition-opacity">
+              <CookMitraLogo width={34} height={34} className="w-8 h-8" />
+              <span className="font-sans text-xl font-bold text-foreground flex items-center">
+                CookMitra
+                <span className="text-base font-medium text-foreground/80 ml-1">AI</span>
+              </span>
+            </Link>
+          </SheetClose>
+        </SheetHeader>
+        <ScrollArea className="flex-grow">
+          <nav className="flex flex-col gap-1 p-4">
+            <div className="flex flex-col gap-1">
+              {mainNavLinks.map(link => (
+                <SheetClose asChild key={link.href}>
+                  <NavLink href={link.href} icon={link.icon}>
+                    {link.label}
+                  </NavLink>
+                </SheetClose>
+              ))}
+            </div>
+            
+            <Separator className="my-3 opacity-50" />
+            
+            <div className="flex flex-col gap-1">
+              <SheetClose asChild>
+                <NavLink href="/settings" icon={Settings}>
+                  Settings
+                </NavLink>
+              </SheetClose>
+            </div>
+          </nav>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
 export function IconSidebar() {
   const { user } = useUser();
   const homeHref = user ? "/home" : "/";
@@ -149,7 +213,7 @@ export function IconSidebar() {
   ];
 
   return (
-    <aside className="fixed top-0 left-0 h-full w-16 bg-background flex flex-col items-center justify-between py-3 border-r z-30 animate-in fade-in slide-in-from-left duration-300">
+    <aside className="hidden md:flex fixed top-0 left-0 h-full w-16 bg-background flex-col items-center justify-between py-3 border-r z-30 animate-in fade-in slide-in-from-left duration-300">
       <div className="flex flex-col items-center gap-y-2.5 w-full">
         {/* Drawer Trigger (mobile + desktop menu access) */}
         <Sheet>
@@ -161,7 +225,7 @@ export function IconSidebar() {
                 </Button>
               </SheetTrigger>
             </TooltipTrigger>
-            <TooltipContent side="right" className="text-xs font-medium">
+            <TooltipContent side="right" className="text-xs font-medium hidden md:block">
               <p>Menu</p>
             </TooltipContent>
           </Tooltip>

@@ -7,12 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { StarRating } from '@/components/ui/star-rating';
 import { Button } from '@/components/ui/button';
-import { Loader2, MessageSquare, Sparkles, ChevronRight, Quote, Users } from 'lucide-react';
+import { Loader2, MessageSquare, Sparkles, ChevronRight, Quote, Users, Heart, Share2, Bookmark } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
 
 type CommunityNote = {
   id: string;
@@ -53,9 +54,45 @@ function ReviewCard({ review }: { review: CommunityNote }) {
   const fallbackInitial = displayName[0].toUpperCase();
   // Hash by review ID so individual cards get distinct background colors
   const avatarStyle = getAvatarStyle(review.id || review.userId || displayName);
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(() => Math.floor(Math.abs(avatarStyle.bg.length * 3) + 3));
+  const [bookmarked, setBookmarked] = useState(false);
+  const { toast } = useToast();
+
+  const handleLike = () => {
+    setLiked((prev) => {
+      setLikeCount((c) => (prev ? c - 1 : c + 1));
+      return !prev;
+    });
+  };
+
+  const handleShare = async () => {
+    if (typeof window !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: `${review.recipeName} Review by ${displayName}`,
+          text: `"${review.note}"`,
+          url: `${window.location.origin}/recipes/${review.recipeId}`,
+        });
+      } catch {
+        // User cancelled or unsupported
+      }
+    } else if (typeof window !== 'undefined') {
+      await navigator.clipboard.writeText(`${window.location.origin}/recipes/${review.recipeId}`);
+      toast({ title: 'Link copied to clipboard!' });
+    }
+  };
+
+  const handleBookmark = () => {
+    setBookmarked((prev) => {
+      const next = !prev;
+      toast({ title: next ? 'Recipe review bookmarked' : 'Bookmark removed' });
+      return next;
+    });
+  };
 
   return (
-    <Card className="hover:shadow-lg transition-all duration-300 flex flex-col h-full min-h-[280px] glass-card overflow-hidden border-primary/10 rounded-[2rem]">
+    <Card className="hover:shadow-lg transition-all duration-300 flex flex-col h-full min-h-[300px] glass-card overflow-hidden border-primary/10 rounded-[2rem]">
       <CardHeader className="flex-row items-start gap-4 p-5 pb-0 border-0">
         <Avatar className="h-11 w-11 border-2 border-background shadow-sm shrink-0">
           <AvatarImage src={review.userPhotoURL ?? undefined} alt={displayName} />
@@ -79,7 +116,7 @@ function ReviewCard({ review }: { review: CommunityNote }) {
         </div>
       </CardHeader>
       <CardContent className="space-y-4 p-5 pt-3 flex-grow flex flex-col justify-between">
-        <div className="p-4 rounded-2xl bg-muted/30 border border-border/40 min-h-[130px] flex flex-col justify-between relative overflow-hidden">
+        <div className="p-4 rounded-2xl bg-muted/30 border border-border/40 min-h-[120px] flex flex-col justify-between relative overflow-hidden">
           <Quote className="absolute -top-1 -right-1 h-10 w-10 text-[#F4A21A]/15 stroke-[1.5] rotate-180 pointer-events-none" />
           <div className="space-y-2 relative z-10">
             <div className="pb-2 border-b border-border/40">
@@ -90,7 +127,65 @@ function ReviewCard({ review }: { review: CommunityNote }) {
             </blockquote>
           </div>
         </div>
-        <Button asChild variant="outline" className="w-full h-10 rounded-full font-bold text-xs border-primary/20 hover:bg-primary/5 text-primary">
+
+        {/* Action Row: Like, Comment, Share, Bookmark with 40px+ touch targets */}
+        <div className="flex items-center justify-between pt-2 border-t border-border/30">
+          <div className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleLike}
+              className={cn(
+                "h-10 w-10 min-h-[40px] min-w-[40px] rounded-full transition-all",
+                liked ? "text-rose-500 hover:text-rose-600 bg-rose-500/10" : "text-stone-700 dark:text-stone-300 hover:text-rose-500 hover:bg-rose-500/10"
+              )}
+              aria-label={liked ? "Unlike review" : "Like review"}
+            >
+              <Heart className={cn("h-4 w-4 transition-transform", liked && "fill-rose-500 scale-110")} />
+            </Button>
+            <span className="text-xs font-bold text-stone-700 dark:text-stone-300 min-w-[18px]">
+              {likeCount}
+            </span>
+
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="h-10 w-10 min-h-[40px] min-w-[40px] rounded-full text-stone-700 dark:text-stone-300 hover:text-primary hover:bg-primary/10 transition-all ml-1"
+              aria-label="View recipe discussion"
+            >
+              <Link href={`/recipes/${review.recipeId}#community`}>
+                <MessageSquare className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleShare}
+              className="h-10 w-10 min-h-[40px] min-w-[40px] rounded-full text-stone-700 dark:text-stone-300 hover:text-primary hover:bg-primary/10 transition-all"
+              aria-label="Share review"
+            >
+              <Share2 className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleBookmark}
+              className={cn(
+                "h-10 w-10 min-h-[40px] min-w-[40px] rounded-full transition-all",
+                bookmarked ? "text-amber-500 hover:text-amber-600 bg-amber-500/10" : "text-stone-700 dark:text-stone-300 hover:text-amber-500 hover:bg-amber-500/10"
+              )}
+              aria-label={bookmarked ? "Remove bookmark" : "Bookmark review"}
+            >
+              <Bookmark className={cn("h-4 w-4", bookmarked && "fill-amber-500")} />
+            </Button>
+          </div>
+        </div>
+
+        <Button asChild variant="outline" className="w-full h-10 min-h-[40px] rounded-full font-bold text-xs border-primary/20 hover:bg-primary/5 text-primary">
           <Link href={`/recipes/${review.recipeId}`}>
             View Recipe <ChevronRight className="ml-1 h-3.5 w-3.5" />
           </Link>
@@ -190,16 +285,16 @@ export default function CommunityPage() {
         </Button>
       </div>
 
-      {/* Sorting Tabs Pill Toggle */}
-      <div className="flex justify-center mb-10">
-        <div className="inline-flex p-1.5 rounded-full bg-muted/50 border border-border/50 shadow-inner gap-1">
+      {/* Sorting Tabs Pill Toggle - sticky with z-30 (below header z-50) to eliminate z-index conflict */}
+      <div className="sticky top-14 sm:top-16 z-30 py-3 bg-background/85 backdrop-blur-md -mx-4 px-4 sm:mx-0 sm:px-0 flex justify-center mb-8 border-b border-border/20 md:border-b-0">
+        <div className="inline-flex p-1.5 rounded-full bg-muted/60 border border-border/50 shadow-xs gap-1">
           <button
             onClick={() => setActiveFilter('Most Recent')}
             className={cn(
-              "rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-widest transition-all",
+              "rounded-full px-5 sm:px-6 min-h-[40px] text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center",
               activeFilter === 'Most Recent'
-                ? "bg-[#F4A21A] text-white shadow-md"
-                : "text-muted-foreground hover:text-foreground hover:bg-background/50 font-bold"
+                ? "bg-[#F4A21A] text-white shadow-md font-black"
+                : "text-stone-700 dark:text-stone-300 hover:text-foreground hover:bg-background/50 font-bold"
             )}
           >
             Most Recent
@@ -207,10 +302,10 @@ export default function CommunityPage() {
           <button
             onClick={() => setActiveFilter('Highest Rated')}
             className={cn(
-              "rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-widest transition-all",
+              "rounded-full px-5 sm:px-6 min-h-[40px] text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center",
               activeFilter === 'Highest Rated'
-                ? "bg-[#F4A21A] text-white shadow-md"
-                : "text-muted-foreground hover:text-foreground hover:bg-background/50 font-bold"
+                ? "bg-[#F4A21A] text-white shadow-md font-black"
+                : "text-stone-700 dark:text-stone-300 hover:text-foreground hover:bg-background/50 font-bold"
             )}
           >
             Highest Rated

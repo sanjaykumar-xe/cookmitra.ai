@@ -123,7 +123,7 @@ function PersonaCard({ title, icon, description }: { title: string; icon: React.
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
             <Card className="h-full p-6 text-center border-primary/10 hover:border-primary/30 transition-all hover:shadow-lg glass-card flex flex-col items-center justify-start group">
                 <div className="bg-primary/10 text-primary p-4 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {React.cloneElement(icon, { className: "h-7 w-7" })}
+                    {React.cloneElement(icon as React.ReactElement<any>, { className: "h-7 w-7" })}
                 </div>
                 <h3 className="font-headline text-lg font-bold mb-2 text-foreground">{title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>

@@ -248,16 +248,16 @@ export default function HealingFoodsPage() {
                 </div>
 
                 <div className="relative group max-w-2xl mx-auto">
-                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground opacity-50 group-focus-within:text-primary transition-colors" />
+                    <Search className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground opacity-50 group-focus-within:text-primary transition-colors" />
                     <Input 
-                        placeholder="Search any other condition (e.g. 'kidney stones', 'thyroid')..."
-                        className="pl-16 h-16 rounded-[2rem] text-lg bg-card/50 backdrop-blur-sm border-primary/5 shadow-2xl focus:border-primary/40 focus:ring-0"
+                        placeholder="Search condition (e.g. thyroid, migraine)..."
+                        className="pl-12 sm:pl-16 pr-28 sm:pr-36 h-14 sm:h-16 rounded-[2rem] text-sm sm:text-base md:text-lg bg-card/50 backdrop-blur-sm border-primary/5 shadow-2xl focus:border-primary/40 focus:ring-0"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSelectCondition(searchTerm)}
                     />
                     <Button 
-                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full h-11 px-6 font-black uppercase tracking-widest text-xs"
+                        className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 rounded-full h-10 sm:h-11 px-4 sm:px-6 font-black uppercase tracking-wider text-[11px] sm:text-xs"
                         onClick={() => handleSelectCondition(searchTerm)}
                         disabled={isLoading || !searchTerm.trim()}
                     >

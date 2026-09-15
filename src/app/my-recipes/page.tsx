@@ -101,7 +101,7 @@ export default function MyRecipesPage() {
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  className="absolute top-4 right-4 z-30 h-9 w-9 rounded-full bg-background/80 backdrop-blur-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-border/40 shadow-sm transition-all"
+                  className="absolute top-3 right-3 z-30 h-11 w-11 min-h-[44px] min-w-[44px] rounded-full bg-background/80 backdrop-blur-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-border/40 shadow-sm transition-all"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -148,14 +148,14 @@ export default function MyRecipesPage() {
       )}
 
       <AlertDialog open={!!recipeToDelete} onOpenChange={(open) => !open && setRecipeToDelete(null)}>
-        <AlertDialogContent className="rounded-[2.5rem] p-10 border-primary/10">
+        <AlertDialogContent className="rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 border-primary/10 max-w-[92vw] sm:max-w-lg">
           <AlertDialogHeader>
-            <AlertDialogTitle className="font-headline text-3xl">Remove Recipe?</AlertDialogTitle>
-            <AlertDialogDescription className="text-lg leading-relaxed pt-2">
+            <AlertDialogTitle className="font-headline text-2xl sm:text-3xl">Remove Recipe?</AlertDialogTitle>
+            <AlertDialogDescription className="text-base sm:text-lg leading-relaxed pt-2">
               This will remove <strong>{recipeToDelete?.name || 'this recipe'}</strong> from your personal collection.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="mt-8 gap-4">
+          <AlertDialogFooter className="mt-6 sm:mt-8 flex flex-col-reverse sm:flex-row gap-3 sm:gap-4">
             <AlertDialogCancel className="rounded-full h-12 px-8 font-bold" onClick={() => setRecipeToDelete(null)}>Keep Recipe</AlertDialogCancel>
             <AlertDialogAction className="rounded-full h-12 px-8 font-bold bg-destructive text-destructive-foreground hover:bg-destructive/90" onClick={handleDeleteRecipe} disabled={isDeleting}>
               {isDeleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

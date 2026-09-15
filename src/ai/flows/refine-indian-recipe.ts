@@ -56,7 +56,7 @@ const refineIndianRecipeFlow = ai.defineFlow(
     const { output } = await refineIndianRecipePrompt({
         ...input,
         JSONcurrentRecipe: JSON.stringify(input.currentRecipe)
-    });
+    } as any);
     return output!;
   }
 );

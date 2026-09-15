@@ -144,7 +144,7 @@ function MealCard({
                         )}
                         <div className="space-y-3">
                             <div className="flex items-center justify-between gap-2">
-                                <Badge variant="outline" className={cn("font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-lg", getBadgeStyle(meal.type))}>
+                                <Badge variant="outline" className={cn("font-bold text-[11px] uppercase tracking-wider px-3 py-1 rounded-lg", getBadgeStyle(meal.type))}>
                                     {meal.type}
                                 </Badge>
                                 <div className="flex items-center gap-1.5">
@@ -155,7 +155,7 @@ function MealCard({
                                   <Button
                                     size="icon"
                                     variant="ghost"
-                                    className="h-7 w-7 rounded-full text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10 transition-transform active:scale-95 shrink-0"
+                                    className="h-8 w-8 min-h-[32px] min-w-[32px] rounded-full text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10 transition-transform active:scale-95 shrink-0"
                                     title="Regenerate this single meal"
                                     onClick={(e) => {
                                       e.stopPropagation();
@@ -172,7 +172,7 @@ function MealCard({
                             <span className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-bold text-[11px]">
                                 <Info className="h-3.5 w-3.5 text-[#F4A21A]" /> Quick Overview
                             </span>
-                            <span className="text-[10px] font-black uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">
+                            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400 group-hover:text-stone-900 dark:group-hover:text-stone-200 transition-colors">
                                 {isTouchDevice ? "Tap to Flip 🔄" : "Hover to Flip 🔄"}
                             </span>
                         </div>
@@ -184,9 +184,9 @@ function MealCard({
                     <Card className="flex flex-col justify-between h-full p-5 bg-card/95 backdrop-blur-md border border-[#F4A21A]/30 text-stone-900 dark:text-stone-100 shadow-xl rounded-[2rem] overflow-hidden w-full">
                         <div className="space-y-3">
                             <div className="flex items-center justify-between">
-                                <h4 className="text-[10px] font-black uppercase tracking-widest text-[#F4A21A]">Nutritional Breakdown</h4>
+                                <h4 className="text-[11px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Nutritional Breakdown</h4>
                                 {isTouchDevice && (
-                                  <span className="text-[10px] text-stone-400 flex items-center gap-1 font-bold">
+                                  <span className="text-[11px] text-stone-500 dark:text-stone-400 flex items-center gap-1 font-bold">
                                     Tap back <X className="h-3 w-3" />
                                   </span>
                                 )}
@@ -198,7 +198,7 @@ function MealCard({
                                 <div className="flex items-center gap-1.5 p-2 rounded-xl bg-pink-500/10 text-pink-600 dark:text-pink-400"><Droplets className="h-3.5 w-3.5 shrink-0 text-pink-500" /><span>{meal.fats}g Fats</span></div>
                             </div>
                             <div>
-                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-1 text-[#F4A21A]">Health Benefits</h4>
+                                <h4 className="text-[11px] font-bold uppercase tracking-wider mb-1 text-amber-600 dark:text-amber-400">Health Benefits</h4>
                                 <p className="text-xs leading-relaxed italic text-stone-600 dark:text-stone-300 font-medium line-clamp-3">{meal.benefits}</p>
                             </div>
                         </div>
@@ -215,7 +215,7 @@ function SummaryCard({ icon, title, value, unit, color } : { icon: React.ReactNo
             <div className="flex items-center gap-4">
                 <div className="text-2xl opacity-80">{icon}</div>
                 <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.1em] opacity-60 mb-0.5">{title}</p>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 mb-0.5">{title}</p>
                     <p className="text-xl font-black tabular-nums">{value}{unit}</p>
                 </div>
             </div>
@@ -430,11 +430,50 @@ function MealPlanDisplay({
                 </CardHeader>
                 <CardContent className="p-0">
                     <Tabs defaultValue={week[0].day.toLowerCase()} className="w-full">
-                        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto p-1 bg-muted/30 rounded-2xl border border-primary/5">
-                            {week.map(d => <TabsTrigger key={d.day} value={d.day.toLowerCase()} className="capitalize text-[10px] md:text-xs font-black py-2.5 data-[state=active]:bg-background data-[state=active]:text-primary rounded-xl transition-all">{d.day.substring(0,3)}</TabsTrigger>)}
-                        </TabsList>
+                        <div className="w-full overflow-x-auto no-scrollbar pb-1.5 -mx-1 px-1 sm:mx-0 sm:px-0">
+                            <TabsList className="flex flex-nowrap w-max min-w-full md:grid md:grid-cols-7 h-auto p-1.5 bg-muted/40 rounded-2xl border border-primary/10 gap-1.5">
+                                {week.map(d => (
+                                    <TabsTrigger 
+                                        key={d.day} 
+                                        value={d.day.toLowerCase()} 
+                                        className="capitalize text-xs font-bold px-4 py-2.5 min-h-[40px] whitespace-nowrap data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm rounded-xl transition-all flex-1"
+                                    >
+                                        {d.day}
+                                    </TabsTrigger>
+                                ))}
+                            </TabsList>
+                        </div>
                         {week.map(d => (
                             <TabsContent key={d.day} value={d.day.toLowerCase()} className="animate-in fade-in slide-in-from-bottom-2 duration-500 pt-6">
+                                {/* Daily Nutrition Macro Progress Bar (Non-overlapping) */}
+                                <div className="mb-6 p-4 rounded-2xl bg-card/60 backdrop-blur-sm border border-border/60 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                                    <div className="space-y-1.5 w-full sm:w-auto flex-1 max-w-sm">
+                                        <div className="flex items-center justify-between gap-2">
+                                            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 flex items-center gap-1.5">
+                                                <Flame className="h-3.5 w-3.5 text-orange-500 shrink-0" /> Daily Calories
+                                            </span>
+                                            <div className="flex items-baseline gap-1 text-xs font-bold text-stone-900 dark:text-stone-100">
+                                                <span>{d.dailyCalories} kcal</span>
+                                                <span className="text-stone-400 dark:text-stone-500 font-medium text-[11px]">/ 2,000 target</span>
+                                            </div>
+                                        </div>
+                                        <div className="w-full h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
+                                            <div 
+                                                className="h-full bg-orange-500 rounded-full transition-all duration-500" 
+                                                style={{ width: `${Math.min(100, Math.round((d.dailyCalories / 2000) * 100))}%` }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-xs font-semibold text-stone-700 dark:text-stone-300">
+                                        <span className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold">
+                                            <Beef className="h-3.5 w-3.5 text-sky-500 shrink-0" /> {d.dailyProtein}g Protein
+                                        </span>
+                                        <span className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold">
+                                            <Cookie className="h-3.5 w-3.5 text-amber-500 shrink-0" /> {d.meals.length} Meals
+                                        </span>
+                                    </div>
+                                </div>
+
                                 <div className={cn(
                                   "grid gap-4 w-full items-stretch",
                                   d.meals.length === 3 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
@@ -618,7 +657,7 @@ export default function HealthyMealPlannerPage() {
                                     <div className="grid grid-cols-2 gap-4">
                                          <FormField control={form.control} name="ageRange" render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80">Age Range</FormLabel>
+                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Age Range</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                     <SelectContent className="rounded-xl border-primary/10">
@@ -632,7 +671,7 @@ export default function HealthyMealPlannerPage() {
                                         )} />
                                         <FormField control={form.control} name="activityLevel" render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80">Activity</FormLabel>
+                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Activity</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                     <SelectContent className="rounded-xl border-primary/10">
@@ -646,22 +685,22 @@ export default function HealthyMealPlannerPage() {
                                     </div>
                                     <FormField control={form.control} name="dietPreference" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80">Diet Type</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Diet Type</FormLabel>
                                             <FormControl>
                                                 <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-2 gap-2 p-1.5 bg-muted/30 rounded-2xl border border-primary/5">
-                                                    <Label htmlFor="veg" className="flex items-center justify-center rounded-xl p-3 text-[10px] font-black uppercase tracking-widest hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
+                                                    <Label htmlFor="veg" className="flex items-center justify-center rounded-xl p-3 text-[11px] font-bold uppercase tracking-wider hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
                                                         <RadioGroupItem value="Veg" id="veg" className="sr-only" />
                                                         Veg
                                                     </Label>
-                                                    <Label htmlFor="non-veg" className="flex items-center justify-center rounded-xl p-3 text-[10px] font-black uppercase tracking-widest hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
+                                                    <Label htmlFor="non-veg" className="flex items-center justify-center rounded-xl p-3 text-[11px] font-bold uppercase tracking-wider hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
                                                         <RadioGroupItem value="Non-Veg" id="non-veg" className="sr-only" />
                                                         Non-Veg
                                                     </Label>
-                                                    <Label htmlFor="veg-nonveg" className="flex items-center justify-center rounded-xl p-3 text-[10px] font-black uppercase tracking-widest hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
+                                                    <Label htmlFor="veg-nonveg" className="flex items-center justify-center rounded-xl p-3 text-[11px] font-bold uppercase tracking-wider hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
                                                         <RadioGroupItem value="Veg + Non-Veg" id="veg-nonveg" className="sr-only" />
                                                         Veg + Non-Veg
                                                     </Label>
-                                                    <Label htmlFor="veg-egg" className="flex items-center justify-center rounded-xl p-3 text-[10px] font-black uppercase tracking-widest hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
+                                                    <Label htmlFor="veg-egg" className="flex items-center justify-center rounded-xl p-3 text-[11px] font-bold uppercase tracking-wider hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
                                                         <RadioGroupItem value="Veg + Egg" id="veg-egg" className="sr-only" />
                                                         Veg + Egg
                                                     </Label>
@@ -673,7 +712,7 @@ export default function HealthyMealPlannerPage() {
 
                                     <FormField control={form.control} name="cuisinePreference" render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80">Cuisine Style</FormLabel>
+                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Cuisine Style</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                     <SelectContent className="rounded-xl border-primary/10 max-h-[300px]">
@@ -692,7 +731,7 @@ export default function HealthyMealPlannerPage() {
 
                                     <FormField control={form.control} name="goal" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80">Primary Goal</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Primary Goal</FormLabel>
                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                 <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                 <SelectContent className="rounded-xl border-primary/10">
@@ -711,7 +750,7 @@ export default function HealthyMealPlannerPage() {
 
                                     <FormField control={form.control} name="householdSize" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80">Household Size / Servings</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Household Size / Servings</FormLabel>
                                             <FormControl>
                                                 <div className="flex items-center justify-between p-2.5 bg-muted/30 rounded-2xl border border-primary/5">
                                                     <span className="text-xs font-bold text-muted-foreground pl-2 flex items-center gap-1.5">
@@ -748,7 +787,7 @@ export default function HealthyMealPlannerPage() {
                                     
                                     <FormField control={form.control} name="weeklyBudget" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80">Weekly Budget</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Weekly Budget</FormLabel>
                                             <FormControl>
                                                <div className="pt-2">
                                                     <div className="flex justify-between items-center mb-4">
