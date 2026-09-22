@@ -4,6 +4,7 @@
  */
 
 import type { Recipe } from './recipes/types';
+import { recipes as masterRecipes } from './recipes/index';
 
 /**
  * Returns the primary image candidate URL for a recipe.
@@ -62,4 +63,65 @@ export function getRecipeImageCandidates(recipeId: string): string[] {
   }
 
   return candidates;
+}
+
+/**
+ * Resolves a prioritized list of candidate image URLs for any recipe object
+ * (including master catalog recipes, saved user recipes, or partial recipe representations).
+ *
+ * 4-Step Resolution:
+ * 1. If explicit imageUrl is provided, try it first.
+ * 2. Look up the recipe in the master catalog by id, recipeId, originalId, slug, or matching dish name.
+ * 3. Fall back to slugifying the recipe's clean display name if it corresponds to a catalog recipe.
+ * 4. Try any explicit ID fields that match known catalog recipes (avoiding 404 spam on Firestore doc IDs).
+ */
+export function resolveRecipeImageCandidates(recipe: any): string[] {
+  if (!recipe) return [];
+
+  const candidates: string[] = [];
+
+  // 1. If an explicit imageUrl is provided, try it first
+  if (recipe.imageUrl && typeof recipe.imageUrl === 'string' && recipe.imageUrl.trim()) {
+    candidates.push(recipe.imageUrl.trim());
+  }
+
+  const displayName = (recipe.name || recipe.dishName || '').trim();
+  const cleanName = displayName.toLowerCase();
+
+  // 2. Look up the recipe in the master recipes catalog
+  const matchedRecipe = masterRecipes.find(r =>
+    (recipe.originalId && r.id === recipe.originalId) ||
+    (recipe.recipeId && r.id === recipe.recipeId) ||
+    (recipe.slug && r.id === recipe.slug) ||
+    (recipe.id && r.id === recipe.id) ||
+    (cleanName && r.name.toLowerCase().trim() === cleanName)
+  );
+
+  if (matchedRecipe) {
+    if (matchedRecipe.imageUrl) {
+      candidates.push(matchedRecipe.imageUrl);
+    }
+    candidates.push(...getRecipeImageCandidates(matchedRecipe.id));
+  }
+
+  // 3. Fall back to slugifying the recipe's display name if it matches a catalog recipe
+  if (cleanName) {
+    const slugFromName = cleanName
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+    if (slugFromName && masterRecipes.some(r => r.id === slugFromName)) {
+      candidates.push(...getRecipeImageCandidates(slugFromName));
+    }
+  }
+
+  // 4. Try any explicit id fields that might be a static recipe slug
+  const possibleIds = [recipe.recipeId, recipe.originalId, recipe.slug, recipe.id].filter(Boolean);
+  for (const id of possibleIds) {
+    if (typeof id === 'string' && masterRecipes.some(r => r.id === id)) {
+      candidates.push(...getRecipeImageCandidates(id));
+    }
+  }
+
+  // Deduplicate while preserving priority order
+  return Array.from(new Set(candidates.filter(Boolean)));
 }

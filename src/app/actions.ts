@@ -102,9 +102,7 @@ export async function generateHealthyMealPlanAction(input: GenerateHealthyMealPl
  */
 export async function generateHealingFoodsAction(condition: string) {
     try {
-        console.log(`[HealingFoods] Generating for: ${condition}`);
         const data = await generateHealingFoodsInfo({ condition });
-        console.log(`[HealingFoods] Generation successful for: ${condition}`);
         return { success: true, data };
     } catch (error: any) {
         console.error("[HealingFoods] SERVER ACTION ERROR:", error);
@@ -168,7 +166,7 @@ export async function swapSingleMealAction(params: {
         const Groq = require('groq-sdk');
         const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
         const completion = await groq.chat.completions.create({
-          model: 'llama-3.3-70b-versatile',
+          model: 'openai/gpt-oss-120b',
           messages: [
             { role: 'system', content: 'You are an Indian AI nutritionist. Return valid JSON only.' },
             {

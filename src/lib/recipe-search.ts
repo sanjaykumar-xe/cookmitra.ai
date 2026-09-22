@@ -4,7 +4,7 @@ import type { Recipe } from './recipes/types';
  * Evaluates whether a recipe matches a search query term across name, ingredients, description, and tags.
  * Reusable matching function used across recipes explorer and autocomplete search bars.
  */
-export function matchesRecipeSearch(recipe: Recipe, query: string): boolean {
+function matchesRecipeSearch(recipe: Recipe, query: string): boolean {
   const t = query.toLowerCase().trim();
   if (!t) return true;
   const matchName = recipe.name.toLowerCase().includes(t);

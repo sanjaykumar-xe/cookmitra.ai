@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { RupeeIcon } from '@/components/icons/rupee-icon';
-import { getRecipeImageCandidates } from '@/lib/recipe-image-helper';
+import { resolveRecipeImageCandidates } from '@/lib/recipe-image-helper';
 import { recipes as allRecipes } from '@/lib/recipes';
 import type { Recipe } from '@/lib/recipes/types';
 
@@ -28,40 +28,8 @@ export function RecipeCard({ recipe, href }: { recipe: any; href?: string }) {
     const displayType = recipe?.type || 'Vegetarian';
 
     const candidates = useMemo(() => {
-        const list: string[] = [];
-        if (recipe?.imageUrl && typeof recipe.imageUrl === 'string' && recipe.imageUrl.trim()) {
-            list.push(recipe.imageUrl.trim());
-        }
-
-        const cleanName = displayName.trim().toLowerCase();
-
-        // 1. Check static catalog match by id, recipeId, originalId, slug, or title
-        const matched = allRecipes.find(r => 
-            (recipe?.id && r.id === recipe.id) || 
-            (recipe?.recipeId && r.id === recipe.recipeId) || 
-            (recipe?.originalId && r.id === recipe.originalId) ||
-            (recipe?.slug && r.id === recipe.slug) ||
-            (cleanName && r.name.toLowerCase().trim() === cleanName)
-        );
-        if (matched) {
-            if (matched.imageUrl) list.push(matched.imageUrl);
-            list.push(...getRecipeImageCandidates(matched.id));
-        }
-
-        // 2. Only test slug if it corresponds to an actual recipe in the catalog
-        if (cleanName) {
-            const slug = cleanName.replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-            if (slug && allRecipes.some(r => r.id === slug)) {
-                list.push(...getRecipeImageCandidates(slug));
-            }
-        }
-
-        // 3. Only check recipe.id if it's a known catalog recipe (avoid spamming 404s on firestore doc IDs)
-        if (recipe?.id && typeof recipe.id === 'string' && allRecipes.some(r => r.id === recipe.id)) {
-            list.push(...getRecipeImageCandidates(recipe.id));
-        }
-        return Array.from(new Set(list.filter(Boolean)));
-    }, [recipe, displayName]);
+        return resolveRecipeImageCandidates(recipe);
+    }, [recipe]);
 
     useEffect(() => {
         setIsFlipped(false);

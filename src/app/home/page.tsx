@@ -33,7 +33,7 @@ import { useLanguage } from '@/context/language-context';
 import { RegionalCuisineExplorer } from '@/components/home/regional-cuisine-explorer';
 import { recipes } from '@/lib/recipes';
 import type { Recipe } from '@/lib/recipes/types';
-import { getRecipeImageCandidates } from '@/lib/recipe-image-helper';
+import { getRecipeImageCandidates, resolveRecipeImageCandidates } from '@/lib/recipe-image-helper';
 import { getRecipeSearchSuggestions } from '@/lib/recipe-search';
 import { cn } from '@/lib/utils';
 
@@ -173,64 +173,13 @@ function PopularRecipeCard({ recipe, isTrending = false }: { recipe: Recipe; isT
     );
 }
 
-// Helper to resolve all candidate image URLs for a saved recipe
-function getSavedRecipeImageCandidates(recipe: any): string[] {
-    const candidates: string[] = [];
-
-    // 1. If an explicit imageUrl is provided on the recipe object, try it first
-    if (recipe?.imageUrl && typeof recipe.imageUrl === 'string' && recipe.imageUrl.trim()) {
-        candidates.push(recipe.imageUrl.trim());
-    }
-
-    const displayName = (recipe?.name || recipe?.dishName || '').trim();
-    const cleanName = displayName.toLowerCase();
-
-    // 2. Look up the recipe in the master recipes catalog to find its canonical static slug ID
-    const matchedRecipe = recipes.find(r => {
-        if (recipe?.originalId && r.id === recipe.originalId) return true;
-        if (recipe?.recipeId && r.id === recipe.recipeId) return true;
-        if (recipe?.slug && r.id === recipe.slug) return true;
-        if (recipe?.id && r.id === recipe.id) return true;
-        if (cleanName && r.name.toLowerCase().trim() === cleanName) return true;
-        return false;
-    });
-
-    if (matchedRecipe) {
-        if (matchedRecipe.imageUrl) {
-            candidates.push(matchedRecipe.imageUrl);
-        }
-        candidates.push(...getRecipeImageCandidates(matchedRecipe.id));
-    }
-
-    // 3. Fall back to slugifying the recipe's display name (e.g. "Butter Chicken" -> "butter-chicken")
-    if (cleanName) {
-        const slugFromName = cleanName
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/(^-|-$)/g, '');
-        if (slugFromName) {
-            candidates.push(...getRecipeImageCandidates(slugFromName));
-        }
-    }
-
-    // 4. Try any explicit id fields that might be a static recipe slug
-    const possibleIds = [recipe?.recipeId, recipe?.originalId, recipe?.slug, recipe?.id].filter(Boolean);
-    for (const id of possibleIds) {
-        if (typeof id === 'string') {
-            candidates.push(...getRecipeImageCandidates(id));
-        }
-    }
-
-    // Deduplicate while preserving priority order
-    return Array.from(new Set(candidates.filter(Boolean)));
-}
-
 // Recent Saved Recipe Thumbnail Component with proper fallback
 function SavedRecipeThumbnail({ recipe, displayName }: { recipe: any; displayName: string }) {
     const [imageError, setImageError] = useState(false);
     const [candidateIndex, setCandidateIndex] = useState(0);
     const [isImageLoading, setIsImageLoading] = useState(true);
 
-    const candidates = useMemo(() => getSavedRecipeImageCandidates(recipe), [recipe]);
+    const candidates = useMemo(() => resolveRecipeImageCandidates(recipe), [recipe]);
     const currentImageUrl = candidates[candidateIndex];
     const showImage = !!currentImageUrl && !imageError;
 

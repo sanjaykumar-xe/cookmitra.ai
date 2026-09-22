@@ -32,12 +32,48 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 /**
- * Extracts clean English display name by removing parenthetical vernacular text.
- * e.g., "Turmeric (Haldi)" -> "Turmeric", "Chicken (Murgh)" -> "Chicken"
+ * Extracts clean English display name and optional vernacular parenthetical name.
+ * e.g., "Turmeric (Haldi)" -> { displayName: "Turmeric", vernacularName: "Haldi" }
  */
-function getDisplayName(fullName: string): string {
-  return fullName.replace(/\s*\([^)]*\)/, '').trim();
+function parseIngredientName(fullName: string): { displayName: string; vernacularName?: string } {
+  const match = fullName.match(/^([^(]+)(?:\(([^)]+)\))?/);
+  if (!match) return { displayName: fullName.trim() };
+  return {
+    displayName: match[1].trim(),
+    vernacularName: match[2]?.trim()
+  };
 }
+
+const categoryStyles: Record<string, { badge: string; borderHover: string }> = {
+  Spice: {
+    badge: "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/25",
+    borderHover: "hover:border-amber-500/40",
+  },
+  Herb: {
+    badge: "bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border-emerald-500/25",
+    borderHover: "hover:border-emerald-500/40",
+  },
+  Vegetable: {
+    badge: "bg-green-500/10 text-green-800 dark:text-green-300 border-green-500/25",
+    borderHover: "hover:border-green-500/40",
+  },
+  Fruit: {
+    badge: "bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/25",
+    borderHover: "hover:border-rose-500/40",
+  },
+  'Grain/Lentil': {
+    badge: "bg-orange-500/10 text-orange-800 dark:text-orange-300 border-orange-500/25",
+    borderHover: "hover:border-orange-500/40",
+  },
+  Dairy: {
+    badge: "bg-sky-500/10 text-sky-800 dark:text-sky-300 border-sky-500/25",
+    borderHover: "hover:border-sky-500/40",
+  },
+  Other: {
+    badge: "bg-purple-500/10 text-purple-800 dark:text-purple-300 border-purple-500/25",
+    borderHover: "hover:border-purple-500/40",
+  }
+};
 
 /**
  * Extracts searchable name tokens from an ingredient profile (English name, Hindi name, ID).
@@ -172,7 +208,7 @@ export default function EncyclopediaPage() {
           )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-fluid-grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
         <AnimatePresence mode="popLayout">
             {filteredIngredients.map((item) => (
                 <IngredientCard 
@@ -209,7 +245,8 @@ function IngredientCard({
 }) {
     const matchingRecipes = useMemo(() => getMatchingRecipes(item), [item]);
     const usageCount = matchingRecipes.length;
-    const displayName = getDisplayName(item.name);
+    const { displayName, vernacularName } = useMemo(() => parseIngredientName(item.name), [item.name]);
+    const catStyle = categoryStyles[item.category] || categoryStyles.Other;
 
     return (
         <motion.div
@@ -218,40 +255,71 @@ function IngredientCard({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             className={cn(
-                "group relative bg-card/60 backdrop-blur-sm border-2 rounded-[2rem] overflow-hidden transition-all duration-500",
-                isExpanded ? "border-primary shadow-2xl ring-4 ring-primary/5 md:col-span-2 lg:col-span-3" : "border-primary/5 hover:border-primary/30 hover:shadow-xl"
+                "group relative bg-card dark:bg-stone-900/90 border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-xs",
+                isExpanded 
+                    ? "border-primary shadow-2xl ring-4 ring-primary/5 col-span-full" 
+                    : cn("border-stone-200/90 dark:border-stone-800/90 hover:shadow-lg hover:-translate-y-1", catStyle.borderHover)
             )}
         >
-            <div className="p-8">
-                <div className="flex justify-between items-start mb-6">
-                    <Badge variant="outline" className="bg-primary/5 border-primary/10 text-primary font-black uppercase tracking-[0.1em] text-[10px] py-1 px-3 rounded-lg">
-                        {item.category}
-                    </Badge>
-                    <div className="flex items-center gap-1.5 text-muted-foreground/60 text-[10px] font-black uppercase tracking-widest">
-                        <History className="h-3.5 w-3.5" />
-                        Used in {usageCount} {usageCount === 1 ? 'recipe' : 'recipes'}
+            <div className={cn(
+                "flex flex-col h-full justify-between transition-all",
+                isExpanded ? "p-6 sm:p-8" : "p-4 sm:p-5"
+            )}>
+                <div>
+                    {/* Top Row: Category Badge + Usage Count */}
+                    <div className="flex justify-between items-center gap-2 mb-3">
+                        <Badge 
+                            variant="outline" 
+                            className={cn("font-bold uppercase tracking-wider text-[10px] py-0.5 px-2.5 rounded-full border shadow-2xs", catStyle.badge)}
+                        >
+                            {item.category}
+                        </Badge>
+                        <div className="flex items-center gap-1.5 text-stone-500 dark:text-stone-400 text-xs font-medium shrink-0">
+                            <History className="h-3.5 w-3.5 text-stone-400" />
+                            <span>{usageCount} {usageCount === 1 ? 'recipe' : 'recipes'}</span>
+                        </div>
                     </div>
-                </div>
 
-                <div className="space-y-4">
-                    <h3 className="font-headline text-3xl font-bold tracking-tight leading-none">{displayName}</h3>
-                    <p className={cn(
-                        "text-muted-foreground font-medium leading-relaxed",
-                        !isExpanded && "line-clamp-2"
-                    )}>
-                        {item.whatItIs}
-                    </p>
-                </div>
-
-                {!isExpanded && (
-                    <div className="mt-6 flex flex-wrap gap-2">
-                        {item.benefitTags.slice(0, 3).map(tag => (
-                            <Badge key={tag} className="bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-0 text-[9px] font-black uppercase tracking-tighter rounded-md py-1 px-2.5">
-                                {tag}
-                            </Badge>
-                        ))}
+                    {/* Title & Vernacular Name & Description */}
+                    <div className="space-y-1.5 mb-2.5">
+                        <div className="flex items-baseline gap-1.5 flex-wrap">
+                            <h3 className="font-headline text-lg sm:text-xl font-bold tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-primary transition-colors">
+                                {displayName}
+                            </h3>
+                            {vernacularName && (
+                                <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 italic">
+                                    ({vernacularName})
+                                </span>
+                            )}
+                        </div>
+                        <p className={cn(
+                            "text-xs sm:text-[13px] text-stone-600 dark:text-stone-300 font-normal leading-relaxed",
+                            !isExpanded && "line-clamp-2 min-h-[2.5rem]"
+                        )}>
+                            {item.whatItIs}
+                        </p>
                     </div>
-                )}
+
+                    {/* Benefit Tags */}
+                    {!isExpanded && (
+                        <div className="mt-3 flex flex-wrap items-center gap-1.5">
+                            {item.benefitTags.slice(0, 2).map(tag => (
+                                <Badge 
+                                    key={tag} 
+                                    variant="secondary"
+                                    className="bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200/60 dark:border-stone-700/60 text-[10px] font-medium tracking-tight rounded-full py-0.5 px-2.5"
+                                >
+                                    {tag}
+                                </Badge>
+                            ))}
+                            {item.benefitTags.length > 2 && (
+                                <span className="text-[10px] text-stone-400 font-medium px-1">
+                                    +{item.benefitTags.length - 2} more
+                                </span>
+                            )}
+                        </div>
+                    )}
+                </div>
 
                 <AnimatePresence>
                     {isExpanded && (
@@ -259,43 +327,43 @@ function IngredientCard({
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="mt-10 space-y-10 pt-10 border-t border-primary/10"
+                            className="mt-6 space-y-6 pt-6 border-t border-stone-200 dark:border-stone-800"
                         >
-                            <div className="grid md:grid-cols-2 gap-10">
-                                <div className="space-y-6">
+                            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                                <div className="space-y-4">
                                     <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px]">
                                         <ShieldCheck className="h-4 w-4" />
                                         Verified Benefits
                                     </h4>
-                                    <ul className="grid gap-3">
+                                    <ul className="grid gap-2 sm:gap-2.5">
                                         {item.benefits.map((b, i) => (
-                                            <li key={i} className="flex gap-3 text-base font-medium text-foreground/80 bg-muted/30 p-3 rounded-xl border border-border/40">
+                                            <li key={i} className="flex gap-2.5 text-sm font-medium text-foreground/80 bg-muted/30 p-2.5 sm:p-3 rounded-xl border border-border/40">
                                                 <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 shrink-0" />
                                                 {b}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                                <div className="space-y-8">
+                                <div className="space-y-6">
                                     <div>
-                                        <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px] mb-4">
+                                        <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px] mb-3">
                                             <Archive className="h-4 w-4" />
                                             Substitutes
                                         </h4>
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                             {item.commonSubstitutes.map(s => (
-                                                <Badge key={s} variant="outline" className="h-9 px-4 rounded-xl border-dashed border-primary/30 text-sm font-bold bg-primary/5">
+                                                <Badge key={s} variant="outline" className="h-8 px-3 rounded-lg border-dashed border-primary/30 text-xs font-bold bg-primary/5">
                                                     {s}
                                                 </Badge>
                                             ))}
                                         </div>
                                     </div>
                                     <div>
-                                        <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px] mb-3">
+                                        <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px] mb-2">
                                             <Lightbulb className="h-4 w-4" />
                                             Storage Tip
                                         </h4>
-                                        <p className="text-sm font-medium leading-relaxed bg-amber-500/5 p-4 rounded-2xl border border-amber-500/10 italic">
+                                        <p className="text-xs sm:text-sm font-medium leading-relaxed bg-amber-500/5 p-3 sm:p-4 rounded-xl border border-amber-500/10 italic text-stone-700 dark:text-stone-300">
                                             {item.storageTip}
                                         </p>
                                     </div>
@@ -303,34 +371,34 @@ function IngredientCard({
                             </div>
 
                             {item.funFact && (
-                                <div className="bg-primary/5 rounded-[2rem] p-8 flex flex-col md:flex-row items-center gap-6 border border-primary/10">
-                                    <div className="h-16 w-16 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
-                                        <History className="h-8 w-8 text-primary" />
+                                <div className="bg-primary/5 rounded-2xl p-4 sm:p-6 flex flex-col md:flex-row items-center gap-4 border border-primary/10">
+                                    <div className="h-12 w-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                                        <History className="h-6 w-6 text-primary" />
                                     </div>
-                                    <div className="space-y-1">
+                                    <div className="space-y-0.5 text-center md:text-left">
                                         <p className="text-[10px] font-black uppercase tracking-widest text-primary">Did You Know?</p>
-                                        <p className="text-lg font-medium leading-tight">{item.funFact}</p>
+                                        <p className="text-sm sm:text-base font-medium leading-snug">{item.funFact}</p>
                                     </div>
                                 </div>
                             )}
 
-                            <div className="space-y-6 pt-6">
-                                <h4 className="font-headline text-2xl font-bold">Try it in these recipes:</h4>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div className="space-y-3 pt-2">
+                                <h4 className="font-headline text-lg sm:text-xl font-bold">Try it in these recipes:</h4>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
                                     {matchingRecipes.slice(0, 4).map(recipe => (
                                         <Link 
                                             key={recipe.id} 
                                             href={`/recipes/${recipe.id}`}
-                                            className="group/item flex items-center justify-between p-4 rounded-2xl bg-card border border-border/40 hover:border-primary transition-all hover:shadow-lg"
+                                            className="group/item flex items-center justify-between p-3 rounded-xl bg-card border border-border/40 hover:border-primary transition-all hover:shadow-sm"
                                         >
-                                            <span className="text-sm font-bold truncate pr-2">{recipe.name}</span>
-                                            <ExternalLink className="h-4 w-4 text-muted-foreground group-hover/item:text-primary transition-colors shrink-0" />
+                                            <span className="text-xs sm:text-sm font-bold truncate pr-2">{recipe.name}</span>
+                                            <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover/item:text-primary transition-colors shrink-0" />
                                         </Link>
                                     ))}
                                     {usageCount > 4 && (
                                         <Link 
                                             href="/recipes"
-                                            className="flex items-center justify-center p-4 rounded-2xl bg-primary/10 border border-primary/20 text-primary font-black uppercase tracking-widest text-[10px] hover:bg-primary/20 transition-all"
+                                            className="flex items-center justify-center p-3 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black uppercase tracking-widest text-[9px] hover:bg-primary/20 transition-all"
                                         >
                                             + {usageCount - 4} More Recipes
                                         </Link>
@@ -341,20 +409,35 @@ function IngredientCard({
                     )}
                 </AnimatePresence>
 
-                <div className="mt-8 flex justify-end">
-                    <Button 
-                        onClick={(e) => { e.preventDefault(); onToggle(); }}
-                        className={cn(
-                            "rounded-full px-8 h-12 font-bold transition-all",
-                            isExpanded ? "bg-zinc-900 text-white hover:bg-zinc-800" : "btn-primary-gradient"
-                        )}
-                    >
-                        {isExpanded ? (
-                            <>Close Profile <X className="ml-2 h-4 w-4" /></>
-                        ) : (
-                            <>View Full Profile <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" /></>
-                        )}
-                    </Button>
+                {/* Footer Action Button */}
+                <div className={cn(
+                    "flex items-center justify-between",
+                    isExpanded ? "mt-6 border-t border-stone-200 dark:border-stone-800 pt-4" : "mt-4 pt-3 border-t border-stone-100 dark:border-stone-800/60"
+                )}>
+                    {!isExpanded ? (
+                        <>
+                            <span className="text-xs font-medium text-stone-500 dark:text-stone-400 group-hover:text-stone-700 dark:group-hover:text-stone-200 transition-colors">
+                                Culinary profile
+                            </span>
+                            <Button 
+                                size="sm"
+                                onClick={(e) => { e.preventDefault(); onToggle(); }}
+                                className="rounded-full h-8 px-3.5 text-xs font-semibold transition-all btn-primary-gradient shadow-xs"
+                            >
+                                View Profile <ChevronRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                            </Button>
+                        </>
+                    ) : (
+                        <div className="w-full flex justify-end">
+                            <Button 
+                                size="sm"
+                                onClick={(e) => { e.preventDefault(); onToggle(); }}
+                                className="rounded-full h-8 px-4 text-xs font-semibold bg-stone-900 text-white hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-900 transition-all"
+                            >
+                                Close Profile <X className="ml-1.5 h-3.5 w-3.5" />
+                            </Button>
+                        </div>
+                    )}
                 </div>
             </div>
         </motion.div>

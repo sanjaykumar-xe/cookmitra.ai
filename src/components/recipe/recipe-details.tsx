@@ -58,7 +58,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
     // Safety check for all core fields
     const displayName = recipe?.name || 'Untitled Recipe';
     const displayTime = recipe?.time || 0;
-    const displayCost = recipe?.cost || 0;
+    const displayCost = recipe?.cost || recipe?.estimatedCost || 0;
     const baseServings = recipe?.servings || 2;
     const displayDifficulty = recipe?.difficulty || 'Medium';
     const ingredients = recipe?.ingredients || [];
@@ -69,6 +69,11 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
     const [isSaving, setIsSaving] = useState(false);
     const [imageError, setImageError] = useState(false);
     const [candidateIndex, setCandidateIndex] = useState(0);
+
+    // Sync servings when recipe changes
+    useEffect(() => {
+        setServings(recipe?.servings || 2);
+    }, [recipe?.id, recipe?.servings]);
 
     const candidates = recipe?.imageUrl ? [recipe.imageUrl] : getRecipeImageCandidates(recipe?.id || '');
 
@@ -215,9 +220,15 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                         onClick={() => (generateRecipePDF as any)({
                             ...recipe,
                             dishName: displayName,
-                            cookingTime: String(displayTime),
-                            estimatedCost: displayCost,
-                            ingredients: ingredients.map(i => ({ name: i.name, quantity: i.qty, cost: i.price })),
+                            cookingTime: `${displayTime} min`,
+                            servings: servings,
+                            difficulty: displayDifficulty,
+                            estimatedCost: totalCost,
+                            ingredients: ingredients.map(i => ({ 
+                                name: i.name, 
+                                quantity: scaleQuantity(i.qty, servingMultiplier), 
+                                cost: i.price ? Math.round(i.price * servingMultiplier) : undefined 
+                            })),
                             instructions: steps
                         }, (k: any) => k)}
                     >

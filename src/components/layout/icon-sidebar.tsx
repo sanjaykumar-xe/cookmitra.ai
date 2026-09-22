@@ -12,9 +12,10 @@ import {
   Calendar,
   HeartPulse,
   ShoppingBasket,
-  BookOpen,
+  Bookmark,
   Users,
 } from 'lucide-react';
+import { IconBook } from '@tabler/icons-react';
 import {
   Tooltip,
   TooltipContent,
@@ -41,6 +42,25 @@ interface NavItem {
   href: string;
   label: string;
   icon: React.ElementType;
+}
+
+const EncyclopediaNavIcon = ({ className, ...props }: React.ComponentProps<typeof IconBook>) => (
+  <IconBook className={className} size={20} stroke={1.75} strokeWidth={1.75} {...props} />
+);
+
+function getMainNavLinks(homeHref: string): NavItem[] {
+  return [
+    { href: homeHref, label: 'Home', icon: Home },
+    { href: "/recipes", label: 'Recipes', icon: Utensils },
+    { href: "/ai-recipes", label: 'AI Recipes', icon: Plus },
+    { href: "/ai-chat", label: 'Chef Momo AI', icon: MessageSquare },
+    { href: "/healthy-meal-planner", label: 'Meal Planner', icon: Calendar },
+    { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
+    { href: "/encyclopedia", label: 'Encyclopedia', icon: EncyclopediaNavIcon },
+    { href: "/pantry", label: 'Smart Pantry', icon: ShoppingBasket },
+    { href: "/my-recipes", label: 'Saved Recipes', icon: Bookmark },
+    { href: "/community", label: 'Community', icon: Users },
+  ];
 }
 
 const TooltipLink = ({ 
@@ -119,34 +139,24 @@ const NavLink = ({
 
 /**
  * Compact Icon Rail Sidebar (64px / w-16).
- * Navigation sequence matching visual reference:
+ * Navigation sequence:
  * 1. Home (Home)
  * 2. Recipes (Utensils)
  * 3. AI Recipes (Plus)
  * 4. Chef Momo AI (MessageSquare)
  * 5. Meal Planner (Calendar)
  * 6. Healing Foods (HeartPulse)
- * 7. Smart Pantry (ShoppingBasket)
- * 8. Saved Recipes (BookOpen)
- * 9. Community (Users)
+ * 7. Encyclopedia (IconBook)
+ * 8. Smart Pantry (ShoppingBasket)
+ * 9. Saved Recipes (Bookmark)
+ * 10. Community (Users)
  * Bottom:
- * 10. Settings (Settings)
+ * 11. Settings (Settings)
  */
 export function MobileNavDrawer() {
   const { user } = useUser();
   const homeHref = user ? "/home" : "/";
-
-  const mainNavLinks: NavItem[] = [
-    { href: homeHref, label: 'Home', icon: Home },
-    { href: "/recipes", label: 'Recipes', icon: Utensils },
-    { href: "/ai-recipes", label: 'AI Recipes', icon: Plus },
-    { href: "/ai-chat", label: 'Chef Momo AI', icon: MessageSquare },
-    { href: "/healthy-meal-planner", label: 'Meal Planner', icon: Calendar },
-    { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
-    { href: "/pantry", label: 'Smart Pantry', icon: ShoppingBasket },
-    { href: "/my-recipes", label: 'Saved Recipes', icon: BookOpen },
-    { href: "/community", label: 'Community', icon: Users },
-  ];
+  const mainNavLinks = getMainNavLinks(homeHref);
 
   return (
     <Sheet>
@@ -199,18 +209,7 @@ export function MobileNavDrawer() {
 export function IconSidebar() {
   const { user } = useUser();
   const homeHref = user ? "/home" : "/";
-
-  const mainNavLinks: NavItem[] = [
-    { href: homeHref, label: 'Home', icon: Home },
-    { href: "/recipes", label: 'Recipes', icon: Utensils },
-    { href: "/ai-recipes", label: 'AI Recipes', icon: Plus },
-    { href: "/ai-chat", label: 'Chef Momo AI', icon: MessageSquare },
-    { href: "/healthy-meal-planner", label: 'Meal Planner', icon: Calendar },
-    { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
-    { href: "/pantry", label: 'Smart Pantry', icon: ShoppingBasket },
-    { href: "/my-recipes", label: 'Saved Recipes', icon: BookOpen },
-    { href: "/community", label: 'Community', icon: Users },
-  ];
+  const mainNavLinks = getMainNavLinks(homeHref);
 
   return (
     <aside className="hidden md:flex fixed top-0 left-0 h-full w-16 bg-background flex-col items-center justify-between py-3 border-r z-30 animate-in fade-in slide-in-from-left duration-300">
@@ -272,7 +271,7 @@ export function IconSidebar() {
         <div className="w-8 h-px bg-border/80 my-0.5" />
 
         {/* Desktop-only vertical rail icons in exact visual sequence */}
-        <div className="hidden md:flex flex-col items-center gap-y-2">
+        <div className="hidden md:flex flex-col items-center gap-y-1.5 overflow-y-auto max-h-[calc(100vh-130px)] no-scrollbar py-1">
           {mainNavLinks.map(link => {
             const Icon = link.icon;
             return (

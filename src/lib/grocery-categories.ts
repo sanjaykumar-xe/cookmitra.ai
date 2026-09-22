@@ -83,7 +83,7 @@ const SPICES_KEYWORDS = [
 /**
  * Returns the category for a given ingredient name.
  */
-export function getGroceryCategory(ingredientName: string): GroceryCategory {
+function getGroceryCategory(ingredientName: string): GroceryCategory {
   const normalized = ingredientName.trim().toLowerCase();
 
   if (PRODUCE_KEYWORDS.some(k => normalized.includes(k))) return 'Produce';
@@ -100,7 +100,7 @@ export function getGroceryCategory(ingredientName: string): GroceryCategory {
  * e.g. "Onion", "onion", "onions" -> "onion".
  * Does NOT perform fuzzy matching (e.g. "onion" vs "chopped onion" remain distinct).
  */
-export function normalizeIngredientName(name: string): string {
+function normalizeIngredientName(name: string): string {
   let clean = name.trim().toLowerCase();
   // Basic plural trim if ends with 's' and not 'es' words like 'peas' or 'spices'
   if (clean.length > 3 && clean.endsWith('s') && !clean.endsWith('ss') && !clean.endsWith('us') && !clean.endsWith('is')) {

@@ -11,7 +11,7 @@ export function initializeFirebase() {
   };
 }
 
-export function getSdks(firebaseApp: FirebaseApp = app) {
+function getSdks(firebaseApp: FirebaseApp = app) {
   return {
     firebaseApp,
     auth,

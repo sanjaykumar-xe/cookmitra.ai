@@ -34,6 +34,7 @@ export interface Recipe {
   servings: number;
   difficulty: "Easy" | "Medium" | "Hard";
   cost: number; // in INR
+  estimatedCost?: number;
   popularity: number;
   menuCategory?: MenuCategory;
   ingredients: Ingredient[];

@@ -667,7 +667,7 @@ function RecipesExplorerContent() {
               <span>All Recipes <span className="text-stone-500 font-normal text-lg">({allFilteredRecipes.length})</span></span>
             )}
           </h3>
-          <p className="text-xs text-stone-500 dark:text-stone-400 font-medium mt-0.5">Master database count: 934 recipes</p>
+          <p className="text-xs text-stone-500 dark:text-stone-400 font-medium mt-0.5">Master database count: {allRecipes.length} recipes</p>
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
