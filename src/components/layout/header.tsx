@@ -38,6 +38,16 @@ export function Header() {
   const authRoutes = ['/login', '/signup', '/forgot-password', '/verify-email'];
   const isLandingPage = pathname === '/';
   const isAuthPage = pathname ? authRoutes.includes(pathname) : false;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!isLandingPage) return;
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isLandingPage]);
   
   const homeHref = user ? "/home" : "/";
 
@@ -112,25 +122,48 @@ export function Header() {
   const hasResults = results && (results.recipes.length > 0 || results.ingredients.length > 0 || results.conditions.length > 0);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 transition-all duration-300">
+    <header className={cn(
+      "z-50 w-full transition-all duration-300",
+      isLandingPage
+        ? (scrolled
+            ? "sticky top-0 bg-stone-950/85 backdrop-blur-xl border-b border-white/10 text-white shadow-xl"
+            : "absolute top-0 left-0 right-0 bg-transparent border-b border-white/10 text-white")
+        : "sticky top-0 border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
+    )}>
       <div className="flex h-16 items-center justify-between px-4 md:px-8">
         
         {/* Left Side: Brand Identity */}
         <div className="flex items-center">
             {!isLandingPage && !isAuthPage && <MobileNavDrawer />}
             <Link href={homeHref} className="flex items-center group shrink-0" aria-label="CookMitra AI Home">
-                {/* Light Mode: Horizontal Lockup Logo with automatic fallback to App Icon + Typography */}
-                {!logoError ? (
+                {isLandingPage ? (
                   <img
-                    src="/images/logo.png"
+                    src="/images/logo-white.png"
                     alt="CookMitra AI"
                     width={160}
                     height={44}
-                    onError={() => setLogoError(true)}
-                    className="h-9 sm:h-10 w-auto object-contain dark:hidden transition-transform group-hover:scale-102"
+                    className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-102"
                   />
+                ) : !logoError ? (
+                  <>
+                    <img
+                      src="/images/logo.png"
+                      alt="CookMitra AI"
+                      width={160}
+                      height={44}
+                      onError={() => setLogoError(true)}
+                      className="h-9 sm:h-10 w-auto object-contain dark:hidden transition-transform group-hover:scale-102"
+                    />
+                    <img
+                      src="/images/logo-white.png"
+                      alt="CookMitra AI"
+                      width={160}
+                      height={44}
+                      className="h-9 sm:h-10 w-auto object-contain hidden dark:block transition-transform group-hover:scale-102"
+                    />
+                  </>
                 ) : (
-                  <div className="flex dark:hidden items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                     <img
                       src="/images/app-icon-transparent.png"
                       alt="CookMitra"
@@ -143,20 +176,6 @@ export function Header() {
                     </span>
                   </div>
                 )}
-
-                {/* Dark Mode: Standalone App Icon + Dark-mode Aware Text calibrated to match Day Mode logo scale */}
-                <div className="hidden dark:flex items-center space-x-2">
-                    <img
-                        src="/images/app-icon-transparent.png"
-                        alt="CookMitra"
-                        width={36}
-                        height={36}
-                        className="h-9 w-9 max-h-9 max-w-9 object-contain shrink-0 transition-transform group-hover:scale-105"
-                    />
-                    <span className="font-sans text-lg sm:text-[1.18rem] font-semibold tracking-tight text-foreground flex items-center">
-                        CookMitra<span className="text-xs sm:text-[13px] font-medium text-foreground/80 ml-1.5">AI</span>
-                    </span>
-                </div>
             </Link>
         </div>
 
@@ -286,7 +305,7 @@ export function Header() {
 
         {/* Right Side: Utility Controls */}
         <div className="flex items-center justify-end gap-2 md:gap-4">
-          <div className="flex items-center gap-1 md:gap-2">
+          <div className={cn("flex items-center gap-1 md:gap-2", isLandingPage && "[&_button]:text-white [&_button]:hover:bg-white/15 [&_button]:hover:text-amber-400")}>
             <LanguageToggle />
             <ThemeToggle />
           </div>

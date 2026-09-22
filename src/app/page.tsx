@@ -27,6 +27,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import dynamic from 'next/dynamic';
+import DriftWall from '@/components/ui/drift-wall';
 
 // Dynamic imports for heavy below-the-fold sections
 const LibraryShowcase = dynamic(() => import('@/components/home/library-showcase').then(mod => mod.LibraryShowcase), {
@@ -219,32 +220,53 @@ export default function Home() {
 
   return (
     <div className="bg-background overflow-x-hidden">
-        {/* Hero Section */}
-        <section className="relative w-full h-[85vh] max-h-[750px] min-h-[550px] flex items-center justify-start overflow-hidden bg-zinc-950 p-0 m-0">
-          <div className="absolute inset-0 z-10 bg-gradient-to-r from-stone-950/90 via-stone-950/65 to-transparent" />
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-950/40 via-transparent to-stone-950/30" />
-          <motion.div initial={{ scale: 1 }} animate={{ scale: 1.05 }} transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <Image 
-              src="/chef_momo_hero_bg.jpg" 
-              alt="Indian Culinary Spices & Ingredients" 
-              fill 
-              sizes="100vw" 
-              className="object-cover object-left md:object-center w-full h-full" 
-              priority={true} 
+        {/* Hero Section with Interactive 3D DriftWall & Transparent Top Navbar Flow */}
+        <section className="relative w-full min-h-screen flex items-center overflow-hidden bg-zinc-950 p-0 m-0 pt-16 lg:pt-20">
+          {/* Ambient gradient washes for text contrast */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-zinc-950 via-zinc-950/85 lg:via-zinc-950/50 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950/70 via-transparent to-zinc-950/30 pointer-events-none" />
+
+          {/* 3D DriftWall on right side of Hero - 5 columns, unified upward drift flush to right edge */}
+          <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[62%] xl:w-[60%] h-full z-0 overflow-hidden pointer-events-auto flex items-center justify-end pr-0">
+            {/* Soft edge dissolve layers */}
+            <div className="absolute left-0 top-0 bottom-0 w-28 sm:w-44 bg-gradient-to-r from-zinc-950 to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-zinc-950 to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-zinc-950 to-transparent z-10 pointer-events-none" />
+
+            <DriftWall
+              columns={5}
+              tileWidth={205}
+              tileHeight={136}
+              gap={16}
+              tilt={14}
+              turn={-10}
+              perspective={1100}
+              depth={75}
+              speed={34}
+              direction="up"
+              alternate={false}
+              variance={0.4}
+              parallax={0.55}
+              lift={56}
+              fade={0.55}
+              dim={0.9}
+              overlayColor="#05010a"
+              className="w-full h-full"
             />
-          </motion.div>
-          <div className="container max-w-7xl mx-auto relative flex flex-col items-start justify-center text-left px-6 md:px-12 z-20 space-y-8">
-            <div className="space-y-6 max-w-2xl">
-                <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white drop-shadow-2xl leading-[1.15] flex flex-wrap justify-start text-left">
+          </div>
+
+          <div className="w-full max-w-[1600px] mx-auto relative flex flex-col items-start justify-center text-left px-8 sm:px-12 md:px-16 lg:px-20 z-20 space-y-8 pointer-events-none py-12">
+            <div className="space-y-6 max-w-2xl xl:max-w-3xl pointer-events-auto">
+                <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-medium tracking-tight text-white drop-shadow-2xl leading-[1.08] flex flex-wrap justify-start text-left">
                     {words.map((word, i) => (
                         <motion.span key={i} initial={{ opacity: 0, y: 20, filter: "blur(8px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }} className="inline-block mr-[0.25em] last:mr-0">{word}</motion.span>
                     ))}
                 </h1>
-                <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }} className="text-base sm:text-lg md:text-xl text-white/90 font-medium leading-relaxed drop-shadow-md text-left">
+                <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }} className="text-base sm:text-lg md:text-xl text-white/85 font-normal leading-relaxed drop-shadow-md text-left max-w-xl xl:max-w-2xl">
                   Stop wondering what to cook! Enter the ingredients you have, and let our AI suggest perfect Indian recipes with instant grocery links for anything you&apos;re missing.
                 </motion.p>
             </div>
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-2 w-full sm:w-auto">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-2 w-full sm:w-auto pointer-events-auto">
               {isUserLoading ? (
                   <Button disabled size="lg" className="h-14 px-10 rounded-full w-full sm:w-auto"><Loader2 className="mr-2 h-4 w-4 animate-spin" /></Button>
               ) : (
@@ -256,7 +278,7 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-
+        
         <LibraryShowcase />
         
         <section className="py-16 md:py-24 bg-background overflow-hidden">
