@@ -31,6 +31,7 @@ import ClickSpark from '@/components/effects/ClickSpark';
 import { IconHeartFilled, IconBook, IconClock } from '@tabler/icons-react';
 import { useLanguage } from '@/context/language-context';
 import { RegionalCuisineExplorer } from '@/components/home/regional-cuisine-explorer';
+import TextType from '@/components/ui/text-type';
 import { recipes } from '@/lib/recipes';
 import type { Recipe } from '@/lib/recipes/types';
 import { getRecipeImageCandidates, resolveRecipeImageCandidates } from '@/lib/recipe-image-helper';
@@ -473,9 +474,50 @@ export default function DashboardPage() {
                             <span>Better You</span>
                         </div>
 
-                        {/* Heading */}
-                        <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 dark:text-stone-100 leading-tight">
-                            Welcome back, <span className="text-[#F4A21A]">{firstName}</span>!
+                        {/* Heading with React Bits TextType animated effect */}
+                        <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 dark:text-stone-100 leading-tight min-h-[1.25em]">
+                            <TextType
+                                text={[
+                                    `Welcome back, ${firstName}!`,
+                                    `Ready to cook, ${firstName}?`,
+                                    "What are we making today?",
+                                    "Explore authentic Indian recipes!"
+                                ]}
+                                typingSpeed={70}
+                                pauseDuration={2200}
+                                deletingSpeed={35}
+                                loop={true}
+                                showCursor={true}
+                                cursorCharacter="|"
+                                cursorClassName="text-[#F4A21A] font-light"
+                                renderText={(text) => {
+                                    const prefix = "Welcome back, ";
+                                    if (text.startsWith(prefix)) {
+                                        const after = text.slice(prefix.length);
+                                        const namePart = after.endsWith("!") ? after.slice(0, -1) : after;
+                                        const hasExclamation = after.endsWith("!");
+                                        return (
+                                            <>
+                                                Welcome back, <span className="text-[#F4A21A]">{namePart}</span>
+                                                {hasExclamation && "!"}
+                                            </>
+                                        );
+                                    }
+                                    const readyPrefix = "Ready to cook, ";
+                                    if (text.startsWith(readyPrefix)) {
+                                        const after = text.slice(readyPrefix.length);
+                                        const namePart = after.endsWith("?") ? after.slice(0, -1) : after;
+                                        const hasQuestion = after.endsWith("?");
+                                        return (
+                                            <>
+                                                Ready to cook, <span className="text-[#F4A21A]">{namePart}</span>
+                                                {hasQuestion && "?"}
+                                            </>
+                                        );
+                                    }
+                                    return text;
+                                }}
+                            />
                         </h1>
 
                         <p className="text-stone-600 dark:text-stone-300 text-sm sm:text-base font-normal max-w-xl">

@@ -57,7 +57,10 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
     
     // Safety check for all core fields
     const displayName = recipe?.name || 'Untitled Recipe';
-    const displayTime = recipe?.time || 0;
+    const rawTime = recipe?.time || recipe?.cookingTime || 30;
+    const displayTime = typeof rawTime === 'number' && rawTime > 0 
+        ? rawTime 
+        : parseInt(String(rawTime).replace(/\D/g, ''), 10) || 30;
     const displayCost = recipe?.cost || recipe?.estimatedCost || 0;
     const baseServings = recipe?.servings || 2;
     const displayDifficulty = recipe?.difficulty || 'Medium';

@@ -31,6 +31,7 @@ export interface Recipe {
   description: string;
   type: "Vegetarian" | "Non-Vegetarian";
   time: number; // in minutes
+  cookingTime?: string | number;
   servings: number;
   difficulty: "Easy" | "Medium" | "Hard";
   cost: number; // in INR
