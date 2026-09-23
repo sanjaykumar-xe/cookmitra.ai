@@ -215,3 +215,64 @@ export const generateRecipePDF = (recipe: PDFRecipeData) => {
   addFooter(doc);
   doc.save(`${recipe.dishName.replace(/\s+/g, '-')}-Recipe.pdf`);
 };
+
+export const generateShoppingListPDF = (recipeName: string, items: string[]) => {
+  const doc = new jsPDF();
+  let y = 15;
+
+  addBranding(doc, y);
+  y += 12;
+
+  // Header / Title
+  doc.setTextColor(0, 0, 0);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(20);
+  const title = recipeName ? `${recipeName} - Shopping List` : 'Shopping List';
+  const splitTitle = doc.splitTextToSize(title, 180);
+  doc.text(splitTitle, 14, y);
+  y += (splitTitle.length * 8) + 2;
+
+  // Subtitle
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(100, 100, 100);
+  doc.text(`Missing Ingredients (${items.length} item${items.length === 1 ? '' : 's'})`, 14, y);
+  y += 8;
+
+  // Table of Missing Ingredients (clean, printable layout with checkboxes)
+  autoTable(doc, {
+    startY: y,
+    head: [["[ ]", "Ingredient & Quantity"]],
+    body: items.map(item => ["[  ]", item]),
+    theme: 'grid',
+    headStyles: {
+      fillColor: BRAND_COLOR as any,
+      textColor: [255, 255, 255],
+      fontStyle: 'bold',
+      fontSize: 10,
+    },
+    styles: {
+      fontSize: 10,
+      cellPadding: 4,
+      textColor: [30, 30, 30],
+      lineColor: [220, 220, 220],
+      lineWidth: 0.1
+    },
+    columnStyles: {
+      0: { cellWidth: 15, halign: 'center', fontStyle: 'bold', textColor: [150, 150, 150] },
+      1: { cellWidth: 'auto' }
+    },
+    alternateRowStyles: {
+      fillColor: [250, 250, 250]
+    }
+  });
+
+  addFooter(doc);
+
+  const cleanSlug = (recipeName || 'recipe')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  doc.save(`${cleanSlug || 'recipe'}-shopping-list.pdf`);
+};
+

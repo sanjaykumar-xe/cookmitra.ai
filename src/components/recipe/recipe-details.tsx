@@ -327,6 +327,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                             return scaled ? `${scaled} ${i.name}` : i.name;
                         })} 
                         userIngredients={ingredients.filter((_, i) => ingStates[i]).map(i => i.name)} 
+                        recipeName={displayName}
                     />
                 </div>
             </div>

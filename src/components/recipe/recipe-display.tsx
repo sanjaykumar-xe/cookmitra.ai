@@ -111,8 +111,9 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
             <div className="space-y-6">
                 <h3 className="font-headline text-3xl">Shopping List</h3>
                 <MissingIngredients 
-                    missingIngredients={ingredients.map((i: any) => i.name)} 
+                    missingIngredients={ingredients.map((i: any) => `${i.qty || i.quantity || ''} ${i.name}`.trim())} 
                     userIngredients={[]} 
+                    recipeName={recipe?.name || recipe?.dishName || "Recipe"}
                 />
             </div>
         </div>
