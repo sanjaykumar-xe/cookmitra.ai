@@ -61,6 +61,7 @@ import { useUser, useFirestore, useCollection, useMemoFirebase } from "@/lib/fir
 import { collection, query, orderBy } from 'firebase/firestore';
 import type { PantryItem } from "@/lib/firebase/firestore/pantry";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/context/language-context";
 
 const formSchema = z.object({
   ingredients: z.string(),
@@ -97,6 +98,7 @@ const CATEGORIES = [
 ];
 
 export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: RecipeGeneratorFormProps) {
+  const { t, language } = useLanguage();
   const [budget, setBudget] = useState(150);
   const { toast } = useToast();
   const { user } = useUser();
@@ -239,12 +241,13 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
         formData.append(key, String(value));
       }
     });
+    formData.append('language', language);
     onSubmit(formData);
   };
 
   const submitButtonLabel = isGenerating 
-    ? "Generating..." 
-    : (hasGenerated ? "Generate New Recipe" : "Generate Recipe");
+    ? t('generator.generating') 
+    : (hasGenerated ? t('generator.generateNew') : t('generator.submit'));
 
   return (
     <Card className="rounded-[2.5rem] bg-card/80 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 shadow-xs overflow-hidden">
@@ -255,9 +258,9 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
             </div>
             <div>
                 <CardTitle className="font-headline text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-100">
-                    Create Your Recipe
+                    {t('generator.formTitle')}
                 </CardTitle>
-                <CardDescription className="text-xs sm:text-sm font-normal text-stone-500">Refine your vision</CardDescription>
+                <CardDescription className="text-xs sm:text-sm font-normal text-stone-500">{t('generator.refineVision')}</CardDescription>
             </div>
         </div>
       </CardHeader>
@@ -272,11 +275,11 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                     name="ingredients"
                     render={({ field }) => (
                         <FormItem className="!space-y-0">
-                            <FormLabel className="text-xs font-black uppercase tracking-[0.2em] text-primary/80">Available Ingredients</FormLabel>
+                            <FormLabel className="text-xs font-black uppercase tracking-[0.2em] text-primary/80">{t('generator.ingredientsLabel')}</FormLabel>
                             <FormControl>
                                 <div className="relative">
                                     <Textarea
-                                        placeholder="e.g., onion, tomato, paneer, rice..."
+                                        placeholder={t('generator.placeholder')}
                                         {...field}
                                         className="min-h-[100px] bg-transparent border-0 shadow-none focus-visible:ring-0 px-0 text-lg font-medium resize-none placeholder:text-muted-foreground/30 pr-10"
                                     />
@@ -289,7 +292,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                                             isListening ? "text-red-500 animate-pulse bg-red-500/10" : "text-muted-foreground hover:text-primary hover:bg-primary/10"
                                         )}
                                         onClick={toggleListening}
-                                        title="Add ingredients by voice"
+                                        title={t('generator.voiceInput')}
                                     >
                                         {isListening ? <Mic className="h-5 w-5" /> : <MicOff className="h-5 w-5 opacity-40" />}
                                     </Button>
@@ -319,14 +322,14 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                                     onClick={handleRemoveImage}
                                 >
                                     <X className="mr-2 h-4 w-4" />
-                                    Remove
+                                    {t('generator.remove')}
                                 </Button>
                             </div>
                         </div>
                     ) : (
                          <Button type="button" variant="outline" className="flex-1 min-w-0 h-12 rounded-xl bg-muted dark:bg-white/5 hover:bg-muted-foreground/10 dark:hover:bg-white/10 font-bold text-sm border-2 border-border dark:border-white/5 transition-all px-4" onClick={() => fileInputRef.current?.click()}>
                             <Camera className="mr-2 h-5 w-5 text-primary shrink-0" />
-                            <span className="truncate">Scan from Pantry Image</span>
+                            <span className="truncate">{t('generator.scanImage')}</span>
                         </Button>
                     )}
 
@@ -334,14 +337,14 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                       <DialogTrigger asChild>
                         <Button type="button" variant="outline" className="flex-1 min-w-0 h-12 rounded-xl bg-muted dark:bg-white/5 hover:bg-muted-foreground/10 dark:hover:bg-white/10 font-bold text-sm border-2 border-border dark:border-white/5 transition-all px-4">
                           <ShoppingBasket className="mr-2 h-5 w-5 text-primary shrink-0" />
-                          <span className="truncate">Add from Pantry</span>
+                          <span className="truncate">{t('generator.addPantry')}</span>
                         </Button>
                       </DialogTrigger>
                       <DialogContent className="max-w-[400px] p-0 rounded-2xl shadow-2xl border-primary/20 overflow-hidden flex flex-col h-auto">
                         <DialogHeader className="bg-primary/5 border-b p-6">
                           <DialogTitle className="text-xl font-headline flex items-center gap-3">
                             <Package className="h-6 w-6 text-primary" />
-                            Your Pantry Inventory
+                            {t('generator.pantryInventory')}
                           </DialogTitle>
                         </DialogHeader>
                         
@@ -383,11 +386,11 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                                     <ShoppingBasket className="h-10 w-10 text-muted-foreground opacity-20" />
                                   </div>
                                   <div className="space-y-1">
-                                    <p className="text-base font-bold">Your pantry is empty</p>
-                                    <p className="text-sm text-muted-foreground">Add items first to pick them here.</p>
+                                    <p className="text-base font-bold">{t('generator.pantryEmpty')}</p>
+                                    <p className="text-sm text-muted-foreground">{t('generator.pantryEmptyDesc')}</p>
                                   </div>
                                   <Button variant="link" className="text-primary font-bold" asChild>
-                                    <a href="/pantry">Open My Pantry</a>
+                                    <a href="/pantry">{t('generator.openPantry')}</a>
                                   </Button>
                                 </div>
                               )}
@@ -397,7 +400,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
 
                         <div className="p-4 border-t bg-muted/20">
                           <DialogClose asChild>
-                            <Button className="w-full rounded-xl h-12 font-black uppercase tracking-widest text-xs shadow-lg">Done</Button>
+                            <Button className="w-full rounded-xl h-12 font-black uppercase tracking-widest text-xs shadow-lg">{t('generator.done')}</Button>
                           </DialogClose>
                         </div>
                       </DialogContent>
@@ -414,14 +417,14 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                     <FormItem>
                     <FormLabel className="flex items-center gap-2 font-black uppercase tracking-widest text-[10px] text-muted-foreground mb-4">
                         <IndianRupee className="h-3 w-3 text-primary" />
-                        Budget (INR)
+                        {t('generator.budgetLabel')}
                     </FormLabel>
                     <FormControl>
                         <div className="space-y-6">
                         <div className="flex justify-between items-end">
                             <span className="text-[10px] font-black text-muted-foreground opacity-50 uppercase tracking-tighter">₹50</span>
                             <div className="text-center">
-                                <span className="block text-[10px] uppercase tracking-[0.2em] text-primary font-black">Limit</span>
+                                <span className="block text-[10px] uppercase tracking-[0.2em] text-primary font-black">{t('generator.limit')}</span>
                                 <span className="text-3xl font-black text-foreground">₹{budget}</span>
                             </div>
                             <span className="text-[10px] font-black text-muted-foreground opacity-50 uppercase tracking-tighter">₹500</span>
@@ -452,7 +455,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                     <FormItem className="flex-1">
                         <FormLabel className="flex items-center gap-2 font-black uppercase tracking-widest text-[10px] text-muted-foreground mb-2">
                             <Clock className="h-3 w-3 text-primary" />
-                            Max Cook Time
+                            {t('generator.timeLabel')}
                         </FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
@@ -479,16 +482,16 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                     <FormItem className="flex-1">
                         <FormLabel className="flex items-center gap-2 font-black uppercase tracking-widest text-[10px] text-muted-foreground mb-2">
                             <MapPin className="h-3 w-3 text-primary" />
-                            Region
+                            {t('generator.regionLabel')}
                         </FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                             <SelectTrigger className="h-12 min-w-[140px] rounded-xl bg-muted/50 dark:bg-white/5 border border-border dark:border-white/5 font-bold">
-                            <SelectValue placeholder="Region" />
+                            <SelectValue placeholder={t('generator.regionLabel')} />
                             </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                            <SelectItem value="Any">Any Style</SelectItem>
+                            <SelectItem value="Any">{t('generator.anyStyle')}</SelectItem>
                             <SelectItem value="North Indian">North Indian</SelectItem>
                             <SelectItem value="South Indian">South Indian</SelectItem>
                             <SelectItem value="East Indian">East Indian</SelectItem>
@@ -511,7 +514,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                 name="dietaryPreference"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel className="font-black uppercase tracking-widest text-[10px] text-muted-foreground mb-2 block">Dietary Preference</FormLabel>
+                    <FormLabel className="font-black uppercase tracking-widest text-[10px] text-muted-foreground mb-2 block">{t('generator.dietLabel')}</FormLabel>
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
@@ -524,7 +527,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                             htmlFor="diet-veg"
                             className="flex items-center justify-center h-10 w-full rounded-xl cursor-pointer peer-data-[state=checked]:bg-[#F4A21A] peer-data-[state=checked]:text-white font-semibold text-xs uppercase tracking-wider transition-all whitespace-nowrap"
                           >
-                            Veg
+                            {t('generator.veg')}
                           </Label>
                         </div>
                         <div className="flex-1 min-w-[80px]">
@@ -533,7 +536,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                             htmlFor="diet-non-veg"
                             className="flex items-center justify-center h-10 w-full rounded-xl cursor-pointer peer-data-[state=checked]:bg-[#F4A21A] peer-data-[state=checked]:text-white font-semibold text-xs uppercase tracking-wider transition-all whitespace-nowrap"
                           >
-                            Non-Veg
+                            {t('generator.nonVeg')}
                           </Label>
                         </div>
                       </RadioGroup>
@@ -546,7 +549,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                 name="numberOfPersons"
                 render={({ field }) => (
                   <FormItem className="w-32">
-                    <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400 mb-2 block">Servings</FormLabel>
+                    <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400 mb-2 block">{t('generator.servingsLabel')}</FormLabel>
                     <FormControl>
                        <div className="flex items-center justify-between rounded-2xl border border-stone-200 dark:border-stone-800 h-[52px] bg-stone-50/50 dark:bg-stone-900/40 px-2">
                           <Button variant="ghost" size="icon" type="button" className="h-8 w-8 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-800" onClick={() => field.onChange(Math.max(1, field.value - 1))}>
@@ -570,8 +573,8 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                     render={({ field }) => (
                     <FormItem className="flex flex-row items-center justify-between rounded-2xl border border-stone-200 dark:border-stone-800 p-4 bg-stone-50/50 dark:bg-stone-900/40">
                         <div className="space-y-0.5">
-                            <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400">Batch Cooking</FormLabel>
-                            <FormDescription className="text-xs text-stone-500">Cook for the whole week</FormDescription>
+                            <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400">{t('generator.batchLabel')}</FormLabel>
+                            <FormDescription className="text-xs text-stone-500">{t('generator.batchDesc')}</FormDescription>
                         </div>
                         <FormControl>
                             <Switch
@@ -590,7 +593,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
                         render={({ field }) => (
                         <FormItem className="animate-in fade-in slide-in-from-top-2 duration-300">
                             <FormLabel className="font-bold uppercase tracking-wider text-[11px] text-stone-400 mb-2 block">
-                                Number of Days
+                                {t('generator.batchDays')}
                             </FormLabel>
                             <FormControl>
                                 <div className="flex items-center justify-between rounded-2xl border border-stone-200 dark:border-stone-800 h-[52px] bg-stone-50/50 dark:bg-stone-900/40 px-2">
@@ -618,7 +621,7 @@ export function RecipeGeneratorForm({ onSubmit, isGenerating, hasGenerated }: Re
               {isGenerating ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Generating...
+                  {t('generator.generating')}
                 </>
               ) : (
                 <>

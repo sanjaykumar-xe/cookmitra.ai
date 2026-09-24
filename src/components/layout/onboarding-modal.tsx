@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Sparkles, CalendarDays, ChefHat, CookingPot, HeartPulse } from 'lucide-react';
 import { CookMitraLogo } from '@/components/icons/cook-mitra-logo';
 import Carousel, { CarouselItemData } from '@/components/ui/carousel';
+import { useLanguage } from '@/context/language-context';
 
 const tourItems: CarouselItemData[] = [
   {
@@ -51,6 +52,7 @@ interface OnboardingModalProps {
 }
 
 export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
+  const { t } = useLanguage();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -79,13 +81,13 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         <DialogHeader className="p-6 pb-2 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-[#F4A21A] border border-amber-500/20 w-fit mx-auto mb-2">
             <Sparkles className="h-3.5 w-3.5" />
-            <span>Interactive Platform Tour</span>
+            <span>{t('tour.badge')}</span>
           </div>
           <DialogTitle className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-            Welcome to CookMitra AI
+            {t('tour.welcome')}
           </DialogTitle>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-sm mx-auto">
-            Swipe or use the 3D carousel below to explore key features.
+            {t('tour.subtitle')}
           </p>
         </DialogHeader>
 
@@ -110,13 +112,13 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             className="flex-1 rounded-full h-12 text-muted-foreground font-bold hover:bg-transparent hover:text-primary transition-colors text-sm cursor-pointer"
             onClick={handleSkip}
           >
-            Skip
+            {t('tour.skip')}
           </Button>
           <Button 
             className="flex-[2] rounded-full h-12 bg-[#F4A21A] hover:bg-[#E09015] text-white font-bold shadow-xl shadow-amber-500/20 active:scale-95 text-sm border-0 cursor-pointer"
             onClick={handleNext}
           >
-            {activeStep === tourItems.length - 1 ? "Get Started" : "Next Feature"}
+            {activeStep === tourItems.length - 1 ? t('tour.getStarted') : t('tour.next')}
           </Button>
         </div>
       </DialogContent>

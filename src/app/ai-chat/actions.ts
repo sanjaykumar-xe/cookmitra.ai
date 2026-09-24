@@ -30,9 +30,10 @@ export async function sendMessageToAI(history: ChatMessage[], language: string =
     const langInstruction = isTamil || isHindi
         ? `CRITICAL MULTILINGUAL MANDATE:
 The user has selected ${langName} as their active app language.
-You MUST write your ENTIRE response (all conversational text, greetings, section titles, ingredient descriptions, and step-by-step instructions) in native ${scriptName}.
+You MUST write your ENTIRE response (all conversational text, greetings, empathetic responses, off-topic redirections, section titles, ingredient descriptions, and step-by-step instructions) in natural, conversational ${scriptName}.
 Do NOT use English or transliterated Latin script (Tanglish/Hinglish) for conversational text.
-ONLY specific recipe dish names (e.g. "Paneer Tikka Masala") may remain in English script if desired. Everything else MUST be written in native ${scriptName}.`
+COMMON DISH NAMES PRESERVATION RULE: Widely-recognized dish names (e.g. "Biryani", "Dosa", "Paneer Butter Masala", "Sambar", "Idli", "Roti", "Chole", "Dal Makhani", "Upma", "Poha", "Khichdi") should stay as their common recognized name rather than being forced into an awkward literal translation. Use judgment: translate surrounding descriptions, ingredients, and instructions while keeping recognized dish names natural and recognizable.
+Every part of your output, including off-topic redirects (e.g., "${isTamil ? 'நான் உங்கள் சமையல் உதவியாளர் செஃப் மோமோ! சமையல் மற்றும் உணவு தொடர்பான கேள்விகளுக்கு மட்டுமே என்னால் பதிலளிக்க முடியும். இன்று நீங்கள் என்ன சமைக்க விரும்புகிறீர்கள்?' : 'मैं आपका कुकिंग असिस्टेंट शेफ मोमो हूँ! मैं सिर्फ खाना पकाने, सामग्री और रेसिपी से जुड़े सवालों में आपकी मदद कर सकता हूँ। आज आप क्या पकाना चाहते हैं?'}") and health symptom guidance, MUST be in ${langName}.`
         : 'Respond in natural, clear English.';
 
     const ingTitle = isTamil ? 'தேவையான பொருட்கள்' : isHindi ? 'सामग्री' : 'Ingredients';

@@ -124,10 +124,10 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
             const docRef = doc(firestore, `users/${user.uid}/recipes`, recipe.id);
             if (isSaved) {
                 await deleteDoc(docRef);
-                toast({ title: "Recipe removed from collection" });
+                toast({ title: t('recipe.removedToast') });
             } else {
                 await setDoc(docRef, { ...recipe, savedAt: serverTimestamp(), userId: user.uid });
-                toast({ title: "Recipe saved to your kitchen!" });
+                toast({ title: t('recipe.savedToast') });
             }
         } finally { setIsSaving(false); }
     };
@@ -159,7 +159,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                         <div className="bg-amber-500/10 p-6 rounded-3xl">
                             <ChefHat className="h-16 w-16 text-[#F4A21A]" />
                         </div>
-                        <span className="text-xs font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500 mt-4">Photo coming soon</span>
+                        <span className="text-xs font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500 mt-4">{t('home.photoComing')}</span>
                     </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
@@ -315,7 +315,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                                 ))}
                             </div>
                         ) : (
-                            <p className="text-stone-500 italic p-4 text-center">No ingredient data available.</p>
+                            <p className="text-stone-500 italic p-4 text-center">{t('recipe.noIngredients')}</p>
                         )}
                     </CardContent>
                 </Card>
@@ -352,7 +352,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
                             ))}
                         </ol>
                     ) : (
-                        <p className="text-stone-500 italic text-center">No instruction data available.</p>
+                        <p className="text-stone-500 italic text-center">{t('recipe.noInstructions')}</p>
                     )}
                 </CardContent>
             </Card>

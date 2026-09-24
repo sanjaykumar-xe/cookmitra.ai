@@ -122,7 +122,7 @@ interface TimerState {
 }
 
 export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => void }) {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const { user } = useUser();
     const firestore = useFirestore();
     const { toast } = useToast();
@@ -508,7 +508,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
     const handleTimerEnd = (stepIdx: number, label: string) => {
         try { new Audio(TIMER_DONE_SOUND_URL).play().catch(() => {}); } catch (e) {}
         if (typeof window !== 'undefined' && Notification.permission === 'granted' && document.visibilityState !== 'visible') {
-            new Notification(`⏱ CookMitra Timer Done!`, { body: `Step ${stepIdx + 1}: ${label} for ${recipe.name} is finished.` });
+            new Notification(t('recipe.timerDone'), { body: t('recipe.timerFinished', { step: stepIdx + 1, label, recipe: recipe.name }) });
         }
     };
 
@@ -589,13 +589,13 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
             <div className="fixed inset-0 bg-background z-[9999] flex flex-col items-center justify-center text-center p-6 pb-[max(2rem,env(safe-area-inset-bottom))] animate-in fade-in duration-500 overflow-y-auto max-h-[100dvh]">
                 <div className="space-y-3 mb-6 flex flex-col items-center">
                     <HotSteamingMealIcon />
-                    <h2 className="font-headline text-4xl sm:text-5xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">Delicious!</h2>
-                    <p className="text-stone-500 text-base font-medium">Your <span className="text-[#F4A21A] font-semibold">{recipe.name}</span> is Ready to Serve</p>
+                    <h2 className="font-headline text-4xl sm:text-5xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">{t('recipe.done')}</h2>
+                    <p className="text-stone-500 text-base font-medium">{t('recipe.readyToServe', { name: recipe.name })}</p>
                 </div>
 
                 {/* Star Rating Section */}
                 <div className="mb-8 space-y-3 bg-stone-50 dark:bg-stone-900/60 p-6 sm:p-8 rounded-[2.5rem] border border-stone-200 dark:border-stone-800 max-w-sm w-full">
-                    <p className="font-bold uppercase tracking-wider text-[11px] text-stone-400">How did it turn out?</p>
+                    <p className="font-bold uppercase tracking-wider text-[11px] text-stone-400">{t('recipe.howTurnOut')}</p>
                     <div className="flex justify-center py-1">
                         <StarRating 
                             rating={userRating} 
@@ -603,13 +603,13 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                             size={32} 
                         />
                     </div>
-                    {isRated && <p className="text-[#F4A21A] text-xs font-semibold animate-in fade-in">Thanks for rating!</p>}
+                    {isRated && <p className="text-[#F4A21A] text-xs font-semibold animate-in fade-in">{t('recipe.thanksRating')}</p>}
                 </div>
 
                 {/* Button Group */}
                 <div className="flex flex-col gap-3.5 w-full max-w-sm">
                     <Button asChild size="lg" className="w-full rounded-full h-14 text-sm font-semibold uppercase tracking-wider bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 border-0">
-                        <Link href="/recipes">Return to Explorer</Link>
+                        <Link href="/recipes">{t('recipe.returnExplorer')}</Link>
                     </Button>
                     
                     <div className="grid grid-cols-2 gap-3">
@@ -620,7 +620,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                             disabled={isSaved || isSaving}
                         >
                             <Bookmark className={cn("h-4 w-4 mr-2", isSaved && "fill-[#F4A21A] text-[#F4A21A]")} />
-                            {isSaved ? "Saved ✓" : "Save Recipe"}
+                            {isSaved ? t('recipe.saved') : t('recipe.save')}
                         </Button>
                         <Button 
                             variant="outline" 
@@ -628,7 +628,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                             onClick={handleCookAgain}
                         >
                             <RefreshCw className="h-4 w-4 mr-2" />
-                            Cook Again
+                            {t('recipe.cookAgain')}
                         </Button>
                     </div>
                 </div>
@@ -643,9 +643,9 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                 <div className="bg-stone-100 dark:bg-stone-800 rounded-full p-6 mb-4">
                     <X className="h-10 w-10 text-stone-400 opacity-40" />
                 </div>
-                <h3 className="font-headline text-2xl font-medium text-stone-900 dark:text-stone-100">No Steps Available</h3>
-                <p className="text-stone-500 max-w-xs mx-auto mt-2 mb-8">This recipe doesn&apos;t have any step-by-step instructions yet.</p>
-                <Button asChild variant="outline" className="rounded-full px-8 h-12 text-xs uppercase font-semibold"><Link href={`/recipes/${recipe.id}`}>Go Back</Link></Button>
+                <h3 className="font-headline text-2xl font-medium text-stone-900 dark:text-stone-100">{t('recipe.noSteps')}</h3>
+                <p className="text-stone-500 max-w-xs mx-auto mt-2 mb-8">{t('recipe.noStepsDesc')}</p>
+                <Button asChild variant="outline" className="rounded-full px-8 h-12 text-xs uppercase font-semibold"><Link href={`/recipes/${recipe.id}`}>{t('recipe.goBack')}</Link></Button>
             </div>
         );
     }
@@ -711,16 +711,16 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                 <Card className="mb-6 p-5 rounded-[2rem] border border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm shadow-xs">
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative">
                         <span className="font-bold uppercase tracking-wider text-[11px] text-stone-500 dark:text-stone-400">
-                            Progress: Step {currentStep + 1} of {stepCount}
+                            {t('recipe.progress')}: {t('recipe.step')} {currentStep + 1} of {stepCount}
                         </span>
                         
                         <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
-                                <Label htmlFor="voice-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Voice</Label>
+                                <Label htmlFor="voice-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">{t('recipe.voice')}</Label>
                                 <Switch id="voice-toggle" checked={isVoiceOn} onCheckedChange={setIsVoiceOn} className="scale-75" />
                             </div>
                             <div className="flex items-center gap-2">
-                                <Label htmlFor="hf-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">Hands-Free</Label>
+                                <Label htmlFor="hf-toggle" className="text-[10px] font-bold uppercase tracking-wider text-stone-500">{t('recipe.handsFree')}</Label>
                                 <Switch id="hf-toggle" checked={isHandsFreeOn} onCheckedChange={setIsHandsFreeOn} className="scale-75" />
                             </div>
                             <Button 
@@ -731,7 +731,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                                   isSpeakingStep ? "text-rose-500 hover:text-rose-600 bg-rose-500/10" : "text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10"
                                 )} 
                                 onClick={() => toggleSpeakingStep(steps[currentStep])}
-                                title={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
+                                title={isSpeakingStep ? t('recipe.muteVoice') : t('recipe.playVoice')}
                             >
                                 {isSpeakingStep ? <VolumeX className="h-4 w-4 text-rose-500 animate-pulse" /> : <Volume2 className="h-4 w-4" />}
                             </Button>
@@ -740,8 +740,8 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                                 size="icon"
                                 className="h-8 w-8 rounded-full text-stone-400 hover:text-[#F4A21A] hover:bg-amber-500/10 transition-colors"
                                 onClick={() => window.print()}
-                                title="Print Recipe"
-                                aria-label="Print Recipe"
+                                title={t('recipe.print')}
+                                aria-label={t('recipe.print')}
                             >
                                 <Printer className="h-4 w-4" strokeWidth={1.75} />
                             </Button>
@@ -782,7 +782,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
             {/* ACTION BUTTON CONTROLS (DESKTOP) */}
             <div className="hidden md:grid grid-cols-1 gap-3 mb-10">
                 <Button size="lg" className="w-full font-semibold uppercase tracking-wider h-14 text-sm sm:text-base rounded-full bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 border-0 transition-all active:scale-[0.99] flex items-center justify-center gap-2" onClick={handleMarkAndGoToNext}>
-                    {completedSteps.has(currentStep) ? "Step Completed" : "Mark Step as Complete"}
+                    {completedSteps.has(currentStep) ? `${t('recipe.step')} ${currentStep + 1} ✓` : t('recipe.markComplete')}
                     <Check className="h-5 w-5" />
                 </Button>
                 <div className="grid grid-cols-2 gap-3">
@@ -792,7 +792,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                         className={cn("font-semibold text-xs uppercase tracking-wider h-12 rounded-full border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all", currentStep === 0 && "opacity-30 pointer-events-none")} 
                         onClick={handleGoToPrevious}
                      >
-                        <ArrowLeft className="h-4 w-4 mr-2" /> Previous
+                        <ArrowLeft className="h-4 w-4 mr-2" /> {t('recipe.prev')}
                      </Button>
                      <Button 
                         variant="outline" 
@@ -800,13 +800,13 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                         className={cn("font-semibold text-xs uppercase tracking-wider h-12 rounded-full border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all", currentStep === stepCount - 1 && "opacity-30 pointer-events-none")} 
                         onClick={() => setCurrentStep(prev => Math.min(prev + 1, stepCount - 1))}
                      >
-                        Next <ArrowRight className="h-4 w-4 ml-2" />
+                        {t('recipe.next')} <ArrowRight className="h-4 w-4 ml-2" />
                      </Button>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 mt-2 text-[10px] font-semibold uppercase tracking-wider text-stone-400 select-none">
                     <Keyboard className="h-3.5 w-3.5" />
-                    <span>Space: Next &bull; Left Arrow: Back &bull; T: Timer &bull; Esc: Exit</span>
+                    <span>{t('recipe.shortcuts')}</span>
                 </div>
             </div>
 
@@ -831,8 +831,8 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                             isSpeakingStep ? "text-rose-500 bg-rose-500/10 border-rose-500/30" : "text-stone-700 dark:text-stone-300 hover:text-[#F4A21A]"
                         )}
                         onClick={() => toggleSpeakingStep(steps[currentStep])}
-                        title={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
-                        aria-label={isSpeakingStep ? "Mute step narration" : "Read step aloud"}
+                        title={isSpeakingStep ? t('recipe.muteVoice') : t('recipe.playVoice')}
+                        aria-label={isSpeakingStep ? t('recipe.muteVoice') : t('recipe.playVoice')}
                     >
                         {isSpeakingStep ? <VolumeX className="h-5 w-5 text-rose-500 animate-pulse" /> : <Volume2 className="h-5 w-5" />}
                     </Button>
@@ -840,7 +840,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
                         className="flex-1 h-12 min-h-[44px] rounded-full font-semibold uppercase tracking-wider text-xs bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-md shadow-amber-500/25 border-0 transition-all active:scale-[0.98] flex items-center justify-center gap-1.5"
                         onClick={handleMarkAndGoToNext}
                     >
-                        <span className="truncate">{completedSteps.has(currentStep) ? (currentStep === stepCount - 1 ? "Finish Cooking" : "Next Step") : (currentStep === stepCount - 1 ? "Finish Cooking" : "Complete & Next")}</span>
+                        <span className="truncate">{completedSteps.has(currentStep) ? (currentStep === stepCount - 1 ? t('recipe.finishCooking') : t('recipe.next')) : (currentStep === stepCount - 1 ? t('recipe.finishCooking') : t('recipe.completeNext'))}</span>
                         <Check className="h-4 w-4 shrink-0" />
                     </Button>
                 </div>
@@ -848,7 +848,7 @@ export function CookMode({ recipe, onExit }: { recipe: Recipe; onExit?: () => vo
 
             {/* FULL RECIPE GUIDE CHECKLIST */}
             <div className="space-y-4 pb-24">
-                <h3 className="font-headline text-2xl font-medium tracking-tight text-stone-900 dark:text-stone-100">Full Recipe Guide</h3>
+                <h3 className="font-headline text-2xl font-medium tracking-tight text-stone-900 dark:text-stone-100">{t('recipe.fullGuide')}</h3>
                 <div className="space-y-3">
                     {steps.map((step, index) => (
                         <button 

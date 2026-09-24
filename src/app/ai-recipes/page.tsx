@@ -7,8 +7,11 @@ import RecipeGenerator from "@/components/recipe/recipe-generator";
 import { Loader2 } from 'lucide-react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 
+import { useLanguage } from '@/context/language-context';
+
 export default function AiRecipesPage() {
   const { user, isUserLoading } = useUser();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
@@ -51,10 +54,10 @@ export default function AiRecipesPage() {
           className="text-center mb-10 space-y-3 animate-in fade-in slide-in-from-top-4 duration-700 will-change-[opacity,transform]"
       >
           <h1 className="font-headline text-4xl sm:text-5xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">
-              Recipe Generator
+              {t('generator.title')}
           </h1>
           <p className="text-stone-500 text-base sm:text-lg max-w-xl mx-auto font-normal">
-              Turn whatever&apos;s in your kitchen into a complete, AI-crafted recipe in seconds.
+              {t('generator.pageSubtitle')}
           </p>
       </motion.div>
 

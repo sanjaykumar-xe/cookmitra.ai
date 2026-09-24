@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { LifeBuoy, Mail } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/language-context";
 
 const faqItems = [
   {
@@ -48,19 +49,21 @@ const faqItems = [
 ];
 
 export default function FaqPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="content-container py-12 md:py-20 px-4">
         {/* Page Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 animate-in fade-in slide-in-from-top-4 duration-700">
             <Badge variant="outline" className="mb-4 py-1.5 px-4 border-primary/20 bg-primary/5 text-primary">
                 <LifeBuoy className="h-4 w-4 mr-2" />
-                Help Center
+                {t('faq.helpCenter')}
             </Badge>
             <h1 className="font-headline text-fluid-h1 font-medium tracking-tight">
-                Frequently Asked Questions
+                {t('faq.title')}
             </h1>
             <p className="mt-4 text-fluid-subtitle text-muted-foreground opacity-80">
-                Everything you need to know about cooking with CookMitra AI
+                {t('faq.subtitle')}
             </p>
         </div>
 

@@ -9,6 +9,7 @@ import { ChevronRight } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useEffect, useRef, useState } from 'react';
 import { useInView, animate, useMotionValue, useTransform } from 'framer-motion';
+import { useLanguage } from '@/context/language-context';
 
 function StatCounter({ value, suffix = "" }: { value: number | string; suffix?: string }) {
     const isString = typeof value === 'string';
@@ -33,6 +34,7 @@ function StatCounter({ value, suffix = "" }: { value: number | string; suffix?: 
 }
 
 export function LibraryShowcase() {
+  const { t } = useLanguage();
   const idliImg = PlaceHolderImages.find(p => p.id === 'idli-preview')?.imageUrl || "";
   const tandooriImg = PlaceHolderImages.find(p => p.id === 'tandoori-preview')?.imageUrl || "";
   const cakeImg = PlaceHolderImages.find(p => p.id === 'cake-preview')?.imageUrl || "";
@@ -73,29 +75,29 @@ export function LibraryShowcase() {
       >
         <div className="text-center mb-16 md:mb-24 space-y-4">
           <motion.h2 variants={itemVariants} className="font-headline text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight">
-            Recipes for Every Corner of India
+            {t('landing.libraryTitle')}
           </motion.h2>
           <motion.p variants={itemVariants} className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium opacity-80">
-            From mountain valleys to coastal villages, our library covers the breadth of the subcontinent.
+            {t('landing.librarySubtitle')}
           </motion.p>
         </div>
 
         <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-20">
           <div className="text-center space-y-2 group">
             <StatCounter value={934} suffix="" />
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">Recipes</p>
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">{t('landing.recipesStat')}</p>
           </div>
           <div className="text-center space-y-2 group">
             <StatCounter value={28} />
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">States & UTs Covered</p>
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">{t('landing.statesStat')}</p>
           </div>
           <div className="text-center space-y-2 group">
             <StatCounter value={8} />
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">Northeast India States</p>
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">{t('landing.northeastStat')}</p>
           </div>
           <div className="text-center space-y-2 group">
             <StatCounter value={3} />
-            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">Categories</p>
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground">{t('landing.categoriesStat')}</p>
           </div>
         </motion.div>
 
@@ -129,7 +131,7 @@ export function LibraryShowcase() {
         <motion.div variants={itemVariants} className="mt-16 text-center">
             <Button asChild variant="ghost" className="group h-12 rounded-full px-8 text-primary hover:bg-primary/5 font-bold">
                 <Link href="/recipes" className="flex items-center gap-2">
-                    Browse All 934 Recipes
+                    {t('landing.browseAll')}
                     <ChevronRight className="h-4 w-4" />
                 </Link>
             </Button>

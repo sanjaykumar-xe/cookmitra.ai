@@ -22,6 +22,9 @@ const generateHealingFoodsPrompt = ai.definePrompt({
   prompt: `You are an expert clinical nutritionist specializing in Indian dietary practices. 
 
 Your task is to provide dietary guidance for the following health condition: {{{condition}}}.
+{{#if language}}
+Language: {{{language}}}
+{{/if}}
 
 IMPORTANT RULES:
 1. Provide a short, empathetic summary of the condition and the primary dietary goal.
@@ -38,9 +41,10 @@ IMPORTANT RULES:
    - "cold-cough-friendly"
    - "pregnancy-friendly"
    - "high-bp-friendly"
-   DO NOT invent new tags. If none of these apply, return an empty array for healthTags.
+   DO NOT invent new tags. If none of these apply, return an empty array for healthTags. (NOTE: Always keep healthTags in English as listed above for proper system matching).
 5. All reasoning must be medically grounded but easy for a layperson to understand.
-6. Return valid JSON only.
+6. MULTILINGUAL MANDATE: When language is 'ta' (Tamil) or 'hi' (Hindi), you MUST provide the condition name, summary, foodsToHelp reasons, and foodsToAvoid reasons in natural, fluent Tamil (for 'ta') or Hindi (for 'hi'). Keep recognized ingredient names natural and recognizable without awkward literal translation.
+7. Return valid JSON only.
 
 Generate the guidance now.`,
 });

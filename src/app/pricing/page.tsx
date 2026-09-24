@@ -8,9 +8,11 @@ import { RupeeIcon } from '@/components/icons/rupee-icon';
 import { Check, Sparkles, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/language-context';
 
 export default function PricingPage() {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleDemoAction = () => {
     toast({
@@ -30,7 +32,7 @@ export default function PricingPage() {
         "Community access",
         "Ingredient substitutions"
       ],
-      cta: "Get Started",
+      cta: t('pricing.getStarted'),
       popular: false
     },
     {
@@ -45,7 +47,7 @@ export default function PricingPage() {
         "Priority Chef Momo responses",
         "Ad-free experience"
       ],
-      cta: "Go Pro",
+      cta: t('pricing.goPro'),
       popular: true
     },
     {
@@ -59,7 +61,7 @@ export default function PricingPage() {
         "Bulk grocery list aggregation",
         "Personalized kid-friendly modes"
       ],
-      cta: "Join the Family",
+      cta: t('pricing.joinFamily'),
       popular: false
     }
   ];
@@ -69,10 +71,10 @@ export default function PricingPage() {
       {/* Page Header */}
       <div className="text-center mb-12 md:mb-16 animate-in fade-in slide-in-from-top-4 duration-700">
         <h1 className="font-headline text-fluid-h1 font-medium tracking-tight">
-          Simple, Honest Pricing
+          {t('pricing.title')}
         </h1>
         <p className="mt-4 text-fluid-subtitle font-medium text-muted-foreground max-w-2xl mx-auto opacity-80">
-          CookMitra AI is free during our hackathon demo period — no credit card, no limits.
+          {t('pricing.subtitle')}
         </p>
       </div>
 
@@ -90,7 +92,7 @@ export default function PricingPage() {
               <Sparkles className="h-6 w-6 text-primary animate-pulse" />
             </div>
             <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed">
-              <span className="font-bold text-primary">Currently 100% Free</span> — This is a student hackathon project, and every feature is unlocked for everyone during the demo period.
+              {t('pricing.freeBanner')}
             </p>
           </CardContent>
         </Card>

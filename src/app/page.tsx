@@ -28,6 +28,9 @@ import React, { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import dynamic from 'next/dynamic';
 import DriftWall from '@/components/ui/drift-wall';
+import TextLoop from '@/components/ui/text-loop';
+import ScrollFloat from '@/components/ui/scroll-float';
+import { useLanguage } from '@/context/language-context';
 
 // Dynamic imports for heavy below-the-fold sections
 const LibraryShowcase = dynamic(() => import('@/components/home/library-showcase').then(mod => mod.LibraryShowcase), {
@@ -134,15 +137,16 @@ function PersonaCard({ title, icon, description }: { title: string; icon: React.
 }
 
 function ComparisonSection() {
+    const { t } = useLanguage();
     const comparisonRows = [
-        { label: "Generates recipes strictly from what's in your pantry", generic: false, blogs: false, cookmitra: true },
-        { label: "Authentic regional Indian cuisines (Tamil, Bengali, etc.)", generic: "Limited", blogs: "Varies", cookmitra: true },
-        { label: "Estimated costs & single-click missing ingredient links", generic: false, blogs: false, cookmitra: true },
-        { label: "Hands-free voice Cook Mode with built-in timers", generic: false, blogs: false, cookmitra: true },
-        { label: "Personalized 7-day meal planning with budget caps", generic: false, blogs: false, cookmitra: true },
-        { label: "Recipe generation from pantry ingredients", generic: "Rare", blogs: false, cookmitra: true },
-        { label: "Health-condition based food guidance", generic: false, blogs: false, cookmitra: true },
-        { label: "Instant grocery links for missing items", generic: false, blogs: false, cookmitra: true },
+        { label: t('landing.row1'), generic: false, blogs: false, cookmitra: true },
+        { label: t('landing.row2'), generic: t('landing.limited'), blogs: t('landing.varies'), cookmitra: true },
+        { label: t('landing.row3'), generic: false, blogs: false, cookmitra: true },
+        { label: t('landing.row4'), generic: false, blogs: false, cookmitra: true },
+        { label: t('landing.row5'), generic: false, blogs: false, cookmitra: true },
+        { label: t('landing.row6'), generic: t('landing.rare'), blogs: false, cookmitra: true },
+        { label: t('landing.row7'), generic: false, blogs: false, cookmitra: true },
+        { label: t('landing.row8'), generic: false, blogs: false, cookmitra: true },
     ];
 
     const renderCell = (value: boolean | string, isCookmitra: boolean = false) => {
@@ -154,20 +158,20 @@ function ComparisonSection() {
         <section className="py-20 md:py-28 bg-background relative overflow-hidden">
             <div className="container max-w-6xl mx-auto px-6">
                 <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 space-y-4">
-                    <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight">Why CookMitra?</h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">Not just another recipe app.</p>
+                    <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight">{t('landing.whyTitle')}</h2>
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">{t('landing.whySubtitle')}</p>
                 </div>
                 <div className="overflow-x-auto pt-4 pb-4 custom-scrollbar">
                     <table className="w-full min-w-[700px] border-separate border-spacing-0 rounded-2xl shadow-sm border border-border/60">
                         <thead>
                             <tr className="bg-muted/40">
                                 <th className="p-6 text-left border-b border-border/60"></th>
-                                <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">Generic Recipe Apps</th>
-                                <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">Cooking Blogs</th>
+                                <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">{t('landing.genericApps')}</th>
+                                <th className="p-6 text-center border-b border-border/60 text-muted-foreground font-headline text-xl">{t('landing.cookingBlogs')}</th>
                                 <th className="pt-6 pb-5 px-6 text-center relative border-x border-t border-primary/30 bg-primary/10 rounded-t-[2rem]">
                                     <div className="flex flex-col items-center justify-center mb-1.5">
                                         <Badge className="bg-primary text-[#412402] font-black uppercase tracking-widest text-[10px] py-1 px-3 shadow-md whitespace-nowrap border-0">
-                                            That&apos;s Us
+                                            {t('landing.thatsUs')}
                                         </Badge>
                                     </div>
                                     <span className="font-headline text-2xl font-bold text-primary block">CookMitra</span>
@@ -193,29 +197,37 @@ function ComparisonSection() {
 
 export default function Home() {
   const { user, isUserLoading } = useUser();
+  const { t } = useLanguage();
   const router = useRouter();
 
   useEffect(() => {
     if (!isUserLoading && user) { router.push('/home'); }
   }, [user, isUserLoading, router]);
 
-  const words = ["Turn", "Your", "Ingredients", "Into", "Delicious", "Recipes"];
+  const words = [
+    t('landing.heroWord1'), 
+    t('landing.heroWord2'), 
+    t('landing.heroWord3'), 
+    t('landing.heroWord4'), 
+    t('landing.heroWord5'), 
+    t('landing.heroWord6')
+  ];
 
   const services = [
-    { icon: <ChefHat />, title: "Recipe Generator", description: "Advanced algorithm analyzes your ingredients instantly.", benefit: "Get recipe suggestions tailored to exactly what's in your pantry right now", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
-    { icon: <UtensilsCrossed />, title: "Ingredient Mapping", description: "Smart mapping system for authentic taste.", benefit: "Understands ingredient relationships so your dish tastes authentically Indian", iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
-    { icon: <ShoppingCart />, title: "Grocery Integration", description: "One-click links to major retailers.", benefit: "Buy missing ingredients from Zepto, Swiggy, Blinkit etc... directly through the app", iconTint: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400" },
-    { id: 'healing', icon: <HeartPulse />, title: "Healing Foods", description: "Food as medicine approach for specific conditions.", benefit: "Discover ingredients and meals tailored to support specific health conditions based on traditional wisdom", iconTint: "bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400" },
-    { icon: <MessageSquare />, title: "Chef Momo", description: "Interactive real-time cooking guidance.", benefit: "Ask Chef Momo anything — substitutions, timers, tips — hands-free while you cook", iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
-    { icon: <Library />, title: "Curated Library", description: "Hundreds of authentic regional recipes.", benefit: "Hundreds of authentic regional Indian recipes, hand-curated and ready to cook", iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
+    { icon: <ChefHat />, title: t('landing.service.generator.title'), description: t('landing.service.generator.desc'), benefit: t('landing.service.generator.benefit'), iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
+    { icon: <UtensilsCrossed />, title: t('landing.service.mapping.title'), description: t('landing.service.mapping.desc'), benefit: t('landing.service.mapping.benefit'), iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
+    { icon: <ShoppingCart />, title: t('landing.service.grocery.title'), description: t('landing.service.grocery.desc'), benefit: t('landing.service.grocery.benefit'), iconTint: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400" },
+    { id: 'healing', icon: <HeartPulse />, title: t('landing.service.healing.title'), description: t('landing.service.healing.desc'), benefit: t('landing.service.healing.benefit'), iconTint: "bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400" },
+    { icon: <MessageSquare />, title: t('landing.service.momo.title'), description: t('landing.service.momo.desc'), benefit: t('landing.service.momo.benefit'), iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
+    { icon: <Library />, title: t('landing.service.library.title'), description: t('landing.service.library.desc'), benefit: t('landing.service.library.benefit'), iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
   ];
 
   const personas = [
-    { title: "Students", icon: <GraduationCap />, description: "On a tight budget? Generate recipes from whatever's already in your fridge." },
-    { title: "Families", icon: <Users />, description: "Feeding picky eaters? Plan a full week of meals everyone will actually eat." },
-    { title: "Professionals", icon: <Briefcase />, description: "Short on time? Get quick recipes and hands-free voice guidance while you cook." },
-    { title: "Beginners", icon: <ChefHat />, description: "New to the kitchen? Step-by-step Cook Mode walks you through every recipe." },
-    { title: "Home Cooks", icon: <Heart />, description: "Want to explore? Discover 934 authentic recipes from every corner of India." }
+    { title: t('landing.persona.students.title'), icon: <GraduationCap />, description: t('landing.persona.students.desc') },
+    { title: t('landing.persona.families.title'), icon: <Users />, description: t('landing.persona.families.desc') },
+    { title: t('landing.persona.professionals.title'), icon: <Briefcase />, description: t('landing.persona.professionals.desc') },
+    { title: t('landing.persona.beginners.title'), icon: <ChefHat />, description: t('landing.persona.beginners.desc') },
+    { title: t('landing.persona.homeCooks.title'), icon: <Heart />, description: t('landing.persona.homeCooks.desc') }
   ];
 
   return (
@@ -244,7 +256,7 @@ export default function Home() {
               depth={75}
               speed={34}
               direction="up"
-              alternate={false}
+              alternate={true}
               variance={0.4}
               parallax={0.55}
               lift={56}
@@ -263,7 +275,7 @@ export default function Home() {
                     ))}
                 </h1>
                 <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }} className="text-base sm:text-lg md:text-xl text-white/85 font-normal leading-relaxed drop-shadow-md text-left max-w-xl xl:max-w-2xl">
-                  Stop wondering what to cook! Enter the ingredients you have, and let our AI suggest perfect Indian recipes with instant grocery links for anything you&apos;re missing.
+                  {t('landing.heroSubtitle')}
                 </motion.p>
             </div>
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-2 w-full sm:w-auto pointer-events-auto">
@@ -271,10 +283,10 @@ export default function Home() {
                   <Button disabled size="lg" className="h-14 px-10 rounded-full w-full sm:w-auto"><Loader2 className="mr-2 h-4 w-4 animate-spin" /></Button>
               ) : (
                   <Button size="lg" className="h-14 px-10 text-base font-medium rounded-full group shadow-2xl shadow-primary/40 btn-primary-gradient border-0 w-full sm:w-auto" asChild>
-                      <Link href={user ? "/home" : "/signup"}>Let&apos;s Cook <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
+                      <Link href={user ? "/home" : "/signup"}>{t('landing.letsCook')} <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
                   </Button>
               )}
-              <Link href="/pricing" className="text-white text-sm font-medium hover:text-primary transition-all underline-offset-8 hover:underline text-center sm:text-left">View Pricing</Link>
+              <Link href="/pricing" className="text-white text-sm font-medium hover:text-primary transition-all underline-offset-8 hover:underline text-center sm:text-left">{t('landing.viewPricing')}</Link>
             </motion.div>
           </div>
         </section>
@@ -284,8 +296,17 @@ export default function Home() {
         <section className="py-16 md:py-24 bg-background overflow-hidden">
             <div className="container max-w-5xl mx-auto px-4 md:px-8">
                 <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                    <h2 className="font-headline text-3xl md:text-5xl font-medium tracking-tight">Our Services</h2>
-                    <p className="text-muted-foreground text-xs font-medium uppercase tracking-[0.2em]">Elevate your kitchen with AI expertise</p>
+                    <ScrollFloat
+                      animationDuration={1.2}
+                      ease="back.out(2)"
+                      scrollStart="top 85%"
+                      stagger={0.045}
+                      scrub={false}
+                      containerClassName="font-headline text-3xl md:text-5xl font-medium tracking-tight text-center"
+                    >
+                      {t('landing.servicesTitle')}
+                    </ScrollFloat>
+                    <p className="text-muted-foreground text-xs font-medium uppercase tracking-[0.2em]">{t('landing.servicesSubtitle')}</p>
                 </div>
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                     {services.map((service, i) => <ServiceCard key={i} index={i} {...service} />)}
@@ -298,13 +319,35 @@ export default function Home() {
         <section className="py-20 md:py-28 bg-muted/20 relative overflow-hidden">
             <div className="container max-w-7xl mx-auto px-6">
                 <div className="text-center mb-12 md:mb-16 space-y-4">
-                    <h2 className="font-headline text-3xl md:text-5xl font-medium tracking-tight">Built for Every Kind of Cook</h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">Wherever you are in your cooking journey, CookMitra meets you there.</p>
+                    <h2 className="font-headline text-3xl md:text-5xl font-medium tracking-tight">{t('landing.builtTitle')}</h2>
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">{t('landing.builtSubtitle')}</p>
                 </div>
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
                     {personas.map((persona, i) => <PersonaCard key={i} {...persona} />)}
                 </motion.div>
             </div>
+        </section>
+
+        {/* Animated Brand Ticker (Option B - Above Final CTA) */}
+        <section className="relative w-full overflow-hidden py-2 sm:py-4 border-y border-border/40 bg-muted/30">
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background pointer-events-none z-10" />
+          <TextLoop
+            text={t('landing.ticker')}
+            shape="wave"
+            speed={65}
+            curviness={20}
+            fontSize={20}
+            fontWeight={800}
+            letterSpacing={2}
+            uppercase
+            ribbon={true}
+            ribbonColor="#F4A21A"
+            color="#1c0d02"
+            ribbonWidth={50}
+            pauseOnHover={false}
+            viewHeight={130}
+            className="w-full"
+          />
         </section>
 
         <section className="py-16 md:py-24 relative overflow-hidden">
@@ -318,16 +361,16 @@ export default function Home() {
                 >
                     <div className="space-y-4 relative z-10 max-w-3xl mx-auto px-6">
                         <div className="relative inline-block">
-                          <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl font-medium leading-tight tracking-tight">Ready to Transform Your Cooking?</h2>
+                          <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl font-medium leading-tight tracking-tight">{t('landing.readyTitle')}</h2>
                           <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }} className="absolute -bottom-2 left-0 h-[2px] bg-primary rounded-full" />
                         </div>
-                        <h3 className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed">Join thousands of home cooks who&apos;ve discovered the joy of effortless meal planning.</h3>
+                        <h3 className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed">{t('landing.readySubtitle')}</h3>
                     </div>
                     <div className="pt-4 relative z-10 flex flex-col items-center gap-3">
                         <Button size="lg" className="h-16 px-12 text-lg font-medium rounded-full shadow-2xl shadow-primary/30 transition-all btn-primary-gradient border-0 w-full sm:w-auto" asChild>
-                            <Link href={user ? "/home" : "/signup"}>Get Started</Link>
+                            <Link href={user ? "/home" : "/signup"}>{t('landing.getStarted')}</Link>
                         </Button>
-                        <p className="text-[12px] font-medium text-muted-foreground/60">Free to start · No card needed</p>
+                        <p className="text-[12px] font-medium text-muted-foreground/60">{t('landing.freeToStart')}</p>
                     </div>
                 </motion.div>
             </div>

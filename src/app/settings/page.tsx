@@ -9,9 +9,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Loader2, Settings as SettingsIcon, Sun, Moon, Laptop } from 'lucide-react';
+import { useLanguage } from '@/context/language-context';
 
 export default function SettingsPage() {
   const { user, isUserLoading } = useUser();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
@@ -38,18 +40,18 @@ export default function SettingsPage() {
       <div className="max-w-2xl mx-auto space-y-8">
         <div className="mb-8">
           <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100 flex items-center gap-3">
-            <SettingsIcon className="h-8 w-8 text-[#F4A21A]" /> Settings
+            <SettingsIcon className="h-8 w-8 text-[#F4A21A]" /> {t('settings.title')}
           </h1>
           <p className="mt-3 text-fluid-subtitle text-muted-foreground font-medium opacity-80">
-            Manage your account and app preferences.
+            {t('settings.subtitle')}
           </p>
         </div>
 
         <Card className="hover:shadow-md transition-shadow rounded-[2rem] border-primary/10">
           <CardHeader>
-            <CardTitle className="font-headline font-bold text-xl">Appearance</CardTitle>
+            <CardTitle className="font-headline font-bold text-xl">{t('settings.appearance')}</CardTitle>
             <CardDescription className="text-muted-foreground text-sm font-medium opacity-80">
-              Choose how CookMitra looks on your device.
+              {t('settings.appearanceDesc')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -59,18 +61,18 @@ export default function SettingsPage() {
 
         <Card className="hover:shadow-md transition-shadow rounded-[2rem] border-primary/10">
           <CardHeader>
-            <CardTitle className="font-headline font-bold text-xl">Account Information</CardTitle>
+            <CardTitle className="font-headline font-bold text-xl">{t('settings.accountInfo')}</CardTitle>
             <CardDescription className="text-muted-foreground text-sm font-medium opacity-80">
-              Your verified login details.
+              {t('settings.accountInfoDesc')}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex flex-col space-y-1">
-              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">Email Address</span>
+              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">{t('settings.emailAddress')}</span>
               <p className="font-bold text-foreground text-base">{user.email}</p>
             </div>
             <div className="flex flex-col space-y-1 pt-4 border-t border-border/40">
-              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">Member Since</span>
+              <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">{t('settings.memberSince')}</span>
               <p className="font-bold text-foreground text-base">
                 {user.metadata.creationTime ? new Date(user.metadata.creationTime).toLocaleDateString() : 'N/A'}
               </p>
@@ -84,23 +86,24 @@ export default function SettingsPage() {
 
 function ThemeSelector() {
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <RadioGroup value={theme} onValueChange={setTheme} className="grid sm:grid-cols-3 gap-4">
       <Label className="rounded-2xl border-2 border-muted bg-popover p-4 flex flex-col items-center justify-center gap-2 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-[#F4A21A] transition-all cursor-pointer active:scale-95 group font-bold">
         <RadioGroupItem value="light" id="light" className="sr-only" />
         <Sun className="h-6 w-6 group-hover:rotate-12 transition-transform text-[#F4A21A]" />
-        Light
+        {t('settings.themeLight')}
       </Label>
       <Label className="rounded-2xl border-2 border-muted bg-popover p-4 flex flex-col items-center justify-center gap-2 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-[#F4A21A] transition-all cursor-pointer active:scale-95 group font-bold">
         <RadioGroupItem value="dark" id="dark" className="sr-only" />
         <Moon className="h-6 w-6 group-hover:-rotate-12 transition-transform text-indigo-400" />
-        Dark
+        {t('settings.themeDark')}
       </Label>
       <Label className="rounded-2xl border-2 border-muted bg-popover p-4 flex flex-col items-center justify-center gap-2 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-[#F4A21A] transition-all cursor-pointer active:scale-95 group font-bold">
         <RadioGroupItem value="system" id="system" className="sr-only" />
         <Laptop className="h-6 w-6 group-hover:scale-110 transition-transform text-slate-500" />
-        System
+        {t('settings.themeSystem')}
       </Label>
     </RadioGroup>
   );

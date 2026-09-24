@@ -1,8 +1,15 @@
-# CookMitra AI — Complete API & Models Specification
+# CookMitra AI — Complete API & Models Specification (v3.0)
 
-*Document Version: 1.0*  
-*Last Updated: September 2026*  
-*Target Environment: Next.js 15 App Router on Vercel with Google Genkit, Groq Cloud & Firebase SDK v11*
+[![Next.js 15.5+](https://img.shields.io/badge/Next.js-15.5+-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React 19.2+](https://img.shields.io/badge/React-19.2+-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript 5+](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Google Genkit 1.28+](https://img.shields.io/badge/Google_Genkit-1.28+-4285F4?style=flat-square&logo=google&logoColor=white)](https://firebase.google.com/docs/genkit)
+[![Gemini 2.5 Flash](https://img.shields.io/badge/Gemini-2.5_Flash-8E75C2?style=flat-square&logo=googlegemini&logoColor=white)](https://deepmind.google/technologies/gemini/)
+[![Groq LPU Inference](https://img.shields.io/badge/Groq-LPU_Inference-F55036?style=flat-square&logo=fastapi&logoColor=white)](https://groq.com)
+[![Firebase 11.9+](https://img.shields.io/badge/Firebase-11.9+-FFCA28?style=flat-square&logo=firebase&logoColor=black)](https://firebase.google.com)
+[![License MIT](https://img.shields.io/badge/License-MIT-F4A21A?style=flat-square)](LICENSE)
+
+> **CookMitra AI Architecture**: Complete technical blueprint, model schemas, latency profiles, and API specifications powering the CookMitra AI smart kitchen ecosystem.
 
 ---
 

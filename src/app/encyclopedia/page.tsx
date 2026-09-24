@@ -30,6 +30,7 @@ import {
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/language-context';
 
 /**
  * Extracts clean English display name and optional vernacular parenthetical name.
@@ -129,6 +130,7 @@ function getMatchingRecipes(item: IngredientProfile) {
 }
 
 export default function EncyclopediaPage() {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [activeBenefit, setActiveBenefit] = useState<string>('All');
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -150,10 +152,10 @@ export default function EncyclopediaPage() {
             Culinary Knowledge Base
         </div>
         <h1 className="font-headline text-fluid-h1 font-bold tracking-tight">
-          Ingredient Encyclopedia
+          {t('encyclopedia.title')}
         </h1>
         <p className="text-fluid-subtitle text-muted-foreground max-w-2xl mx-auto opacity-80">
-          Learn about the ingredients behind Indian cooking — what they are, their health benefits, substitutes, and storage tips.
+          {t('encyclopedia.subtitle')}
         </p>
       </div>
 
@@ -163,7 +165,7 @@ export default function EncyclopediaPage() {
               <div className="relative group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
                 <Input 
-                    placeholder="Search ingredients (e.g. tamarind, turmeric)..."
+                    placeholder={t('encyclopedia.searchPlaceholder')}
                     className="pl-12 h-14 rounded-2xl text-lg border-primary/10 bg-card shadow-sm"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -173,10 +175,10 @@ export default function EncyclopediaPage() {
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">Good for:</label>
                   <Select value={activeBenefit} onValueChange={setActiveBenefit}>
                     <SelectTrigger className="h-14 rounded-2xl bg-card border-primary/10 font-bold">
-                        <SelectValue placeholder="All Benefits" />
+                        <SelectValue placeholder={t('encyclopedia.allBenefits')} />
                     </SelectTrigger>
                     <SelectContent className="rounded-2xl">
-                        <SelectItem value="All">All Benefits</SelectItem>
+                        <SelectItem value="All">{t('encyclopedia.allBenefits')}</SelectItem>
                         {benefitCategories.map(cat => (
                             <SelectItem key={cat} value={cat}>{cat}</SelectItem>
                         ))}
@@ -195,7 +197,7 @@ export default function EncyclopediaPage() {
 
       {/* Grid */}
       <div className="mb-8 flex items-center justify-between">
-          <p className="text-sm font-bold text-muted-foreground">Found {filteredIngredients.length} ingredients</p>
+          <p className="text-sm font-bold text-muted-foreground">{t('encyclopedia.foundCount', { count: filteredIngredients.length })}</p>
           { (searchTerm || activeBenefit !== 'All') && (
               <Button 
                 variant="ghost" 
@@ -203,7 +205,7 @@ export default function EncyclopediaPage() {
                 onClick={() => { setSearchTerm(''); setActiveBenefit('All'); }}
                 className="h-8 text-xs font-bold text-primary hover:bg-primary/5 rounded-lg"
               >
-                  <X className="mr-1 h-3 w-3" /> Clear All Filters
+                  <X className="mr-1 h-3 w-3" /> {t('encyclopedia.clearFilters')}
               </Button>
           )}
       </div>
@@ -226,8 +228,8 @@ export default function EncyclopediaPage() {
               <div className="bg-muted/10 h-20 w-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="h-10 w-10 text-muted-foreground opacity-30" />
               </div>
-              <h3 className="text-2xl font-headline font-medium text-muted-foreground">No ingredients found</h3>
-              <p className="text-muted-foreground mt-2">Try a different search term or filter category.</p>
+              <h3 className="text-2xl font-headline font-medium text-muted-foreground">{t('encyclopedia.noResultsTitle')}</h3>
+              <p className="text-muted-foreground mt-2">{t('encyclopedia.noResultsDesc')}</p>
           </div>
       )}
     </div>
@@ -243,6 +245,7 @@ function IngredientCard({
     isExpanded: boolean, 
     onToggle: () => void
 }) {
+    const { t } = useLanguage();
     const matchingRecipes = useMemo(() => getMatchingRecipes(item), [item]);
     const usageCount = matchingRecipes.length;
     const { displayName, vernacularName } = useMemo(() => parseIngredientName(item.name), [item.name]);
@@ -333,7 +336,7 @@ function IngredientCard({
                                 <div className="space-y-4">
                                     <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px]">
                                         <ShieldCheck className="h-4 w-4" />
-                                        Verified Benefits
+                                        {t('encyclopedia.verifiedBenefits')}
                                     </h4>
                                     <ul className="grid gap-2 sm:gap-2.5">
                                         {item.benefits.map((b, i) => (
@@ -348,7 +351,7 @@ function IngredientCard({
                                     <div>
                                         <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px] mb-3">
                                             <Archive className="h-4 w-4" />
-                                            Substitutes
+                                            {t('encyclopedia.substitutes')}
                                         </h4>
                                         <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                             {item.commonSubstitutes.map(s => (
@@ -361,7 +364,7 @@ function IngredientCard({
                                     <div>
                                         <h4 className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.2em] text-[11px] mb-2">
                                             <Lightbulb className="h-4 w-4" />
-                                            Storage Tip
+                                            {t('encyclopedia.storageTip')}
                                         </h4>
                                         <p className="text-xs sm:text-sm font-medium leading-relaxed bg-amber-500/5 p-3 sm:p-4 rounded-xl border border-amber-500/10 italic text-stone-700 dark:text-stone-300">
                                             {item.storageTip}
@@ -376,14 +379,14 @@ function IngredientCard({
                                         <History className="h-6 w-6 text-primary" />
                                     </div>
                                     <div className="space-y-0.5 text-center md:text-left">
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-primary">Did You Know?</p>
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-primary">{t('encyclopedia.didYouKnow')}</p>
                                         <p className="text-sm sm:text-base font-medium leading-snug">{item.funFact}</p>
                                     </div>
                                 </div>
                             )}
 
                             <div className="space-y-3 pt-2">
-                                <h4 className="font-headline text-lg sm:text-xl font-bold">Try it in these recipes:</h4>
+                                <h4 className="font-headline text-lg sm:text-xl font-bold">{t('encyclopedia.tryInRecipes')}</h4>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
                                     {matchingRecipes.slice(0, 4).map(recipe => (
                                         <Link 
@@ -400,7 +403,7 @@ function IngredientCard({
                                             href="/recipes"
                                             className="flex items-center justify-center p-3 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black uppercase tracking-widest text-[9px] hover:bg-primary/20 transition-all"
                                         >
-                                            + {usageCount - 4} More Recipes
+                                            {t('encyclopedia.moreRecipes', { count: usageCount - 4 })}
                                         </Link>
                                     )}
                                 </div>
@@ -417,14 +420,14 @@ function IngredientCard({
                     {!isExpanded ? (
                         <>
                             <span className="text-xs font-medium text-stone-500 dark:text-stone-400 group-hover:text-stone-700 dark:group-hover:text-stone-200 transition-colors">
-                                Culinary profile
+                                {t('encyclopedia.culinaryProfile')}
                             </span>
                             <Button 
                                 size="sm"
                                 onClick={(e) => { e.preventDefault(); onToggle(); }}
                                 className="rounded-full h-8 px-3.5 text-xs font-semibold transition-all btn-primary-gradient shadow-xs"
                             >
-                                View Profile <ChevronRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                                {t('encyclopedia.viewProfile')} <ChevronRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
                             </Button>
                         </>
                     ) : (
@@ -434,7 +437,7 @@ function IngredientCard({
                                 onClick={(e) => { e.preventDefault(); onToggle(); }}
                                 className="rounded-full h-8 px-4 text-xs font-semibold bg-stone-900 text-white hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-900 transition-all"
                             >
-                                Close Profile <X className="ml-1.5 h-3.5 w-3.5" />
+                                {t('encyclopedia.closeProfile')} <X className="ml-1.5 h-3.5 w-3.5" />
                             </Button>
                         </div>
                     )}

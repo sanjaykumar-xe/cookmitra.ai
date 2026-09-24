@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
+import { useLanguage } from '@/context/language-context';
+
 const ChatInterface = dynamic(() => import('@/components/ai-chat/chat-interface'), { 
     ssr: false,
     loading: () => <div className="flex items-center justify-center h-full"><Loader2 className="h-8 w-8 animate-spin text-[#F4A21A]" /></div>
@@ -13,6 +15,7 @@ const ChatInterface = dynamic(() => import('@/components/ai-chat/chat-interface'
 
 export default function AiChatPage() {
   const { user, isUserLoading } = useUser();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const [isIframe, setIsIframe] = useState(false);
@@ -51,10 +54,10 @@ export default function AiChatPage() {
     <div className="content-container pt-2 sm:pt-4 pb-3 sm:pb-8 px-2 sm:px-4 h-[calc(100dvh-4.25rem)] md:h-[calc(100vh-5rem)] flex flex-col min-h-0">
       <div className="text-center mb-3 sm:mb-6 space-y-1 sm:space-y-2 shrink-0">
         <h1 className="font-headline text-3xl sm:text-4xl font-semibold text-stone-900 dark:text-stone-100 tracking-tight">
-            Chef Momo
+            {t('chat.title')}
         </h1>
         <p className="text-stone-500 text-sm sm:text-base max-w-md mx-auto font-normal">
-            Ask any cooking question, recipe modification, or ingredient substitute!
+            {t('chat.pageSubtitle')}
         </p>
       </div>
       <div className="flex-1 min-h-0">

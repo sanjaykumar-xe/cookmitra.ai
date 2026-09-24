@@ -14,6 +14,7 @@ import { WhatsAppIcon } from '@/components/icons/whatsapp-icon';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/context/language-context';
 
 type CommunityNote = {
   id: string;
@@ -197,6 +198,7 @@ function ReviewCard({ review }: { review: CommunityNote }) {
 
 export default function CommunityPage() {
   const firestore = useFirestore();
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<'Most Recent' | 'Highest Rated'>('Most Recent');
   const [mounted, setMounted] = useState(false);
 
@@ -236,9 +238,9 @@ export default function CommunityPage() {
     <div className="content-container py-8 md:py-12 px-4">
       {/* Page Title */}
       <div className="text-center mb-10">
-        <h1 className="font-headline text-fluid-h1 font-bold tracking-tight">CookMitra Community</h1>
+        <h1 className="font-headline text-fluid-h1 font-bold tracking-tight">{t('community.title')}</h1>
         <p className="mt-3 text-fluid-subtitle text-muted-foreground max-w-2xl mx-auto opacity-80 font-medium">
-          Connect with home cooks across India, share recipe feedback, and discover community-tested favorites.
+          {t('community.subtitle')}
         </p>
       </div>
 
@@ -252,14 +254,14 @@ export default function CommunityPage() {
               </div>
             </div>
             <div className="flex-1 text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl font-bold font-headline text-foreground">Join the CookMitra Community</h2>
+              <h2 className="text-2xl md:text-3xl font-bold font-headline text-foreground">{t('community.whatsappTitle')}</h2>
               <p className="text-sm md:text-base text-muted-foreground mt-2 mb-5 font-medium leading-relaxed max-w-xl">
-                Share recipes, cooking tips, ask culinary questions, and connect with fellow home cooks in real-time on WhatsApp.
+                {t('community.whatsappDesc')}
               </p>
               <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#1EBE57] text-white w-full sm:w-auto h-12 rounded-full px-8 shadow-lg shadow-green-500/20 font-bold border-0">
                 <Link href={WHATSAPP_INVITE_LINK} target="_blank" rel="noopener noreferrer">
                   <WhatsAppIcon className="mr-2.5 h-5 w-5 fill-white text-white" />
-                  Join WhatsApp Community
+                  {t('community.whatsappBtn')}
                 </Link>
               </Button>
             </div>
@@ -274,14 +276,14 @@ export default function CommunityPage() {
             <Users className="h-6 w-6" />
           </div>
           <div className="space-y-0.5">
-            <p className="font-bold text-base text-foreground">Early CookMitra Community</p>
+            <p className="font-bold text-base text-foreground">{t('community.earlyTitle')}</p>
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Be among the first to share your recipe reviews, notes, and cooking tips!
+              {t('community.earlyDesc')}
             </p>
           </div>
         </div>
         <Button asChild size="sm" className="mt-4 sm:mt-0 rounded-full px-6 h-10 text-xs font-bold bg-[#F4A21A] hover:bg-[#E09015] text-white shrink-0 border-0 shadow-sm">
-          <Link href="/recipes">Review a Recipe</Link>
+          <Link href="/recipes">{t('community.reviewRecipe')}</Link>
         </Button>
       </div>
 
@@ -297,7 +299,7 @@ export default function CommunityPage() {
                 : "text-stone-700 dark:text-stone-300 hover:text-foreground hover:bg-background/50 font-bold"
             )}
           >
-            Most Recent
+            {t('community.mostRecent')}
           </button>
           <button
             onClick={() => setActiveFilter('Highest Rated')}
@@ -308,7 +310,7 @@ export default function CommunityPage() {
                 : "text-stone-700 dark:text-stone-300 hover:text-foreground hover:bg-background/50 font-bold"
             )}
           >
-            Highest Rated
+            {t('community.highestRated')}
           </button>
         </div>
       </div>
@@ -349,14 +351,14 @@ export default function CommunityPage() {
               <div className="mx-auto bg-[#F4A21A]/10 text-[#F4A21A] dark:bg-amber-500/20 dark:text-amber-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
                 <MessageSquare className="h-12 w-12 stroke-[1.75]" />
               </div>
-              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">No Community Reviews Yet</CardTitle>
+              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">{t('community.noReviewsTitle')}</CardTitle>
               <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
-                Be the first to share your cooking experience, rating, or notes on any of our recipes!
+                {t('community.noReviewsDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-4 pb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button asChild className="rounded-full px-8 h-12 text-sm font-bold shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0">
-                <Link href="/recipes">Explore & Review Recipes</Link>
+                <Link href="/recipes">{t('community.exploreReview')}</Link>
               </Button>
             </CardContent>
           </Card>

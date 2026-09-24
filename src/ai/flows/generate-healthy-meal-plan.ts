@@ -34,6 +34,9 @@ User Profile:
 - Primary Goal: {{{goal}}}
 - Weekly Budget: Approx. ₹{{{weeklyBudget}}}
 - Household Size / Servings: {{{householdSize}}} person(s)
+{{#if language}}
+- Language: {{{language}}}
+{{/if}}
 
 IMPORTANT OUTPUT RULES:
 1.  You MUST return ONLY valid JSON that adheres strictly to the provided output schema.
@@ -51,6 +54,7 @@ IMPORTANT OUTPUT RULES:
     - "Veg + Egg" (or "Eggetarian"): Vegetarian dishes plus egg-based dishes (e.g., egg chilla, egg curry, boiled eggs). NO meat, fish, or poultry.
 10. HEALTH BENEFITS CONCISENESS: For every meal's 'benefits' field, provide a single concise 1-sentence explanation of health benefits so it can be scanned in under 2 seconds.
 11. CRITICAL: For every meal, provide a detailed 'ingredients' list with specific quantities scaled for {{{householdSize}}} person(s) and categories. This is used to build a shopping list for the user.
+12. MULTILINGUAL INSTRUCTION: When language is 'ta' (Tamil) or 'hi' (Hindi), formulate all dish names, health benefits, and grocery descriptions in natural, fluent Tamil (for 'ta') or Hindi (for 'hi'). Retain common, well-known dish names (e.g., Biryani, Dosa, Idli, Upma, Khichdi, Dal Tadka, Roti, Poha) naturally without forced literal translations.
 
 Generate the healthy meal plan now.`,
 });

@@ -386,10 +386,10 @@ export default function DashboardPage() {
 
     // Search suggestion chips
     const suggestionChips = [
-        { label: 'High protein meals', href: '/recipes?q=protein' },
-        { label: 'Indian dinner ideas', href: '/recipes?q=dinner' },
-        { label: 'Low calorie recipes', href: '/recipes?q=healthy' },
-        { label: 'Quick & easy', href: '/recipes?maxTime=30&difficulty=easy' },
+        { label: t('home.tagHighProtein'), href: '/recipes?q=protein' },
+        { label: t('home.tagDinnerIdeas'), href: '/recipes?q=dinner' },
+        { label: t('home.tagLowCalorie'), href: '/recipes?q=healthy' },
+        { label: t('home.tagQuickEasy'), href: '/recipes?maxTime=30&difficulty=easy' },
     ];
 
     // Quick-Access Action Cards
@@ -478,10 +478,10 @@ export default function DashboardPage() {
                         <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 dark:text-stone-100 leading-tight min-h-[1.25em]">
                             <TextType
                                 text={[
-                                    `Welcome back, ${firstName}!`,
-                                    `Ready to cook, ${firstName}?`,
-                                    "What are we making today?",
-                                    "Explore authentic Indian recipes!"
+                                    `${t('home.welcome')}, ${firstName}!`,
+                                    t('home.greetReady', { name: firstName }),
+                                    t('home.greetWhatMaking'),
+                                    t('home.greetExplore')
                                 ]}
                                 typingSpeed={70}
                                 pauseDuration={2200}
@@ -491,27 +491,15 @@ export default function DashboardPage() {
                                 cursorCharacter="|"
                                 cursorClassName="text-[#F4A21A] font-light"
                                 renderText={(text) => {
-                                    const prefix = "Welcome back, ";
+                                    const prefix = `${t('home.welcome')}, `;
                                     if (text.startsWith(prefix)) {
                                         const after = text.slice(prefix.length);
                                         const namePart = after.endsWith("!") ? after.slice(0, -1) : after;
                                         const hasExclamation = after.endsWith("!");
                                         return (
                                             <>
-                                                Welcome back, <span className="text-[#F4A21A]">{namePart}</span>
+                                                {t('home.welcome')}, <span className="text-[#F4A21A]">{namePart}</span>
                                                 {hasExclamation && "!"}
-                                            </>
-                                        );
-                                    }
-                                    const readyPrefix = "Ready to cook, ";
-                                    if (text.startsWith(readyPrefix)) {
-                                        const after = text.slice(readyPrefix.length);
-                                        const namePart = after.endsWith("?") ? after.slice(0, -1) : after;
-                                        const hasQuestion = after.endsWith("?");
-                                        return (
-                                            <>
-                                                Ready to cook, <span className="text-[#F4A21A]">{namePart}</span>
-                                                {hasQuestion && "?"}
                                             </>
                                         );
                                     }
@@ -521,7 +509,7 @@ export default function DashboardPage() {
                         </h1>
 
                         <p className="text-stone-600 dark:text-stone-300 text-sm sm:text-base font-normal max-w-xl">
-                            What would you like to cook today? Explore chef-curated Indian recipes, personalized nutrition, and smart meal planning.
+                            {t('home.subtitle')}
                         </p>
 
                         {/* Prominent Search Bar with Autocomplete Suggestions Dropdown */}
@@ -595,7 +583,7 @@ export default function DashboardPage() {
                                     className="absolute left-0 right-0 top-full mt-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl shadow-xl z-50 overflow-hidden divide-y divide-stone-100 dark:divide-stone-800/70"
                                 >
                                     <div className="px-3 py-2 text-[11px] font-bold tracking-wider uppercase text-stone-400 dark:text-stone-500 bg-stone-50/50 dark:bg-stone-900/50">
-                                        Matching Recipes
+                                        {t('home.matchingRecipes')}
                                     </div>
                                     {suggestions.map((rec) => (
                                         <Link
@@ -630,13 +618,13 @@ export default function DashboardPage() {
                                         </Link>
                                     ))}
                                     <div className="px-3.5 py-2 bg-stone-50/50 dark:bg-stone-900/50 flex justify-between items-center text-[11px] text-stone-500 dark:text-stone-400">
-                                        <span>Press <kbd className="px-1 py-0.5 rounded bg-stone-200 dark:bg-stone-800 text-[10px]">Enter</kbd> to see all results</span>
+                                        <span>{t('home.pressEnter')}</span>
                                         <Link 
                                             href={`/recipes?q=${encodeURIComponent(searchQuery.trim())}`}
                                             onClick={() => setIsSuggestionsOpen(false)}
                                             className="text-amber-600 dark:text-amber-400 hover:underline font-medium"
                                         >
-                                            View all &rarr;
+                                            {t('home.viewAll')} &rarr;
                                         </Link>
                                     </div>
                                 </div>
@@ -645,7 +633,7 @@ export default function DashboardPage() {
 
                         {/* Quick Suggestion Chips */}
                         <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1">
-                            <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 mr-1">Popular:</span>
+                            <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 mr-1">{t('home.popular')}</span>
                             {suggestionChips.map(chip => (
                                 <Link
                                     key={chip.label}
@@ -681,15 +669,15 @@ export default function DashboardPage() {
                         <div className="space-y-3 relative z-10">
                             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-900 dark:text-amber-300 border border-amber-500/30 w-fit">
                                 <IconHeartFilled className="h-3.5 w-3.5 text-rose-500 fill-rose-500 animate-pulse" />
-                                <span>Daily Cooking Inspiration</span>
+                                <span>{t('home.inspirationPill')}</span>
                             </div>
 
                             <h2 className="font-headline italic text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-stone-900 dark:text-stone-100 leading-[1.25] tracking-tight">
-                                &ldquo;Let&apos;s cook something <span className="text-[#F4A21A] not-italic font-bold">great</span> today!&rdquo;
+                                {t('home.inspirationTitle')}
                             </h2>
 
                             <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed font-normal max-w-md">
-                                Fresh ingredients, wholesome flavors, and smart AI guidance whenever you step into the kitchen.
+                                {t('home.inspirationSubtitle')}
                             </p>
                         </div>
 
@@ -701,7 +689,7 @@ export default function DashboardPage() {
                                     <SurpriseRecipeDialog />
                                 </div>
                                 <p className="text-xs text-stone-500 dark:text-stone-400 italic">
-                                    Instant curated recipe from your pantry
+                                    {t('home.momoBadge')}
                                 </p>
                             </div>
 
@@ -722,8 +710,8 @@ export default function DashboardPage() {
                                         <ChefHat className="h-5 w-5 text-[#F4A21A]" />
                                     </div>
                                     <div className="min-w-0">
-                                        <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-stone-100 truncate">Hi! I&apos;m Chef Momo</h4>
-                                        <p className="text-[11px] text-stone-500 dark:text-stone-400 truncate">Ask for recipes & pantry tips</p>
+                                        <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-stone-100 truncate">{t('home.momoTitle')}</h4>
+                                        <p className="text-[11px] text-stone-500 dark:text-stone-400 truncate">{t('home.momoSubtitle')}</p>
                                     </div>
                                 </div>
                                 <ClickSpark
@@ -737,7 +725,7 @@ export default function DashboardPage() {
                                 >
                                     <Button asChild size="sm" className="h-8 px-3.5 rounded-full bg-[#F4A21A] hover:bg-amber-500 text-white text-xs font-semibold shadow-xs">
                                         <Link href="/ai-chat" aria-label="Chat with Chef Momo AI assistant">
-                                            Chat now
+                                            {t('home.chatNow')}
                                         </Link>
                                     </Button>
                                 </ClickSpark>
@@ -791,10 +779,10 @@ export default function DashboardPage() {
                                 </div>
                                 <div className="flex flex-col">
                                     <CardTitle className="text-base sm:text-xl font-headline font-semibold text-stone-900 dark:text-stone-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                                        Quick Dinner Tonight
+                                        {t('home.quickDinner')}
                                     </CardTitle>
                                     <CardDescription className="text-xs sm:text-sm font-normal leading-snug sm:leading-relaxed mt-0.5 text-stone-600 dark:text-stone-300">
-                                        Ready in under 30 minutes
+                                        {t('home.under30')}
                                     </CardDescription>
                                 </div>
                             </div>
@@ -810,10 +798,10 @@ export default function DashboardPage() {
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                     <div>
                         <h2 className="font-headline text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
-                            Popular Recipes
+                            {t('home.popularTitle')}
                         </h2>
                         <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">
-                            Freshly loved by our community
+                            {t('home.popularSubtitle')}
                         </p>
                     </div>
 
@@ -836,7 +824,7 @@ export default function DashboardPage() {
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
                                 )}
                             >
-                                All
+                                {t('home.tabAll')}
                             </button>
                             <button
                                 role="tab"
@@ -850,7 +838,7 @@ export default function DashboardPage() {
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
                                 )}
                             >
-                                Vegetarian
+                                {t('home.tabVeg')}
                             </button>
                             <button
                                 role="tab"
@@ -864,7 +852,7 @@ export default function DashboardPage() {
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
                                 )}
                             >
-                                Non-Vegetarian
+                                {t('home.tabNonVeg')}
                             </button>
                             <button
                                 role="tab"
@@ -878,13 +866,13 @@ export default function DashboardPage() {
                                         : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
                                 )}
                             >
-                                Quick & Easy
+                                {t('home.tabQuick')}
                             </button>
                         </div>
 
                         <Button variant="ghost" asChild className="hidden sm:inline-flex text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-[#F4A21A] group">
                             <Link href="/recipes" aria-label="View all recipes in catalog" className="flex items-center gap-1">
-                                View all
+                                {t('home.viewAll')}
                                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
@@ -924,10 +912,10 @@ export default function DashboardPage() {
                 <div className="rounded-3xl bg-gradient-to-br from-amber-100/70 via-orange-100/40 to-amber-50/90 dark:from-amber-950/40 dark:via-stone-900 dark:to-stone-900 border border-amber-200/80 dark:border-amber-900/40 p-6 md:p-8 flex flex-col justify-between shadow-xs overflow-hidden relative">
                     <div className="space-y-3 z-10 max-w-md">
                         <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/30">
-                            Let&apos;s Plan Ahead
+                            {t('home.planAhead')}
                         </span>
                         <h3 className="font-headline text-2xl font-bold text-stone-900 dark:text-stone-100">
-                            Plan Your Weekly Meals
+                            {t('home.planWeekly')}
                         </h3>
                         <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                             Organize authentic breakfasts, lunches, and dinners tailored to your health goals, budget limits, and pantry staples.
@@ -945,7 +933,7 @@ export default function DashboardPage() {
                         >
                             <Button asChild className="rounded-full bg-[#F4A21A] hover:bg-amber-500 text-white font-semibold text-xs px-6 py-2 shadow-sm">
                                 <Link href="/healthy-meal-planner" aria-label="Create your weekly healthy meal plan" className="flex items-center gap-1.5">
-                                    Create Meal Plan
+                                    {t('home.createMealPlan')}
                                     <ArrowRight className="h-3.5 w-3.5" />
                                 </Link>
                             </Button>
@@ -966,10 +954,10 @@ export default function DashboardPage() {
                 <div className="rounded-3xl bg-gradient-to-br from-emerald-100/70 via-teal-100/30 to-emerald-50/90 dark:from-emerald-950/40 dark:via-stone-900 dark:to-stone-900 border border-emerald-200/80 dark:border-emerald-900/40 p-6 md:p-8 flex flex-col justify-between shadow-xs overflow-hidden relative">
                     <div className="space-y-3 z-10 max-w-md">
                         <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-900 dark:text-emerald-300 border border-emerald-500/30">
-                            Eat for Wellness
+                            {t('home.eatWellness')}
                         </span>
                         <h3 className="font-headline text-2xl font-bold text-stone-900 dark:text-stone-100">
-                            Healing Foods
+                            {t('home.healingFoods')}
                         </h3>
                         <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                             Target nutrition by health conditions with Ayurvedic remedies, gut-friendly ingredients, and natural immunity boosters.
@@ -987,7 +975,7 @@ export default function DashboardPage() {
                         >
                             <Button asChild className="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-6 py-2 shadow-sm">
                                 <Link href="/healing-foods" aria-label="Explore Ayurvedic healing foods and recipes" className="flex items-center gap-1.5">
-                                    Explore Now
+                                    {t('home.exploreNow')}
                                     <ArrowRight className="h-3.5 w-3.5" />
                                 </Link>
                             </Button>

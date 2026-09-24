@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from '@/hooks/use-toast';
 import { deleteRecipe } from '@/lib/firebase/firestore/recipes';
+import { useLanguage } from '@/context/language-context';
 
 export default function MyRecipesPage() {
   const { user, isUserLoading } = useUser();
@@ -30,6 +31,7 @@ export default function MyRecipesPage() {
   const firestore = useFirestore();
   const router = useRouter();
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const [recipeToDelete, setRecipeToDelete] = useState<any | null>(null);
 
@@ -84,7 +86,7 @@ export default function MyRecipesPage() {
 
   return (
     <div className="content-container py-8 md:py-12 px-4">
-      <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100 mb-10">My Saved Recipes</h1>
+      <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100 mb-10">{t('nav.saved')}</h1>
 
       {recipes && recipes.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-fluid-grid">
@@ -127,19 +129,19 @@ export default function MyRecipesPage() {
               <div className="mx-auto bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
                 <ChefHat className="h-12 w-12 stroke-[1.75]" />
               </div>
-              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Your Recipe Collection is Empty</CardTitle>
+              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">{t('saved.emptyTitle')}</CardTitle>
               <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
-                You haven't saved any recipes yet. Browse our catalog of 934+ authentic regional dishes or generate a custom meal with AI!
+                {t('saved.emptyDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-4 pb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button asChild className="rounded-full px-8 h-12 text-sm font-bold shadow-md bg-[#F4A21A] hover:bg-[#E09015] text-white transition-all border-0">
-                <Link href="/recipes">Browse 934+ Recipes</Link>
+                <Link href="/recipes">{t('saved.browseCatalog')}</Link>
               </Button>
               <Button asChild variant="outline" className="rounded-full px-8 h-12 text-sm font-bold border-stone-300 dark:border-stone-700 hover:bg-amber-500/10 text-stone-800 dark:text-stone-200">
                 <Link href="/ai-recipes">
                   <Sparkles className="mr-2 h-4 w-4 text-amber-500" />
-                  Generate with AI
+                  {t('saved.generateAI')}
                 </Link>
               </Button>
             </CardContent>
@@ -150,16 +152,16 @@ export default function MyRecipesPage() {
       <AlertDialog open={!!recipeToDelete} onOpenChange={(open) => !open && setRecipeToDelete(null)}>
         <AlertDialogContent className="rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 border-primary/10 max-w-[92vw] sm:max-w-lg">
           <AlertDialogHeader>
-            <AlertDialogTitle className="font-headline text-2xl sm:text-3xl">Remove Recipe?</AlertDialogTitle>
+            <AlertDialogTitle className="font-headline text-2xl sm:text-3xl">{t('saved.removeTitle')}</AlertDialogTitle>
             <AlertDialogDescription className="text-base sm:text-lg leading-relaxed pt-2">
-              This will remove <strong>{recipeToDelete?.name || 'this recipe'}</strong> from your personal collection.
+              {t('saved.removeDesc', { name: recipeToDelete?.name || 'this recipe' })}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="mt-6 sm:mt-8 flex flex-col-reverse sm:flex-row gap-3 sm:gap-4">
-            <AlertDialogCancel className="rounded-full h-12 px-8 font-bold" onClick={() => setRecipeToDelete(null)}>Keep Recipe</AlertDialogCancel>
+            <AlertDialogCancel className="rounded-full h-12 px-8 font-bold" onClick={() => setRecipeToDelete(null)}>{t('saved.keepRecipe')}</AlertDialogCancel>
             <AlertDialogAction className="rounded-full h-12 px-8 font-bold bg-destructive text-destructive-foreground hover:bg-destructive/90" onClick={handleDeleteRecipe} disabled={isDeleting}>
               {isDeleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Remove Now
+              {t('saved.removeNow')}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

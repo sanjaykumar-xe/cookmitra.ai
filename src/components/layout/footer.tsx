@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Heart, ArrowUp } from 'lucide-react';
+import { useLanguage } from '@/context/language-context';
 
 interface FooterProps {
   onViewTutorial?: () => void;
@@ -13,6 +14,7 @@ interface FooterProps {
  * essential links, and regional attribution without unnecessary clutter.
  */
 export function Footer({ onViewTutorial }: FooterProps) {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -57,10 +59,10 @@ export function Footer({ onViewTutorial }: FooterProps) {
           {/* Center: Essential Quick Links */}
           <nav className="flex items-center justify-center gap-6 sm:gap-8 text-sm font-medium text-muted-foreground flex-wrap" aria-label="Footer Navigation">
             <Link href="/pricing" className="hover:text-primary transition-colors">
-              Pricing
+              {t('footer.pricing')}
             </Link>
             <Link href="/faq" className="hover:text-primary transition-colors">
-              FAQs
+              {t('footer.faqs')}
             </Link>
             {onViewTutorial && (
               <button 
@@ -70,23 +72,23 @@ export function Footer({ onViewTutorial }: FooterProps) {
                 }}
                 className="hover:text-primary transition-colors focus:outline-none cursor-pointer"
               >
-                Tour
+                {t('footer.tour')}
               </button>
             )}
             <Link href="/recipes" className="hover:text-primary transition-colors">
-              Recipes
+              {t('footer.recipes')}
             </Link>
             <Link href="/community" className="hover:text-primary transition-colors">
-              Community
+              {t('footer.community')}
             </Link>
           </nav>
 
           {/* Right: Attribution, Copyright & Back to top */}
           <div className="flex items-center gap-4 text-xs text-muted-foreground shrink-0 flex-wrap justify-center md:justify-end">
             <div className="flex items-center gap-1.5 font-medium text-foreground/80">
-              <span>Made with</span>
+              <span>{t('footer.madeWith')}</span>
               <Heart className="h-3.5 w-3.5 text-red-500 fill-current" />
-              <span>in India</span>
+              <span>{t('footer.inIndia')}</span>
             </div>
             <span>•</span>
             <span>© {currentYear} CookMitra AI</span>
@@ -96,7 +98,7 @@ export function Footer({ onViewTutorial }: FooterProps) {
               className="inline-flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer focus:outline-none"
               aria-label="Scroll to top of page"
             >
-              <span>Top</span>
+              <span>{t('footer.top')}</span>
               <ArrowUp className="h-3 w-3" />
             </button>
           </div>

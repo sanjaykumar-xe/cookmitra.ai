@@ -45,6 +45,7 @@ import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
 import { RecipeCard } from '@/components/recipe/recipe-card';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { useLanguage } from '@/context/language-context';
 
 const conditionIconMap: Record<string, any> = {
     'Diabetes': Droplet,
@@ -114,6 +115,7 @@ function HealingFoodCard({ item, type }: { item: any, type: 'help' | 'avoid' }) 
 export default function HealingFoodsPage() {
     const firestore = useFirestore();
     const { toast } = useToast();
+    const { t, language } = useLanguage();
     
     const [searchTerm, setSearchTerm] = useState('');
     const [activeCondition, setActiveCondition] = useState<HealthCondition | null>(null);
@@ -134,7 +136,7 @@ export default function HealingFoodsPage() {
         
         try {
             if (typeof condition === 'string') {
-                const normalizedKey = conditionName.toLowerCase().replace(/\s+/g, '-');
+                const normalizedKey = `${conditionName.toLowerCase().replace(/\s+/g, '-')}_${language}`;
                 const cacheRef = doc(firestore, "healingFoodsCache", normalizedKey);
 
                 // 1. Check Client-Side Cache
@@ -149,7 +151,7 @@ export default function HealingFoodsPage() {
                     setActiveCondition(cacheSnap.data() as HealthCondition);
                 } else {
                     // 2. Generate via Server Action if not cached
-                    const result = await generateHealingFoodsAction(conditionName);
+                    const result = await generateHealingFoodsAction(conditionName, language);
                     
                     if (result.success && result.data) {
                         const generatedData = result.data as any;
@@ -207,17 +209,17 @@ export default function HealingFoodsPage() {
             <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
                 <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-1.5 rounded-full text-primary text-xs font-black uppercase tracking-[0.2em]">
                     <HeartPulse className="h-4 w-4" />
-                    Food as Medicine
+                    {t('healing.badge')}
                 </div>
-                <h1 className="font-headline text-fluid-h1 font-bold tracking-tight">Healing Foods</h1>
+                <h1 className="font-headline text-fluid-h1 font-bold tracking-tight">{t('healing.title')}</h1>
                 <p className="text-fluid-subtitle text-muted-foreground max-w-2xl mx-auto">
-                    Discover ingredients and meals tailored to support specific health conditions through traditional and modern nutritional wisdom.
+                    {t('healing.subtitle')}
                 </p>
                 
                 <div className="mx-auto max-w-2xl bg-pink-500/10 border border-pink-500/20 p-4 rounded-2xl flex items-start gap-3 text-left">
                     <span className="shrink-0 mt-0.5"><Info className="h-5 w-5 text-pink-600 dark:text-pink-400" /></span>
                     <p className="text-xs text-pink-900/80 dark:text-pink-200/80 leading-relaxed font-medium italic">
-                        This is general nutritional information, not medical advice. Always consult a doctor or registered dietitian for personal health decisions.
+                        {t('healing.disclaimer')}
                     </p>
                 </div>
             </div>
@@ -250,7 +252,7 @@ export default function HealingFoodsPage() {
                 <div className="relative group max-w-2xl mx-auto">
                     <Search className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground opacity-50 group-focus-within:text-primary transition-colors" />
                     <Input 
-                        placeholder="Search condition (e.g. thyroid, migraine)..."
+                        placeholder={t('healing.searchPlaceholder')}
                         className="pl-12 sm:pl-16 pr-28 sm:pr-36 h-14 sm:h-16 rounded-[2rem] text-sm sm:text-base md:text-lg bg-card/50 backdrop-blur-sm border-primary/5 shadow-2xl focus:border-primary/40 focus:ring-0"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
@@ -261,7 +263,7 @@ export default function HealingFoodsPage() {
                         onClick={() => handleSelectCondition(searchTerm)}
                         disabled={isLoading || !searchTerm.trim()}
                     >
-                        {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Search AI"}
+                        {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : t('healing.searchBtn')}
                     </Button>
                 </div>
             </div>
@@ -310,7 +312,7 @@ export default function HealingFoodsPage() {
 
                         <div className="flex justify-center items-center gap-3">
                             <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                            <p className="font-headline text-2xl text-primary animate-pulse">Consulting AI Nutritionist...</p>
+                            <p className="font-headline text-2xl text-primary animate-pulse">{t('healing.consulting')}</p>
                         </div>
                     </motion.div>
                 ) : activeCondition ? (
@@ -342,7 +344,7 @@ export default function HealingFoodsPage() {
                             <section className="space-y-6">
                                 <h3 className="flex items-center gap-3 font-headline text-2xl sm:text-3xl font-medium tracking-tight">
                                     <div className="bg-primary/10 p-2.5 rounded-xl"><CheckCircle2 className="text-primary h-6 w-6" /></div>
-                                    Foods That Help
+                                    {t('healing.foodsHelp')}
                                 </h3>
                                 <div className="grid gap-4">
                                     {activeCondition.foodsToHelp.map((item, i) => (
@@ -354,7 +356,7 @@ export default function HealingFoodsPage() {
                             <section className="space-y-6">
                                 <h3 className="flex items-center gap-3 font-headline text-2xl sm:text-3xl font-medium tracking-tight">
                                     <div className="bg-red-500/10 p-2.5 rounded-xl"><AlertTriangle className="text-red-500 h-6 w-6" /></div>
-                                    Foods to Limit
+                                    {t('healing.foodsAvoid')}
                                 </h3>
                                 <div className="grid gap-4">
                                     {activeCondition.foodsToAvoid.map((item, i) => (
@@ -367,7 +369,7 @@ export default function HealingFoodsPage() {
                         {/* Recommended Recipes */}
                         <section className="max-w-7xl mx-auto pt-10">
                             <div className="flex items-center justify-between mb-10">
-                                <h3 className="font-headline text-3xl sm:text-4xl tracking-tight font-medium">Recommended for You</h3>
+                                <h3 className="font-headline text-3xl sm:text-4xl tracking-tight font-medium">{t('healing.recommended')}</h3>
                                 <Button variant="ghost" asChild className="group text-base sm:text-lg">
                                     <Link href="/recipes">
                                         View All Recipes <ChevronRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -409,9 +411,9 @@ export default function HealingFoodsPage() {
                                 <div className="mx-auto bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400 rounded-2xl p-5 w-20 h-20 flex items-center justify-center mb-5 shadow-sm">
                                     <HeartPulse className="h-10 w-10 stroke-[1.75]" />
                                 </div>
-                                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Explore Healing Foods Guidance</CardTitle>
+                                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">{t('healing.introTitle')}</CardTitle>
                                 <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
-                                    Select a health condition above or search for wellness topics like &apos;acidity&apos;, &apos;immunity&apos;, &apos;diabetes&apos;, or &apos;cold&apos; to get AI-crafted food recommendations!
+                                    {t('healing.introDesc')}
                                 </CardDescription>
                             </CardHeader>
                         </Card>

@@ -5,9 +5,11 @@ import { Bookmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AuthButton } from "@/components/auth/auth-button";
 import { useUser } from "@/lib/firebase";
+import { useLanguage } from "@/context/language-context";
 
 export function HeaderAuthActions({ isLandingPage }: { isLandingPage: boolean }) {
   const { user } = useUser();
+  const { t } = useLanguage();
 
   return (
     <div className="flex items-center gap-4 h-9">
@@ -23,10 +25,10 @@ export function HeaderAuthActions({ isLandingPage }: { isLandingPage: boolean })
       ) : (
         <>
           <Button variant="ghost" asChild className={`p-0 h-auto font-medium ${isLandingPage ? "text-white" : "text-foreground"} hover:text-primary hover:bg-transparent no-underline`}>
-              <Link href="/login">Sign In</Link>
+              <Link href="/login">{t('nav.login')}</Link>
           </Button>
           <Button size="sm" asChild className="rounded-full px-5 h-9 font-bold bg-primary text-[#412402] hover:bg-primary/90 shadow-md border-0 transition-all active:scale-95">
-              <Link href="/signup">Sign Up</Link>
+              <Link href="/signup">{t('nav.signup')}</Link>
           </Button>
         </>
       )}

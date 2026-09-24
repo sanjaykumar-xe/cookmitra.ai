@@ -41,7 +41,7 @@ export async function generateRecipeAction(formData: FormData) {
     // Inject language instructions if not English
     if (inputData.language && inputData.language !== 'en') {
       const langName = inputData.language === 'ta' ? 'Tamil' : 'Hindi';
-      (inputData as any).ingredients = `${inputData.ingredients}. IMPORTANT: Respond entirely in ${langName}, including recipe title, description, ingredients, and steps.`;
+      (inputData as any).ingredients = `${inputData.ingredients}. IMPORTANT: Respond entirely in ${langName} script, including recipe title, description, ingredients, and steps. Keep common recognized dish names like Biryani or Dosa as their natural recognized name.`;
     }
 
     const recipe = await generateIndianRecipe(inputData as any);
@@ -82,7 +82,7 @@ export async function generateHealthyMealPlanAction(input: GenerateHealthyMealPl
     // Inject language instructions if not English
     if (inputData.language && inputData.language !== 'en') {
         const langName = inputData.language === 'ta' ? 'Tamil' : 'Hindi';
-        inputData.goal = `${inputData.goal}. Respond entirely in ${langName}, including meal names and benefits.` as any;
+        inputData.goal = `${inputData.goal}. Respond entirely in ${langName}, including meal names and benefits. Keep common recognized dish names natural.` as any;
     }
 
     const mealPlan = await generateHealthyMealPlan(inputData);
@@ -100,9 +100,9 @@ export async function generateHealthyMealPlanAction(input: GenerateHealthyMealPl
  * Pure server action to generate healing foods info via AI.
  * Caching is now handled on the client side to avoid Firebase SDK server/client conflicts.
  */
-export async function generateHealingFoodsAction(condition: string) {
+export async function generateHealingFoodsAction(condition: string, language: string = 'en') {
     try {
-        const data = await generateHealingFoodsInfo({ condition });
+        const data = await generateHealingFoodsInfo({ condition, language });
         return { success: true, data };
     } catch (error: any) {
         console.error("[HealingFoods] SERVER ACTION ERROR:", error);

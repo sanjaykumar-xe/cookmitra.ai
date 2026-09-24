@@ -11,6 +11,7 @@ import { RupeeIcon } from '../icons/rupee-icon';
 import { saveRecipe } from '@/lib/firebase/firestore/recipes';
 import { generateRecipePDF } from '@/lib/pdf-export';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/language-context';
 
 interface RecipeDisplayProps {
   recipe: any;
@@ -18,6 +19,7 @@ interface RecipeDisplayProps {
 }
 
 export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
+  const { t } = useLanguage();
   const { toast } = useToast();
   const { user } = useUser();
   const firestore = useFirestore();
@@ -25,13 +27,13 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
 
   const handleSaveRecipe = async () => {
     if (!user || !firestore) {
-      toast({ title: "Login required to save recipes.", variant: 'destructive' });
+      toast({ title: t('generator.loginToSave'), variant: 'destructive' });
       return;
     }
     setIsSaving(true);
     try {
       await saveRecipe(firestore, user.uid, recipe);
-      toast({ title: "Recipe Saved!" });
+      toast({ title: t('generator.recipeSaved') });
     } finally { setIsSaving(false); }
   };
 
@@ -52,7 +54,7 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
           <div className="space-y-3 flex-1">
             <div className="flex items-center gap-2 text-[#F4A21A] uppercase tracking-wider text-[11px] font-bold">
                 <BadgeCheck className="h-4 w-4" /> 
-                AI Crafted Recipe
+                {t('generator.aiCrafted')}
             </div>
             <CardTitle className="font-headline text-3xl sm:text-5xl font-semibold tracking-tight text-stone-900 dark:text-stone-100">{displayName}</CardTitle>
             <div className="flex flex-wrap gap-6 text-sm font-semibold text-stone-500">
@@ -77,7 +79,7 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
           <div className="flex gap-2">
             <Button variant="outline" onClick={handleSaveRecipe} disabled={isSaving} className="rounded-full h-11 px-6 font-bold border-primary/20">
                 <Bookmark className={cn("h-4 w-4 mr-2", isSaved && "fill-current")} /> 
-                {isSaved ? 'Saved' : 'Save'}
+                {isSaved ? t('recipe.saved') : t('recipe.save')}
             </Button>
             <Button variant="outline" size="icon" className="rounded-full h-11 w-11 border-primary/20" onClick={() => (generateRecipePDF as any)({
                 ...recipe,
@@ -97,7 +99,7 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
             <div className="space-y-6">
                 <h3 className="font-headline text-3xl flex items-center gap-3">
                   <ClipboardList className="h-8 w-8 text-primary" /> 
-                  Ingredients
+                  {t('recipe.ingredients')}
                 </h3>
                 <div className="grid gap-2">
                     {ingredients.map((ing: any, i: number) => (
@@ -109,7 +111,7 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
                 </div>
             </div>
             <div className="space-y-6">
-                <h3 className="font-headline text-3xl">Shopping List</h3>
+                <h3 className="font-headline text-3xl">{t('generator.shoppingList')}</h3>
                 <MissingIngredients 
                     missingIngredients={ingredients.map((i: any) => `${i.qty || i.quantity || ''} ${i.name}`.trim())} 
                     userIngredients={[]} 
@@ -119,7 +121,7 @@ export function RecipeDisplay({ recipe, isSaved = false }: RecipeDisplayProps) {
         </div>
         
         <div className="space-y-8">
-            <h3 className="font-headline text-3xl">Steps to Cook</h3>
+            <h3 className="font-headline text-3xl">{t('generator.steps')}</h3>
             <div className="grid gap-6">
                 {steps.map((step: string, i: number) => (
                     <div key={i} className="flex gap-6 items-start group">

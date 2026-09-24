@@ -35,6 +35,7 @@ import { useUser } from '@/lib/firebase';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
+import { useLanguage } from '@/context/language-context';
 
 const iconClasses = "h-5 w-5 transition-colors duration-200";
 
@@ -48,18 +49,18 @@ const EncyclopediaNavIcon = ({ className, ...props }: React.ComponentProps<typeo
   <IconBook className={className} size={20} stroke={1.75} strokeWidth={1.75} {...props} />
 );
 
-function getMainNavLinks(homeHref: string): NavItem[] {
+function getMainNavLinks(homeHref: string, t: (key: any) => string): NavItem[] {
   return [
-    { href: homeHref, label: 'Home', icon: Home },
-    { href: "/recipes", label: 'Recipes', icon: Utensils },
-    { href: "/ai-recipes", label: 'AI Recipes', icon: Plus },
-    { href: "/ai-chat", label: 'Chef Momo AI', icon: MessageSquare },
-    { href: "/healthy-meal-planner", label: 'Meal Planner', icon: Calendar },
-    { href: "/healing-foods", label: 'Healing Foods', icon: HeartPulse },
-    { href: "/encyclopedia", label: 'Encyclopedia', icon: EncyclopediaNavIcon },
-    { href: "/pantry", label: 'Smart Pantry', icon: ShoppingBasket },
-    { href: "/my-recipes", label: 'Saved Recipes', icon: Bookmark },
-    { href: "/community", label: 'Community', icon: Users },
+    { href: homeHref, label: t('nav.home'), icon: Home },
+    { href: "/recipes", label: t('nav.recipes'), icon: Utensils },
+    { href: "/ai-recipes", label: t('nav.aiRecipes'), icon: Plus },
+    { href: "/ai-chat", label: t('nav.aiChat'), icon: MessageSquare },
+    { href: "/healthy-meal-planner", label: t('nav.mealPlanner'), icon: Calendar },
+    { href: "/healing-foods", label: t('nav.healingFoods'), icon: HeartPulse },
+    { href: "/encyclopedia", label: t('nav.encyclopedia'), icon: EncyclopediaNavIcon },
+    { href: "/pantry", label: t('nav.smartPantry'), icon: ShoppingBasket },
+    { href: "/my-recipes", label: t('nav.saved'), icon: Bookmark },
+    { href: "/community", label: t('nav.community'), icon: Users },
   ];
 }
 
@@ -155,8 +156,9 @@ const NavLink = ({
  */
 export function MobileNavDrawer() {
   const { user } = useUser();
+  const { t } = useLanguage();
   const homeHref = user ? "/home" : "/";
-  const mainNavLinks = getMainNavLinks(homeHref);
+  const mainNavLinks = getMainNavLinks(homeHref, t);
 
   return (
     <Sheet>
@@ -195,7 +197,7 @@ export function MobileNavDrawer() {
             <div className="flex flex-col gap-1">
               <SheetClose asChild>
                 <NavLink href="/settings" icon={Settings}>
-                  Settings
+                  {t('nav.settings')}
                 </NavLink>
               </SheetClose>
             </div>
@@ -208,8 +210,9 @@ export function MobileNavDrawer() {
 
 export function IconSidebar() {
   const { user } = useUser();
+  const { t } = useLanguage();
   const homeHref = user ? "/home" : "/";
-  const mainNavLinks = getMainNavLinks(homeHref);
+  const mainNavLinks = getMainNavLinks(homeHref, t);
 
   return (
     <aside className="hidden md:flex fixed top-0 left-0 h-full w-16 bg-background flex-col items-center justify-between py-3 border-r z-30 animate-in fade-in slide-in-from-left duration-300">
@@ -258,7 +261,7 @@ export function IconSidebar() {
                 <div className="flex flex-col gap-1">
                   <SheetClose asChild>
                     <NavLink href="/settings" icon={Settings}>
-                      Settings
+                      {t('nav.settings')}
                     </NavLink>
                   </SheetClose>
                 </div>
@@ -285,7 +288,7 @@ export function IconSidebar() {
 
       {/* Desktop bottom icon: Settings */}
       <div className="hidden md:flex flex-col items-center pb-1">
-        <TooltipLink href="/settings" tooltip="Settings">
+        <TooltipLink href="/settings" tooltip={t('nav.settings')}>
           <Settings className={iconClasses} />
         </TooltipLink>
       </div>

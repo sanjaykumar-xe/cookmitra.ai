@@ -1,6 +1,13 @@
-# DESIGN.md — CookMitra Design System & Brand Guide
+# CookMitra AI — Design System & Brand Identity Guide (v3.0)
 
-This document serves as the single source of truth for the visual design system, brand identity, component conventions, typography, and interaction patterns across all CookMitra pages and features.
+[![Next.js 15.5+](https://img.shields.io/badge/Next.js-15.5+-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React 19.2+](https://img.shields.io/badge/React-19.2+-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
+[![TailwindCSS 3.4+](https://img.shields.io/badge/TailwindCSS-3.4+-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Framer Motion 11+](https://img.shields.io/badge/Framer_Motion-11.0+-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![ShadCN UI](https://img.shields.io/badge/ShadCN_UI-Radix_Primitives-000000?style=flat-square&logo=shadcnui&logoColor=white)](https://ui.shadcn.com)
+[![License MIT](https://img.shields.io/badge/License-MIT-F4A21A?style=flat-square)](LICENSE)
+
+> **CookMitra Design System**: Single source of truth for the visual design tokens, brand identity, component conventions, typography, dark/light modes, and interaction patterns across the CookMitra platform.
 
 ---
 

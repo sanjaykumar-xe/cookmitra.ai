@@ -1,0 +1,25 @@
+.scroll-float {
+  overflow: hidden;
+  display: block;
+  padding: 0.2em 0;
+  margin: -0.2em 0;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: center;
+  line-height: inherit;
+}
+
+.scroll-float-text.default-scale {
+  font-size: clamp(1.6rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.scroll-float .char {
+  display: inline-block;
+  transform-style: preserve-3d;
+}

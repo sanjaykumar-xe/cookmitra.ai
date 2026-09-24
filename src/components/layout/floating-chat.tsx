@@ -14,8 +14,10 @@ import {
 import { cn } from '@/lib/utils';
 import { ChutkiIcon } from '../icons/chutki-icon';
 import Image from 'next/image';
+import { useLanguage } from '@/context/language-context';
 
 export function FloatingChat() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
@@ -43,7 +45,7 @@ export function FloatingChat() {
                 <div className="h-8 w-8 rounded-full flex items-center justify-center overflow-hidden border border-amber-500/20 shadow-xs">
                   <Image src="/chef-momo-logo.png" alt="Chef Momo" width={32} height={32} className="h-full w-full object-cover rounded-full" />
                 </div>
-                <h3 className="font-headline text-lg font-bold">Chef Momo</h3>
+                <h3 className="font-headline text-lg font-bold">{t('chat.title')}</h3>
               </div>
               <Button
                 variant="ghost"
@@ -71,7 +73,7 @@ export function FloatingChat() {
                 size="icon"
                 className="h-[60px] w-[60px] rounded-full bg-transparent p-0 shadow-none border-0 ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-300 hover:scale-110 hover:rotate-6 flex items-center justify-center overflow-visible"
                 onClick={() => setIsOpen(true)}
-                aria-label="Ask Chef Momo"
+                aria-label={t('home.chat.title')}
               >
                 <div className="relative h-full w-full flex items-center justify-center">
                     <Image src="/chef-momo-logo.png" alt="Chef Momo" width={56} height={56} className="h-[54px] w-[54px] rounded-full drop-shadow-2xl object-cover border-2 border-amber-500/30" priority />
@@ -79,7 +81,7 @@ export function FloatingChat() {
               </Button>
             </TooltipTrigger>
             <TooltipContent side="left" className="animate-in fade-in slide-in-from-right-2 hidden md:block">
-              <p>Ask Chef Momo</p>
+              <p>{t('home.chat.title')}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

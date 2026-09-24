@@ -52,6 +52,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { RecipeCard } from "@/components/recipe/recipe-card";
 import { SLUG_TO_STATE_MAP } from "@/components/recipes/india-region-map";
 import type { MenuCategory } from "@/lib/recipes/types";
+import { useLanguage } from '@/context/language-context';
+import type { TranslationKey } from '@/lib/translations';
 
 const moods = [
     { name: 'Lazy', icon: <Sofa className="h-7 w-7" />, color: 'hover:border-blue-500/50 hover:bg-blue-500/5 hover:text-blue-600 dark:hover:text-blue-400', active: 'bg-blue-500 text-white border-blue-500 shadow-md shadow-blue-500/20' },
@@ -82,17 +84,18 @@ const remainingCourseCategories: { name: MenuCategory; icon: React.ReactNode }[]
     { name: 'Sides & Accompaniments', icon: <IconPepper className="h-7 w-7" /> },
 ];
 
-const sortOptions: { value: string; label: string; icon: React.ReactNode }[] = [
-  { value: 'popularity', label: 'Popularity (High to Low)', icon: <Flame className="h-4 w-4 text-amber-500 shrink-0" /> },
-  { value: 'time_asc', label: 'Cooking Time (Quickest)', icon: <Clock className="h-4 w-4 text-sky-500 shrink-0" /> },
-  { value: 'time_desc', label: 'Cooking Time (Longest)', icon: <Clock className="h-4 w-4 text-indigo-500 shrink-0" /> },
-  { value: 'cost_asc', label: 'Cost (Lowest First)', icon: <Banknote className="h-4 w-4 text-emerald-500 shrink-0" /> },
-  { value: 'cost_desc', label: 'Cost (Highest First)', icon: <Banknote className="h-4 w-4 text-purple-500 shrink-0" /> },
-  { value: 'name_asc', label: 'Name (A to Z)', icon: <ArrowDownAZ className="h-4 w-4 text-stone-500 shrink-0" /> },
+const sortOptions: { value: string; labelKey: TranslationKey; icon: React.ReactNode }[] = [
+  { value: 'popularity', labelKey: 'explorer.sortPopularity', icon: <Flame className="h-4 w-4 text-amber-500 shrink-0" /> },
+  { value: 'time_asc', labelKey: 'explorer.sortQuickest', icon: <Clock className="h-4 w-4 text-sky-500 shrink-0" /> },
+  { value: 'time_desc', labelKey: 'explorer.sortLongest', icon: <Clock className="h-4 w-4 text-indigo-500 shrink-0" /> },
+  { value: 'cost_asc', labelKey: 'explorer.sortCostLowest', icon: <Banknote className="h-4 w-4 text-emerald-500 shrink-0" /> },
+  { value: 'cost_desc', labelKey: 'explorer.sortCostHighest', icon: <Banknote className="h-4 w-4 text-purple-500 shrink-0" /> },
+  { value: 'name_asc', labelKey: 'explorer.sortName', icon: <ArrowDownAZ className="h-4 w-4 text-stone-500 shrink-0" /> },
 ];
 
 function RecipesExplorerContent() {
   const { user, isUserLoading } = useUser();
+  const { t } = useLanguage();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -353,10 +356,10 @@ function RecipesExplorerContent() {
         className="text-center space-y-3"
       >
         <h1 className="font-headline text-fluid-h1 font-medium tracking-tight text-stone-900 dark:text-stone-100">
-          Indian Recipes Explorer
+          {t('explorer.title')}
         </h1>
         <p className="text-fluid-subtitle text-stone-600 dark:text-stone-300 font-medium max-w-2xl mx-auto leading-relaxed">
-          Discover authentic Indian recipes with detailed instructions, pricing, and 3D card previews.
+          {t('explorer.subtitle')}
         </p>
       </motion.div>
 
@@ -367,7 +370,7 @@ function RecipesExplorerContent() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="text-center space-y-4 sm:space-y-6"
       >
-        <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">What&apos;s Your Mood Today?</h2>
+        <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">{t('explorer.moodPrompt')}</h2>
         <div className="flex overflow-x-auto pb-2 -mx-4 px-4 snap-x snap-mandatory gap-2.5 no-scrollbar md:grid md:grid-cols-4 lg:grid-cols-7 md:gap-4 md:mx-0 md:px-0">
             {moods.map((mood) => {
                 const isSelected = selectedMood === mood.name;
@@ -408,7 +411,7 @@ function RecipesExplorerContent() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="text-center space-y-4 sm:space-y-6"
       >
-        <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">Browse by Course</h2>
+        <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">{t('explorer.browseCourse')}</h2>
         
         {/* Mobile: Horizontally-scrollable single-row strip with all course categories */}
         <div className="flex md:hidden overflow-x-auto pb-2 -mx-4 px-4 snap-x snap-mandatory gap-2.5 no-scrollbar">
@@ -447,7 +450,7 @@ function RecipesExplorerContent() {
                                       ? "bg-[#F4A21A] text-white" 
                                       : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 group-hover:bg-amber-500/10 group-hover:text-[#F4A21A]"
                               )}>
-                                  {count} recipes
+                                  {t('explorer.recipeCount', { count })}
                               </span>
                           )}
                       </Card>
@@ -492,7 +495,7 @@ function RecipesExplorerContent() {
                                       ? "bg-[#F4A21A] text-white" 
                                       : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 group-hover:bg-amber-500/10 group-hover:text-[#F4A21A]"
                               )}>
-                                  {count} recipes
+                                  {t('explorer.recipeCount', { count })}
                               </span>
                           )}
                       </Card>
@@ -545,7 +548,7 @@ function RecipesExplorerContent() {
                                                   ? "bg-[#F4A21A] text-white" 
                                                   : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 group-hover:bg-amber-500/10 group-hover:text-[#F4A21A]"
                                           )}>
-                                              {count} recipes
+                                              {t('explorer.recipeCount', { count })}
                                           </span>
                                       )}
                                   </Card>
@@ -563,7 +566,7 @@ function RecipesExplorerContent() {
                 onClick={() => setShowMoreCategories(prev => !prev)}
                 className="rounded-full px-6 py-2 h-10 border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-amber-500/10 hover:border-amber-500/50 hover:text-[#F4A21A] transition-all font-medium text-sm flex items-center gap-2"
             >
-                <span>{showMoreCategories ? "Show Less" : "Show 7 More Categories"}</span>
+                <span>{showMoreCategories ? t('explorer.showLess') : t('explorer.showMore', { count: 7 })}</span>
                 {showMoreCategories ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
             </Button>
         </div>
@@ -577,15 +580,15 @@ function RecipesExplorerContent() {
         >
             <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                    <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">Find Recipes by Ingredients</h2>
+                    <h2 className="font-headline text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-100">{t('explorer.findIngredients')}</h2>
                     {selectedIngredients.length > 0 && (
                         <Badge variant="secondary" className="text-xs bg-amber-500/15 text-[#F4A21A] border-amber-500/30 font-semibold">
-                            {selectedIngredients.length} added
+                            {t('explorer.addedCount', { count: selectedIngredients.length })}
                         </Badge>
                     )}
                 </div>
                 <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-medium">
-                    Tell us what&apos;s in your kitchen — we&apos;ll find recipes that use it.
+                    {t('explorer.tellKitchen')}
                 </p>
             </div>
             <Button 
@@ -601,7 +604,7 @@ function RecipesExplorerContent() {
         <div className={cn("transition-all", !isIngredientsOpen && selectedIngredients.length === 0 && "hidden md:block")}>
             <div className="relative mt-4 sm:mt-6">
               <Input 
-                placeholder="Add an ingredient (e.g. Tomato) and press Enter or +..."
+                placeholder={t('explorer.ingredientPlaceholder')}
                 className="pr-12 h-12 sm:h-14 rounded-2xl text-sm sm:text-base pl-4 sm:pl-5 border-stone-300 dark:border-stone-700 focus:border-[#F4A21A]" 
                 value={ingredientInput}
                 onChange={(e) => setIngredientInput(e.target.value)}
@@ -653,7 +656,7 @@ function RecipesExplorerContent() {
                   scrollToResults();
                 }}
             >
-              <Search className="h-4 w-4 sm:h-5 sm:w-5" /> Search Recipes
+              <Search className="h-4 w-4 sm:h-5 sm:w-5" /> {t('explorer.searchBtn')}
             </Button>
         </div>
       </Card>
@@ -662,12 +665,12 @@ function RecipesExplorerContent() {
         <div>
           <h3 className="font-headline text-2xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
             {selectedCategory || selectedMood || selectedStateName || activeFilterCount > 0 ? (
-              <span>Showing <span className="text-[#F4A21A]">{allFilteredRecipes.length}</span> {selectedCategory || selectedMood || selectedStateName || 'Filtered'} Recipes</span>
+              <span>{t('explorer.filteredResults', { count: allFilteredRecipes.length })}</span>
             ) : (
-              <span>All Recipes <span className="text-stone-500 font-normal text-lg">({allFilteredRecipes.length})</span></span>
+              <span>{t('explorer.allCount', { count: allFilteredRecipes.length })}</span>
             )}
           </h3>
-          <p className="text-xs text-stone-500 dark:text-stone-400 font-medium mt-0.5">Master database count: {allRecipes.length} recipes</p>
+          <p className="text-xs text-stone-500 dark:text-stone-400 font-medium mt-0.5">{t('explorer.masterCount', { count: allRecipes.length })}</p>
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
@@ -704,7 +707,7 @@ function RecipesExplorerContent() {
               className="rounded-full h-11 px-4 text-xs font-semibold border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 gap-1.5 transition-all shadow-xs"
             >
               <Clock className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span>Under {selectedMaxTime} mins</span>
+              <span>{t('explorer.underMins', { time: selectedMaxTime })}</span>
               <X className="h-3.5 w-3.5 ml-1 text-emerald-600 dark:text-emerald-400" />
               <span className="sr-only">Clear max time filter</span>
             </Button>
@@ -736,7 +739,7 @@ function RecipesExplorerContent() {
             onClick={() => setIsFilterModalOpen(true)}
           >
             <SlidersHorizontal className="h-4 w-4 text-[#F4A21A]" />
-            <span>Filter</span>
+            <span>{t('explorer.filter')}</span>
             {activeFilterCount > 0 && (
               <Badge className="bg-[#F4A21A] text-white rounded-full px-2 py-0.5 text-[10px] font-bold border-0 shadow-xs">
                 {activeFilterCount}
@@ -752,10 +755,10 @@ function RecipesExplorerContent() {
               className="rounded-full h-11 px-5 text-xs font-semibold border-stone-300 dark:border-stone-700 bg-card/80 backdrop-blur-md hover:border-amber-500/50 text-stone-800 dark:text-stone-200 gap-2 shadow-xs transition-all"
             >
               <ArrowUpDown className="h-4 w-4 text-[#F4A21A]" />
-              <span className="text-stone-500 font-normal">Sort:</span>
+              <span className="text-stone-500 font-normal">{t('explorer.sortBy')}:</span>
               <span className="font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
                 {sortOptions.find(o => o.value === sortBy)?.icon}
-                {sortOptions.find(o => o.value === sortBy)?.label}
+                {t(sortOptions.find(o => o.value === sortBy)?.labelKey || 'explorer.sortPopularity')}
               </span>
               <ChevronDown className={cn("h-3.5 w-3.5 text-stone-400 transition-transform duration-200 ml-1", isSortOpen && "rotate-180")} />
             </Button>
@@ -787,7 +790,7 @@ function RecipesExplorerContent() {
                       >
                         <span className="flex items-center gap-2">
                           {opt.icon}
-                          {opt.label}
+                          {t(opt.labelKey)}
                         </span>
                         {sortBy === opt.value && <Check className="h-3.5 w-3.5 text-[#F4A21A] shrink-0" />}
                       </button>
@@ -805,7 +808,7 @@ function RecipesExplorerContent() {
               className="rounded-full h-11 px-4 text-xs font-semibold text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
               onClick={resetAllFilters}
             >
-              <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Reset All
+              <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> {t('explorer.resetAll')}
             </Button>
           )}
         </div>
@@ -828,8 +831,8 @@ function RecipesExplorerContent() {
                     <SlidersHorizontal className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-headline text-2xl font-semibold text-stone-900 dark:text-stone-100">Filter Recipes</h3>
-                    <p className="text-xs text-stone-500 font-normal">Refine recipes by diet, time, difficulty, & cost</p>
+                    <h3 className="font-headline text-2xl font-semibold text-stone-900 dark:text-stone-100">{t('explorer.filterModalTitle')}</h3>
+                    <p className="text-xs text-stone-500 font-normal">{t('explorer.filterModalSubtitle')}</p>
                   </div>
                 </div>
                 <Button 
@@ -845,7 +848,7 @@ function RecipesExplorerContent() {
               <div className="space-y-5">
                 {/* DIET TYPE */}
                 <div className="space-y-2.5">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">Diet Type</label>
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">{t('explorer.dietType')}</label>
                   <div className="grid grid-cols-3 gap-2">
                     {(['All', 'Vegetarian', 'Non-Vegetarian'] as const).map(diet => (
                       <Button
@@ -867,7 +870,7 @@ function RecipesExplorerContent() {
 
                 {/* MAX COOKING TIME */}
                 <div className="space-y-2.5">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">Max Cooking Time</label>
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">{t('explorer.maxTime')}</label>
                   <div className="grid grid-cols-4 gap-2">
                     {[
                       { label: 'All', val: null },
@@ -894,7 +897,7 @@ function RecipesExplorerContent() {
 
                 {/* DIFFICULTY */}
                 <div className="space-y-2.5">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">Difficulty Level</label>
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">{t('explorer.difficultyLevel')}</label>
                   <div className="grid grid-cols-4 gap-2">
                     {['All', 'Easy', 'Medium', 'Hard'].map(diff => (
                       <Button
@@ -916,7 +919,7 @@ function RecipesExplorerContent() {
 
                 {/* MAX BUDGET */}
                 <div className="space-y-2.5">
-                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">Max Budget (INR)</label>
+                  <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">{t('explorer.maxBudget')}</label>
                   <div className="grid grid-cols-4 gap-2">
                     {[
                       { label: 'All', val: null },
@@ -953,13 +956,13 @@ function RecipesExplorerContent() {
                     setSelectedMaxCost(null);
                   }}
                 >
-                  Clear Filters
+                  {t('explorer.clearFilters')}
                 </Button>
                 <Button
                   className="rounded-full h-11 px-8 text-xs font-semibold uppercase tracking-wider bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/25 border-0 transition-all active:scale-95"
                   onClick={() => setIsFilterModalOpen(false)}
                 >
-                  Apply Filters ({allFilteredRecipes.length})
+                  {t('explorer.applyFilters', { count: allFilteredRecipes.length })}
                 </Button>
               </div>
             </motion.div>
@@ -991,9 +994,9 @@ function RecipesExplorerContent() {
                 <div className="mx-auto bg-amber-500/10 text-[#F4A21A] rounded-2xl p-5 w-20 h-20 flex items-center justify-center mb-4">
                   <Search className="h-10 w-10" />
                 </div>
-                <CardTitle className="font-headline text-3xl font-medium tracking-tight text-stone-900 dark:text-stone-100">No Matching Recipes Found</CardTitle>
+                <CardTitle className="font-headline text-3xl font-medium tracking-tight text-stone-900 dark:text-stone-100">{t('explorer.noMatchTitle')}</CardTitle>
                 <CardDescription className="text-sm font-medium text-stone-600 dark:text-stone-300 mt-2 max-w-md mx-auto leading-relaxed">
-                  We couldn't find any dish matching your current filters or ingredient search. Try adjusting your selections!
+                  {t('explorer.noMatchDesc')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-4 pb-4 flex justify-center">
@@ -1001,7 +1004,7 @@ function RecipesExplorerContent() {
                   className="rounded-full px-8 h-12 text-sm font-medium bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-md shadow-amber-500/20 transition-all border-0"
                   onClick={resetAllFilters}
                 >
-                  Reset All Filters
+                  {t('explorer.resetAll')}
                 </Button>
               </CardContent>
             </Card>
@@ -1010,9 +1013,9 @@ function RecipesExplorerContent() {
 
       {allFilteredRecipes.length > displayLimit && (
           <div className="mt-12 sm:mt-16 flex flex-col items-center gap-4 pb-16 sm:pb-20">
-              <p className="text-xs sm:text-sm font-medium text-stone-500 italic">Showing {displayLimit} of {allFilteredRecipes.length} recipes</p>
+              <p className="text-xs sm:text-sm font-medium text-stone-500 italic">{t('explorer.showingCount', { limit: displayLimit, total: allFilteredRecipes.length })}</p>
               <Button size="lg" className="rounded-full px-8 sm:px-10 h-12 sm:h-14 text-sm sm:text-base font-medium bg-[#F4A21A] hover:bg-[#E09015] text-white shadow-lg shadow-amber-500/20 transition-all border-0" onClick={() => setDisplayLimit(prev => prev + 12)}>
-                Load More Recipes
+                {t('explorer.loadMore')}
               </Button>
           </div>
       )}

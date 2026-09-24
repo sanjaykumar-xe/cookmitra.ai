@@ -188,7 +188,7 @@ export function Header() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onFocus={() => query.length >= 2 && setIsOpen(true)}
-                    placeholder="Search recipes, ingredients, conditions..." 
+                    placeholder={t('search.placeholder')} 
                     className="pl-11 pr-10 h-10 bg-background border-border/80 shadow-sm focus-visible:ring-primary/20 rounded-full text-sm placeholder:text-muted-foreground/60 transition-all hover:bg-muted/10"
                 />
                 {query && (
@@ -211,14 +211,14 @@ export function Header() {
                            <div className="bg-muted w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
                               <SearchIcon className="h-4 w-4 text-muted-foreground opacity-40" />
                            </div>
-                           <p className="text-sm font-medium text-muted-foreground">No results found for &ldquo;{query}&rdquo;</p>
+                           <p className="text-sm font-medium text-muted-foreground">{t('search.noResults', { query })}</p>
                         </div>
                       ) : (
                         <>
                           {/* Recipes Group */}
                           {results.recipes.length > 0 && (
                             <section>
-                              <h4 className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">Recipes</h4>
+                              <h4 className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">{t('search.recipes')}</h4>
                               <div className="space-y-1">
                                 {results.recipes.map(recipe => (
                                   <button 
@@ -243,7 +243,7 @@ export function Header() {
                           {/* Ingredients Group */}
                           {results.ingredients.length > 0 && (
                             <section>
-                              <h4 className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">Ingredients</h4>
+                              <h4 className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">{t('search.ingredients')}</h4>
                               <div className="space-y-1">
                                 {results.ingredients.map(ing => (
                                   <button 
@@ -268,7 +268,7 @@ export function Header() {
                           {/* Conditions Group */}
                           {results.conditions.length > 0 && (
                             <section>
-                              <h4 className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">Health Conditions</h4>
+                              <h4 className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">{t('search.conditions')}</h4>
                               <div className="space-y-1">
                                 {results.conditions.map(cond => (
                                   <button 
@@ -295,7 +295,7 @@ export function Header() {
                   </ScrollArea>
                   {hasResults && (
                     <div className="p-3 bg-muted/30 border-t flex justify-center">
-                      <p className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">Press ESC to close search</p>
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">{t('search.pressEsc')}</p>
                     </div>
                   )}
                 </div>

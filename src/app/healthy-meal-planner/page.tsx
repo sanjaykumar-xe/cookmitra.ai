@@ -43,6 +43,7 @@ import { generateMealPlanPDF } from '@/lib/pdf-export';
 import { generateMealPlanICS } from '@/lib/calendar-export';
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useLanguage } from '@/context/language-context';
 import {
   ResponsiveContainer,
   BarChart,
@@ -321,6 +322,7 @@ function MealPlanDisplay({
   userPreferences: GenerateHealthyMealPlanInput;
   onPlanUpdate: (newPlan: GenerateHealthyMealPlanOutput) => void;
 }) {
+    const { t } = useLanguage();
     const { week, weeklySummary, disclaimer } = plan;
     const [isShoppingListOpen, setIsShoppingListOpen] = useState(false);
     const [swappingMealKey, setSwappingMealKey] = useState<string | null>(null);
@@ -499,17 +501,17 @@ function MealPlanDisplay({
 
             <Card className="p-fluid-card glass-card border-primary/10 w-full min-w-0">
                 <CardHeader className="p-0 mb-6 flex flex-row items-center justify-between">
-                    <CardTitle className="font-headline text-2xl font-medium">Weekly Summary</CardTitle>
+                    <CardTitle className="font-headline text-2xl font-medium">{t('planner.summary')}</CardTitle>
                     <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 px-3 py-1 font-bold">
                         Live Metrics
                     </Badge>
                 </CardHeader>
                 <CardContent className="p-0 space-y-8 w-full">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
-                        <SummaryCard icon={<Flame />} title="Avg. Calories" value={liveStats.avgKcal} unit=" kcal" color="bg-orange-500/10 text-orange-600 dark:text-orange-400" />
-                        <SummaryCard icon={<Beef />} title="Avg. Protein" value={liveStats.avgProtein} unit=" g" color="bg-sky-500/10 text-sky-600 dark:text-sky-400" />
-                        <SummaryCard icon={<Wallet />} title="Est. Cost" value={liveStats.cost} unit=" INR" color="bg-green-500/10 text-green-600 dark:text-green-400" />
-                        <SummaryCard icon={<CalendarDays />} title="Healthy Days" value={liveStats.healthyDays} unit="/7" color="bg-purple-500/10 text-purple-600 dark:text-purple-400" />
+                        <SummaryCard icon={<Flame />} title={t('planner.calories')} value={liveStats.avgKcal} unit=" kcal" color="bg-orange-500/10 text-orange-600 dark:text-orange-400" />
+                        <SummaryCard icon={<Beef />} title={t('planner.protein')} value={liveStats.avgProtein} unit=" g" color="bg-sky-500/10 text-sky-600 dark:text-sky-400" />
+                        <SummaryCard icon={<Wallet />} title={t('planner.cost')} value={liveStats.cost} unit=" INR" color="bg-green-500/10 text-green-600 dark:text-green-400" />
+                        <SummaryCard icon={<CalendarDays />} title={t('planner.healthyDays')} value={liveStats.healthyDays} unit="/7" color="bg-purple-500/10 text-purple-600 dark:text-purple-400" />
                     </div>
 
                     {/* 7-Day Trend Chart */}
@@ -521,7 +523,7 @@ function MealPlanDisplay({
                             className="bg-[#F4A21A] hover:bg-[#F4A21A]/90 text-white font-bold rounded-full px-8 h-12 text-sm shadow-md transition-all flex items-center justify-center"
                         >
                             <ShoppingCart className="mr-2 h-4 w-4" strokeWidth={1.75} />
-                            Generate Shopping List
+                            {t('planner.groceryBtn')}
                         </Button>
                     </div>
                 </CardContent>
@@ -543,6 +545,7 @@ function MealPlanDisplay({
 }
 
 export default function HealthyMealPlannerPage() {
+    const { t, language } = useLanguage();
     const { user, isUserLoading } = useUser();
     const router = useRouter();
     const [mealPlanState, setMealPlanState] = useState<MealPlanState>({ data: null, error: null, loading: false });
@@ -607,6 +610,7 @@ export default function HealthyMealPlannerPage() {
         const result = await generateHealthyMealPlanAction({
           ...values,
           dietPreference: cleanDiet,
+          language,
         });
 
         if (result.success && result.data) {
@@ -635,9 +639,9 @@ export default function HealthyMealPlannerPage() {
                 style={{ opacity: titleOpacity, y: titleY, visibility: isTitleHidden ? 'hidden' : 'visible', pointerEvents: isTitleHidden ? 'none' : 'auto' }}
                 className="text-center mb-16 will-change-[opacity,transform] animate-in fade-in slide-in-from-top-4 duration-1000"
             >
-                <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100">Meal Planner</h1>
+                <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100">{t('planner.title')}</h1>
                 <p className="mt-4 text-fluid-subtitle text-muted-foreground max-w-3xl mx-auto font-medium opacity-80 leading-relaxed">
-                  Plan your weekly nutrition with AI-crafted Indian meals balanced for your goals and household.
+                  {t('planner.subtitle')}
                 </p>
             </motion.div>
 
@@ -657,7 +661,7 @@ export default function HealthyMealPlannerPage() {
                                     <div className="grid grid-cols-2 gap-4">
                                          <FormField control={form.control} name="ageRange" render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Age Range</FormLabel>
+                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">{t('planner.age')}</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                     <SelectContent className="rounded-xl border-primary/10">
@@ -671,7 +675,7 @@ export default function HealthyMealPlannerPage() {
                                         )} />
                                         <FormField control={form.control} name="activityLevel" render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Activity</FormLabel>
+                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">{t('planner.activity')}</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                     <SelectContent className="rounded-xl border-primary/10">
@@ -685,7 +689,7 @@ export default function HealthyMealPlannerPage() {
                                     </div>
                                     <FormField control={form.control} name="dietPreference" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Diet Type</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">{t('planner.diet')}</FormLabel>
                                             <FormControl>
                                                 <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="grid grid-cols-2 gap-2 p-1.5 bg-muted/30 rounded-2xl border border-primary/5">
                                                     <Label htmlFor="veg" className="flex items-center justify-center rounded-xl p-3 text-[11px] font-bold uppercase tracking-wider hover:bg-muted cursor-pointer transition-all [&:has([data-state=checked])]:bg-[#F4A21A] [&:has([data-state=checked])]:text-white shadow-sm text-center">
@@ -712,7 +716,7 @@ export default function HealthyMealPlannerPage() {
 
                                     <FormField control={form.control} name="cuisinePreference" render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Cuisine Style</FormLabel>
+                                                <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">{t('planner.cuisine')}</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                     <SelectContent className="rounded-xl border-primary/10 max-h-[300px]">
@@ -731,7 +735,7 @@ export default function HealthyMealPlannerPage() {
 
                                     <FormField control={form.control} name="goal" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Primary Goal</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">{t('planner.goal')}</FormLabel>
                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                 <FormControl><SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20"><SelectValue/></SelectTrigger></FormControl>
                                                 <SelectContent className="rounded-xl border-primary/10">
@@ -750,7 +754,7 @@ export default function HealthyMealPlannerPage() {
 
                                     <FormField control={form.control} name="householdSize" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Household Size / Servings</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">{t('planner.household')}</FormLabel>
                                             <FormControl>
                                                 <div className="flex items-center justify-between p-2.5 bg-muted/30 rounded-2xl border border-primary/5">
                                                     <span className="text-xs font-bold text-muted-foreground pl-2 flex items-center gap-1.5">
@@ -787,7 +791,7 @@ export default function HealthyMealPlannerPage() {
                                     
                                     <FormField control={form.control} name="weeklyBudget" render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">Weekly Budget</FormLabel>
+                                            <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">{t('planner.budget')}</FormLabel>
                                             <FormControl>
                                                <div className="pt-2">
                                                     <div className="flex justify-between items-center mb-4">
@@ -817,12 +821,12 @@ export default function HealthyMealPlannerPage() {
                                         {mealPlanState.loading ? (
                                             <>
                                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                Crafting Plan...
+                                                {t('planner.craftingPlan')}
                                             </>
                                         ) : (
                                             <>
                                                 <Sparkles className="mr-2 h-4 w-4" />
-                                                Generate Weekly Plan
+                                                {t('planner.submit')}
                                             </>
                                         )}
                                     </Button>

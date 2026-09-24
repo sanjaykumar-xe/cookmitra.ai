@@ -12,6 +12,7 @@ export const GenerateIndianRecipeInputSchema = z.object({
   numberOfPersons: z.number().describe('The number of people the recipe should serve.'),
   isBatchMode: z.boolean().optional().describe('Whether the user is cooking for multiple days.'),
   batchDays: z.number().optional().describe('The number of days the batch is intended for.'),
+  language: z.string().optional().describe('Active user language, e.g. "ta", "hi", "en"'),
 });
 export type GenerateIndianRecipeInput = z.infer<typeof GenerateIndianRecipeInputSchema>;
 

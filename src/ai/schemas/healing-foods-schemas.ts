@@ -8,6 +8,7 @@ export const HealingFoodItemSchema = z.object({
 
 export const GenerateHealingFoodsInputSchema = z.object({
   condition: z.string().describe("The health condition to get dietary guidance for (e.g. 'kidney stones', 'thyroid', 'acne')"),
+  language: z.string().optional().describe("User language code ('ta', 'hi', 'en')"),
 });
 
 export type GenerateHealingFoodsInput = z.infer<typeof GenerateHealingFoodsInputSchema>;

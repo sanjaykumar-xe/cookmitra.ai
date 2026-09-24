@@ -34,6 +34,7 @@ import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { recipes } from '@/lib/recipes';
 import { ingredientProfiles } from '@/lib/ingredient-encyclopedia';
+import { useLanguage } from '@/context/language-context';
 
 const CATEGORIES = [
   "Vegetables", 
@@ -49,6 +50,7 @@ export default function PantryPage() {
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const [newItemName, setNewItemName] = useState('');
   const [newItemQty, setNewItemQty] = useState('');
@@ -258,9 +260,9 @@ export default function PantryPage() {
   return (
     <div className="content-container py-fluid-section px-4">
       <div className="text-center mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
-        <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100">My Pantry</h1>
+        <h1 className="font-headline text-fluid-h1 font-bold tracking-tight text-stone-900 dark:text-stone-100">{t('pantry.title')}</h1>
         <p className="mt-4 text-fluid-subtitle text-muted-foreground max-w-2xl mx-auto font-medium opacity-80">
-          Keep track of what&apos;s in your kitchen, so you always know what you can cook.
+          {t('pantry.subtitle')}
         </p>
       </div>
 
@@ -268,10 +270,10 @@ export default function PantryPage() {
         <form onSubmit={handleAddItem} className="space-y-3">
           <div className="flex flex-col md:flex-row gap-4 items-end">
             <div className="flex-1 w-full space-y-2 relative">
-              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80 px-1">Ingredient Name</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80 px-1">{t('pantry.ingredientName')}</label>
               <Input 
                 id="pantry-item-input"
-                placeholder="e.g., Paneer, Basmati Rice..." 
+                placeholder={t('pantry.ingredientPlaceholder')} 
                 value={newItemName} 
                 onChange={(e) => {
                   setNewItemName(e.target.value);
@@ -311,16 +313,16 @@ export default function PantryPage() {
               )}
             </div>
             <div className="w-full md:w-32 space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80 px-1">Qty (Optional)</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80 px-1">{t('pantry.qtyOptional')}</label>
               <Input 
-                placeholder="e.g., 500g" 
+                placeholder={t('pantry.qtyPlaceholder')} 
                 value={newItemQty} 
                 onChange={(e) => setNewItemQty(e.target.value)}
                 className="h-12 rounded-xl bg-muted/30 border-primary/5 focus:ring-primary/20"
               />
             </div>
             <div className="w-full md:w-48 space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80 px-1">Category</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/80 px-1">{t('pantry.category')}</label>
               <Select value={newItemCategory} onValueChange={setNewItemCategory}>
                 <SelectTrigger className="h-12 rounded-xl bg-muted/30 font-bold border-primary/5 focus:ring-primary/20">
                   <SelectValue />
@@ -338,7 +340,7 @@ export default function PantryPage() {
               disabled={isAdding || !newItemName.trim()}
             >
               {isAdding ? <Loader2 className="h-5 w-5 animate-spin" /> : <Plus className="h-5 w-5 mr-2" />}
-              Add
+              {t('pantry.add')}
             </Button>
           </div>
 
@@ -368,7 +370,7 @@ export default function PantryPage() {
                 <div className="flex items-center gap-4 mb-6">
                   <h2 className="font-headline text-2xl font-medium tracking-tight shrink-0">{category}</h2>
                   <div className="h-px flex-1 bg-primary/10" />
-                  <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">{items.length} items</Badge>
+                  <Badge variant="outline" className="bg-primary/5 text-primary border-primary/20">{t('pantry.itemsCount', { count: items.length })}</Badge>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   <AnimatePresence>
@@ -436,9 +438,9 @@ export default function PantryPage() {
               <div className="mx-auto bg-[#F4A21A]/10 text-[#F4A21A] dark:bg-amber-500/20 dark:text-amber-400 rounded-2xl p-6 w-24 h-24 flex items-center justify-center mb-6 shadow-sm">
                 <ShoppingBasket className="h-12 w-12 stroke-[1.75] text-[#F4A21A]" />
               </div>
-              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Your Kitchen Pantry is Empty</CardTitle>
+              <CardTitle className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">{t('pantry.emptyTitle')}</CardTitle>
               <CardDescription className="text-sm sm:text-base font-medium text-stone-700 dark:text-stone-300 mt-3 max-w-md mx-auto leading-relaxed">
-                Keep track of ingredients you have at home so CookMitra AI can suggest personalized recipes tailored to your available stock!
+                {t('pantry.emptyDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-4 pb-8 flex flex-col sm:flex-row items-center justify-center gap-4">
