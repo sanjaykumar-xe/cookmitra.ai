@@ -1,4 +1,4 @@
-# CookMitra AI — Autonomous Indian Culinary & Smart Kitchen Ecosystem (v3.0)
+# CookMitra AI — smart food companion ai
 
 [![Next.js 15.5+](https://img.shields.io/badge/Next.js-15.5+-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![React 19.2+](https://img.shields.io/badge/React-19.2+-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
