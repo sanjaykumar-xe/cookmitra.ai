@@ -258,7 +258,7 @@ export function WeeklyShoppingListModal({
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
                                   className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-600/10 text-purple-600 hover:bg-purple-600 hover:text-white border border-purple-500/25 transition-all shadow-xs"
-                                  title={`Order ${item.displayName} on Zepto (10-min delivery)`}
+                                  title={`Order ${item.displayName} on Zepto`}
                                 >
                                   <span>Zepto</span>
                                   <ExternalLink className="h-2.5 w-2.5" />

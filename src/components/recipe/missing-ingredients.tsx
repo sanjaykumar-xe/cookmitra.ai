@@ -20,8 +20,6 @@ import { cn } from "@/lib/utils";
 export interface GroceryPlatform {
   id: string;
   name: string;
-  badge: string;
-  badgeBg: string;
   btnBg: string;
   url: (q: string) => string;
 }
@@ -30,48 +28,36 @@ export const GROCERY_PLATFORMS: GroceryPlatform[] = [
   {
     id: "zepto",
     name: "Zepto",
-    badge: "10-min",
-    badgeBg: "bg-purple-600 text-white",
     btnBg: "bg-purple-600 hover:bg-purple-700 text-white",
     url: (q: string) => `https://www.zeptonow.com/search?query=${encodeURIComponent(q)}`,
   },
   {
     id: "blinkit",
     name: "Blinkit",
-    badge: "10-min",
-    badgeBg: "bg-yellow-400 text-black",
     btnBg: "bg-yellow-500 hover:bg-yellow-600 text-black",
     url: (q: string) => `https://blinkit.com/s/?q=${encodeURIComponent(q)}`,
   },
   {
     id: "swiggy",
     name: "Swiggy Instamart",
-    badge: "15-min",
-    badgeBg: "bg-orange-500 text-white",
     btnBg: "bg-orange-600 hover:bg-orange-700 text-white",
     url: (q: string) => `https://www.swiggy.com/instamart/search?custom_back=true&query=${encodeURIComponent(q)}`,
   },
   {
     id: "amazon",
     name: "Amazon Fresh",
-    badge: "Same-Day",
-    badgeBg: "bg-sky-600 text-white",
     btnBg: "bg-sky-600 hover:bg-sky-700 text-white",
     url: (q: string) => `https://www.amazon.in/s?k=${encodeURIComponent(q)}&i=nowstore`,
   },
   {
     id: "flipkart",
     name: "Flipkart Minutes",
-    badge: "15-min",
-    badgeBg: "bg-blue-600 text-white",
     btnBg: "bg-blue-600 hover:bg-blue-700 text-white",
     url: (q: string) => `https://www.flipkart.com/search?q=${encodeURIComponent(q)}`,
   },
   {
     id: "google",
     name: "Google Shopping",
-    badge: "Compare",
-    badgeBg: "bg-stone-600 text-white",
     btnBg: "bg-stone-700 hover:bg-stone-800 text-white",
     url: (q: string) => `https://www.google.com/search?tbm=shop&q=${encodeURIComponent(q)}`,
   },
@@ -201,18 +187,13 @@ export function MissingIngredients({
               {t("recipe.shopOn")}
             </span>
             <Select value={selectedPlatformId} onValueChange={handlePlatformChange}>
-              <SelectTrigger className="h-8 min-w-[130px] text-xs font-semibold bg-background border-amber-500/30 rounded-full focus:ring-1 focus:ring-amber-500">
+              <SelectTrigger className="h-8 min-w-[120px] text-xs font-semibold bg-background border-amber-500/30 rounded-full focus:ring-1 focus:ring-amber-500">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-2xl border-stone-200 dark:border-stone-800">
                 {GROCERY_PLATFORMS.map((platform) => (
                   <SelectItem key={platform.id} value={platform.id} className="text-xs font-medium cursor-pointer">
-                    <span className="flex items-center gap-2">
-                      <span className="font-bold">{platform.name}</span>
-                      <span className={cn("text-[9px] px-1.5 py-0.5 rounded-full font-black", platform.badgeBg)}>
-                        {platform.badge}
-                      </span>
-                    </span>
+                    <span className="font-bold">{platform.name}</span>
                   </SelectItem>
                 ))}
               </SelectContent>
