@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/accordion';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, Copy, Check } from 'lucide-react';
+import { ShoppingCart, Copy, Check, ExternalLink } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import type { GenerateHealthyMealPlanOutput } from '@/ai/schemas/healthy-meal-plan-schemas';
@@ -121,6 +121,42 @@ export function WeeklyShoppingListModal({
     }
   };
 
+  const handleShopOnZepto = async () => {
+    if (!plan) return;
+    const missingItems: string[] = [];
+    activeCategories.forEach((cat) => {
+      aggregatedData[cat].forEach((item) => {
+        if (!checkedState[item.id]) {
+          missingItems.push(item.displayName);
+        }
+      });
+    });
+
+    if (missingItems.length === 0) {
+      toast({
+        title: "All Items in Pantry!",
+        description: "You have marked all items as already available.",
+      });
+      return;
+    }
+
+    const textBuffer = `WEEKLY MISSING GROCERIES:\n` + missingItems.map((i) => `• ${i}`).join("\n");
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(textBuffer);
+      }
+      toast({
+        title: "Opening Zepto...",
+        description: `Copied ${missingItems.length} missing items to clipboard for quick checkout!`,
+      });
+    } catch (err) {
+      console.error("Clipboard failed", err);
+    }
+
+    const firstCleaned = encodeURIComponent(missingItems[0]);
+    window.open(`https://www.zeptonow.com/search?query=${firstCleaned}`, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl p-6 sm:p-8 bg-card border-primary/20 shadow-2xl">
@@ -210,11 +246,25 @@ export function WeeklyShoppingListModal({
                               </div>
                             </div>
 
-                            {item.inPantry && (
-                              <span className="shrink-0 ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
-                                In pantry
-                              </span>
-                            )}
+                            <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                              {item.inPantry ? (
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                                  In pantry
+                                </span>
+                              ) : (
+                                <a
+                                  href={`https://www.zeptonow.com/search?query=${encodeURIComponent(item.displayName)}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-purple-600/10 text-purple-600 hover:bg-purple-600 hover:text-white border border-purple-500/25 transition-all shadow-xs"
+                                  title={`Order ${item.displayName} on Zepto (10-min delivery)`}
+                                >
+                                  <span>Zepto</span>
+                                  <ExternalLink className="h-2.5 w-2.5" />
+                                </a>
+                              )}
+                            </div>
                           </div>
                         );
                       })}
@@ -226,21 +276,32 @@ export function WeeklyShoppingListModal({
           )}
         </div>
 
-        <div className="pt-4 border-t border-border/60 flex items-center justify-between gap-4">
-          <p className="text-[11px] text-muted-foreground font-medium">
-            Items pre-checked are available in your pantry.
+        <div className="pt-4 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[11px] text-muted-foreground font-medium text-center sm:text-left">
+            Items pre-checked are in your pantry. Order missing groceries with 1-click on Zepto.
           </p>
-          <Button
-            onClick={handleCopyList}
-            disabled={activeCategories.length === 0}
-            className="bg-[#F4A21A] hover:bg-[#F4A21A]/90 text-white font-bold rounded-full px-6 h-11 text-xs uppercase tracking-wider shadow-md transition-all shrink-0"
-          >
-            {copied ? (
-              <><Check className="mr-2 h-4 w-4" strokeWidth={1.75} /> Copied!</>
-            ) : (
-              <><Copy className="mr-2 h-4 w-4" strokeWidth={1.75} /> Copy List</>
-            )}
-          </Button>
+          <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
+            <Button
+              onClick={handleShopOnZepto}
+              disabled={activeCategories.length === 0}
+              className="bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full px-5 h-10 text-xs uppercase tracking-wider shadow-md transition-all flex-1 sm:flex-initial cursor-pointer"
+            >
+              <ShoppingCart className="mr-1.5 h-3.5 w-3.5" />
+              <span>Shop on Zepto</span>
+            </Button>
+            <Button
+              onClick={handleCopyList}
+              disabled={activeCategories.length === 0}
+              variant="outline"
+              className="border-primary/20 hover:bg-muted font-bold rounded-full px-4 h-10 text-xs uppercase tracking-wider transition-all flex-1 sm:flex-initial cursor-pointer"
+            >
+              {copied ? (
+                <><Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" strokeWidth={2} /> Copied!</>
+              ) : (
+                <><Copy className="mr-1.5 h-3.5 w-3.5" strokeWidth={1.75} /> Copy List</>
+              )}
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
