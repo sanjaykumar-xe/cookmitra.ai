@@ -179,31 +179,52 @@ export function Header() {
             </Link>
         </div>
 
+        {/* Center: Landing Page Navigation Links */}
+        {isLandingPage && (
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-white/90">
+            <Link href="#services" className="hover:text-amber-400 transition-colors">
+              {t('landing.servicesTitle')}
+            </Link>
+            <Link href={user ? "/recipes" : "/signup"} className="hover:text-amber-400 transition-colors">
+              {t('nav.recipes')}
+            </Link>
+            <Link href={user ? "/encyclopedia" : "/signup"} className="hover:text-amber-400 transition-colors">
+              {t('nav.encyclopedia')}
+            </Link>
+            <Link href={user ? "/healing-foods" : "/signup"} className="hover:text-amber-400 transition-colors">
+              {t('nav.healingFoods')}
+            </Link>
+            <Link href="/pricing" className="hover:text-amber-400 transition-colors">
+              {t('footer.pricing')}
+            </Link>
+          </nav>
+        )}
+
         {/* Center: Global Search Bar */}
         {!isLandingPage && !isAuthPage && (
           <div className="hidden md:flex flex-1 max-w-md mx-8 relative" ref={searchRef}>
               <div className="relative w-full">
-                <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground transition-opacity" />
+                <SearchIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 dark:text-stone-500 transition-opacity pointer-events-none" />
                 <Input 
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onFocus={() => query.length >= 2 && setIsOpen(true)}
                     placeholder={t('search.placeholder')} 
-                    className="pl-11 pr-10 h-10 bg-background border-border/80 shadow-sm focus-visible:ring-primary/20 rounded-full text-sm placeholder:text-muted-foreground/60 transition-all hover:bg-muted/10"
+                    className="pl-10 pr-9 h-10 bg-background/80 border-stone-200/90 dark:border-stone-800 shadow-xs focus-visible:ring-1 focus-visible:ring-amber-500/30 focus-visible:border-amber-500/60 rounded-xl text-sm placeholder:text-stone-400 dark:placeholder:text-stone-500 transition-all hover:border-stone-300 dark:hover:border-stone-700"
                 />
                 {query && (
                   <button 
                     onClick={() => setQuery("")}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors cursor-pointer"
                   >
-                    <X className="h-3 w-3" />
+                    <X className="h-3.5 w-3.5" />
                   </button>
                 )}
               </div>
 
               {/* Results Dropdown */}
               {isOpen && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-primary/10 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 z-[100]">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-stone-200 dark:border-stone-800 rounded-2xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 z-[100]">
                   <ScrollArea className="max-h-[70vh]">
                     <div className="p-2 space-y-4">
                       {!hasResults ? (

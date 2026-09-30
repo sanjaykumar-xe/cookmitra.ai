@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useUser } from '@/lib/firebase';
 import { IconSidebar } from './icon-sidebar';
 import { Header } from './header';
@@ -8,6 +8,7 @@ import { Footer } from './footer';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { Loader2 } from 'lucide-react';
 
 /**
  * Heavy components loaded dynamically to improve initial TTI and TBT.
@@ -25,7 +26,8 @@ const OnboardingModal = dynamic(() => import('./onboarding-modal').then(mod => m
  */
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { user } = useUser();
+  const router = useRouter();
+  const { user, isUserLoading } = useUser();
   const [mounted, setMounted] = useState(false);
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const [isIframe, setIsIframe] = useState(false);
@@ -38,14 +40,17 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  useEffect(() => {
-    if (mounted && user) {
-      const seen = localStorage.getItem('cookmitra_onboarding_seen');
-      if (!seen && !['/login', '/signup', '/forgot-password', '/verify-email'].includes(pathname || '') && pathname !== '/') {
-        setIsOnboardingOpen(true);
-      }
-    }
-  }, [mounted, user, pathname]);
+  // Public routes accessible without logging in
+  const publicRoutes = [
+    '/',
+    '/login',
+    '/signup',
+    '/forgot-password',
+    '/verify-email',
+    '/pricing',
+    '/faq',
+    '/services'
+  ];
 
   // Auth routes where layout should be minimal
   const authRoutes = [
@@ -58,15 +63,37 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   const normalizedPath = pathname || '';
   const isLandingPage = normalizedPath === '/';
   const isAuthPage = authRoutes.includes(normalizedPath);
-  
-  /**
-   * Hydration-safe logic: 
-   * We keep the main wrapper stable and only toggle visibility of shell elements 
-   * based on the 'mounted' state.
-   */
-  const showSidebar = mounted && !isLandingPage && !isAuthPage && !isIframe;
+  const isPublicRoute = publicRoutes.includes(normalizedPath);
+
+  // Global Auth Guard: Redirect unauthenticated users trying to access inner app features
+  useEffect(() => {
+    if (mounted && !isUserLoading && !user && !isPublicRoute) {
+      router.push('/login');
+    }
+  }, [mounted, isUserLoading, user, isPublicRoute, router]);
+
+  useEffect(() => {
+    if (mounted && user) {
+      const seen = localStorage.getItem('cookmitra_onboarding_seen');
+      if (!seen && !['/login', '/signup', '/forgot-password', '/verify-email'].includes(pathname || '') && pathname !== '/') {
+        setIsOnboardingOpen(true);
+      }
+    }
+  }, [mounted, user, pathname]);
+
+  const showSidebar = mounted && !isLandingPage && !isAuthPage && !isIframe && (!!user || !isPublicRoute);
   const showHeader = mounted && !isIframe && !isAuthPage;
   const showFooter = mounted && !isIframe;
+
+  // Prevent flash of protected content while redirecting to login
+  if (mounted && !isUserLoading && !user && !isPublicRoute) {
+    return (
+      <div className="min-h-screen w-full flex flex-col items-center justify-center bg-background gap-4">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <p className="text-sm font-medium text-muted-foreground">Redirecting to sign in...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="relative flex min-h-screen w-full overflow-x-hidden">

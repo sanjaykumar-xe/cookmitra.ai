@@ -38,15 +38,16 @@ const LibraryShowcase = dynamic(() => import('@/components/home/library-showcase
 });
 
 interface ServiceCardProps {
-  icon: React.ReactElement;
+  icon: React.ReactElement<{ className?: string }>;
   title: string;
   description: string;
   benefit: string;
   index: number;
   iconTint?: string;
+  href?: string;
 }
 
-function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" }: ServiceCardProps) {
+function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-[#FFF4EC] text-[#D97706] dark:bg-amber-950/40 dark:text-amber-400", href = "/signup" }: ServiceCardProps) {
   const shouldReduceMotion = useReducedMotion();
   const [isFlipped, setIsFlipped] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -70,70 +71,115 @@ function ServiceCard({ icon, title, description, benefit, index, iconTint = "bg-
   };
 
   const entranceVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.7, ease: "easeOut" }
+      transition: { duration: 0.45, delay: index * 0.06, ease: "easeOut" }
     }
   };
 
   if (shouldReduceMotion) {
     return (
-      <Card className="h-full p-6 text-center border-border hover:border-primary/45 transition-colors">
-        <div className={cn("p-2.5 rounded-xl w-fit mb-4 mx-auto", iconTint)}>
-          {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
-        </div>
-        <CardTitle className="font-headline text-xl font-bold tracking-tight mb-3">{title}</CardTitle>
-        <p className="text-muted-foreground text-fluid-subtitle leading-relaxed">{benefit}</p>
-      </Card>
+      <Link href={href} className="block h-full focus:outline-none rounded-3xl">
+        <Card className="h-full p-7 flex flex-col justify-between rounded-3xl bg-white dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 shadow-xs hover:shadow-lg transition-all">
+          <div>
+            <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center mb-5", iconTint)}>
+              {React.cloneElement(icon, { className: "h-6 w-6 stroke-[1.75]" })}
+            </div>
+            <CardTitle className="font-headline text-[1.65rem] font-bold tracking-tight mb-2 text-stone-900 dark:text-stone-100">
+              {title}
+            </CardTitle>
+            <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed mb-4">
+              {description}
+            </p>
+          </div>
+          <p className="text-xs sm:text-[13px] text-amber-900 dark:text-amber-200 font-medium">{benefit}</p>
+        </Card>
+      </Link>
     );
   }
 
   return (
     <motion.div
       variants={entranceVariants}
-      className="flip-card-container h-[220px] w-full"
+      className="flip-card-container h-[290px] sm:h-[310px] w-full"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleFlip}
     >
       <div className={cn("flip-card-inner h-full w-full", isFlipped && "is-flipped")}>
+        {/* Front Face */}
         <div className="flip-card-front h-full w-full">
-          <Card className="h-full p-6 flex flex-col items-center justify-center text-center border-border hover:border-primary/45 transition-all shadow-xs group cursor-pointer bg-card/60 backdrop-blur-xs">
-            <div className="flex flex-col items-center">
-              <div className={cn("p-3 rounded-2xl w-fit mb-3 transition-transform group-hover:scale-110 duration-300", iconTint)}>
-                {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: "h-7 w-7" })}
+          <Card className="h-full p-7 flex flex-col justify-between rounded-3xl bg-white dark:bg-stone-900 border border-stone-200/80 dark:border-stone-800 shadow-xs hover:shadow-md transition-all cursor-pointer">
+            <div>
+              <div className="flex items-center justify-between mb-5">
+                <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center", iconTint)}>
+                  {React.cloneElement(icon, { className: "h-6 w-6 stroke-[1.75]" })}
+                </div>
+                <span className="text-[11px] font-semibold text-stone-400 dark:text-stone-500 bg-stone-100 dark:bg-stone-800/80 px-2.5 py-1 rounded-full flex items-center gap-1">
+                  Hover to flip ↻
+                </span>
               </div>
-              <CardTitle className="font-headline text-lg font-bold tracking-tight mb-2 group-hover:text-primary transition-colors">{title}</CardTitle>
-              <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">{description}</p>
+              <CardTitle className="font-headline text-[1.65rem] font-bold tracking-tight mb-2 text-stone-900 dark:text-stone-100">
+                {title}
+              </CardTitle>
+              <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed font-normal line-clamp-3">
+                {description}
+              </p>
+            </div>
+            <div className="mt-auto w-full p-3 px-4 rounded-2xl bg-[#FFF9F2] dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-500/20 text-left flex items-center justify-between">
+              <span className="text-xs font-medium text-amber-900 dark:text-amber-200/90 truncate">
+                {benefit}
+              </span>
+              <span className="text-xs text-amber-700 dark:text-amber-400 font-bold ml-2 shrink-0">Flip →</span>
             </div>
           </Card>
         </div>
+
+        {/* Back Face */}
         <div className="flip-card-back h-full w-full">
-          <Card className="h-full p-6 flex flex-col items-center justify-center text-center border-primary/40 bg-gradient-to-br from-primary/10 via-card to-card shadow-md">
-            <p className="text-xs sm:text-sm font-medium text-foreground/90 leading-relaxed max-w-[240px] mx-auto">
-              {benefit}
-            </p>
-          </Card>
+          <Link href={href} className="block h-full w-full focus:outline-none rounded-3xl">
+            <Card className="h-full p-7 flex flex-col justify-between rounded-3xl bg-gradient-to-br from-[#FFF9F2] via-white to-amber-50/70 dark:from-stone-900 dark:via-stone-900 dark:to-amber-950/30 border-2 border-amber-300 dark:border-amber-500/40 shadow-xl cursor-pointer hover:border-amber-400 transition-colors">
+              <div className="flex items-center justify-between">
+                <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", iconTint)}>
+                  {React.cloneElement(icon, { className: "h-5 w-5 stroke-[1.75]" })}
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/60 px-3 py-1 rounded-full border border-amber-200/60 dark:border-amber-500/20">
+                  Key Benefit
+                </span>
+              </div>
+              <div className="my-auto py-2">
+                <p className="text-sm sm:text-[15px] font-medium text-[#8C4A15] dark:text-amber-200 leading-relaxed text-left">
+                  {benefit}
+                </p>
+              </div>
+              <div className="w-full py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors">
+                <span>Explore Feature</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </div>
+            </Card>
+          </Link>
         </div>
       </div>
     </motion.div>
   );
 }
 
-function PersonaCard({ title, icon, description }: { title: string; icon: React.ReactElement; description: string }) {
+function PersonaCard({ title, icon, description, href = "/recipes" }: { title: string; icon: React.ReactElement; description: string; href?: string }) {
     return (
-        <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
-            <Card className="h-full p-6 text-center border-primary/10 hover:border-primary/30 transition-all hover:shadow-lg glass-card flex flex-col items-center justify-start group">
-                <div className="bg-primary/10 text-primary p-4 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {React.cloneElement(icon as React.ReactElement<any>, { className: "h-7 w-7" })}
-                </div>
-                <h3 className="font-headline text-lg font-bold mb-2 text-foreground">{title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
-            </Card>
+        <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45 } } }} className="h-full">
+            <Link href={href} className="block h-full group focus:outline-none">
+              <Card className="h-full p-6 text-center rounded-2xl bg-card border border-stone-200/90 dark:border-stone-800/90 hover:border-amber-500/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col items-center justify-start cursor-pointer">
+                  <div className="bg-amber-500/10 text-amber-600 dark:text-amber-400 p-3.5 rounded-2xl mb-3.5 group-hover:scale-110 transition-transform duration-200">
+                      {React.cloneElement(icon as React.ReactElement<any>, { className: "h-6 w-6" })}
+                  </div>
+                  <h3 className="font-headline text-lg font-bold mb-2 text-stone-900 dark:text-stone-100 group-hover:text-primary transition-colors">{title}</h3>
+                  <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">{description}</p>
+              </Card>
+            </Link>
         </motion.div>
-    )
+    );
 }
 
 function ComparisonSection() {
@@ -214,20 +260,20 @@ export default function Home() {
   ];
 
   const services = [
-    { icon: <ChefHat />, title: t('landing.service.generator.title'), description: t('landing.service.generator.desc'), benefit: t('landing.service.generator.benefit'), iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
-    { icon: <UtensilsCrossed />, title: t('landing.service.mapping.title'), description: t('landing.service.mapping.desc'), benefit: t('landing.service.mapping.benefit'), iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
-    { icon: <ShoppingCart />, title: t('landing.service.grocery.title'), description: t('landing.service.grocery.desc'), benefit: t('landing.service.grocery.benefit'), iconTint: "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400" },
-    { id: 'healing', icon: <HeartPulse />, title: t('landing.service.healing.title'), description: t('landing.service.healing.desc'), benefit: t('landing.service.healing.benefit'), iconTint: "bg-pink-500/10 text-pink-600 dark:bg-pink-500/20 dark:text-pink-400" },
-    { icon: <MessageSquare />, title: t('landing.service.momo.title'), description: t('landing.service.momo.desc'), benefit: t('landing.service.momo.benefit'), iconTint: "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400" },
-    { icon: <Library />, title: t('landing.service.library.title'), description: t('landing.service.library.desc'), benefit: t('landing.service.library.benefit'), iconTint: "bg-teal-500/10 text-teal-600 dark:bg-teal-500/20 dark:text-teal-400" },
+    { icon: <ChefHat />, title: t('landing.service.generator.title'), description: t('landing.service.generator.desc'), benefit: t('landing.service.generator.benefit'), iconTint: "bg-[#FFF4EC] text-[#D97706] dark:bg-amber-950/40 dark:text-amber-400", href: user ? "/ai-recipes" : "/signup" },
+    { icon: <UtensilsCrossed />, title: t('landing.service.mapping.title'), description: t('landing.service.mapping.desc'), benefit: t('landing.service.mapping.benefit'), iconTint: "bg-[#E6F7F3] text-[#0D9488] dark:bg-teal-950/40 dark:text-teal-400", href: user ? "/encyclopedia" : "/signup" },
+    { icon: <ShoppingCart />, title: t('landing.service.grocery.title'), description: t('landing.service.grocery.desc'), benefit: t('landing.service.grocery.benefit'), iconTint: "bg-[#EEF2FF] text-[#6366F1] dark:bg-indigo-950/40 dark:text-indigo-400", href: user ? "/pantry" : "/signup" },
+    { id: 'healing', icon: <HeartPulse />, title: t('landing.service.healing.title'), description: t('landing.service.healing.desc'), benefit: t('landing.service.healing.benefit'), iconTint: "bg-[#FDF2F8] text-[#EC4899] dark:bg-pink-950/40 dark:text-pink-400", href: user ? "/healing-foods" : "/signup" },
+    { icon: <MessageSquare />, title: t('landing.service.momo.title'), description: t('landing.service.momo.desc'), benefit: t('landing.service.momo.benefit'), iconTint: "bg-[#FFF7ED] text-[#F97316] dark:bg-orange-950/40 dark:text-orange-400", href: user ? "/ai-chat" : "/signup" },
+    { icon: <Library />, title: t('landing.service.library.title'), description: t('landing.service.library.desc'), benefit: t('landing.service.library.benefit'), iconTint: "bg-[#ECFDF5] text-[#0D9488] dark:bg-emerald-950/40 dark:text-emerald-400", href: user ? "/recipes" : "/signup" },
   ];
 
   const personas = [
-    { title: t('landing.persona.students.title'), icon: <GraduationCap />, description: t('landing.persona.students.desc') },
-    { title: t('landing.persona.families.title'), icon: <Users />, description: t('landing.persona.families.desc') },
-    { title: t('landing.persona.professionals.title'), icon: <Briefcase />, description: t('landing.persona.professionals.desc') },
-    { title: t('landing.persona.beginners.title'), icon: <ChefHat />, description: t('landing.persona.beginners.desc') },
-    { title: t('landing.persona.homeCooks.title'), icon: <Heart />, description: t('landing.persona.homeCooks.desc') }
+    { title: t('landing.persona.students.title'), icon: <GraduationCap />, description: t('landing.persona.students.desc'), href: user ? "/home" : "/signup" },
+    { title: t('landing.persona.families.title'), icon: <Users />, description: t('landing.persona.families.desc'), href: user ? "/healthy-meal-planner" : "/signup" },
+    { title: t('landing.persona.professionals.title'), icon: <Briefcase />, description: t('landing.persona.professionals.desc'), href: user ? "/recipes" : "/signup" },
+    { title: t('landing.persona.beginners.title'), icon: <ChefHat />, description: t('landing.persona.beginners.desc'), href: user ? "/recipes" : "/signup" },
+    { title: t('landing.persona.homeCooks.title'), icon: <Heart />, description: t('landing.persona.homeCooks.desc'), href: user ? "/recipes" : "/signup" }
   ];
 
   return (
@@ -278,37 +324,35 @@ export default function Home() {
                   {t('landing.heroSubtitle')}
                 </motion.p>
             </div>
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-2 w-full sm:w-auto pointer-events-auto">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 w-full sm:w-auto pointer-events-auto">
               {isUserLoading ? (
                   <Button disabled size="lg" className="h-14 px-10 rounded-full w-full sm:w-auto"><Loader2 className="mr-2 h-4 w-4 animate-spin" /></Button>
               ) : (
-                  <Button size="lg" className="h-14 px-10 text-base font-medium rounded-full group shadow-2xl shadow-primary/40 btn-primary-gradient border-0 w-full sm:w-auto" asChild>
+                  <Button size="lg" className="h-14 px-9 text-base font-medium rounded-full group shadow-2xl shadow-primary/40 btn-primary-gradient border-0 w-full sm:w-auto" asChild>
                       <Link href={user ? "/home" : "/signup"}>{t('landing.letsCook')} <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></Link>
                   </Button>
               )}
-              <Link href="/pricing" className="text-white text-sm font-medium hover:text-primary transition-all underline-offset-8 hover:underline text-center sm:text-left">{t('landing.viewPricing')}</Link>
+              <Button size="lg" variant="outline" className="h-14 px-8 text-base font-medium rounded-full border-white/25 text-white bg-white/10 hover:bg-white/20 hover:text-white backdrop-blur-md w-full sm:w-auto transition-all" asChild>
+                  <Link href={user ? "/recipes" : "/signup"}>Explore Recipes</Link>
+              </Button>
+              <Link href="/pricing" className="text-white/80 text-sm font-medium hover:text-primary transition-all underline-offset-8 hover:underline text-center sm:text-left py-2">{t('landing.viewPricing')}</Link>
             </motion.div>
           </div>
         </section>
         
         <LibraryShowcase />
         
-        <section className="py-16 md:py-24 bg-background overflow-hidden">
-            <div className="container max-w-5xl mx-auto px-4 md:px-8">
-                <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                    <ScrollFloat
-                      animationDuration={1.2}
-                      ease="back.out(2)"
-                      scrollStart="top 85%"
-                      stagger={0.045}
-                      scrub={false}
-                      containerClassName="font-headline text-3xl md:text-5xl font-medium tracking-tight text-center"
-                    >
+        <section className="py-20 md:py-28 bg-background overflow-hidden" id="services">
+            <div className="container max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+                <div className="text-center max-w-2xl mx-auto mb-14 md:mb-16 space-y-3">
+                    <h2 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-center text-stone-900 dark:text-stone-100">
                       {t('landing.servicesTitle')}
-                    </ScrollFloat>
-                    <p className="text-muted-foreground text-xs font-medium uppercase tracking-[0.2em]">{t('landing.servicesSubtitle')}</p>
+                    </h2>
+                    <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground text-center">
+                      {t('landing.servicesSubtitle')}
+                    </p>
                 </div>
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
                     {services.map((service, i) => <ServiceCard key={i} index={i} {...service} />)}
                 </motion.div>
             </div>

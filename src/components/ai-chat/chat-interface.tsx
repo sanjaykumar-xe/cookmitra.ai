@@ -423,7 +423,7 @@ export default function ChatInterface() {
   const userInitial = user?.displayName?.[0] || user?.email?.[0] || 'U';
 
   return (
-    <Card className="h-full w-full flex flex-col bg-card/80 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 shadow-xs overflow-hidden rounded-[2.5rem] transition-all duration-500">
+    <Card className="h-full w-full flex flex-col bg-card/80 backdrop-blur-sm border border-stone-200/80 dark:border-stone-800/80 shadow-xs overflow-hidden rounded-3xl transition-all duration-300">
         <ScrollArea className="flex-grow p-4 md:p-6" ref={chatContainerRef}>
             <div className="space-y-6 pb-12">
             {messages.length === 0 && !isLoading && (

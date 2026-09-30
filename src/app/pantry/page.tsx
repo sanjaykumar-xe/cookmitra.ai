@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/lib/firebase';
 import { collection, query, orderBy } from 'firebase/firestore';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -47,10 +48,26 @@ const CATEGORIES = [
 ];
 
 export default function PantryPage() {
+  const router = useRouter();
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
   const { toast } = useToast();
   const { t } = useLanguage();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && !isUserLoading && !user) {
+      router.push('/login');
+    }
+  }, [user, isUserLoading, router, mounted]);
+
+  if (!isUserLoading && !user) {
+    return null;
+  }
 
   const [newItemName, setNewItemName] = useState('');
   const [newItemQty, setNewItemQty] = useState('');
@@ -403,7 +420,7 @@ export default function PantryPage() {
                               ) : (
                                 <div className="flex items-center gap-2 mt-1">
                                   <span className="text-xs text-muted-foreground font-medium opacity-80">{item.quantity || 'No qty'}</span>
-                                  <button onClick={() => startEditing(item)} className="opacity-0 group-hover:opacity-100 transition-opacity p-1 text-muted-foreground hover:text-primary">
+                                  <button onClick={() => startEditing(item)} className="opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity p-1 text-muted-foreground hover:text-primary cursor-pointer">
                                     <Edit2 className="h-3 w-3" />
                                   </button>
                                 </div>
@@ -412,7 +429,7 @@ export default function PantryPage() {
                             <Button 
                               variant="ghost" 
                               size="icon" 
-                              className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-full"
+                              className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity rounded-full cursor-pointer"
                               onClick={() => handleDeleteItem(item.id, item.name)}
                             >
                               <X className="h-4 w-4" />

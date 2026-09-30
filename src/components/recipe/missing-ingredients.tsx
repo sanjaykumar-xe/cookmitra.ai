@@ -167,7 +167,7 @@ export function MissingIngredients({
   }
 
   return (
-    <div className="rounded-[2.5rem] border border-amber-500/25 bg-amber-500/5 dark:bg-amber-950/10 p-6 h-full flex flex-col gap-4 overflow-hidden shadow-xs">
+    <div className="rounded-3xl border border-amber-500/25 bg-amber-500/5 dark:bg-amber-950/10 p-6 h-full flex flex-col gap-4 overflow-hidden shadow-xs">
       {/* Header & Platform Selector */}
       <div className="space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">

@@ -10,6 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useEffect, useRef, useState } from 'react';
 import { useInView, animate, useMotionValue, useTransform } from 'framer-motion';
 import { useLanguage } from '@/context/language-context';
+import { useUser } from '@/lib/firebase';
 
 function StatCounter({ value, suffix = "" }: { value: number | string; suffix?: string }) {
     const isString = typeof value === 'string';
@@ -35,6 +36,7 @@ function StatCounter({ value, suffix = "" }: { value: number | string; suffix?: 
 
 export function LibraryShowcase() {
   const { t } = useLanguage();
+  const { user } = useUser();
   const idliImg = PlaceHolderImages.find(p => p.id === 'idli-preview')?.imageUrl || "";
   const tandooriImg = PlaceHolderImages.find(p => p.id === 'tandoori-preview')?.imageUrl || "";
   const cakeImg = PlaceHolderImages.find(p => p.id === 'cake-preview')?.imageUrl || "";
@@ -103,34 +105,35 @@ export function LibraryShowcase() {
 
         <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {previews.map((item, i) => (
-            <motion.div 
-              key={i}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="group relative h-[300px] rounded-3xl overflow-hidden border border-primary/10 shadow-xl bg-card"
-            >
-              <div className="absolute inset-0 overflow-hidden bg-muted/20">
-                {item.img && (
-                    <Image 
-                    src={item.img} 
-                    alt={item.name} 
-                    fill 
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    data-ai-hint={item.hint}
-                    />
-                )}
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
-                <Badge className="w-fit mb-2 bg-primary/20 backdrop-blur-md border-primary/30 text-primary-foreground text-[10px] font-black uppercase tracking-widest">{item.region}</Badge>
-                <h4 className="text-lg font-bold text-white tracking-tight">{item.name}</h4>
-              </div>
-            </motion.div>
+            <Link key={i} href={user ? `/recipes?search=${encodeURIComponent(item.name)}` : "/signup"} className="block focus:outline-none rounded-3xl">
+              <motion.div 
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                className="group relative h-[300px] rounded-3xl overflow-hidden border border-primary/10 shadow-xl bg-card cursor-pointer"
+              >
+                <div className="absolute inset-0 overflow-hidden bg-muted/20">
+                  {item.img && (
+                      <Image 
+                      src={item.img} 
+                      alt={item.name} 
+                      fill 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      data-ai-hint={item.hint}
+                      />
+                  )}
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  <Badge className="w-fit mb-2 bg-primary/20 backdrop-blur-md border-primary/30 text-primary-foreground text-[10px] font-black uppercase tracking-widest">{item.region}</Badge>
+                  <h4 className="text-lg font-bold text-white tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
         
         <motion.div variants={itemVariants} className="mt-16 text-center">
             <Button asChild variant="ghost" className="group h-12 rounded-full px-8 text-primary hover:bg-primary/5 font-bold">
-                <Link href="/recipes" className="flex items-center gap-2">
+                <Link href={user ? "/recipes" : "/signup"} className="flex items-center gap-2">
                     {t('landing.browseAll')}
                     <ChevronRight className="h-4 w-4" />
                 </Link>

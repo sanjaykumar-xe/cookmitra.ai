@@ -275,7 +275,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
             
             {/* INGREDIENTS & MISSING ITEMS GRID */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-                <Card className="rounded-[2.5rem] border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm overflow-hidden shadow-xs flex flex-col justify-between">
+                <Card className="rounded-3xl border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm overflow-hidden shadow-xs flex flex-col justify-between">
                     <CardHeader className="p-6 md:p-8 pb-3 border-b border-stone-100 dark:border-stone-800">
                         <CardTitle className="font-headline text-2xl font-medium text-stone-900 dark:text-stone-100">{t('recipe.ingredients')}</CardTitle>
                     </CardHeader>
@@ -333,7 +333,7 @@ export function RecipeDetails({ recipe, onStartCooking }: RecipeDetailsProps) {
             </div>
 
             {/* STEP BY STEP INSTRUCTIONS */}
-            <Card className="rounded-[2.5rem] border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm overflow-hidden shadow-xs">
+            <Card className="rounded-3xl border-stone-200/80 dark:border-stone-800/80 bg-card/80 backdrop-blur-sm overflow-hidden shadow-xs">
                 <CardHeader className="p-6 md:p-10 pb-2 border-b border-stone-100 dark:border-stone-800">
                     <CardTitle className="font-headline text-3xl font-medium text-stone-900 dark:text-stone-100">{t('recipe.instructions')}</CardTitle>
                 </CardHeader>

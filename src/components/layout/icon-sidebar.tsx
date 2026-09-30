@@ -87,18 +87,21 @@ const TooltipLink = ({
           href={href} 
           {...props} 
           className={cn(
-            "group p-2.5 rounded-2xl transition-all duration-200 active:scale-95 flex items-center justify-center", 
+            "group relative p-2.5 rounded-xl transition-all duration-200 active:scale-95 flex items-center justify-center", 
             isActive 
-              ? "bg-[#FFF6ED] dark:bg-[#2A1D15] text-[#F2860A] border border-[#F2860A]/30 shadow-xs" 
-              : "text-stone-700 dark:text-stone-300 hover:text-[#F2860A] hover:bg-muted/60"
+              ? "bg-amber-500/15 dark:bg-amber-500/20 text-[#F4A21A] border border-amber-500/30 shadow-xs" 
+              : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-900"
           )}
         >
-          <div className={cn("transition-colors flex items-center justify-center", isActive ? "text-[#F2860A]" : "text-stone-700 dark:text-stone-300 group-hover:text-[#F2860A]")}>
+          {isActive && (
+            <span className="absolute -left-2.5 top-1/2 -translate-y-1/2 w-1 h-5 rounded-r-full bg-[#F4A21A]" />
+          )}
+          <div className={cn("transition-colors flex items-center justify-center", isActive ? "text-[#F4A21A]" : "text-inherit")}>
             {children}
           </div>
         </Link>
       </TooltipTrigger>
-      <TooltipContent side="right" className="animate-in fade-in slide-in-from-left-2 duration-200 font-medium text-xs hidden md:block">
+      <TooltipContent side="right" className="animate-in fade-in slide-in-from-left-2 duration-150 font-semibold text-xs rounded-lg bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 border-0 shadow-lg px-2.5 py-1 hidden md:block">
         <p>{tooltip}</p>
       </TooltipContent>
     </Tooltip>
@@ -124,15 +127,15 @@ const NavLink = ({
   return (
     <Link 
       href={href} 
-      {...props}
+      {...props} 
       className={cn(
-        "flex items-center gap-3.5 px-3 py-2.5 rounded-xl text-sm font-medium transition-all active:scale-[0.98]", 
+        "flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all active:scale-[0.98]", 
         isActive 
-          ? "bg-[#FFF6ED] dark:bg-[#2A1D15] text-[#F2860A] font-semibold border border-[#F2860A]/20" 
-          : "text-muted-foreground hover:text-foreground hover:bg-muted"
+          ? "bg-amber-500/15 dark:bg-amber-500/20 text-[#F4A21A] font-bold border border-amber-500/25 shadow-xs" 
+          : "text-stone-700 dark:text-stone-300 hover:text-stone-950 dark:hover:text-stone-50 hover:bg-stone-100 dark:hover:bg-stone-900"
       )}
     >
-      <Icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive ? "text-[#F2860A]" : "text-muted-foreground")} />
+      <Icon className={cn("h-5 w-5 transition-transform group-hover:scale-105 shrink-0", isActive ? "text-[#F4A21A]" : "text-stone-500 dark:text-stone-400")} />
       <span>{children}</span>
     </Link>
   );

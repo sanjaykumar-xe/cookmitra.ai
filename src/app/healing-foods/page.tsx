@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { useFirestore } from '@/lib/firebase';
+import { useFirestore, useUser } from '@/lib/firebase';
+import { useRouter } from 'next/navigation';
 import { recipes as allRecipes } from '@/lib/recipes';
 import { CURATED_CONDITIONS, type HealthCondition } from '@/lib/healing-foods/conditions';
 import { generateHealingFoodsAction } from '@/app/actions';
@@ -113,6 +114,8 @@ function HealingFoodCard({ item, type }: { item: any, type: 'help' | 'avoid' }) 
 }
 
 export default function HealingFoodsPage() {
+    const router = useRouter();
+    const { user, isUserLoading } = useUser();
     const firestore = useFirestore();
     const { toast } = useToast();
     const { t, language } = useLanguage();
@@ -125,6 +128,16 @@ export default function HealingFoodsPage() {
     useEffect(() => {
         setMounted(true);
     }, []);
+
+    useEffect(() => {
+        if (mounted && !isUserLoading && !user) {
+            router.push('/login');
+        }
+    }, [user, isUserLoading, router, mounted]);
+
+    if (!isUserLoading && !user) {
+        return null;
+    }
 
     const handleSelectCondition = async (condition: HealthCondition | string) => {
         if (!firestore) return;

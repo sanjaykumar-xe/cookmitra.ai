@@ -95,22 +95,28 @@
 
 @layer components {
   .btn-primary-gradient {
-    background: linear-gradient(135deg, #F4A21A, #FFB02E);
-    @apply text-primary-foreground border-0 transition-all duration-300 font-bold;
+    background: linear-gradient(135deg, #F4A21A 0%, #E09015 100%);
+    @apply text-white border-0 transition-all duration-200 font-bold shadow-sm;
   }
 
   .btn-primary-gradient:hover {
-    box-shadow: 0 0 16px rgba(244, 162, 26, 0.4);
-    @apply scale-[1.02] opacity-95;
+    box-shadow: 0 6px 20px -3px rgba(244, 162, 26, 0.35), 0 2px 6px -1px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+    @apply opacity-95;
+  }
+
+  .btn-primary-gradient:active {
+    transform: translateY(0);
+    @apply scale-[0.98];
   }
 
   .input-premium {
-    @apply bg-muted/50 dark:bg-[#2A2318] border-border transition-all duration-300;
+    @apply bg-background border-border/80 transition-all duration-200;
   }
 
   .input-premium:focus {
     @apply border-primary outline-none;
-    box-shadow: 0 0 0 3px rgba(244, 162, 26, 0.2);
+    box-shadow: 0 0 0 3px rgba(244, 162, 26, 0.15);
   }
 
   /* 3D Flip Card Components */

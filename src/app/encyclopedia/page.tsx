@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@/lib/firebase';
 import { ingredientProfiles, benefitCategories, type IngredientProfile } from '@/lib/ingredient-encyclopedia';
 import { recipes as allRecipes } from '@/lib/recipes';
 import { Input } from '@/components/ui/input';
@@ -130,10 +132,27 @@ function getMatchingRecipes(item: IngredientProfile) {
 }
 
 export default function EncyclopediaPage() {
+  const router = useRouter();
+  const { user, isUserLoading } = useUser();
   const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [activeBenefit, setActiveBenefit] = useState<string>('All');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && !isUserLoading && !user) {
+      router.push('/login');
+    }
+  }, [user, isUserLoading, router, mounted]);
+
+  if (!isUserLoading && !user) {
+    return null;
+  }
 
   const filteredIngredients = useMemo(() => {
     return ingredientProfiles.filter(item => {
@@ -248,7 +267,7 @@ function IngredientCard({
     const { t } = useLanguage();
     const matchingRecipes = useMemo(() => getMatchingRecipes(item), [item]);
     const usageCount = matchingRecipes.length;
-    const { displayName, vernacularName } = useMemo(() => parseIngredientName(item.name), [item.name]);
+    const { displayName } = useMemo(() => parseIngredientName(item.name), [item.name]);
     const catStyle = categoryStyles[item.category] || categoryStyles.Other;
 
     return (
@@ -283,18 +302,11 @@ function IngredientCard({
                         </div>
                     </div>
 
-                    {/* Title & Vernacular Name & Description */}
+                    {/* Title & Description (Clean English, No Hindi word) */}
                     <div className="space-y-1.5 mb-2.5">
-                        <div className="flex items-baseline gap-1.5 flex-wrap">
-                            <h3 className="font-headline text-lg sm:text-xl font-bold tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-primary transition-colors">
-                                {displayName}
-                            </h3>
-                            {vernacularName && (
-                                <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 italic">
-                                    ({vernacularName})
-                                </span>
-                            )}
-                        </div>
+                        <h3 className="font-headline text-lg sm:text-xl font-bold tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-primary transition-colors">
+                            {displayName}
+                        </h3>
                         <p className={cn(
                             "text-xs sm:text-[13px] text-stone-600 dark:text-stone-300 font-normal leading-relaxed",
                             !isExpanded && "line-clamp-2 min-h-[2.5rem]"
